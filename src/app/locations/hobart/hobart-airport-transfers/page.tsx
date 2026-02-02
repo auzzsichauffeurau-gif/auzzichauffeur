@@ -20,7 +20,7 @@ export default function HobartAirportPage() {
         },
         {
             question: "Do you service other parts of Tasmania?",
-            answer: "Yes, we offer transfers from Hobart to places like Port Arthur, Freycinet, and Launceston upon request."
+            answer: "Yes, we offer transfers from Hobart to places like Port Arthur, Freycinet, and regional Tasmania upon request."
         }
     ];
 

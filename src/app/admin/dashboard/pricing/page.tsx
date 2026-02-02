@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { DollarSign, Edit, Plus, X, Save } from 'lucide-react';
+import { DollarSign, Edit, Plus, X, Save, Trash2 } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
+import { toast } from 'sonner';
 
 export default function PricingPage() {
     const [pricingRules, setPricingRules] = useState<any[]>([]);
@@ -11,7 +12,7 @@ export default function PricingPage() {
     const [editingRule, setEditingRule] = useState<any>(null);
     const [formData, setFormData] = useState({
         service_type: 'airport_transfer',
-        vehicle_type: 'S-Class',
+        vehicle_type: 'Executive Sedans',
         rate_per_km: 0,
         base_fare: 0,
         hourly_rate: 0,
@@ -30,8 +31,13 @@ export default function PricingPage() {
             .select('*')
             .order('service_type', { ascending: true });
 
-        if (!error && data) {
-            setPricingRules(data);
+        if (error) {
+            console.error('Error fetching pricing:', error);
+            if (error.code === '42P01') {
+                toast.error("Table 'pricing_rules' missing. Please create it.");
+            }
+        } else {
+            setPricingRules(data || []);
         }
         setLoading(false);
     };
@@ -45,7 +51,10 @@ export default function PricingPage() {
                 .update(formData)
                 .eq('id', editingRule.id);
 
-            if (!error) {
+            if (error) {
+                toast.error('Failed to update rule: ' + error.message);
+            } else {
+                toast.success('Pricing rule updated successfully!');
                 fetchPricingRules();
                 closeModal();
             }
@@ -54,22 +63,46 @@ export default function PricingPage() {
                 .from('pricing_rules')
                 .insert([formData]);
 
-            if (!error) {
+            if (error) {
+                toast.error('Failed to create rule: ' + error.message);
+            } else {
+                toast.success('Pricing rule created successfully!');
                 fetchPricingRules();
                 closeModal();
             }
         }
     };
 
+    const handleDelete = async (id: string) => {
+        if (!confirm('Are you sure you want to delete this pricing rule?')) return;
+
+        const { error } = await supabase.from('pricing_rules').delete().eq('id', id);
+
+        if (error) {
+            toast.error('Failed to delete rule: ' + error.message);
+        } else {
+            toast.success('Naming rule deleted');
+            fetchPricingRules();
+        }
+    };
+
     const openModal = (rule?: any) => {
         if (rule) {
             setEditingRule(rule);
-            setFormData(rule);
+            setFormData({
+                service_type: rule.service_type,
+                vehicle_type: rule.vehicle_type,
+                rate_per_km: rule.rate_per_km,
+                base_fare: rule.base_fare,
+                hourly_rate: rule.hourly_rate,
+                min_hours: rule.min_hours,
+                notes: rule.notes || ''
+            });
         } else {
             setEditingRule(null);
             setFormData({
                 service_type: 'airport_transfer',
-                vehicle_type: 'S-Class',
+                vehicle_type: 'Executive Sedans',
                 rate_per_km: 0,
                 base_fare: 0,
                 hourly_rate: 0,
@@ -130,12 +163,20 @@ export default function PricingPage() {
                                     <div key={rule.id} style={{ border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1.5rem', backgroundColor: '#fafafa' }}>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1rem' }}>
                                             <h3 style={{ fontSize: '1rem', fontWeight: 'bold', color: '#1f2937' }}>{rule.vehicle_type}</h3>
-                                            <button
-                                                onClick={() => openModal(rule)}
-                                                style={{ padding: '0.4rem', border: '1px solid #e5e7eb', borderRadius: '4px', background: 'white', cursor: 'pointer' }}
-                                            >
-                                                <Edit size={14} color="#6b7280" />
-                                            </button>
+                                            <div style={{ display: 'flex', gap: '0.5rem' }}>
+                                                <button
+                                                    onClick={() => openModal(rule)}
+                                                    style={{ padding: '0.4rem', border: '1px solid #e5e7eb', borderRadius: '4px', background: 'white', cursor: 'pointer' }}
+                                                >
+                                                    <Edit size={14} color="#6b7280" />
+                                                </button>
+                                                <button
+                                                    onClick={() => handleDelete(rule.id)}
+                                                    style={{ padding: '0.4rem', border: '1px solid #fee2e2', borderRadius: '4px', background: '#fef2f2', cursor: 'pointer' }}
+                                                >
+                                                    <Trash2 size={14} color="#ef4444" />
+                                                </button>
+                                            </div>
                                         </div>
 
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -213,10 +254,11 @@ export default function PricingPage() {
                                         onChange={(e) => setFormData({ ...formData, vehicle_type: e.target.value })}
                                         style={{ width: '100%', padding: '0.6rem', border: '1px solid #e5e7eb', borderRadius: '6px', fontSize: '0.9rem' }}
                                     >
-                                        <option value="S-Class">S-Class</option>
-                                        <option value="E-Class">E-Class</option>
-                                        <option value="Sprinter">Sprinter</option>
-                                        <option value="V-Class">V-Class</option>
+                                        <option value="Executive Sedans">Executive Sedans (1-3 pax)</option>
+                                        <option value="Premium Sedans">Premium Sedans (1-3 pax)</option>
+                                        <option value="Premium SUVs">Premium SUVs (1-3 pax)</option>
+                                        <option value="People Movers">People Movers (1-6 pax)</option>
+                                        <option value="Minibuses & Coaches">Minibuses & Coaches (1-14 pax)</option>
                                     </select>
                                 </div>
                             </div>

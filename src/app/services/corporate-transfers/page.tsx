@@ -81,7 +81,7 @@ export default function CorporateServicesPage() {
                     <p>
                         In the fast-paced world of business, reliability is everything. Auzzsi Chauffeur provides a seamless extension to your business, ensuring that you and your executives arrive prepared and stress-free.
                         <br /><br />
-                        With a presence in every capital city and major regional hub, complete billing transparency, and a fleet of premium vehicles, we are the logistics partner of choice for leading Australian corporations.
+                        With a presence in major capital cities and regional hubs, complete billing transparency, and a fleet of premium vehicles, we are the logistics partner of choice for leading Australian corporations.
                     </p>
                 </div>
             </section>

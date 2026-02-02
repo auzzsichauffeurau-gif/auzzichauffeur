@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://www.auzzsi.com.au';
+    const baseUrl = 'https://www.auzziechauffeur.com.au';
 
     // Base routes
     const routes = [
@@ -27,7 +27,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/locations/sydney',
         '/locations/melbourne',
         '/locations/brisbane',
-        '/locations/perth',
         '/locations/adelaide',
     ].map((route) => ({
         url: `${baseUrl}${route}`,

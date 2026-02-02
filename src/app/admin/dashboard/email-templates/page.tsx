@@ -255,33 +255,49 @@ export default function EmailTemplatesPage() {
                             </div>
 
                             {/* Variables */}
-                            {template.variables && JSON.parse(template.variables || '[]').length > 0 && (
-                                <div style={{ marginBottom: '1rem' }}>
-                                    <div style={{ fontSize: '0.75rem', color: '#6b7280', marginBottom: '0.5rem', fontWeight: '600' }}>VARIABLES:</div>
-                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
-                                        {JSON.parse(template.variables || '[]').slice(0, 4).map((variable: string, idx: number) => (
-                                            <span
-                                                key={idx}
-                                                style={{
-                                                    padding: '0.2rem 0.5rem',
-                                                    backgroundColor: '#eff6ff',
-                                                    color: '#1e40af',
-                                                    borderRadius: '4px',
-                                                    fontSize: '0.7rem',
-                                                    fontFamily: 'monospace'
-                                                }}
-                                            >
-                                                {`{${variable}}`}
-                                            </span>
-                                        ))}
-                                        {JSON.parse(template.variables || '[]').length > 4 && (
-                                            <span style={{ fontSize: '0.7rem', color: '#6b7280' }}>
-                                                +{JSON.parse(template.variables || '[]').length - 4} more
-                                            </span>
-                                        )}
+                            {/* Variables */}
+                            {(() => {
+                                let variables = [];
+                                try {
+                                    if (Array.isArray(template.variables)) {
+                                        variables = template.variables;
+                                    } else if (typeof template.variables === 'string') {
+                                        variables = JSON.parse(template.variables || '[]');
+                                    }
+                                } catch (e) {
+                                    // Fallback if parsing fails or invalid json
+                                    variables = [];
+                                    console.error('Failed to parse variables for template', template.id, e);
+                                }
+
+                                return variables.length > 0 && (
+                                    <div style={{ marginBottom: '1rem' }}>
+                                        <div style={{ fontSize: '0.75rem', color: '#6b7280', marginBottom: '0.5rem', fontWeight: '600' }}>VARIABLES:</div>
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
+                                            {variables.slice(0, 4).map((variable: string, idx: number) => (
+                                                <span
+                                                    key={idx}
+                                                    style={{
+                                                        padding: '0.2rem 0.5rem',
+                                                        backgroundColor: '#eff6ff',
+                                                        color: '#1e40af',
+                                                        borderRadius: '4px',
+                                                        fontSize: '0.7rem',
+                                                        fontFamily: 'monospace'
+                                                    }}
+                                                >
+                                                    {`{${variable}}`}
+                                                </span>
+                                            ))}
+                                            {variables.length > 4 && (
+                                                <span style={{ fontSize: '0.7rem', color: '#6b7280' }}>
+                                                    +{variables.length - 4} more
+                                                </span>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            )}
+                                );
+                            })()}
 
                             {/* Actions */}
                             <div style={{ display: 'flex', gap: '0.5rem', paddingTop: '1rem', borderTop: '1px solid #e5e7eb' }}>
@@ -473,9 +489,154 @@ export default function EmailTemplatesPage() {
                             </div>
 
                             <div>
-                                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#374151', marginBottom: '0.5rem' }}>
-                                    Email Body (HTML) *
-                                </label>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#374151' }}>
+                                        Email Body (HTML) *
+                                    </label>
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            if (confirm('This will overwrite current HTML with a Premium Template. Continue?')) {
+                                                setFormData({
+                                                    ...formData, body_html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <!--[if mso]>
+    <noscript>
+    <xml>
+    <o:OfficeDocumentSettings>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    </noscript>
+    <![endif]-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap');
+        body { margin: 0; padding: 0; background-color: #f4f4f5; font-family: 'Lato', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+        table { border-collapse: collapse; width: 100%; }
+        .wrapper { width: 100%; table-layout: fixed; background-color: #f4f4f5; padding-bottom: 40px; }
+        .main-table { background-color: #ffffff; margin: 0 auto; width: 100%; max-width: 600px; border-spacing: 0; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #333333; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .header { background-color: #0f172a; padding: 40px 0; text-align: center; }
+        .logo-text { color: #c5a467; font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; }
+        .hero { padding: 40px 40px 20px; text-align: center; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 32px; color: #1e3a8a; margin: 0 0 10px; font-weight: 700; }
+        .hero p { font-size: 16px; color: #64748b; line-height: 1.6; margin: 0; }
+        .details-box { padding: 30px 40px; background-color: #ffffff; }
+        .grid-table { width: 100%; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; }
+        .grid-cell { padding: 20px; width: 50%; vertical-align: top; border-bottom: 1px solid #e2e8f0; }
+        .grid-cell:last-child { border-right: none; }
+        .grid-row:last-child .grid-cell { border-bottom: none; }
+        .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; font-weight: 700; margin-bottom: 5px; display: block; }
+        .value { font-size: 15px; color: #1e293b; font-weight: 600; line-height: 1.4; display: block; }
+        .cta-section { padding: 30px 40px 40px; text-align: center; }
+        .btn { display: inline-block; background-color: #c5a467; color: #ffffff; padding: 14px 32px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-radius: 4px; transition: background 0.3s; }
+        .footer { background-color: #1e293b; padding: 40px; text-align: center; color: #94a3b8; font-size: 13px; line-height: 1.6; }
+        .social-links { margin-bottom: 20px; }
+        .copyright { margin-top: 20px; border-top: 1px solid #334155; padding-top: 20px; font-size: 12px; }
+        .footer-link { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        
+        @media only screen and (max-width: 600px) {
+            .main-table { width: 100% !important; }
+            .hero, .details-box, .cta-section, .footer { padding: 20px !important; }
+            .hero h1 { font-size: 26px !important; }
+            .grid-cell { display: block; width: 100% !important; border-right: none !important; box-sizing: border-box; }
+        }
+    </style>
+</head>
+<body>
+    <center class="wrapper">
+        <table class="main-table">
+            <!-- Header -->
+            <tr>
+                <td class="header">
+                    <a href="#" class="logo-text">Auzzsi Chauffeur</a>
+                </td>
+            </tr>
+
+            <!-- Hero Section -->
+            <tr>
+                <td class="hero">
+                    <h1>Booking Confirmed</h1>
+                    <p>Dear {customer_name},<br>Your luxury chauffeur experience is secured.</p>
+                </td>
+            </tr>
+
+            <!-- Booking Details Grid -->
+            <tr>
+                <td class="details-box">
+                    <table class="grid-table" cellspacing="0" cellpadding="0">
+                        <tr class="grid-row">
+                            <td class="grid-cell" style="border-right: 1px solid #e2e8f0;">
+                                <span class="label">Date & Time</span>
+                                <span class="value">{pickup_date}<br>{pickup_time}</span>
+                            </td>
+                            <td class="grid-cell">
+                                <span class="label">Service Type</span>
+                                <span class="value">{service_type}</span>
+                            </td>
+                        </tr>
+                        <tr class="grid-row">
+                            <td class="grid-cell" style="border-right: 1px solid #e2e8f0;">
+                                <span class="label">Pickup Location</span>
+                                <span class="value">{pickup_location}</span>
+                            </td>
+                            <td class="grid-cell">
+                                <span class="label">Destination</span>
+                                <span class="value">{dropoff_location}</span>
+                            </td>
+                        </tr>
+                        <tr class="grid-row">
+                            <td class="grid-cell" colspan="2">
+                                <span class="label">Vehicle Class</span>
+                                <span class="value">{vehicle_type}</span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- CTA -->
+            <tr>
+                <td class="cta-section">
+                    <p style="margin-bottom: 25px; color: #64748b;">Our professional chauffeur will arrive 15 minutes prior to departure. You can manage your booking or view live status below.</p>
+                    <a href="#" class="btn">Manage My Booking</a>
+                </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+                <td class="footer">
+                    <div style="margin-bottom: 20px;">
+                        <span style="display: block; color: #ffffff; font-weight: bold; margin-bottom: 5px;">Auzzsi Chauffeur</span>
+                        <span>Luxury Travel Redefined</span>
+                    </div>
+                    
+                    <p>
+                        123 Luxury Lane, Sydney NSW 2000<br>
+                        Contact: support@auzzsichauffeur.com.au | +61 400 000 000
+                    </p>
+
+                    <div class="copyright">
+                        &copy; 2026 Auzzsi Chauffeur. All rights reserved.<br>
+                        <a href="#" class="footer-link">Privacy Policy</a> | <a href="#" class="footer-link">Terms of Service</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>`
+                                                });
+                                            }
+                                        }}
+                                        style={{ padding: '0.3rem 0.6rem', border: '1px solid #e5e7eb', borderRadius: '4px', background: '#eff6ff', color: '#1d4ed8', cursor: 'pointer', fontSize: '0.75rem', fontWeight: '500' }}
+                                    >
+                                        Extract Premium Template
+                                    </button>
+                                </div>
                                 <textarea
                                     value={formData.body_html}
                                     onChange={(e) => setFormData({ ...formData, body_html: e.target.value })}

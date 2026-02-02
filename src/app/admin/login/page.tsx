@@ -2,29 +2,48 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Lock, User } from "lucide-react";
+import { Lock, User, Eye, EyeOff } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 
 export default function AdminLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+    const [rememberMe, setRememberMe] = useState(true);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
+        console.log("Attempting login with:", email);
 
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email,
-            password
-        });
+        try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password
+            });
 
-        if (error) {
-            alert("Login Failed: " + error.message);
+            console.log("Supabase response:", { data, error });
+
+            if (error) {
+                console.error("Login Error:", error);
+                alert("Login Failed: " + error.message);
+                setLoading(false);
+            } else if (data?.user) {
+                console.log("Login successful, user:", data.user);
+                // router.push("/admin/dashboard");
+                // Fallback to window.location to force reload if router hangs
+                window.location.href = "/admin/dashboard";
+            } else {
+                console.warn("No user data returned but no error?");
+                alert("Login succeeded but no user session found.");
+                setLoading(false);
+            }
+        } catch (err) {
+            console.error("Unexpected error:", err);
+            alert("An unexpected error occurred.");
             setLoading(false);
-        } else {
-            router.push("/admin/dashboard");
         }
     };
 
@@ -95,13 +114,13 @@ export default function AdminLogin() {
                                 <Lock size={18} />
                             </div>
                             <input
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="••••••••"
                                 style={{
                                     width: "100%",
-                                    padding: "0.75rem 1rem 0.75rem 2.5rem",
+                                    padding: "0.75rem 2.5rem 0.75rem 2.5rem", // Extra padding right for eye icon
                                     border: "1px solid #d1d5db",
                                     borderRadius: "6px",
                                     outline: "none",
@@ -109,7 +128,38 @@ export default function AdminLogin() {
                                 }}
                                 required
                             />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                style={{
+                                    position: "absolute",
+                                    right: "12px",
+                                    top: "50%",
+                                    transform: "translateY(-50%)",
+                                    background: "none",
+                                    border: "none",
+                                    color: "#9ca3af",
+                                    cursor: "pointer",
+                                    display: "flex",
+                                    alignItems: "center"
+                                }}
+                            >
+                                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                            </button>
                         </div>
+                    </div>
+
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "0.875rem" }}>
+                        <label style={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer", color: "#374151" }}>
+                            <input
+                                type="checkbox"
+                                checked={rememberMe}
+                                onChange={(e) => setRememberMe(e.target.checked)}
+                                style={{ accentColor: "#1e3a8a", cursor: "pointer" }}
+                            />
+                            Remember me
+                        </label>
+                        <a href="#" style={{ color: "#1e3a8a", fontWeight: "600", textDecoration: "none" }}>Forgot Password?</a>
                     </div>
 
                     <button

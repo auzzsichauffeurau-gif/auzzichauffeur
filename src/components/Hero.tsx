@@ -44,20 +44,20 @@ export default function Hero({
             {/* Stats Section */}
             <div className={styles.stats}>
               <div className={styles.statItem}>
-                <span className={styles.statValue}>2.95m</span>
-                <span className={styles.statLabel}>Passengers moved last 12 months</span>
+                <span className={styles.statValue}>Thousands</span>
+                <span className={styles.statLabel}>Of Detailed Trips</span>
               </div>
               <div className={styles.statItem}>
-                <span className={styles.statValue}>12,000+</span>
-                <span className={styles.statLabel}>5 Star Google Reviews</span>
+                <span className={styles.statValue}>5-Star</span>
+                <span className={styles.statLabel}>Service Rating</span>
               </div>
               <div className={styles.statItem}>
-                <span className={styles.statValue}>11</span>
-                <span className={styles.statLabel}>Offices across Australia</span>
+                <span className={styles.statValue}>7</span>
+                <span className={styles.statLabel}>Major Cities Served</span>
               </div>
               <div className={styles.statItem}>
-                <span className={styles.statValue}>1,235</span>
-                <span className={styles.statLabel}>Size of fleet</span>
+                <span className={styles.statValue}>Premium</span>
+                <span className={styles.statLabel}>Luxury Fleet</span>
               </div>
             </div>
 

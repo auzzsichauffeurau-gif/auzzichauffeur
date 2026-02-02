@@ -68,8 +68,7 @@ export default function CityGuidesPage() {
                                 <a href="#" className={styles.downloadBtn}>Download PDF</a>
                             </div>
 
-                            {/* Perth Area - Just a dot for now as buttons in image were on East Coast mostly or illustrative */}
-                            <div className={styles.mapDot} style={{ top: '50%', left: '20%' }}></div>
+
                             <div className={styles.mapDot} style={{ top: '60%', left: '60%' }}></div> {/* Adelaideish */}
                         </div>
                     </div>

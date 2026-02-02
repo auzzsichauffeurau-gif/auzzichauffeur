@@ -20,16 +20,16 @@ export default function Footer() {
     ];
 
     const services = [
-        { name: "Airport Transfer Sydney", href: "/locations" },
-        { name: "Sydney Chauffeur", href: "/locations" },
-        { name: "Airport Transfer Melbourne", href: "/locations" },
-        { name: "Melbourne Chauffeur", href: "/locations" },
-        { name: "Airport Transfer Brisbane", href: "/locations" },
-        { name: "Brisbane Chauffeur", href: "/locations" },
-        { name: "Airport Transfer Perth", href: "/locations" },
-        { name: "Perth Chauffeur", href: "/locations" },
-        { name: "Airport Transfer Adelaide", href: "/locations" },
-        { name: "Adelaide Chauffeur", href: "/locations" }
+        { name: "Airport Transfer Sydney", href: "/locations/sydney/airport-transfers" },
+        { name: "Sydney Chauffeur", href: "/locations/sydney" },
+        { name: "Airport Transfer Melbourne", href: "/locations/melbourne/airport-transfers" },
+        { name: "Melbourne Chauffeur", href: "/locations/melbourne" },
+        { name: "Airport Transfer Brisbane", href: "/locations/brisbane/airport-transfers" },
+        { name: "Brisbane Chauffeur", href: "/locations/brisbane" },
+        { name: "Airport Transfer Adelaide", href: "/locations/adelaide/airport-transfers" },
+        { name: "Adelaide Chauffeur", href: "/locations/adelaide" },
+        { name: "Airport Transfer Gold Coast", href: "/locations/gold-coast/airport-transfers" },
+        { name: "Gold Coast Chauffeur", href: "/locations/gold-coast" }
     ];
 
     return (
@@ -47,7 +47,7 @@ export default function Footer() {
                         </div>
 
                         <p className={styles.description}>
-                            Auzzsi is Australia&apos;s only fully national chauffeur service, providing premium airport transfers, private drivers, and chauffeurs in major cities, including Sydney, Melbourne, Brisbane, Perth, Adelaide, and more. With a network of first-class drivers, Auzzsi ensures unparalleled service nationwide.
+                            Auzzsi is Australia&apos;s only fully national chauffeur service, providing premium airport transfers, private drivers, and chauffeurs in major cities, including Sydney, Melbourne, Brisbane, Adelaide, Gold Coast, and more. With a network of first-class drivers, Auzzsi ensures unparalleled service nationwide.
                         </p>
 
                         <div className={styles.downloadTitle}>DOWNLOAD THE AUZZSI APP</div>
