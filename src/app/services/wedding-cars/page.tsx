@@ -17,7 +17,7 @@ export default function WeddingServicesPage() {
     const faqs = [
         {
             question: "Which Cities Do You Service?",
-            answer: "We offer wedding car hire in all major Australian cities including Sydney, Melbourne, Brisbane, Perth, Adelaide, Canberra, Hobart, Darwin, Gold Coast, Sunshine Coast, Newcastle, and Byron Bay."
+            answer: "We offer wedding car hire in all major Australian cities including Sydney, Melbourne, Brisbane, Adelaide, Hobart, Gold Coast, and Cairns."
         },
         {
             question: "How Far In Advance Should I Book?",

@@ -10,7 +10,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: "Airport Transfers Australia | Luxury Chauffeur Drivers",
-    description: "Premium airport transfers to all major Australian airports (SYD, MEL, BNE, PER, ADL). Flight tracking, meet & greet, and fixed price transfers.",
+    description: "Premium airport transfers to all major Australian airports (SYD, MEL, BNE, ADL, OOL, CNS, HBA). Flight tracking, meet & greet, and fixed price transfers.",
 };
 
 export default function AirportServicesPage() {
@@ -80,7 +80,7 @@ export default function AirportServicesPage() {
                 <div className={styles.textBlock}>
                     <p>
                         Navigating busy airports can be stressful. Auzzsi Chauffeur removes the hassle with our premium meet-and-greet service.
-                        We cover all major international and domestic terminals including Sydney (SYD), Melbourne (MEL), Brisbane (BNE), Perth (PER), and Adelaide (ADL).
+                        We cover all major international and domestic terminals including Sydney (SYD), Melbourne (MEL), Brisbane (BNE), Adelaide (ADL), Gold Coast (OOL), Cairns (CNS), and Hobart (HBA).
                         <br /><br />
                         Relax knowing that we are tracking your flight and that a professional driver will be waiting for you at the gate, ready to assist with your luggage.
                     </p>

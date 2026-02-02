@@ -41,10 +41,9 @@ export default function ServiceFeatures() {
             <h2 className={styles.title}>Chauffeurs At Your Service</h2>
 
             <p className={styles.description}>
-                When you choose Auzzsi, you're choosing luxury, style, comfort and, most importantly, experience.
-                We've been moving Australia for almost 120 years, and in that time, we've learnt how to make it memorable.
-                From your friendly driver to your well-appointed vehicle and small touches like umbrellas, coffees and local knowledge,
-                you'll know you're in good hands with Auzzsi.
+                Experience the pinnacle of luxury with Auzzsi Chauffeur Service. We provide professional chauffeur-driven cars for airport transfers, corporate travel, and special events across Australia.
+                Whether you need a private driver in <strong>Melbourne</strong>, <strong>Sydney</strong>, <strong>Brisbane</strong>, <strong>Gold Coast</strong>, <strong>Adelaide</strong>, <strong>Cairns</strong>, or <strong>Hobart</strong>, our fleet of premium European vehicles ensures you arrive in style and comfort.
+                Book your reliable ground transport today with Australia's trusted chauffeur team.
             </p>
 
             <div className={styles.grid}>

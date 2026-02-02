@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Outfit, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import SchemaMarkup from "@/components/SchemaMarkup";
+import { Toaster } from 'sonner';
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -16,12 +17,12 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.auzzsi.com.au'),
+  metadataBase: new URL('https://www.auzziechauffeur.com.au'),
   title: {
     default: "Auzzsi Chauffeur Service | Premium Airport Transfers Australia",
     template: "%s | Auzzsi Chauffeur Service"
   },
-  description: "Australia's leading national chauffeur service. Premium airport transfers, corporate travel, and private drivers in Sydney, Melbourne, Brisbane, Perth, and Adelaide. Book your luxury ride today.",
+  description: "Australia's leading national chauffeur service. Premium airport transfers, corporate travel, and private drivers in Sydney, Melbourne, Brisbane, Adelaide, Gold Coast, and Hobart. Book your luxury ride today.",
   keywords: ["Chauffeur Service Australia", "Airport Transfers Sydney", "Corporate Transfers", "Private Driver Melbourne", "Luxury Car Hire Australia", "Auzzsi Chauffeur"],
   authors: [{ name: "Auzzsi Chauffeur Service" }],
   creator: "Auzzsi Chauffeur Service",
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_AU",
-    url: "https://www.auzzsi.com.au",
+    url: "https://www.auzziechauffeur.com.au",
     title: "Auzzsi Chauffeur Service | Premium Airport Transfers Australia",
     description: "Experience premium chauffeur services across Australia. Reliable airport transfers, corporate travel, and luxury private tours.",
     siteName: "Auzzsi Chauffeur Service",
@@ -82,6 +83,7 @@ export default function RootLayout({
       <body className={`${outfit.variable} ${playfair.variable}`}>
         <SchemaMarkup />
         {children}
+        <Toaster richColors position="top-center" />
       </body>
     </html>
   );
