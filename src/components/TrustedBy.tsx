@@ -26,44 +26,7 @@ export default function TrustedBy() {
                     </span>
                 </div>
 
-                <h2 className={styles.title}>
-                    Travel In Style With The Auzzsi Chauffeur Service Trusted By Top Brands
-                </h2>
-
-                <div className={styles.logosGrid}>
-                    {/* Placeholder Brand Logos (Text styled as logos for now) */}
-                    <div className={styles.brandLogo} style={{ fontFamily: 'serif', fontWeight: 'bold' }}>QANTAS</div>
-                    <div className={styles.brandLogo} style={{ fontFamily: 'sans-serif', fontWeight: '900', letterSpacing: '-1px' }}>ANZ</div>
-                    <div className={styles.brandLogo} style={{ fontFamily: 'monospace', fontWeight: 'bold' }}>COMMONWEALTH</div>
-                    <div className={styles.brandLogo} style={{ fontFamily: 'sans-serif', fontWeight: 'bold', fontStyle: 'italic' }}>VIRGIN</div>
-                    <div className={styles.brandLogo} style={{ fontFamily: 'serif', textTransform: 'uppercase' }}>Marriott</div>
-                    <div className={styles.brandLogo} style={{ fontFamily: 'sans-serif', fontWeight: '300' }}>Hilton</div>
-                </div>
             </div>
-
-            <style jsx>{`
-                .logosGrid {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 3rem;
-                    flex-wrap: wrap;
-                    margin-top: 3rem;
-                    opacity: 0.6;
-                }
-                .brandLogo {
-                    font-size: 1.5rem;
-                    color: #fff;
-                }
-                @media (max-width: 768px) {
-                    .logosGrid {
-                        gap: 1.5rem;
-                    }
-                    .brandLogo {
-                        font-size: 1.2rem;
-                    }
-                }
-            `}</style>
         </section>
     );
 }

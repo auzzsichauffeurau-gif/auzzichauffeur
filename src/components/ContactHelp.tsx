@@ -22,56 +22,17 @@ export default function ContactHelp() {
 
                 <p className={styles.description}>
                     Our friendly Customer Service Team is on hand 24/7 to answer enquiries and keep you moving.
-                    You can contact us directly on 1300 615 165, at <a href="mailto:res@auzzsi.com.au" className={styles.link}>res@auzzsi.com.au</a> or leave your details below, and we&apos;ll be in touch.
+                    You can contact us at <a href="mailto:booking@auzziechauffeur.com.au" className={styles.link}>booking@auzziechauffeur.com.au</a> or leave your details below, and we&apos;ll be in touch.
                 </p>
 
-                <div className={styles.contactRow}>
-                    <div className={styles.contactItem}>
-                        <Mail size={24} className={styles.icon} />
-                        <div>
-                            <span className={styles.itemLabel}>For email enquiries</span>
-                            <a href="mailto:res@auzzsi.com.au" className={styles.contactLink}>res@auzzsi.com.au</a>
-                        </div>
-                    </div>
-
-                    <div className={styles.contactItem}>
-                        <img src="/au-map.png" alt="Aus" style={{ width: 24, height: 24, opacity: 0.5 }} /> {/* Reusing the map image purely as a placeholder for the Aus icon if needed, or stick to Lucide */}
-                        {/* Actually, let's just use a MapPin or generic icon if we don't have a specific Aus icon, but the text says '1300'. Let's use Phone. */}
-                        <div style={{ display: 'flex', gap: '1rem' }}>
-                            {/* Fixed visual bug in logic above, simplified below */}
-                        </div>
-                    </div>
-                    {/* Re-doing the layout to match the screenshot better visually without hacks */}
-                </div>
-
-                {/* Let's try a cleaner approach for the contact row */}
-                <div className={styles.contactRow}>
-                    <div className={styles.contactItem}>
-                        <Mail size={28} className={styles.icon} strokeWidth={1.5} />
-                        <div>
-                            <span className={styles.itemLabel}>For email enquiries</span>
-                            <a href="mailto:res@auzzsi.com.au" className={styles.contactLink}>res@auzzsi.com.au</a>
-                        </div>
-                    </div>
-
-                    <div className={styles.contactItem}>
-                        {/* SVG for Australia map roughly */}
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={styles.icon}>
-                            <path d="M12 22C12 22 20 18 20 12C20 6.47715 15.5228 2 10 2C4.47715 2 0 6.47715 0 12C0 18 8 22 8 22" stroke="none" />
-                            {/* Placeholder Circle for icon consistency */}
-                            <circle cx="12" cy="12" r="10" />
-                        </svg>
-                        <div>
-                            <span className={styles.itemLabel}>For enquiries within Australia</span>
-                            <span className={styles.itemValue}>1300 615 165</span>
-                        </div>
-                    </div>
-
-                    <div className={styles.contactItem}>
-                        <Globe size={28} className={styles.icon} strokeWidth={1.5} />
-                        <div>
-                            <span className={styles.itemLabel}>For global enquiries</span>
-                            <span className={styles.itemValue}>+61 2 9317 9000</span>
+                <div className={styles.contactRow} style={{ justifyContent: 'center' }}>
+                    <div className={styles.contactItem} style={{ alignItems: 'flex-start' }}>
+                        <Mail size={28} className={styles.icon} strokeWidth={1.5} style={{ marginTop: '4px' }} />
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <span className={styles.itemLabel}>For bookings</span>
+                            <a href="mailto:booking@auzziechauffeur.com.au" className={styles.contactLink} style={{ marginBottom: '0.2rem' }}>booking@auzziechauffeur.com.au</a>
+                            <span className={styles.itemLabel} style={{ marginTop: '0.5rem' }}>For enquiries</span>
+                            <a href="mailto:info@auzziechauffeur.com.au" className={styles.contactLink}>info@auzziechauffeur.com.au</a>
                         </div>
                     </div>
                 </div>

@@ -5,15 +5,20 @@ interface HeroProps {
   title?: string;
   subtitle?: string;
   showStats?: boolean;
+  bgImage?: string;
 }
 
 export default function Hero({
   title = "Auzzsi Chauffeur Service",
   subtitle = "Experience the Auzzsi difference with premium transfers, tours and event transport.",
-  showStats = true
+  showStats = true,
+  bgImage
 }: HeroProps) {
   return (
-    <section className={styles.hero}>
+    <section
+      className={styles.hero}
+      style={bgImage ? { backgroundImage: `url('${bgImage}')` } : undefined}
+    >
       <div className={styles.overlay}></div>
 
       <div className={styles.content}>
@@ -27,9 +32,7 @@ export default function Hero({
 
 
 
-          <div className={styles.ctaButtons}>
-            <button className={`${styles.btn} ${styles.btnPrimary}`}>Get a Quote</button>
-          </div>
+
 
         </div>
 
@@ -61,18 +64,7 @@ export default function Hero({
               </div>
             </div>
 
-            {/* App Badges */}
-            <div className={styles.appButtons}>
-              <a href="#" className={styles.appBtn}>
-                <img src="/google-play-badge.png" alt="Get it on Google Play" style={{ height: '35px' }} />
-                {/* Fallback text if needed, but image is best for badges */}
-                <span style={{ display: 'none' }}>Get it on Google Play</span>
-              </a>
-              <a href="#" className={styles.appBtn}>
-                <img src="/app-store-badge.png" alt="Download on the App Store" style={{ height: '35px' }} />
-                <span style={{ display: 'none' }}>Download on the App Store</span>
-              </a>
-            </div>
+
           </div>
         )}
       </div>

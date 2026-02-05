@@ -20,16 +20,16 @@ export default function Footer() {
     ];
 
     const services = [
-        { name: "Airport Transfer Sydney", href: "/locations/sydney/airport-transfers" },
-        { name: "Sydney Chauffeur", href: "/locations/sydney" },
-        { name: "Airport Transfer Melbourne", href: "/locations/melbourne/airport-transfers" },
-        { name: "Melbourne Chauffeur", href: "/locations/melbourne" },
-        { name: "Airport Transfer Brisbane", href: "/locations/brisbane/airport-transfers" },
-        { name: "Brisbane Chauffeur", href: "/locations/brisbane" },
-        { name: "Airport Transfer Adelaide", href: "/locations/adelaide/airport-transfers" },
-        { name: "Adelaide Chauffeur", href: "/locations/adelaide" },
-        { name: "Airport Transfer Gold Coast", href: "/locations/gold-coast/airport-transfers" },
-        { name: "Gold Coast Chauffeur", href: "/locations/gold-coast" }
+        { name: "Airport Transfer Sydney", href: "/sydney/airport-transfers" },
+        { name: "Sydney Chauffeur", href: "/sydney" },
+        { name: "Airport Transfer Melbourne", href: "/melbourne/airport-transfers" },
+        { name: "Melbourne Chauffeur", href: "/melbourne" },
+        { name: "Airport Transfer Brisbane", href: "/brisbane/airport-transfers" },
+        { name: "Brisbane Chauffeur", href: "/brisbane" },
+        { name: "Airport Transfer Adelaide", href: "/adelaide/airport-transfers" },
+        { name: "Adelaide Chauffeur", href: "/adelaide" },
+        { name: "Airport Transfer Gold Coast", href: "/gold-coast/airport-transfers" },
+        { name: "Gold Coast Chauffeur", href: "/gold-coast" }
     ];
 
     return (
@@ -50,23 +50,7 @@ export default function Footer() {
                             Auzzsi is Australia&apos;s only fully national chauffeur service, providing premium airport transfers, private drivers, and chauffeurs in major cities, including Sydney, Melbourne, Brisbane, Adelaide, Gold Coast, and more. With a network of first-class drivers, Auzzsi ensures unparalleled service nationwide.
                         </p>
 
-                        <div className={styles.downloadTitle}>DOWNLOAD THE AUZZSI APP</div>
-                        <div className={styles.storeButtons}>
-                            <a href="#" className={styles.storeBtn}>
-                                <Play size={18} fill="black" strokeWidth={0} />
-                                <div className={styles.btnText}>
-                                    <span className={styles.btnSmall}>GET IT ON</span>
-                                    <span className={styles.btnLarge}>Google Play</span>
-                                </div>
-                            </a>
-                            <a href="#" className={styles.storeBtn}>
-                                <Apple size={22} fill="black" style={{ marginBottom: 2 }} />
-                                <div className={styles.btnText}>
-                                    <span className={styles.btnSmall}>Download on the</span>
-                                    <span className={styles.btnLarge}>App Store</span>
-                                </div>
-                            </a>
-                        </div>
+
                     </div>
 
                     {/* Column 2: Quick Links */}
@@ -96,22 +80,10 @@ export default function Footer() {
                     {/* Column 4: Awards & Socials */}
                     <div className={styles.column}>
                         <div className={styles.awardsGrid}>
-                            <div className={styles.awardBox}>
-                                <CheckCircle size={20} className={styles.awardIconGreen} />
-                                <span className={styles.awardText}>Quality Tourism Accredited</span>
-                            </div>
-                            <div className={styles.awardBox}>
-                                <Leaf size={20} className={styles.awardIconGreen} />
-                                <span className={styles.awardText}>Sustainable Tourism</span>
-                            </div>
-                            <div className={styles.awardBox}>
-                                <Award size={20} className={styles.awardIconOrange} />
-                                <span className={styles.awardText}>NSW Tourism Awards</span>
-                            </div>
-                            <div className={styles.awardBox}>
-                                <Anchor size={20} className={styles.awardIconBlue} />
-                                <span className={styles.awardText}>Aust. Cruise Association</span>
-                            </div>
+                            <img src="/logo-accreditation-classic.png" alt="Accredited Chauffeur" className={styles.awardImage} />
+                            <img src="/logo-accreditation-black-gold.png" alt="5 Star Service" className={styles.awardImage} />
+                            <img src="/logo-accreditation-clean.png" alt="Verified Partner" className={styles.awardImage} />
+                            <img src="/logo-accreditation-modern.png" alt="Accredited" className={styles.awardImage} />
                         </div>
 
                         <h4 className={styles.columnTitle} style={{ marginTop: '1rem' }}>SECURE PAYMENTS</h4>
@@ -142,10 +114,7 @@ export default function Footer() {
             </footer>
 
             {/* Floating Widgets */}
-            <div className={styles.consentTab}>My Consent Preferences</div>
-            <div className={styles.chatWidget}>
-                <MessageSquare size={24} color="white" />
-            </div>
+
         </>
     );
 }

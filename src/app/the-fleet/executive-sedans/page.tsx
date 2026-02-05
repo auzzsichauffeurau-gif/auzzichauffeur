@@ -59,10 +59,10 @@ export default function ExecutiveSedansPage() {
                 <h2 className={styles.rangeTitle}>Our Range Of Vehicles</h2>
                 <div className={styles.rangeText}>
                     <p>
-                        Whether you are looking for a luxury limousine or a spacious people mover. Hughes has a vehicle to suit you. With vehicle types available for any occasion, all driven by professional, experienced chauffeurs.
+                        Whether you are looking for a luxury limousine or a spacious people mover. Auzzsi has a vehicle to suit you. With vehicle types available for any occasion, all driven by professional, experienced chauffeurs.
                     </p>
                     <p style={{ marginTop: '1rem', fontStyle: 'italic' }}>
-                        Not sure what vehicle suits your needs? Contact our friendly team on 1300 615 165 or <a href="mailto:res@auzzsi.com.au" style={{ color: '#1a2b4b' }}>res@auzzsi.com.au</a>.
+                        Not sure what vehicle suits your needs? Contact our friendly team via email at <a href="mailto:info@auzziechauffeur.com.au" style={{ color: '#1a2b4b' }}>info@auzziechauffeur.com.au</a>.
                     </p>
                 </div>
                 <Link href="/book" className={styles.btnBlue}>Book Now</Link>

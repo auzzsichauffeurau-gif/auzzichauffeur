@@ -7,7 +7,6 @@ import ImageTiles from "@/components/ImageTiles";
 import TrustedBy from "@/components/TrustedBy";
 import BookingCTA from "@/components/BookingCTA";
 import Testimonials from "@/components/Testimonials";
-import AppDownload from "@/components/AppDownload";
 import FAQ from "@/components/FAQ";
 import ContactHelp from "@/components/ContactHelp";
 import Footer from "@/components/Footer";
@@ -18,7 +17,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero
-        title="Australia's Chauffeur Service"
+        title="Auzzsi Chauffeur Service"
         subtitle="Moving you in comfort and style wherever you need to go."
       />
       <ServiceFeatures />
@@ -28,7 +27,6 @@ export default function Home() {
       <TrustedBy />
       <Testimonials />
       <BookingCTA />
-      <AppDownload />
       <FAQ />
       <ContactHelp />
       <Footer />

@@ -40,13 +40,36 @@ export default function ContactUsContent() {
             status: 'New'
         });
 
-        setIsSubmitting(false);
-
         if (error) {
-            alert("Error submitting form: " + error.message);
-        } else {
-            setIsSubmitted(true);
+            alert("Error saving message: " + error.message);
+            setIsSubmitting(false);
+            return;
         }
+
+        // Send Email Notification
+        try {
+            await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    to: 'info@auzziechauffeur.com.au', // Send to business
+                    subject: `New Contact Enquiry: ${formData.subject}`,
+                    html: `
+                        <h3>New Contact Enquiry</h3>
+                        <p><strong>Name:</strong> ${formData.firstName} ${formData.lastName}</p>
+                        <p><strong>Email:</strong> ${formData.email}</p>
+                        <p><strong>Phone:</strong> ${formData.phone}</p>
+                        <p><strong>Subject:</strong> ${formData.subject}</p>
+                        <p><strong>Message:</strong><br/>${formData.message}</p>
+                    `
+                })
+            });
+        } catch (emailError) {
+            console.error("Failed to send email notification", emailError);
+        }
+
+        setIsSubmitting(false);
+        setIsSubmitted(true);
     };
 
     return (
@@ -75,39 +98,25 @@ export default function ContactUsContent() {
             <section className={`${styles.section} ${styles.contactInfoSection}`}>
                 <div className={styles.sectionContent}>
                     <h2 className={styles.sectionTitle}>Contact Auzzsi</h2>
-                    <div className={styles.sectionBody}>
+                    <div className={styles.sectionBody} style={{ justifyContent: 'center' }}>
                         <div className={styles.infoItem}>
                             <div className={styles.iconWrapper}>
                                 <Mail size={24} />
                             </div>
-                            <p className={styles.infoText}>
-                                Please email us, or fill out the enquiry form below and a member
-                                of our team will get back to you shortly.
-                                <br />
-                                <a href="mailto:res@auzzsi.com.au" className={styles.link}>
-                                    res@auzzsi.com.au
-                                </a>
-                            </p>
-                        </div>
-
-                        <div className={styles.infoItem}>
-                            <div className={styles.iconWrapper}>
-                                <Phone size={24} />
+                            <div className={styles.infoText}>
+                                <div style={{ marginBottom: '1rem' }}>
+                                    <strong>For Bookings:</strong><br />
+                                    <a href="mailto:booking@auzziechauffeur.com.au" className={styles.link}>
+                                        booking@auzziechauffeur.com.au
+                                    </a>
+                                </div>
+                                <div>
+                                    <strong>For Enquiries:</strong><br />
+                                    <a href="mailto:info@auzziechauffeur.com.au" className={styles.link}>
+                                        info@auzziechauffeur.com.au
+                                    </a>
+                                </div>
                             </div>
-                            <p className={styles.infoText}>
-                                For enquiries within Australia, please call us on{" "}
-                                <span className={styles.phone}>1300 615 165</span>
-                            </p>
-                        </div>
-
-                        <div className={styles.infoItem}>
-                            <div className={styles.iconWrapper}>
-                                <Globe size={24} />
-                            </div>
-                            <p className={styles.infoText}>
-                                For global enquiries, please call us on{" "}
-                                <span className={styles.phone}>+61 2 9317 9000</span>
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -136,7 +145,7 @@ export default function ContactUsContent() {
                                 <br />
                                 <br />
                                 <a href="/contact-us" className={styles.link}>
-                                    auzzsi.com.au/feedback
+                                    auzziechauffeur.com.au/feedback
                                 </a>
                             </p>
                         </div>
@@ -159,8 +168,8 @@ export default function ContactUsContent() {
                             </div>
                             <p className={styles.infoText}>
                                 For all accounting & billing enquiries, please email us at{" "}
-                                <a href="mailto:accounts@auzzsi.com.au" className={styles.link}>
-                                    accounts@auzzsi.com.au
+                                <a href="mailto:accounts@auzziechauffeur.com.au" className={styles.link}>
+                                    accounts@auzziechauffeur.com.au
                                 </a>
                             </p>
                         </div>

@@ -17,21 +17,21 @@ export default function NationalCoverage() {
 
     const coverageData: CoverageData = {
         'New South Wales': [
-            { name: 'Sydney', link: '/locations/sydney/airport-transfers' },
+            { name: 'Sydney', link: '/sydney/airport-transfers' },
         ],
         'Victoria': [
-            { name: 'Melbourne', link: '/locations/melbourne/airport-transfers' },
+            { name: 'Melbourne', link: '/melbourne/airport-transfers' },
         ],
         'Queensland': [
-            { name: 'Brisbane', link: '/locations/brisbane/airport-transfers' },
-            { name: 'Cairns', link: '/locations/cairns-port-douglas/cairns-port-douglas-airport-transfers' },
-            { name: 'Gold Coast', link: '/locations/gold-coast/airport-transfers' },
+            { name: 'Brisbane', link: '/brisbane/airport-transfers' },
+            { name: 'Cairns', link: '/cairns-port-douglas/airport-transfers' },
+            { name: 'Gold Coast', link: '/gold-coast/airport-transfers' },
         ],
         'South Australia': [
-            { name: 'Adelaide', link: '/locations/adelaide/airport-transfers' },
+            { name: 'Adelaide', link: '/adelaide/airport-transfers' },
         ],
         'Tasmania': [
-            { name: 'Hobart', link: '/locations/hobart/hobart-airport-transfers' },
+            { name: 'Hobart', link: '/hobart/airport-transfers' },
         ]
     };
 

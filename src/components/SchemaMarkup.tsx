@@ -5,8 +5,8 @@ export default function SchemaMarkup() {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Auzzsi Chauffeur Service",
-        "url": "https://www.auzzsi.com.au",
-        "logo": "https://www.auzzsi.com.au/logo.png",
+        "url": "https://www.auzziechauffeur.com.au",
+        "logo": "https://www.auzziechauffeur.com.au/logo.png",
         "description": "Australia's leading national chauffeur service providing premium airport transfers and corporate travel options.",
         "address": {
             "@type": "PostalAddress",
@@ -16,22 +16,6 @@ export default function SchemaMarkup() {
             "postalCode": "3065",
             "addressCountry": "AU"
         },
-        "contactPoint": [
-            {
-                "@type": "ContactPoint",
-                "telephone": "1300 615 165",
-                "contactType": "customer service",
-                "areaServed": "AU",
-                "availableLanguage": "English"
-            },
-            {
-                "@type": "ContactPoint",
-                "telephone": "+61 2 9317 9000",
-                "contactType": "customer service",
-                "areaServed": "World",
-                "availableLanguage": "English"
-            }
-        ],
         "sameAs": [
             "https://www.facebook.com/auzzsichauffeur",
             "https://www.instagram.com/auzzsichauffeur",
@@ -43,8 +27,7 @@ export default function SchemaMarkup() {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Auzzsi Chauffeur Service",
-        "image": "https://www.auzzsi.com.au/tile-driver.png",
-        "telephone": "1300 615 165",
+        "image": "https://www.auzziechauffeur.com.au/tile-driver.png",
         "priceRange": "$$",
         "address": {
             "@type": "PostalAddress",

@@ -49,13 +49,52 @@ export default function BookingPageContent() {
             amount: 'TBD'
         });
 
-        setIsSubmitting(false);
-
         if (error) {
             alert("Error submitting booking: " + error.message);
-        } else {
-            setIsSubmitted(true);
+            setIsSubmitting(false);
+            return;
         }
+
+        // Send Email Notification
+        try {
+            await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    to: 'booking@auzziechauffeur.com.au',
+                    subject: `New Booking Request: ${formData.name}`,
+                    html: `
+                        <h3>New Booking Request</h3>
+                        <p><strong>Name:</strong> ${formData.name}</p>
+                        <p><strong>Email:</strong> ${formData.email}</p>
+                        <p><strong>Phone:</strong> ${formData.phone}</p>
+                        <hr/>
+                        <p><strong>Pick Up:</strong> ${formData.pickup}</p>
+                        <p><strong>Drop Off:</strong> ${formData.dropoff}</p>
+                        <p><strong>Date:</strong> ${formData.date}</p>
+                        <p><strong>Time:</strong> ${formData.time}</p>
+                        <p><strong>Vehicle:</strong> ${formData.vehicle}</p>
+                    `
+                })
+            });
+            // Optional: Confirmation to user
+            /*
+            await fetch('/api/send-email', {
+               method: 'POST',
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify({
+                   to: formData.email,
+                   subject: `Booking Request Received - Auzzsi Chauffeur`,
+                   html: `<p>Dear ${formData.name},</p><p>We have received your booking request...</p>`
+               })
+           });
+           */
+        } catch (emailError) {
+            console.error("Failed to send email notification", emailError);
+        }
+
+        setIsSubmitting(false);
+        setIsSubmitted(true);
     };
 
     return (

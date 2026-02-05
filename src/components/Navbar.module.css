@@ -286,7 +286,7 @@
     font-size: 1.1rem;
     color: #1f2937;
     margin-bottom: 0.8rem;
-    font-family: serif;
+    font-family: var(--font-serif);
     /* Match brand font optionally */
 }
 

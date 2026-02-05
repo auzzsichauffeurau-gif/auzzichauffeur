@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import styles from "@/app/locations/shared-airport.module.css";
+import styles from "@/app/(locations)/shared-airport.module.css";
 import { Briefcase, Laptop, ShieldCheck, Clock, FileText, Globe } from "lucide-react";
 import VehicleTabs from "@/components/ServicePage/VehicleTabs";
 import FaqAccordion from "@/components/ServicePage/FaqAccordion";
@@ -17,7 +17,7 @@ export default function CorporateServicesPage() {
     const faqs = [
         {
             question: "How Do I Open A Corporate Account?",
-            answer: "Opening a corporate account is simple. Contact our team via the form below or call 1300 615 165. We offer streamlined billing, priority booking, and dedicated account management."
+            answer: "Opening a corporate account is simple. Contact our team via the form below or call info@auzziechauffeur.com.au. We offer streamlined billing, priority booking, and dedicated account management."
         },
         {
             question: "Do You Service All Major Airports?",

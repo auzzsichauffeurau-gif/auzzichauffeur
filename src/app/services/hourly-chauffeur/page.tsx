@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import styles from "@/app/locations/shared-airport.module.css";
+import styles from "@/app/(locations)/shared-airport.module.css";
 import { Clock, MapPin, ShoppingBag, Utensils, Award, ShieldCheck, Navigation, PauseCircle } from "lucide-react";
 import VehicleTabs from "@/components/ServicePage/VehicleTabs";
 import FaqAccordion from "@/components/ServicePage/FaqAccordion";

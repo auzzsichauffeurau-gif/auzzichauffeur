@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/app/locations/shared-airport.module.css";
+import styles from "@/app/(locations)/shared-airport.module.css";
 
 interface ServiceContactFormProps {
     title?: string;
@@ -47,7 +47,7 @@ export default function ServiceContactForm({
                 </div>
                 <div className={styles.inputGroup}>
                     <label className={styles.inputLabel}>{emailLabel}</label>
-                    <input type="email" className={styles.textInput} placeholder="name@email.com" />
+                    <input type="email" className={styles.textInput} placeholder="info@auzziechauffeur.com.au" />
                 </div>
 
                 {showDestination && (

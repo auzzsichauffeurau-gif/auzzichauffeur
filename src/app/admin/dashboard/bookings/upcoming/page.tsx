@@ -68,7 +68,7 @@ export default function UpcomingBookingsPage() {
             // Join with drivers table to get driver name if assigned
             const { data, error } = await supabase
                 .from('bookings')
-                .select('*, drivers:driver_id(name)')
+                .select('*, drivers(name)')
                 .in('status', ['Confirmed', 'In Progress'])
                 .gte('pickup_date', today)
                 .order('pickup_date', { ascending: true });

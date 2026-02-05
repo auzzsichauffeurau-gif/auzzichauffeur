@@ -37,7 +37,7 @@ export default function OurPoliciesPage() {
 
                     {/* Left Column */}
                     <div className={styles.leftColumn}>
-                        <h2 className={styles.pageTitle}>Hughes Company<br />Policies</h2>
+                        <h2 className={styles.pageTitle}>Auzzsi Company<br />Policies</h2>
                     </div>
 
                     {/* Right Column */}

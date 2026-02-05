@@ -1,20 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import { Toaster } from 'sonner';
-
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.auzziechauffeur.com.au'),
@@ -80,7 +67,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.variable} ${playfair.variable}`}>
+      <body>
+        {/* Layout Wrapper */}
         <SchemaMarkup />
         {children}
         <Toaster richColors position="top-center" />

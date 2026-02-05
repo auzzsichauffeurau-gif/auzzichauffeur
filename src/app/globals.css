@@ -1,8 +1,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-main: var(--font-outfit), sans-serif;
-  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-main: "UberMoveText", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "UberMove", "UberMoveText", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --gold-primary: #c5a467;
   /* Updated to match Hughes Gold */
   --gold-hover: #b09156;
@@ -25,6 +25,9 @@ body {
   font-family: var(--font-main);
   background-color: var(--background);
   color: var(--foreground);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
   -webkit-text-size-adjust: 100%;
   /* Prevent font scaling in landscape on iOS */
 }
@@ -56,6 +59,12 @@ h6 {
   font-family: var(--font-serif);
   overflow-wrap: break-word;
   word-wrap: break-word;
+}
+
+h1 {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 64px;
 }
 
 a {

@@ -5,9 +5,9 @@ import Link from "next/link";
 
 export default function CityGuidesPage() {
     const guides = [
-        { id: 'melbourne', title: "Hughes Melbourne City Guide", pdfLink: "#" },
-        { id: 'gold-coast', title: "Hughes Gold Coast City Guide", pdfLink: "#" },
-        { id: 'brisbane', title: "Hughes Brisbane City Guide", pdfLink: "#" },
+        { id: 'melbourne', title: "Auzzsi Melbourne City Guide", pdfLink: "#" },
+        { id: 'gold-coast', title: "Auzzsi Gold Coast City Guide", pdfLink: "#" },
+        { id: 'brisbane', title: "Auzzsi Brisbane City Guide", pdfLink: "#" },
     ];
 
     return (
@@ -22,14 +22,14 @@ export default function CityGuidesPage() {
                         <Link href="/">Home</Link> &gt; City Guides
                     </div>
                     <h1 className={styles.heroTitle}>City Guides</h1>
-                    <p className={styles.heroSubtitle}>The latest travel guides, news and blogs from Hughes Chauffeurs</p>
+                    <p className={styles.heroSubtitle}>The latest travel guides, news and blogs from Auzzsi Chauffeur</p>
                 </div>
             </section>
 
             {/* Resources Section */}
             <section className={styles.resourcesSection}>
                 <div className={styles.container}>
-                    <h2 className={styles.sectionTitle}>Hughes Chauffeurs Resources</h2>
+                    <h2 className={styles.sectionTitle}>Auzzsi Chauffeur Resources</h2>
 
                     <div className={styles.layout}>
                         {/* List Side */}
