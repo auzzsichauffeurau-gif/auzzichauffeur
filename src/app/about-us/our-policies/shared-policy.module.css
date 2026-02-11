@@ -1,0 +1,140 @@
+.pageWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    background-color: white;
+}
+
+/* HERO SECTION */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    background-image: url('/tile-woman-phone.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+    z-index: 1;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.breadcrumbs {
+    font-size: 0.8rem;
+    color: #ddd;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.breadcrumbs a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    color: white;
+}
+
+.heroTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    line-height: 1.1;
+    max-width: 800px;
+}
+
+/* CONTENT SECTION */
+.contentSection {
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.introText {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    font-size: 0.95rem;
+}
+
+.introText p {
+    margin-bottom: 1.5rem;
+}
+
+/* ACCORDION (Reuse if strictly following design, otherwise standard text is fine) */
+.accordion {
+    border-bottom: 1px solid #eee;
+}
+
+.accordionItem {
+    border-top: 1px solid #eee;
+}
+
+.accordionButton {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+}
+
+.accordionTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.accordionButton:hover .accordionTitle {
+    color: #bfa15f;
+}
+
+.icon {
+    color: #bbb;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    opacity: 0;
+}
+
+.panelOpen {
+    max-height: 1000px;
+    opacity: 1;
+    padding-bottom: 1.5rem;
+}
+
+.panelContent {
+    color: #555;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}

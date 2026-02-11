@@ -17,7 +17,7 @@ export default function PrivacyPolicy() {
                 </p>
 
                 <h2 style={{ fontSize: '1.5rem', fontWeight: '600', color: '#1f2937', marginTop: '2rem', marginBottom: '1rem' }}>1. Information We Collect</h2>
-                <p style={{ marginBottom: '1rem' }}>
+                <div style={{ marginBottom: '1rem' }}>
                     We may collect personal information such as:
                     <ul style={{ paddingLeft: '20px', marginTop: '0.5rem' }}>
                         <li>Name, Email Address, and Phone Number</li>
@@ -25,7 +25,7 @@ export default function PrivacyPolicy() {
                         <li>Payment information and transaction details</li>
                         <li>Flight details (for airport transfers)</li>
                     </ul>
-                </p>
+                </div>
 
                 <h2 style={{ fontSize: '1.5rem', fontWeight: '600', color: '#1f2937', marginTop: '2rem', marginBottom: '1rem' }}>2. How We Use Your Information</h2>
                 <p style={{ marginBottom: '1rem' }}>
@@ -47,9 +47,9 @@ export default function PrivacyPolicy() {
                 <p style={{ marginBottom: '1rem' }}>
                     If you have any questions about this Privacy Policy, please contact us at:
                     <br />
-                    <strong>Email:</strong> res@auzzsi.com.au
+                    <strong>Email:</strong> info@auzziechauffeur.com.au
                     <br />
-                    <strong>Phone:</strong> 1300 615 165
+                    <strong>Phone:</strong> info@auzziechauffeur.com.au
                 </p>
             </div>
             <Footer />

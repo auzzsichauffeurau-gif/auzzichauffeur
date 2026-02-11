@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import styles from "@/app/locations/shared-airport.module.css";
+import styles from "@/app/(locations)/shared-airport.module.css";
 import { Clock, MapPin, ShoppingBag, Utensils, Award, ShieldCheck, Navigation, PauseCircle } from "lucide-react";
 import VehicleTabs from "@/components/ServicePage/VehicleTabs";
 import FaqAccordion from "@/components/ServicePage/FaqAccordion";
@@ -86,6 +86,51 @@ export default function HourlyServicesPage() {
                     </p>
                 </div>
             </section>
+
+            <div style={{
+                maxWidth: '1200px',
+                margin: '0 auto',
+                padding: '0 2rem 4rem 2rem'
+            }}>
+                <h2 style={{
+                    fontSize: '1.8rem',
+                    fontWeight: 'bold',
+                    marginBottom: '2rem',
+                    color: '#111'
+                }}>Nationwide Hourly Service</h2>
+
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                    gap: '2rem'
+                }}>
+                    {[
+                        { city: "Sydney", link: "/sydney/hourly-chauffeur", desc: "Private tours & city standby" },
+                        { city: "Melbourne", link: "/melbourne/hourly-chauffeur", desc: "For meetings, dinners & events" },
+                        { city: "Brisbane", link: "/brisbane/hourly-chauffeur", desc: "City tours & flexible hire" },
+                        { city: "Perth", link: "/perth/hourly-chauffeur", desc: "Hourly hire for all occasions" },
+                        { city: "Adelaide", link: "/adelaide/hourly-chauffeur", desc: "Barossa tours & city hire" },
+                        { city: "Gold Coast", link: "/gold-coast/hourly-chauffeur", desc: "Beach & Hinterland tours" },
+                        { city: "Hobart", link: "/hobart/hourly-chauffeur", desc: "Flexible day trips & tours" },
+                        { city: "Cairns", link: "/cairns-port-douglas/hourly-chauffeur", desc: "Sightseeing & local hire" },
+                    ].map((loc, idx) => (
+                        <a href={loc.link} key={idx} style={{ textDecoration: 'none' }}>
+                            <div className={styles.serviceCard} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                <div style={{ marginBottom: '1rem', color: '#c5a467' }}><Clock size={32} /></div>
+                                <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.5rem' }}>
+                                    {loc.city} Hourly Hire
+                                </h3>
+                                <p style={{ color: '#6b7280', marginBottom: '1.5rem', flex: 1 }}>
+                                    {loc.desc}
+                                </p>
+                                <div style={{ display: 'flex', alignItems: 'center', color: '#1e3a8a', fontWeight: 'bold' }}>
+                                    View Details <svg width="16" height="16" style={{ marginLeft: '4px' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </div>
+                            </div>
+                        </a>
+                    ))}
+                </div>
+            </div>
 
             {/* FEATURES ICONS */}
             <section style={{ backgroundColor: '#f9fafb', padding: '2rem 0' }}>

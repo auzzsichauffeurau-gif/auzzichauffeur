@@ -23,31 +23,31 @@ type FaqCategory = {
 const faqData: FaqCategory[] = [
     {
         id: "booking",
-        title: "Booking With Hughes Chauffeurs",
+        title: "Booking With Auzzsi Chauffeur",
         items: [
             {
-                question: "How Do I Book With Hughes?",
-                answer: "Book online here or download the Hughes App on your Apple or Android devices. You can also manage your booking on the go."
+                question: "How Do I Book With Auzzsi?",
+                answer: "Book online here or download the Auzzsi App on your Apple or Android devices. You can also manage your booking on the go."
             },
             {
                 question: "How Do I Make Changes To My Booking?",
                 answer: "You can make changes to your booking via our online portal, the mobile app, or by contacting our 24/7 support team."
             },
             {
-                question: "Does Hughes Charge Cancellation Fees?",
+                question: "Does Auzzsi Charge Cancellation Fees?",
                 answer: "Cancellation fees may apply depending on how close to the pickup time the cancellation is made. Please refer to our full terms and conditions for detailed policy information."
             },
             {
-                question: "How Far In Advance Can I Book With Hughes?",
+                question: "How Far In Advance Can I Book With Auzzsi?",
                 answer: "You can book as far in advance as you like. We recommend booking early to secure your preferred vehicle."
             },
             {
                 question: "Can I Speak To Someone About My Booking?",
-                answer: "Yes, our team is available 24/7. Call us on 1300 615 165 for assistance."
+                answer: "Yes, our team is available 24/7. Call us on info@auzziechauffeur.com.au for assistance."
             },
             {
-                question: "How Is Hughes Different From A Taxi Or Rideshare Service?",
-                answer: "Hughes provides a premium, pre-booked chauffeur service with professional drivers, luxury vehicles, and a guarantee of quality and reliability that typical rideshare services cannot match."
+                question: "How Is Auzzsi Different From A Taxi Or Rideshare Service?",
+                answer: "Auzzsi provides a premium, pre-booked chauffeur service with professional drivers, luxury vehicles, and a guarantee of quality and reliability that typical rideshare services cannot match."
             },
             {
                 question: "What Are Your Terms And Conditions?",
@@ -60,7 +60,7 @@ const faqData: FaqCategory[] = [
         title: "Travelling With Luggage",
         items: [
             {
-                question: "How Much Luggage Can I Bring In My Hughes Vehicle?",
+                question: "How Much Luggage Can I Bring In My Auzzsi Vehicle?",
                 answer: "Luggage capacity depends on the vehicle class selected. Sedans typically hold 2 large suitcases, while our People Movers can accommodate more. Please check vehicle specifications when booking."
             },
             {
@@ -74,7 +74,7 @@ const faqData: FaqCategory[] = [
         title: "Travelling With Children",
         items: [
             {
-                question: "Does Hughes Offer Child Seats?",
+                question: "Does Auzzsi Offer Child Seats?",
                 answer: "Yes, child seats are available upon request. Please specify your requirements when booking."
             },
             {
@@ -104,11 +104,11 @@ const faqData: FaqCategory[] = [
                 answer: "Waiting time charges may apply if the delay exceeds the complimentary waiting period (usually 10-15 minutes for non-airport pickups)."
             },
             {
-                question: "Does Hughes Charge A Public Holiday Surcharge?",
+                question: "Does Auzzsi Charge A Public Holiday Surcharge?",
                 answer: "Surcharges may apply on major public holidays. These are included in your quote."
             },
             {
-                question: "Does Hughes Charge An After-Hours Surcharge?",
+                question: "Does Auzzsi Charge An After-Hours Surcharge?",
                 answer: "Some bookings between midnight and 5am may incur a surcharge. This will be transparently quoted before you book."
             }
         ]
@@ -118,8 +118,8 @@ const faqData: FaqCategory[] = [
         title: "Lost Property",
         items: [
             {
-                question: "What Should I Do If I Think I Left An Item In A Hughes Vehicle?",
-                answer: "Please contact us immediately on 1300 615 165. We will check with the chauffeur and arrange for the return of your item if found."
+                question: "What Should I Do If I Think I Left An Item In A Auzzsi Vehicle?",
+                answer: "Please contact us immediately on info@auzziechauffeur.com.au. We will check with the chauffeur and arrange for the return of your item if found."
             }
         ]
     }

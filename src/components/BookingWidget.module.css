@@ -120,8 +120,14 @@
 }
 
 @media (max-width: 640px) {
+    .widgetContainer {
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
     .formGrid {
         grid-template-columns: 1fr;
+        gap: 0.8rem;
     }
 
     .submitBtn {
@@ -130,10 +136,14 @@
 
     .tabs {
         overflow-x: auto;
-        padding-bottom: 0;
+        padding-bottom: 0.5rem;
+        gap: 1.5rem;
+        /* Reduced gap */
+        margin-bottom: 1rem;
     }
 
     .tab {
         white-space: nowrap;
+        font-size: 0.85rem;
     }
 }

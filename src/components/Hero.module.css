@@ -1,9 +1,8 @@
 .hero {
     position: relative;
     width: 100%;
-    height: 100vh;
-    /* Or min-height: 800px depending on design */
-    min-height: 700px;
+    /* Use min-height to ensure it covers viewport but expands for content */
+    min-height: 100vh;
     background-image: url('/hero-bg.png');
     background-size: cover;
     background-position: center;
@@ -11,6 +10,8 @@
     display: flex;
     align-items: center;
     color: white;
+    /* Ensure padding for vertical overflow on short screens */
+    padding-bottom: 2rem;
 }
 
 .overlay {
@@ -173,41 +174,111 @@
     background: transparent;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .hero {
-        min-height: auto;
+        padding-top: 2rem;
+        /* Reduce top spacer */
         height: auto;
-        padding-top: 10px;
-        /* Spacer helps */
+        /* Allow auto height */
     }
 
     .content {
-        padding: 6rem 1.5rem 4rem;
-        /* Top padding clears fixed nav */
+        padding-top: 120px;
+        /* Ensure clearance for nav */
+        padding-bottom: 4rem;
     }
 
     .title {
-        font-size: 2.5rem;
+        font-size: 3rem;
+    }
+
+    .subtitle {
+        margin-bottom: 2rem;
+    }
+
+    .stats {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 100vh;
+        height: auto;
+        padding-top: 0;
+        /* Remove spacer if handled by content padding */
+        background-attachment: scroll;
+        /* distinct from fixed to avoid mobile paint issues sometimes */
+    }
+
+    .content {
+        padding: 8rem 1.5rem 4rem;
+        /* Increase top padding to ensure title is below nav */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* Allow content to flow naturally from top */
+        height: auto;
+    }
+
+    .mainText {
+        margin-top: 0;
+        /* Handled by content padding */
+        text-align: center;
+        /* Center text on mobile */
+    }
+
+    .title {
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .ctaButtons {
         flex-direction: column;
         width: 100%;
+        justify-content: center;
+        align-items: center;
     }
 
     .btn {
         width: 100%;
         text-align: center;
+        max-width: 300px;
+        /* Prevent overly wide buttons */
     }
 
     .footer {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 2rem;
+        margin-top: 2rem;
+        border-top: none;
+        /* Cleaner look on mobile */
+        padding-top: 0;
     }
 
     .stats {
         gap: 1.5rem;
+        justify-content: center;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        text-align: center;
+    }
+
+    .statItem {
+        align-items: center;
+    }
+
+    .statLabel {
+        text-align: center;
     }
 }
 

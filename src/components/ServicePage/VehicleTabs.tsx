@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "@/app/locations/shared-airport.module.css";
+import styles from "@/app/(locations)/shared-airport.module.css";
 import Link from "next/link";
 import { Users, Briefcase } from "lucide-react";
 

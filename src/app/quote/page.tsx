@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import styles from "./quote.module.css";
 import { Check, Shield, Star, Clock } from "lucide-react";
+import { Suspense } from "react";
 
 export default function QuotePage() {
     return (
@@ -45,7 +46,7 @@ export default function QuotePage() {
                     </div>
 
                     <div className={styles.trustSignals}>
-                        <img src="/logo-accreditation.png" alt="Accredited" className={styles.badge} />
+                        <img src="/logo-accreditation-classic-light.png" alt="Accredited" className={styles.badge} />
                         <div className={styles.rating}>
                             <div className={styles.stars}>★★★★★</div>
                             <span>4.9/5 Average Rating</span>
@@ -55,7 +56,9 @@ export default function QuotePage() {
 
                 {/* Right Form */}
                 <div className={styles.formSide}>
-                    <QuoteForm />
+                    <Suspense fallback={<div>Loading form...</div>}>
+                        <QuoteForm />
+                    </Suspense>
                 </div>
             </div>
 

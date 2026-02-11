@@ -10,25 +10,16 @@ export default function Navbar() {
     const navStructure = [
         {
             title: "Airport Transfers",
-            link: "/services/airport-transfers",
+            link: "/melbourne/airport-transfers",
             items: [
-                { name: "Adelaide Airport", link: "/locations/adelaide/airport-transfers" },
-                { name: "Avalon Airport (Geelong)", link: "/locations/geelong/airport-transfers" },
-                { name: "Ballina (Byron Bay) Airport", link: "/locations/byron-bay/ballina-byron-bay-airport-transfers" },
-                { name: "Brisbane Airport", link: "/locations/brisbane/airport-transfers" },
-                { name: "Cairns Airport", link: "/locations/cairns-port-douglas/cairns-port-douglas-airport-transfers" },
-                { name: "Canberra Airport", link: "/locations/canberra/airport-transfers" },
-                { name: "Darwin Airport", link: "/locations/darwin/airport-transfers" },
-                { name: "Gold Coast Airport", link: "/locations/gold-coast/airport-transfers" },
-                { name: "Hobart Airport", link: "/locations/hobart/hobart-airport-transfers" },
-                { name: "Launceston Airport", link: "/locations/launceston/launceston-airport-transfers" },
-                { name: "Melbourne Airport", link: "/locations/melbourne/airport-transfers" },
-                { name: "Newcastle Airport", link: "/locations/newcastle/airport-transfers" },
-                { name: "Perth Airport", link: "/locations/perth/airport-transfers" },
-                { name: "Sunshine Coast Airport", link: "/locations/sunshine-coast/airport-transfers" },
-                { name: "Sydney Airport", link: "/locations/sydney/airport-transfers" },
-                { name: "Toowoomba Wellcamp Airport", link: "/locations/toowoomba/airport-transfers" },
-                { name: "Townsville Airport", link: "/locations/townsville/airport-transfers" },
+                { name: "Adelaide Airport", link: "/adelaide/airport-transfers" },
+                { name: "Brisbane Airport", link: "/brisbane/airport-transfers" },
+                { name: "Cairns Airport", link: "/cairns-port-douglas/airport-transfers" },
+                { name: "Gold Coast Airport", link: "/gold-coast/airport-transfers" },
+                { name: "Hobart Airport", link: "/hobart/airport-transfers" },
+                { name: "Melbourne Airport", link: "/melbourne/airport-transfers" },
+                { name: "Perth Airport", link: "/perth/airport-transfers" },
+                { name: "Sydney Airport", link: "/sydney/airport-transfers" },
                 { name: "Airport Meeting Points", link: "/services/meeting-points" },
             ]
         },
@@ -45,34 +36,20 @@ export default function Navbar() {
                 { name: "Conferences & Special Events", link: "/services/conferences-special-events" },
                 { name: "Cruise Ship Transfers", link: "/services/cruise-ship-transfers" },
                 { name: "International Student Transfers", link: "/services/international-student-transfers" },
-                { name: "Auzzsi App", link: "/services/auzzsi-app" },
             ]
         },
         {
             title: "Locations",
             link: "/locations",
             items: [
-                { name: "Adelaide", link: "/locations/adelaide" },
-                { name: "Ballina (Byron Bay)", link: "/locations/byron-bay" },
-                { name: "Barossa Valley", link: "/locations/barossa-valley" },
-                { name: "Brisbane", link: "/locations/brisbane" },
-                { name: "Cairns & Port Douglas", link: "/locations/cairns-port-douglas" },
-                { name: "Canberra", link: "/locations/canberra" },
-                { name: "Central Coast", link: "/locations/central-coast" },
-                { name: "Darwin", link: "/locations/darwin" },
-                { name: "Geelong", link: "/locations/geelong" },
-                { name: "Gold Coast", link: "/locations/gold-coast" },
-                { name: "Hobart", link: "/locations/hobart" },
-                { name: "Launceston", link: "/locations/launceston" },
-                { name: "Melbourne", link: "/locations/melbourne" },
-                { name: "Mornington Peninsula", link: "/locations/mornington-peninsula" },
-                { name: "Newcastle", link: "/locations/newcastle" },
-                { name: "Perth", link: "/locations/perth" },
-                { name: "Sunshine Coast", link: "/locations/sunshine-coast" },
-                { name: "Sydney", link: "/locations/sydney" },
-                { name: "Toowoomba", link: "/locations/toowoomba" },
-                { name: "Townsville", link: "/locations/townsville" },
-                { name: "Wollongong", link: "/locations/wollongong" },
+                { name: "Adelaide", link: "/adelaide" },
+                { name: "Brisbane", link: "/brisbane" },
+                { name: "Cairns & Port Douglas", link: "/cairns-port-douglas" },
+                { name: "Gold Coast", link: "/gold-coast" },
+                { name: "Hobart", link: "/hobart" },
+                { name: "Melbourne", link: "/melbourne" },
+                { name: "Perth", link: "/perth" },
+                { name: "Sydney", link: "/sydney" },
             ]
         },
         {
@@ -118,11 +95,12 @@ export default function Navbar() {
             <header className={styles.header}>
                 {/* Logo Section */}
                 <Link href="/" className={styles.brandWrapper} onClick={() => setMobileMenuOpen(false)}>
-                    <div className={styles.logoCircle}>A</div>
-                    <div className={styles.brandText}>
-                        <span className={styles.brandName}>AUZZSI</span>
-                        <span className={styles.brandSub}>CHAUFFEUR SERVICE</span>
-                    </div>
+                    <img
+                        src="/logo/header-logo.png"
+                        alt="Auzzsi Chauffeur"
+                        className={styles.logoImage}
+                        style={{ height: '119px', width: 'auto' }}
+                    />
                 </Link>
 
                 {/* Desktop Navigation */}

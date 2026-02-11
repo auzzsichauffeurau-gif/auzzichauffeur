@@ -136,9 +136,18 @@ export default function OurHistoryPage() {
                 <div className={styles.container}>
                     <h2 className={styles.sectionHeading}>Our Logos Through The Years</h2>
                     <div className={styles.logosGrid}>
-                        <div>LOGOV1</div>
-                        <div>LOGOV2</div>
-                        <div>LOGOV3</div>
+                        <div className={styles.logoItem}>
+                            <img src="/logo-history-2004.png" alt="Auzzsi Logo 2004" />
+                            <span>2004</span>
+                        </div>
+                        <div className={styles.logoItem}>
+                            <img src="/logo-history-2014.png" alt="Auzzsi Logo 2014" />
+                            <span>2014</span>
+                        </div>
+                        <div className={styles.logoItem}>
+                            <img src="/logo-history-2024.png" alt="Auzzsi Logo 2024" />
+                            <span>2024 (Present)</span>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -74,8 +74,8 @@
 }
 
 .answerOpen {
-    max-height: 200px;
-    /* Approximate max height for typical answer */
+    max-height: 1000px;
+    /* Large max-height to accommodate mobile text wrapping */
     padding-bottom: 1.5rem;
 }
 

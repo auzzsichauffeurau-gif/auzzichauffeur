@@ -1,9 +1,7 @@
 .pageContainer {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    min-height: 800px;
-    /* Ensure fit */
+    min-height: 100vh;
     font-family: sans-serif;
 }
 
@@ -46,7 +44,7 @@
 .mainLayout {
     display: flex;
     flex: 1;
-    overflow: hidden;
+    /* Remove overflow hidden to allow scrolling if needed */
 }
 
 .imageSide {
@@ -58,6 +56,8 @@
 .imageSide img {
     width: 100%;
     height: 100%;
+    min-height: 100vh;
+    /* Ensure it covers full viewport height if content is short */
     object-fit: cover;
     object-position: center;
 }
@@ -310,10 +310,10 @@
     padding: 0 3rem;
     color: #888;
     font-size: 0.8rem;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     z-index: 10;
+    margin-top: auto;
+    /* Push to bottom naturally */
 }
 
 .footerLogoSmall {
@@ -323,50 +323,78 @@
 }
 
 /* RESPONSIVE */
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .imageSide {
+        width: 35%;
+    }
+
+    .formSide {
+        width: 65%;
+    }
+}
+
 @media (max-width: 900px) {
     .pageContainer {
         height: auto;
         min-height: 100vh;
+        overflow-y: auto;
+        /* Enable scrolling */
     }
 
     .mainLayout {
         flex-direction: column;
+        overflow: visible;
+        /* Allow content to flow */
     }
 
     .imageSide {
         width: 100%;
-        height: 200px;
-        /* Smaller image on mobile */
+        height: 15px;
+        /* Minimal height just for visual separation, or hide it */
+        display: none;
+        /* Often better to hide pure decorative images on mobile to save space */
     }
 
     .formSide {
         width: 100%;
-        padding: 1.5rem 1rem;
+        padding: 1rem;
         background: #f3f4f6;
-        /* Flat color is often cleaner on mobile than gradient */
     }
 
     .bookingForm {
         box-shadow: none;
-        /* Simplify on mobile */
         max-width: 100%;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .locationsPanel,
+    .dateTimePanel,
+    .actionBar {
+        padding: 1.5rem 1rem;
+        border-radius: 12px;
+        /* Add some rounding back since outer container lost it */
+        margin-bottom: 1rem;
+        /* Add spacing between sections if they appear separated */
     }
 
     .locationsPanel {
-        padding: 1.5rem;
-        border-radius: 8px 8px 0 0;
+        margin-top: 1rem;
     }
 
     .dateTimePanel {
         grid-template-columns: 1fr;
-        padding: 1.5rem;
     }
 
     .actionBar {
-        flex-direction: column;
-        gap: 1.5rem;
-        padding: 1.5rem;
-        border-radius: 0 0 8px 8px;
+        flex-direction: column-reverse;
+        /* Put main action on top or keep standard */
+        gap: 1rem;
+        background-color: transparent;
+        /* Seamless look or keep colored */
+        padding: 0;
+        margin-top: 1rem;
     }
 
     .rightActions {
@@ -379,30 +407,54 @@
         width: 100%;
         justify-content: center;
         padding: 1rem;
+        background-color: #1a2b4b;
+        /* Make it pop more on mobile */
+        color: white;
     }
 
-    .priceTag {
-        width: 100%;
-        margin-bottom: 0.5rem;
+    .continueBtn:hover {
+        background-color: #2c4470;
     }
 
     .clearBtn {
         width: 100%;
+        border-color: #ccc;
+        color: #666;
     }
 
     .header {
         padding: 0 1rem;
-        height: 70px;
+        height: 60px;
+    }
+
+    .logo {
+        height: 30px;
     }
 
     .footerStrip {
         position: static;
-        /* Stack naturally on mobile */
-        padding: 1rem;
+        padding: 1.5rem 1rem;
         flex-direction: column;
         gap: 0.5rem;
         height: auto;
         text-align: center;
         background-color: #1a1a1a;
+    }
+}
+
+@media (max-width: 480px) {
+    .header .loginBtn {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+
+    .labelText,
+    .panelLabel {
+        font-size: 0.8rem;
+    }
+
+    .textInput,
+    .dateTimeInput {
+        font-size: 0.9rem;
     }
 }

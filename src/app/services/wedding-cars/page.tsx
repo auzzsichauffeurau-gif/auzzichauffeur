@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import styles from "@/app/locations/shared-airport.module.css";
+import styles from "@/app/(locations)/shared-airport.module.css";
 import { Heart, Camera, Clock, Award, Gift, Star, MapPin } from "lucide-react";
 import VehicleTabs from "@/components/ServicePage/VehicleTabs";
 import FaqAccordion from "@/components/ServicePage/FaqAccordion";
@@ -17,7 +17,7 @@ export default function WeddingServicesPage() {
     const faqs = [
         {
             question: "Which Cities Do You Service?",
-            answer: "We offer wedding car hire in all major Australian cities including Sydney, Melbourne, Brisbane, Perth, Adelaide, Canberra, Hobart, Darwin, Gold Coast, Sunshine Coast, Newcastle, and Byron Bay."
+            answer: "We offer wedding car hire in all major Australian cities including Sydney, Melbourne, Brisbane, Adelaide, Hobart, Gold Coast, and Cairns."
         },
         {
             question: "How Far In Advance Should I Book?",
@@ -86,6 +86,51 @@ export default function WeddingServicesPage() {
                     </p>
                 </div>
             </section>
+
+            <div style={{
+                maxWidth: '1200px',
+                margin: '0 auto',
+                padding: '0 2rem 4rem 2rem'
+            }}>
+                <h2 style={{
+                    fontSize: '1.8rem',
+                    fontWeight: 'bold',
+                    marginBottom: '2rem',
+                    color: '#111'
+                }}>Nationwide Wedding Service</h2>
+
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                    gap: '2rem'
+                }}>
+                    {[
+                        { city: "Sydney", link: "/sydney/wedding-cars", desc: "Harbour & Northern Beaches" },
+                        { city: "Melbourne", link: "/melbourne/wedding-cars", desc: "CBD, Yarra Valley & Dandenongs" },
+                        { city: "Brisbane", link: "/brisbane/wedding-cars", desc: "City & Hinterland" },
+                        { city: "Perth", link: "/perth/wedding-cars", desc: "City & Swan Valley" },
+                        { city: "Adelaide", link: "/adelaide/wedding-cars", desc: "Barossa, Hahndorf & City" },
+                        { city: "Gold Coast", link: "/gold-coast/wedding-cars", desc: "Surfers Paradise & Byron Bay" },
+                        { city: "Hobart", link: "/hobart/wedding-cars", desc: "Waterfront & Historic Battery Point" },
+                        { city: "Cairns", link: "/cairns-port-douglas/wedding-cars", desc: "Tropical Weddings & Port Douglas" },
+                    ].map((loc, idx) => (
+                        <a href={loc.link} key={idx} style={{ textDecoration: 'none' }}>
+                            <div className={styles.serviceCard} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                <div style={{ marginBottom: '1rem', color: '#c5a467' }}><Heart size={32} /></div>
+                                <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.5rem' }}>
+                                    {loc.city} Weddings
+                                </h3>
+                                <p style={{ color: '#6b7280', marginBottom: '1.5rem', flex: 1 }}>
+                                    {loc.desc}
+                                </p>
+                                <div style={{ display: 'flex', alignItems: 'center', color: '#1e3a8a', fontWeight: 'bold' }}>
+                                    View Details <svg width="16" height="16" style={{ marginLeft: '4px' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </div>
+                            </div>
+                        </a>
+                    ))}
+                </div>
+            </div>
 
             {/* FEATURES ICONS */}
             <section style={{ backgroundColor: '#f9fafb', padding: '2rem 0' }}>

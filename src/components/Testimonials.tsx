@@ -41,32 +41,28 @@ export default function Testimonials() {
                 <h2 style={{ fontSize: '2rem', color: '#1f2937', marginBottom: '1rem', fontWeight: 'bold' }}>What Our Clients Say</h2>
                 <div style={{ width: '60px', height: '4px', backgroundColor: '#c5a467', margin: '0 auto 3rem' }}></div>
 
-                <div style={{ position: 'relative', overflow: 'hidden', minHeight: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <div style={{ display: 'grid', gridTemplateAreas: '"stack"' }}>
                     {reviews.map((review, index) => (
                         <div
                             key={index}
                             style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                width: '100%',
-                                height: '100%',
+                                gridArea: 'stack',
                                 opacity: index === activeIndex ? 1 : 0,
-                                transform: `translateX(${(index - activeIndex) * 50}px)`,
-                                transition: 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)',
-                                pointerEvents: 'none',
+                                transition: 'opacity 0.6s ease-in-out',
+                                pointerEvents: index === activeIndex ? 'auto' : 'none',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
-                                justifyContent: 'center'
+                                justifyContent: 'center',
+                                zIndex: index === activeIndex ? 2 : 1,
                             }}
                         >
-                            <div style={{ backgroundColor: 'white', padding: '3rem', borderRadius: '12px', boxShadow: '0 10px 30px -10px rgba(0,0,0,0.1)', maxWidth: '700px', width: '100%' }}>
+                            <div style={{ backgroundColor: 'white', padding: '2rem', borderRadius: '12px', boxShadow: '0 10px 30px -10px rgba(0,0,0,0.1)', maxWidth: '700px', width: '100%' }}>
                                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem', color: '#c5a467' }}>
                                     {[...Array(review.rating)].map((_, i) => <Star key={i} size={20} fill="#c5a467" strokeWidth={0} />)}
                                 </div>
                                 <Quote size={40} color="#e5e7eb" style={{ marginBottom: '1rem' }} />
-                                <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: '#4b5563', marginBottom: '2rem', fontStyle: 'italic' }}>"{review.text}"</p>
+                                <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#4b5563', marginBottom: '2rem', fontStyle: 'italic' }}>"{review.text}"</p>
                                 <div>
                                     <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#1f2937' }}>{review.name}</h4>
                                     <span style={{ fontSize: '0.9rem', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '1px' }}>{review.role}</span>

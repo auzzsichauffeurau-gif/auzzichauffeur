@@ -5,8 +5,11 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabaseClient';
 import styles from './QuoteForm.module.css';
 import { MapPin, Calendar, Clock, ChevronRight, Car, User, Mail, Phone, Calculator, CheckCircle } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 
 export default function QuoteForm() {
+    const searchParams = useSearchParams();
+
     const [step, setStep] = useState(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -24,6 +27,26 @@ export default function QuoteForm() {
         phone: '',
         notes: ''
     });
+
+    // Populate from URL params if available
+    React.useEffect(() => {
+        if (searchParams) {
+            const pickup = searchParams.get('pickup') || '';
+            const dropoff = searchParams.get('dropoff') || '';
+            const date = searchParams.get('date') || '';
+            const time = searchParams.get('time') || '';
+
+            if (pickup || dropoff || date || time) {
+                setFormData(prev => ({
+                    ...prev,
+                    pickup: pickup || prev.pickup,
+                    dropoff: dropoff || prev.dropoff,
+                    date: date || prev.date,
+                    time: time || prev.time
+                }));
+            }
+        }
+    }, [searchParams]);
 
     // Calculate price using Supabase pricing function
     const calculatePrice = async () => {
@@ -108,14 +131,43 @@ export default function QuoteForm() {
             notes: formData.notes
         });
 
-        setIsSubmitting(false);
-
         if (error) {
-            console.error('Error submitting quote:', error);
-            alert("There was an issue sending your request. Please try again.");
-        } else {
-            setIsSubmitted(true);
+            console.error('Error submitting quote (full details):', JSON.stringify(error, null, 2));
+            alert(`There was an issue sending your request: ${error.message || 'Unknown error'}`);
+            setIsSubmitting(false);
+            return;
         }
+
+        // Send Email Notification
+        try {
+            await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    to: 'booking@auzziechauffeur.com.au',
+                    subject: `New Quote Request: ${formData.name}`,
+                    html: `
+                        <h3>New Quote Request</h3>
+                        <p><strong>Name:</strong> ${formData.name}</p>
+                        <p><strong>Email:</strong> ${formData.email}</p>
+                        <p><strong>Phone:</strong> ${formData.phone}</p>
+                        <hr/>
+                        <p><strong>Pick Up:</strong> ${formData.pickup}</p>
+                        <p><strong>Drop Off:</strong> ${formData.dropoff}</p>
+                        <p><strong>Date:</strong> ${formData.date}</p>
+                        <p><strong>Time:</strong> ${formData.time}</p>
+                        <p><strong>Vehicle:</strong> ${formData.vehicle}</p>
+                        <p><strong>Est. Price:</strong> ${estimatedPrice ? `$${estimatedPrice}` : 'TBD'}</p>
+                        <p><strong>Notes:</strong> ${formData.notes}</p>
+                    `
+                })
+            });
+        } catch (emailError) {
+            console.error("Failed to send email notification", emailError);
+        }
+
+        setIsSubmitting(false);
+        setIsSubmitted(true);
     };
 
     if (isSubmitted) {

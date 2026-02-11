@@ -5,15 +5,20 @@ interface HeroProps {
   title?: string;
   subtitle?: string;
   showStats?: boolean;
+  bgImage?: string;
 }
 
 export default function Hero({
   title = "Auzzsi Chauffeur Service",
   subtitle = "Experience the Auzzsi difference with premium transfers, tours and event transport.",
-  showStats = true
+  showStats = true,
+  bgImage
 }: HeroProps) {
   return (
-    <section className={styles.hero}>
+    <section
+      className={styles.hero}
+      style={bgImage ? { backgroundImage: `url('${bgImage}')` } : undefined}
+    >
       <div className={styles.overlay}></div>
 
       <div className={styles.content}>
@@ -27,9 +32,7 @@ export default function Hero({
 
 
 
-          <div className={styles.ctaButtons}>
-            <button className={`${styles.btn} ${styles.btnPrimary}`}>Get a Quote</button>
-          </div>
+
 
         </div>
 
@@ -44,35 +47,24 @@ export default function Hero({
             {/* Stats Section */}
             <div className={styles.stats}>
               <div className={styles.statItem}>
-                <span className={styles.statValue}>2.95m</span>
-                <span className={styles.statLabel}>Passengers moved last 12 months</span>
+                <span className={styles.statValue}>Thousands</span>
+                <span className={styles.statLabel}>Of Detailed Trips</span>
               </div>
               <div className={styles.statItem}>
-                <span className={styles.statValue}>12,000+</span>
-                <span className={styles.statLabel}>5 Star Google Reviews</span>
+                <span className={styles.statValue}>5-Star</span>
+                <span className={styles.statLabel}>Service Rating</span>
               </div>
               <div className={styles.statItem}>
-                <span className={styles.statValue}>11</span>
-                <span className={styles.statLabel}>Offices across Australia</span>
+                <span className={styles.statValue}>7</span>
+                <span className={styles.statLabel}>Major Cities Served</span>
               </div>
               <div className={styles.statItem}>
-                <span className={styles.statValue}>1,235</span>
-                <span className={styles.statLabel}>Size of fleet</span>
+                <span className={styles.statValue}>Premium</span>
+                <span className={styles.statLabel}>Luxury Fleet</span>
               </div>
             </div>
 
-            {/* App Badges */}
-            <div className={styles.appButtons}>
-              <a href="#" className={styles.appBtn}>
-                <img src="/google-play-badge.png" alt="Get it on Google Play" style={{ height: '35px' }} />
-                {/* Fallback text if needed, but image is best for badges */}
-                <span style={{ display: 'none' }}>Get it on Google Play</span>
-              </a>
-              <a href="#" className={styles.appBtn}>
-                <img src="/app-store-badge.png" alt="Download on the App Store" style={{ height: '35px' }} />
-                <span style={{ display: 'none' }}>Download on the App Store</span>
-              </a>
-            </div>
+
           </div>
         )}
       </div>

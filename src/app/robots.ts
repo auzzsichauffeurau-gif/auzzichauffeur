@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: ['/api/', '/admin/'],
         },
-        sitemap: 'https://www.auzzsi.com.au/sitemap.xml',
+        sitemap: 'https://www.auzziechauffeur.com.au/sitemap.xml',
     };
 }

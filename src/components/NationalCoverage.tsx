@@ -17,44 +17,24 @@ export default function NationalCoverage() {
 
     const coverageData: CoverageData = {
         'New South Wales': [
-            { name: 'Byron Bay', link: '/locations/byron-bay/ballina-byron-bay-airport-transfers' },
-            { name: 'Central Coast', link: '/locations/central-coast' },
-            { name: 'Newcastle', link: '/locations/newcastle/airport-transfers' },
-            { name: 'Sydney', link: '/locations/sydney/airport-transfers' },
-            { name: 'Wollongong', link: '/locations/wollongong' },
+            { name: 'Sydney', link: '/sydney/airport-transfers' },
         ],
         'Victoria': [
-            { name: 'Geelong', link: '/locations/geelong' },
-            { name: 'Melbourne', link: '/locations/melbourne/airport-transfers' },
-            { name: 'Mornington Peninsula', link: '/locations/mornington-peninsula' },
+            { name: 'Melbourne', link: '/melbourne/airport-transfers' },
         ],
         'Queensland': [
-            { name: 'Brisbane', link: '/locations/brisbane/airport-transfers' },
-            { name: 'Cairns', link: '/locations/cairns-port-douglas/cairns-port-douglas-airport-transfers' },
-            { name: 'Gold Coast', link: '/locations/gold-coast/airport-transfers' },
-            { name: 'Sunshine Coast', link: '/locations/sunshine-coast/airport-transfers' },
-            { name: 'Toowoomba', link: '/locations/toowoomba' },
-            { name: 'Townsville', link: '/locations/townsville' },
+            { name: 'Brisbane', link: '/brisbane/airport-transfers' },
+            { name: 'Cairns', link: '/cairns-port-douglas/airport-transfers' },
+            { name: 'Gold Coast', link: '/gold-coast/airport-transfers' },
         ],
         'South Australia': [
-            { name: 'Adelaide', link: '/locations/adelaide/airport-transfers' },
-            { name: 'Barossa Valley', link: '/locations/barossa-valley' },
-        ],
-        'Western Australia': [
-            { name: 'Perth', link: '/locations/perth/airport-transfers' },
-            { name: 'Fremantle', link: '#' },
-            { name: 'Broome', link: '#' },
+            { name: 'Adelaide', link: '/adelaide/airport-transfers' },
         ],
         'Tasmania': [
-            { name: 'Hobart', link: '/locations/hobart/hobart-airport-transfers' },
-            { name: 'Launceston', link: '/locations/launceston/launceston-airport-transfers' },
+            { name: 'Hobart', link: '/hobart/airport-transfers' },
         ],
-        'Northern Territory': [
-            { name: 'Darwin', link: '/locations/darwin/airport-transfers' },
-            { name: 'Alice Springs', link: '#' },
-        ],
-        'Australian Capital Territory': [
-            { name: 'Canberra', link: '/locations/canberra/airport-transfers' },
+        'Western Australia': [
+            { name: 'Perth', link: '/perth/airport-transfers' },
         ]
     };
 

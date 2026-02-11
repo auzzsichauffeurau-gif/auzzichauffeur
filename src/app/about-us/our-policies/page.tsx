@@ -6,14 +6,14 @@ import Link from "next/link";
 
 export default function OurPoliciesPage() {
     const policies = [
-        { label: "Cancellation Policy" },
-        { label: "Child Safety Policy" },
-        { label: "Confidentiality Policy" },
+        { label: "Cancellation Policy", href: "/about-us/our-policies/cancellation-policy" },
+        { label: "Child Safety Policy", href: "/about-us/our-policies/child-safety-policy" },
+        { label: "Confidentiality Policy", href: "/about-us/our-policies/confidentiality-policy" },
         { label: "Data Retention & Privacy Policy", href: "/about-us/our-policies/data-retention-privacy-policy" },
-        { label: "Environmental Policy" },
-        { label: "Fatigue Management Policy" },
-        { label: "Social Responsibility Policy" },
-        { label: "Standards & Conduct Policy" }
+        { label: "Environmental Policy", href: "/about-us/our-policies/environmental-policy" },
+        { label: "Fatigue Management Policy", href: "/about-us/our-policies/fatigue-management-policy" },
+        { label: "Social Responsibility Policy", href: "/about-us/our-policies/social-responsibility-policy" },
+        { label: "Standards & Conduct Policy", href: "/about-us/our-policies/standards-conduct-policy" }
     ];
 
     return (
@@ -37,7 +37,7 @@ export default function OurPoliciesPage() {
 
                     {/* Left Column */}
                     <div className={styles.leftColumn}>
-                        <h2 className={styles.pageTitle}>Hughes Company<br />Policies</h2>
+                        <h2 className={styles.pageTitle}>Auzzsi Company<br />Policies</h2>
                     </div>
 
                     {/* Right Column */}

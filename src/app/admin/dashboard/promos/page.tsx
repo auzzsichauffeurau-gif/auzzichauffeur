@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Tag, Plus, Edit, Trash2, X, Save, TrendingUp, Users, DollarSign, Calendar } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
+import { toast } from 'sonner';
 
 export default function PromosPage() {
     const [promoCodes, setPromoCodes] = useState<any[]>([]);
@@ -29,13 +30,21 @@ export default function PromosPage() {
 
     const fetchPromoCodes = async () => {
         setLoading(true);
+        // Simplified query to avoid relationship errors if tables aren't fully linked yet
         const { data, error } = await supabase
             .from('promo_codes')
-            .select('*, promo_code_usage(count)')
+            .select('*')
             .order('created_at', { ascending: false });
 
-        if (!error && data) {
-            setPromoCodes(data);
+        if (error) {
+            console.error('Error fetching promo codes:', error);
+            if (error.code === '42P01') {
+                toast.error("Table 'promo_codes' missing. Please ask admin to create it.");
+            } else {
+                toast.error('Failed to load promo codes');
+            }
+        } else {
+            setPromoCodes(data || []);
         }
         setLoading(false);
     };
@@ -57,10 +66,11 @@ export default function PromosPage() {
                 .eq('id', editingPromo.id);
 
             if (!error) {
+                toast.success('Promo code updated successfully');
                 fetchPromoCodes();
                 closeModal();
             } else {
-                alert('Error updating promo code: ' + error.message);
+                toast.error('Error updating promo code: ' + error.message);
             }
         } else {
             const { error } = await supabase
@@ -68,10 +78,11 @@ export default function PromosPage() {
                 .insert([promoData]);
 
             if (!error) {
+                toast.success('Promo code created successfully');
                 fetchPromoCodes();
                 closeModal();
             } else {
-                alert('Error creating promo code: ' + error.message);
+                toast.error('Error creating promo code: ' + error.message);
             }
         }
     };
@@ -85,7 +96,10 @@ export default function PromosPage() {
             .eq('id', id);
 
         if (!error) {
+            toast.success('Promo code deleted');
             fetchPromoCodes();
+        } else {
+            toast.error('Failed to delete promo code: ' + error.message);
         }
     };
 
@@ -96,7 +110,10 @@ export default function PromosPage() {
             .eq('id', id);
 
         if (!error) {
+            toast.success(`Promo code ${!currentStatus ? 'activated' : 'deactivated'}`);
             fetchPromoCodes();
+        } else {
+            toast.error('Failed to update status');
         }
     };
 
@@ -109,8 +126,8 @@ export default function PromosPage() {
                 discount_type: promo.discount_type,
                 discount_value: promo.discount_value,
                 max_discount_amount: promo.max_discount_amount || 0,
-                valid_from: promo.valid_from,
-                valid_until: promo.valid_until || '',
+                valid_from: promo.valid_from ? promo.valid_from.split('T')[0] : '',
+                valid_until: promo.valid_until ? promo.valid_until.split('T')[0] : '',
                 is_active: promo.is_active,
                 max_uses: promo.max_uses,
                 max_uses_per_customer: promo.max_uses_per_customer,
