@@ -46,7 +46,7 @@ export default function Breadcrumbs({ city }: BreadcrumbsProps) {
                         {city}
                     </span>
                     <meta itemProp="position" content="3" />
-                    <link itemProp="item" href={`https://auzzsi.com.au/${citySlug}`} />
+                    <link itemProp="item" href={`https://www.auzziechauffeur.com.au/${citySlug}`} />
                 </li>
             </ol>
         </nav>

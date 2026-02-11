@@ -619,7 +619,7 @@ export default function EmailTemplatesPage() {
                     
                     <p>
                         123 Luxury Lane, Sydney NSW 2000<br>
-                        Contact: support@auzziechauffeur.com.au | +61 400 000 000
+                        Contact: info@auzziechauffeur.com.au | +61 400 000 000
                     </p>
 
                     <div class="copyright">

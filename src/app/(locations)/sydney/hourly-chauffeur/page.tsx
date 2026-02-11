@@ -167,7 +167,7 @@ export default function SydneyHourlyPage() {
                     subtitle={<>
                         Get a quote for an hourly booking or a custom tour itinerary.
                         <br />
-                        <span style={{ fontWeight: 'bold', color: '#1e3a8a' }}>info@auzziechauffeur.com.au</span> or <span style={{ fontWeight: 'bold', color: '#1e3a8a' }}>info@auzziechauffeur.com.au</span>
+                        <span style={{ fontWeight: 'bold', color: '#1e3a8a' }}>info@auzziechauffeur.com.au</span>
                     </>}
                     dateLabel="Duration Needed"
                     emailLabel="Email Address*"

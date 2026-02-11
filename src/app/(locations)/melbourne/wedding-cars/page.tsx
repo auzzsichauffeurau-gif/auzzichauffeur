@@ -166,7 +166,7 @@ export default function MelbourneWeddingPage() {
                     subtitle={<>
                         Tell us about your special day and we will provide a custom package.
                         <br />
-                        <span style={{ fontWeight: 'bold', color: '#1e3a8a' }}>info@auzziechauffeur.com.au</span> or <span style={{ fontWeight: 'bold', color: '#1e3a8a' }}>events@auzzsi.com.au</span>
+                        <span style={{ fontWeight: 'bold', color: '#1e3a8a' }}>info@auzziechauffeur.com.au</span>
                     </>}
                     detailsLabel="Wedding Details (Venues, Times, Car Preference)"
                 />

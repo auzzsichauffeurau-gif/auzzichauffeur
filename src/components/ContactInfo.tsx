@@ -22,13 +22,13 @@ export default function ContactInfo({ city }: ContactInfoProps) {
                 </a>
 
                 {/* Email */}
-                <a href="mailto:info@auzzsi.com.au" className={styles.contactCard}>
+                <a href="mailto:info@auzziechauffeur.com.au" className={styles.contactCard}>
                     <div className={`${styles.iconCircle} ${styles.iconBlue}`}>
                         <Mail color="white" size={24} />
                     </div>
                     <h4 style={{ fontWeight: 'bold', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Email</h4>
                     <p style={{ color: '#4b5563', fontSize: '0.9rem', wordBreak: 'break-all', textAlign: 'center' }}>
-                        info@auzzsi.com.au
+                        info@auzziechauffeur.com.au
                     </p>
                     <p style={{ fontSize: '0.8rem', color: '#6b7280', marginTop: '0.5rem' }}>Quick Response</p>
                 </a>

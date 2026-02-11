@@ -168,8 +168,8 @@ export default function ContactUsContent() {
                             </div>
                             <p className={styles.infoText}>
                                 For all accounting & billing enquiries, please email us at{" "}
-                                <a href="mailto:accounts@auzziechauffeur.com.au" className={styles.link}>
-                                    accounts@auzziechauffeur.com.au
+                                <a href="mailto:info@auzziechauffeur.com.au" className={styles.link}>
+                                    info@auzziechauffeur.com.au
                                 </a>
                             </p>
                         </div>

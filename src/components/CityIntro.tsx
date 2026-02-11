@@ -20,8 +20,8 @@ export default function CityIntro({ city }: CityIntroProps) {
                     `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(city)}`,
                     {
                         headers: {
-                            'User-Agent': 'AuzzsiChauffeurWeb/1.0 (info@auzzsi.com.au)',
-                            'Api-User-Agent': 'AuzzsiChauffeurWeb/1.0 (info@auzzsi.com.au)'
+                            'User-Agent': 'AuzzsiChauffeurWeb/1.0 (info@auzziechauffeur.com.au)',
+                            'Api-User-Agent': 'AuzzsiChauffeurWeb/1.0 (info@auzziechauffeur.com.au)'
                         }
                     }
                 );

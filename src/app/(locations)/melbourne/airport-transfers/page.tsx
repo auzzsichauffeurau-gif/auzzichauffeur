@@ -252,7 +252,7 @@ export default function MelbourneAirportPage() {
                     <p className={styles.helpSubtitle}>
                         Call our Customer care team on our 24/7 number or email us.
                         <br />
-                        <span style={{ fontWeight: 'bold', color: '#1e3a8a' }}>info@auzziechauffeur.com.au</span> or <span style={{ fontWeight: 'bold', color: '#1e3a8a' }}>res@auzzsi.com.au</span>
+                        <span style={{ fontWeight: 'bold', color: '#1e3a8a' }}>info@auzziechauffeur.com.au</span>
                     </p>
 
                     <form className={styles.contactGrid} onSubmit={(e) => e.preventDefault()}>

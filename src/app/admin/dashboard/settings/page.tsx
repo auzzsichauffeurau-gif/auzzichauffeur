@@ -9,7 +9,7 @@ export default function SettingsPage() {
     const [saving, setSaving] = useState(false);
     const [profileData, setProfileData] = useState({
         name: 'Admin User',
-        email: 'admin@auzzsi.com',
+        email: 'info@auzziechauffeur.com.au',
         phone: '+61 400 000 000',
         company: 'Auzzsi Chauffeur Service'
     });

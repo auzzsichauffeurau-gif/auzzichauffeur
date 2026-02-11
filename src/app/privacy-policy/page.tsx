@@ -49,7 +49,7 @@ export default function PrivacyPolicy() {
                     <br />
                     <strong>Email:</strong> info@auzziechauffeur.com.au
                     <br />
-                    <strong>Phone:</strong> info@auzziechauffeur.com.au
+                    <strong>Phone:</strong> 1300 465 374
                 </p>
             </div>
             <Footer />

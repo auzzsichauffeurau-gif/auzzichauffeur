@@ -168,7 +168,7 @@ export default function AdelaideCorporatePage() {
                     subtitle={<>
                         Contact our Adelaide corporate team to discuss rates and set up your account.
                         <br />
-                        <span style={{ fontWeight: 'bold', color: '#1e3a8a' }}>info@auzziechauffeur.com.au</span> or <span style={{ fontWeight: 'bold', color: '#1e3a8a' }}>corporate@auzzsi.com.au</span>
+                        <span style={{ fontWeight: 'bold', color: '#1e3a8a' }}>info@auzziechauffeur.com.au</span>
                     </>}
                     dateLabel="Company Name*"
                     emailLabel="Work Email*"
