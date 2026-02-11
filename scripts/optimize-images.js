@@ -4,101 +4,91 @@ const path = require('path');
 
 const publicDir = path.join(__dirname, '..', 'public');
 
-// Define optimization rules for different image types
+// Define optimization rules for different image types - VERY AGGRESSIVE
 const optimizations = [
-    // Logos - resize to reasonable dimensions
+    // Logos - smaller and more compressed
     {
         input: 'logo/header-logo.png',
         outputs: [
-            { file: 'logo/header-logo.webp', width: 400, format: 'webp', quality: 85 },
-            { file: 'logo/header-logo-optimized.png', width: 400, format: 'png', quality: 85 }
+            { file: 'logo/header-logo.webp', width: 300, format: 'webp', quality: 75 },
         ]
     },
     {
         input: 'logo/footer-logo.png',
         outputs: [
-            { file: 'logo/footer-logo.webp', width: 400, format: 'webp', quality: 85 },
-            { file: 'logo/footer-logo-optimized.png', width: 400, format: 'png', quality: 85 }
+            { file: 'logo/footer-logo.webp', width: 300, format: 'webp', quality: 75 },
         ]
     },
-    // Accreditation badges - very small
+    // Accreditation badges - tiny
     {
         input: 'logo-accreditation-classic.png',
         outputs: [
-            { file: 'logo-accreditation-classic.webp', width: 100, format: 'webp', quality: 85 },
-            { file: 'logo-accreditation-classic-optimized.png', width: 100, format: 'png', quality: 85 }
+            { file: 'logo-accreditation-classic.webp', width: 80, format: 'webp', quality: 70 },
         ]
     },
     {
         input: 'logo-accreditation-black-gold.png',
         outputs: [
-            { file: 'logo-accreditation-black-gold.webp', width: 100, format: 'webp', quality: 85 },
-            { file: 'logo-accreditation-black-gold-optimized.png', width: 100, format: 'png', quality: 85 }
+            { file: 'logo-accreditation-black-gold.webp', width: 80, format: 'webp', quality: 70 },
         ]
     },
     {
         input: 'logo-accreditation-clean.png',
         outputs: [
-            { file: 'logo-accreditation-clean.webp', width: 100, format: 'webp', quality: 85 },
-            { file: 'logo-accreditation-clean-optimized.png', width: 100, format: 'png', quality: 85 }
+            { file: 'logo-accreditation-clean.webp', width: 80, format: 'webp', quality: 70 },
         ]
     },
     {
         input: 'logo-accreditation-modern.png',
         outputs: [
-            { file: 'logo-accreditation-modern.webp', width: 100, format: 'webp', quality: 85 },
-            { file: 'logo-accreditation-modern-optimized.png', width: 100, format: 'png', quality: 85 }
+            { file: 'logo-accreditation-modern.webp', width: 80, format: 'webp', quality: 70 },
         ]
     },
-    // Hero background
+    // Hero background - much smaller and compressed
     {
         input: 'hero-bg.png',
         outputs: [
-            { file: 'hero-bg.webp', width: 1920, format: 'webp', quality: 80 },
-            { file: 'hero-bg-optimized.png', width: 1920, format: 'png', quality: 80 }
+            { file: 'hero-bg.webp', width: 1600, format: 'webp', quality: 65 },
         ]
     },
-    // Map
+    // Map - smaller
     {
         input: 'au-map.png',
         outputs: [
-            { file: 'au-map.webp', width: 1200, format: 'webp', quality: 85 },
-            { file: 'au-map-optimized.png', width: 1200, format: 'png', quality: 85 }
+            { file: 'au-map.webp', width: 800, format: 'webp', quality: 75 },
         ]
     },
-    // Tile images
+    // Tile images - smaller and more compressed
     {
         input: 'tile-driver.png',
         outputs: [
-            { file: 'tile-driver.webp', width: 800, format: 'webp', quality: 85 },
-            { file: 'tile-driver-optimized.png', width: 800, format: 'png', quality: 85 }
+            { file: 'tile-driver.webp', width: 600, format: 'webp', quality: 70 },
         ]
     },
     {
         input: 'tile-meeting-1.png',
         outputs: [
-            { file: 'tile-meeting-1.webp', width: 800, format: 'webp', quality: 85 },
-            { file: 'tile-meeting-1-optimized.png', width: 800, format: 'png', quality: 85 }
+            { file: 'tile-meeting-1.webp', width: 600, format: 'webp', quality: 70 },
         ]
     },
     {
         input: 'tile-woman-phone.png',
         outputs: [
-            { file: 'tile-woman-phone.webp', width: 800, format: 'webp', quality: 85 },
-            { file: 'tile-woman-phone-optimized.png', width: 800, format: 'png', quality: 85 }
+            { file: 'tile-woman-phone.webp', width: 600, format: 'webp', quality: 70 },
         ]
     },
     {
         input: 'tile-audi.png',
         outputs: [
-            { file: 'tile-audi.webp', width: 800, format: 'webp', quality: 85 },
-            { file: 'tile-audi-optimized.png', width: 800, format: 'png', quality: 85 }
+            { file: 'tile-audi.webp', width: 600, format: 'webp', quality: 70 },
         ]
     }
 ];
 
 async function optimizeImages() {
-    console.log('🖼️  Starting image optimization...\n');
+    console.log('🖼️  Starting AGGRESSIVE image optimization...\n');
+    let totalOriginal = 0;
+    let totalOptimized = 0;
 
     for (const opt of optimizations) {
         const inputPath = path.join(publicDir, opt.input);
@@ -109,6 +99,7 @@ async function optimizeImages() {
         }
 
         const inputStats = fs.statSync(inputPath);
+        totalOriginal += inputStats.size;
         console.log(`📁 Processing: ${opt.input} (${(inputStats.size / 1024).toFixed(2)} KB)`);
 
         for (const output of opt.outputs) {
@@ -127,14 +118,22 @@ async function optimizeImages() {
                 });
 
                 if (output.format === 'webp') {
-                    pipeline = pipeline.webp({ quality: output.quality });
+                    pipeline = pipeline.webp({
+                        quality: output.quality,
+                        effort: 6 // Maximum compression effort
+                    });
                 } else if (output.format === 'png') {
-                    pipeline = pipeline.png({ quality: output.quality, compressionLevel: 9 });
+                    pipeline = pipeline.png({
+                        quality: output.quality,
+                        compressionLevel: 9,
+                        effort: 10
+                    });
                 }
 
                 await pipeline.toFile(outputPath);
 
                 const outputStats = fs.statSync(outputPath);
+                totalOptimized += outputStats.size;
                 const savings = ((1 - outputStats.size / inputStats.size) * 100).toFixed(1);
                 console.log(`  ✅ ${output.file} (${(outputStats.size / 1024).toFixed(2)} KB) - ${savings}% smaller`);
             } catch (error) {
@@ -145,6 +144,9 @@ async function optimizeImages() {
     }
 
     console.log('✨ Image optimization complete!');
+    console.log(`📊 Total original: ${(totalOriginal / 1024 / 1024).toFixed(2)} MB`);
+    console.log(`📊 Total optimized: ${(totalOptimized / 1024).toFixed(2)} KB`);
+    console.log(`📊 Total savings: ${((1 - totalOptimized / totalOriginal) * 100).toFixed(1)}%`);
 }
 
 optimizeImages().catch(console.error);

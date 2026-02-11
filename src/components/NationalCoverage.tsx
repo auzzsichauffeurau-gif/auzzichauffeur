@@ -46,7 +46,7 @@ export default function NationalCoverage() {
         <section className={styles.section}>
             {/* Background Map Image */}
             <div className={styles.mapBackground}>
-                <Image src="/au-map.png" alt="Auzzie Chauffeur National Coverage Map Australia" className={styles.mapImage} width={1200} height={800} />
+                <Image src="/au-map.webp" alt="Auzzie Chauffeur National Coverage Map Australia" className={styles.mapImage} width={800} height={800} />
                 {/* Decorative dots loosely positioned for visual effect */}
                 <div className={styles.mapDot} style={{ top: '65%', right: '25%' }}></div> {/* Sydneyish */}
                 <div className={styles.mapDot} style={{ top: '70%', right: '30%' }}></div> {/* Melbourneish */}

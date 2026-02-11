@@ -40,11 +40,11 @@ export default function Footer() {
                     <div className={`${styles.column} ${styles.logoColumn}`}>
                         <div className={styles.brandWrapper}>
                             <Image
-                                src="/logo/footer-logo.png"
+                                src="/logo/footer-logo.webp"
                                 alt="Auzzie Chauffeur"
-                                width={200}
-                                height={119}
-                                style={{ height: '119px', width: 'auto', marginBottom: '1rem' }}
+                                width={300}
+                                height={178}
+                                style={{ height: 'auto', width: '200px', marginBottom: '1rem' }}
                             />
                         </div>
 
@@ -82,10 +82,10 @@ export default function Footer() {
                     {/* Column 4: Awards & Socials */}
                     <div className={styles.column}>
                         <div className={styles.awardsGrid}>
-                            <Image src="/logo-accreditation-classic.png" alt="Accredited Chauffeur" className={styles.awardImage} width={80} height={80} />
-                            <Image src="/logo-accreditation-black-gold.png" alt="5 Star Service" className={styles.awardImage} width={80} height={80} />
-                            <Image src="/logo-accreditation-clean.png" alt="Verified Partner" className={styles.awardImage} width={80} height={80} />
-                            <Image src="/logo-accreditation-modern.png" alt="Accredited" className={styles.awardImage} width={80} height={80} />
+                            <Image src="/logo-accreditation-classic.webp" alt="Accredited Chauffeur" className={styles.awardImage} width={80} height={80} />
+                            <Image src="/logo-accreditation-black-gold.webp" alt="5 Star Service" className={styles.awardImage} width={80} height={80} />
+                            <Image src="/logo-accreditation-clean.webp" alt="Verified Partner" className={styles.awardImage} width={80} height={80} />
+                            <Image src="/logo-accreditation-modern.webp" alt="Accredited" className={styles.awardImage} width={80} height={80} />
                         </div>
 
                         <h4 className={styles.columnTitle} style={{ marginTop: '1rem' }}>SECURE PAYMENTS</h4>

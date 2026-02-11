@@ -3,7 +3,7 @@
     width: 100%;
     /* Use min-height to ensure it covers viewport but expands for content */
     min-height: 100vh;
-    background-image: url('/hero-bg.png');
+    background-image: url('/hero-bg.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

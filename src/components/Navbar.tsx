@@ -97,13 +97,13 @@ export default function Navbar() {
                 {/* Logo Section */}
                 <Link href="/" className={styles.brandWrapper} onClick={() => setMobileMenuOpen(false)}>
                     <Image
-                        src="/logo/header-logo.png"
+                        src="/logo/header-logo.webp"
                         alt="Auzzie Chauffeur"
                         className={styles.logoImage}
-                        width={200}
-                        height={119}
+                        width={300}
+                        height={178}
                         priority
-                        style={{ height: '119px', width: 'auto' }}
+                        style={{ height: 'auto', width: '200px' }}
                     />
                 </Link>
 
