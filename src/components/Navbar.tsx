@@ -2,6 +2,7 @@
 import styles from './Navbar.module.css';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 export default function Navbar() {
@@ -95,12 +96,13 @@ export default function Navbar() {
             <header className={styles.header}>
                 {/* Logo Section */}
                 <Link href="/" className={styles.brandWrapper} onClick={() => setMobileMenuOpen(false)}>
-                    <img
+                    <Image
                         src="/logo/header-logo.png"
                         alt="Auzzie Chauffeur"
                         className={styles.logoImage}
                         width={200}
                         height={119}
+                        priority
                         style={{ height: '119px', width: 'auto' }}
                     />
                 </Link>

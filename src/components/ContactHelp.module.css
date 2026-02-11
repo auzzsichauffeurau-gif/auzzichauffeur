@@ -42,8 +42,8 @@
 }
 
 .link {
-    color: #c5a467;
-    text-decoration: none;
+    color: #1e3a8a;
+    text-decoration: underline;
 }
 
 .contactRow {
@@ -71,7 +71,7 @@
 
 .itemLabel {
     font-size: 0.8rem;
-    color: #9ca3af;
+    color: #6b7280;
     margin-bottom: 0.2rem;
     display: block;
 }
@@ -85,8 +85,8 @@
 }
 
 .contactLink {
-    color: #c5a467;
-    text-decoration: none;
+    color: #1e3a8a;
+    text-decoration: underline;
 }
 
 .formGrid {

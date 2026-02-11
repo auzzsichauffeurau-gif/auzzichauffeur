@@ -114,7 +114,7 @@
 .stepNumber {
     width: 60px;
     height: 60px;
-    background: #c5a467;
+    background: #1e3a8a;
     color: white;
     font-size: 1.5rem;
     font-weight: 800;
@@ -170,7 +170,7 @@
 }
 
 .ctaBtn {
-    background: #c5a467;
+    background: #1e3a8a;
     color: white;
     padding: 1rem 2.5rem;
     border-radius: 50px;
@@ -183,7 +183,7 @@
 }
 
 .ctaBtn:hover {
-    background: #bfa15f;
+    background: #1e40af;
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }

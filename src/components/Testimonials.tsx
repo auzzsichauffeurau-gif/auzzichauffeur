@@ -77,6 +77,7 @@ export default function Testimonials() {
                         <button
                             key={index}
                             onClick={() => setActiveIndex(index)}
+                            aria-label={`Go to testimonial ${index + 1}`}
                             style={{
                                 width: '12px',
                                 height: '12px',

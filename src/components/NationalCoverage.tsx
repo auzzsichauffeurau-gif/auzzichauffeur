@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import styles from './NationalCoverage.module.css';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface City {
     name: string;
@@ -45,7 +46,7 @@ export default function NationalCoverage() {
         <section className={styles.section}>
             {/* Background Map Image */}
             <div className={styles.mapBackground}>
-                <img src="/au-map.png" alt="Auzzie Chauffeur National Coverage Map Australia" className={styles.mapImage} />
+                <Image src="/au-map.png" alt="Auzzie Chauffeur National Coverage Map Australia" className={styles.mapImage} width={1200} height={800} />
                 {/* Decorative dots loosely positioned for visual effect */}
                 <div className={styles.mapDot} style={{ top: '65%', right: '25%' }}></div> {/* Sydneyish */}
                 <div className={styles.mapDot} style={{ top: '70%', right: '30%' }}></div> {/* Melbourneish */}

@@ -1,6 +1,6 @@
 import styles from './Footer.module.css';
 import { Linkedin, Facebook, Instagram, Play, Apple, MessageSquare, CheckCircle, Leaf, Award, Anchor } from 'lucide-react';
-
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -39,9 +39,11 @@ export default function Footer() {
                     {/* Column 1: Logo & Vision */}
                     <div className={`${styles.column} ${styles.logoColumn}`}>
                         <div className={styles.brandWrapper}>
-                            <img
+                            <Image
                                 src="/logo/footer-logo.png"
                                 alt="Auzzie Chauffeur"
+                                width={200}
+                                height={119}
                                 style={{ height: '119px', width: 'auto', marginBottom: '1rem' }}
                             />
                         </div>
@@ -80,10 +82,10 @@ export default function Footer() {
                     {/* Column 4: Awards & Socials */}
                     <div className={styles.column}>
                         <div className={styles.awardsGrid}>
-                            <img src="/logo-accreditation-classic.png" alt="Accredited Chauffeur" className={styles.awardImage} />
-                            <img src="/logo-accreditation-black-gold.png" alt="5 Star Service" className={styles.awardImage} />
-                            <img src="/logo-accreditation-clean.png" alt="Verified Partner" className={styles.awardImage} />
-                            <img src="/logo-accreditation-modern.png" alt="Accredited" className={styles.awardImage} />
+                            <Image src="/logo-accreditation-classic.png" alt="Accredited Chauffeur" className={styles.awardImage} width={80} height={80} />
+                            <Image src="/logo-accreditation-black-gold.png" alt="5 Star Service" className={styles.awardImage} width={80} height={80} />
+                            <Image src="/logo-accreditation-clean.png" alt="Verified Partner" className={styles.awardImage} width={80} height={80} />
+                            <Image src="/logo-accreditation-modern.png" alt="Accredited" className={styles.awardImage} width={80} height={80} />
                         </div>
 
                         <h4 className={styles.columnTitle} style={{ marginTop: '1rem' }}>SECURE PAYMENTS</h4>

@@ -1,17 +1,20 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ServiceFeatures from "@/components/ServiceFeatures";
-import NationalCoverage from "@/components/NationalCoverage";
-import ImageTiles from "@/components/ImageTiles";
-import TrustedBy from "@/components/TrustedBy";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
-import ContactHelp from "@/components/ContactHelp";
-import Footer from "@/components/Footer";
+import dynamic from 'next/dynamic';
 import styles from "./page.module.css";
 import Link from "next/link";
 import { Calculator, Plane, UserCheck, Shield, Clock, CheckCircle, XCircle, MapPin, Star, Building, Users } from "lucide-react";
 import type { Metadata } from 'next';
+
+// Lazy load below-the-fold components
+const NationalCoverage = dynamic(() => import("@/components/NationalCoverage"), { ssr: true });
+const ImageTiles = dynamic(() => import("@/components/ImageTiles"), { ssr: true });
+const TrustedBy = dynamic(() => import("@/components/TrustedBy"), { ssr: true });
+const Testimonials = dynamic(() => import("@/components/Testimonials"), { ssr: true });
+const FAQ = dynamic(() => import("@/components/FAQ"), { ssr: true });
+const ContactHelp = dynamic(() => import("@/components/ContactHelp"), { ssr: true });
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: true });
 
 export const metadata: Metadata = {
   title: "Top-Rated Chauffeur Service Australia | Auzzie Chauffeur",

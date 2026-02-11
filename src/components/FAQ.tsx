@@ -42,6 +42,7 @@ export default function FAQ() {
                                 className={styles.questionButton}
                                 onClick={() => toggleFAQ(index)}
                                 aria-expanded={openIndex === index}
+                                aria-label={`Toggle FAQ: ${faq.question}`}
                             >
                                 <span className={styles.questionText}>{faq.question}</span>
                                 <Plus

@@ -71,31 +71,31 @@ export default function ContactHelp() {
                 ) : (
                     <form className={styles.formGrid} onSubmit={handleSubmit}>
                         <div className={styles.formGroup}>
-                            <label className={styles.label}>First Name *</label>
-                            <input type="text" className={styles.input} required />
+                            <label htmlFor="contact-first-name" className={styles.label}>First Name *</label>
+                            <input id="contact-first-name" name="firstName" type="text" className={styles.input} autoComplete="given-name" required />
                         </div>
                         <div className={styles.formGroup}>
-                            <label className={styles.label}>Last Name *</label>
-                            <input type="text" className={styles.input} required />
+                            <label htmlFor="contact-last-name" className={styles.label}>Last Name *</label>
+                            <input id="contact-last-name" name="lastName" type="text" className={styles.input} autoComplete="family-name" required />
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label className={styles.label}>Contact Number *</label>
-                            <input type="text" className={styles.input} required />
+                            <label htmlFor="contact-phone" className={styles.label}>Contact Number *</label>
+                            <input id="contact-phone" name="phone" type="tel" className={styles.input} autoComplete="tel" required />
                         </div>
                         <div className={styles.formGroup}>
-                            <label className={styles.label}>Email Address *</label>
-                            <input type="email" className={styles.input} required />
-                        </div>
-
-                        <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-                            <label className={styles.label}>Subject</label>
-                            <input type="text" className={styles.input} />
+                            <label htmlFor="contact-email" className={styles.label}>Email Address *</label>
+                            <input id="contact-email" name="email" type="email" className={styles.input} autoComplete="email" required />
                         </div>
 
                         <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-                            <label className={styles.label}>Message</label>
-                            <textarea className={styles.textarea} required></textarea>
+                            <label htmlFor="contact-subject" className={styles.label}>Subject</label>
+                            <input id="contact-subject" name="subject" type="text" className={styles.input} />
+                        </div>
+
+                        <div className={`${styles.formGroup} ${styles.fullWidth}`}>
+                            <label htmlFor="contact-message" className={styles.label}>Message</label>
+                            <textarea id="contact-message" name="message" className={styles.textarea} required></textarea>
                         </div>
 
                         <button

@@ -43,38 +43,46 @@ export default function BookingWidget() {
 
             <form className={styles.formGrid} onSubmit={(e) => e.preventDefault()}>
                 <div className={styles.inputGroup}>
-                    <label className={styles.label}>Pick Up Location</label>
+                    <label htmlFor="pickup-location" className={styles.label}>Pick Up Location</label>
                     <div className={styles.inputWrapper}>
                         <MapPin size={18} className={styles.icon} />
                         <input
+                            id="pickup-location"
+                            name="pickup"
                             type="text"
                             placeholder="Enter airport, hotel or address"
                             className={styles.input}
                             value={pickup}
                             onChange={(e) => setPickup(e.target.value)}
+                            autoComplete="street-address"
                         />
                     </div>
                 </div>
 
                 <div className={styles.inputGroup}>
-                    <label className={styles.label}>Drop Off Location</label>
+                    <label htmlFor="dropoff-location" className={styles.label}>Drop Off Location</label>
                     <div className={styles.inputWrapper}>
                         <MapPin size={18} className={styles.icon} />
                         <input
+                            id="dropoff-location"
+                            name="dropoff"
                             type="text"
                             placeholder="Enter destination"
                             className={styles.input}
                             value={dropoff}
                             onChange={(e) => setDropoff(e.target.value)}
+                            autoComplete="street-address"
                         />
                     </div>
                 </div>
 
                 <div className={styles.inputGroup}>
-                    <label className={styles.label}>Date</label>
+                    <label htmlFor="booking-date" className={styles.label}>Date</label>
                     <div className={styles.inputWrapper}>
                         <Calendar size={18} className={styles.icon} />
                         <input
+                            id="booking-date"
+                            name="date"
                             type="date"
                             className={styles.input}
                             style={{ paddingRight: '1rem' }}
@@ -85,10 +93,12 @@ export default function BookingWidget() {
                 </div>
 
                 <div className={styles.inputGroup}>
-                    <label className={styles.label}>Time</label>
+                    <label htmlFor="booking-time" className={styles.label}>Time</label>
                     <div className={styles.inputWrapper}>
                         <Clock size={18} className={styles.icon} />
                         <input
+                            id="booking-time"
+                            name="time"
                             type="time"
                             className={styles.input}
                             style={{ paddingRight: '1rem' }}

@@ -30,9 +30,9 @@
 }
 
 .activeTab {
-    color: #c5a467;
-    /* Gold matching brand */
-    border-bottom-color: #c5a467;
+    color: #1e3a8a;
+    /* Dark blue for better contrast */
+    border-bottom-color: #1e3a8a;
 }
 
 .formGrid {
@@ -89,7 +89,7 @@
 }
 
 .submitBtn {
-    background-color: #c5a467;
+    background-color: #1e3a8a;
     color: white;
     border: none;
     padding: 0 1.5rem;
@@ -106,7 +106,7 @@
 }
 
 .submitBtn:hover {
-    background-color: #b09156;
+    background-color: #1e40af;
 }
 
 @media (max-width: 1024px) {

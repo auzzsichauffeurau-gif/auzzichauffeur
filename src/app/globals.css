@@ -1,8 +1,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-main: "UberMoveText", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-serif: "UberMove", "UberMoveText", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: Georgia, "Times New Roman", Times, serif;
   --gold-primary: #c5a467;
   /* Updated to match Hughes Gold */
   --gold-hover: #b09156;
