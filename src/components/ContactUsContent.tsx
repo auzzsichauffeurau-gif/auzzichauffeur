@@ -312,7 +312,7 @@ export default function ContactUsContent() {
                                 <MapPin size={24} />
                             </div>
                             <p className={styles.infoText}>
-                                <strong>Tullamarine, VIC 3043, Melbourne, AUSTRALIA</strong>
+                                <strong>Sydney, NSW, Australia</strong>
                                 <br />
                                 <br />
                                 Auzzsi Chauffeur is Australia's only truly national chauffeur
@@ -324,7 +324,7 @@ export default function ContactUsContent() {
 
                         <div style={{ width: '100%', height: '400px', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.1)', marginTop: '1rem' }}>
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50446.89374903707!2d144.8166!3d-37.6964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65a115c7d0d89%3A0x5045675218cdc90!2sTullamarine%20VIC%203043!5e0!3m2!1sen!2sau!4v1647833075678!5m2!1sen!2sau"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106491.17034837334!2d150.97341!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129838f39a743f%3A0x3017d681e0bbe5e0!2sSydney%20NSW!5e0!3m2!1sen!2sau!4v1647833075678!5m2!1sen!2sau"
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}

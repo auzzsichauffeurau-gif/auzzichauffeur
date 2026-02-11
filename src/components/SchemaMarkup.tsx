@@ -10,10 +10,8 @@ export default function SchemaMarkup() {
         "description": "Australia's leading national chauffeur service providing premium airport transfers and corporate travel options.",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Tullamarine",
-            "addressLocality": "Melbourne",
-            "addressRegion": "VIC",
-            "postalCode": "3043",
+            "addressLocality": "Sydney",
+            "addressRegion": "NSW",
             "addressCountry": "AU"
         },
         "sameAs": [
@@ -31,10 +29,8 @@ export default function SchemaMarkup() {
         "priceRange": "$$",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Tullamarine",
-            "addressLocality": "Melbourne",
-            "addressRegion": "VIC",
-            "postalCode": "3043",
+            "addressLocality": "Sydney",
+            "addressRegion": "NSW",
             "addressCountry": "AU"
         },
         "openingHoursSpecification": {
