@@ -8,6 +8,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "Our History | Auzzie Chauffeur | 20 Years of Excellence",
     description: "Learn about the history of Auzzie Chauffeur. Since 2004, we have provided premium chauffeur services across Australia with a focus on family values.",
+    alternates: {
+        canonical: '/about-us/our-history',
+    },
 };
 
 export default function OurHistoryPage() {

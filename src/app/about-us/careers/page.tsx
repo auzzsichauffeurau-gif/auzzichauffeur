@@ -8,6 +8,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "Chauffeur Careers Australia | Auzzie Chauffeur | Join Our Team",
     description: "Looking for chauffeur jobs in Australia? Join Auzzie Chauffeur as a staff driver or contractor. Drive luxury vehicles and provide premium service.",
+    alternates: {
+        canonical: '/about-us/careers',
+    },
 };
 import { ChevronRight } from "lucide-react";
 

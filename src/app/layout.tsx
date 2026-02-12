@@ -5,9 +5,6 @@ import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://auzziechauffeur.com.au'),
-  alternates: {
-    canonical: '/',
-  },
   title: {
     default: "Airport Transfers & Chauffeur Service Australia | Auzzie Chauffeur",
     template: "%s | Auzzie Chauffeur"
@@ -52,8 +49,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
 
 };

@@ -15,6 +15,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "Corporate Chauffeur Service | Auzzie Chauffeur | Get Corporate Quote",
     description: "Reliable executive transfers for business meetings, events & airport travel. Streamlined billing & priority booking. Open a corporate account.",
+    alternates: {
+        canonical: '/services/corporate-transfers',
+    },
 };
 
 export default function CorporateServicesPage() {

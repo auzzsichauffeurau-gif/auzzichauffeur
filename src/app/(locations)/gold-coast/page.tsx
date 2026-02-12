@@ -17,6 +17,9 @@ import LocationTestimonials from "@/components/LocationTestimonials";
 export const metadata: Metadata = {
     title: "Chauffeur Service Gold Coast | Auzzie Chauffeur | Luxury Transfers",
     description: "Book premium chauffeur service in Gold Coast. Luxury commercial transfers to OOL & BNE, theme park rides, and corporate cars. 24/7 Service.",
+    alternates: {
+        canonical: '/gold-coast',
+    },
 };
 
 export default function GoldCoastHubPage() {

@@ -16,6 +16,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "Luxury Airport Transfers Australia",
     description: "Seamless airport transfers across Australia. Meet-and-greet service, 60 mins wait time, and tracked flights. Ideal for business travelers. Book online.",
+    alternates: {
+        canonical: '/services/airport-transfers',
+    },
 };
 
 export default function AirportServicesPage() {
