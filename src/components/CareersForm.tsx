@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import styles from "../careers.module.css";
+import styles from "@/app/careers/careers.module.css";
 import { supabase } from "@/lib/supabaseClient";
 import { Check } from "lucide-react";
 
