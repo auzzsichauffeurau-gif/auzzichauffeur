@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import { Toaster } from 'sonner';
+import Script from "next/script";
+
 
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"], variable: "--font-inter", display: "swap" });
 
@@ -59,7 +61,11 @@ export const metadata: Metadata = {
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
-
+  verification: {
+    other: {
+      "p:domain_verify": "0681ab915a81589b7e081c3cd643aec2",
+    },
+  },
 };
 
 export const viewport: Viewport = {
@@ -76,6 +82,35 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZR134D7476"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="1ot+hNd6eRdgMR0xl/TAZQ"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-ZR134D7476');
+          `}
+        </Script>
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "vg8m2aowfi");
+          `}
+        </Script>
+      </head>
       <body className="antialiased">
         {/* Layout Wrapper */}
         <SchemaMarkup />
