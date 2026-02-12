@@ -56,7 +56,7 @@ export default function NationalCoverage() {
 
             <div className={styles.container}>
                 <h2 className={styles.title}>
-                    Australia&apos;s Oldest And Only Nationwide<br />
+                    Australia&apos;s Nationwide<br />
                     Chauffeur Service
                 </h2>
 

@@ -70,7 +70,24 @@
     flex-wrap: wrap;
 }
 
+/* Mobile Buttons */
+/* CTA Buttons */
+.ctaButtons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.widgetWrapper {
+    margin-bottom: 3rem;
+}
+
 .btn {
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
     padding: 0.9rem 2rem;
     font-size: 0.9rem;
     font-weight: 700;
@@ -82,31 +99,26 @@
 }
 
 .btnPrimary {
-    background-color: #c5a467;
-    /* Goldish color */
-    border: 1px solid #c5a467;
+    background-color: #b08d4a;
+    /* Darker gold for better contrast */
+    border: 1px solid #b08d4a;
     color: white;
 }
 
 .btnPrimary:hover {
-    background-color: #b09156;
-    border-color: #b09156;
+    background-color: #9a7a3e;
+    /* Even darker on hover */
+    border-color: #9a7a3e;
 }
 
 .btnSecondary {
     background-color: transparent;
     border: 1.5px solid white;
-    /* Thicker border for visibility */
     color: white;
 }
 
 .btnSecondary:hover {
     background-color: rgba(255, 255, 255, 0.15);
-}
-
-.trackLink {
-    /* Removed or hidden if not used, but keeping just in case */
-    display: none;
 }
 
 .footer {
@@ -117,10 +129,8 @@
     flex-wrap: wrap;
     gap: 2rem;
     margin-top: auto;
-    /* Push to bottom if flex container */
     width: 100%;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
-    /* Separator line style */
     padding-top: 2rem;
 }
 
@@ -160,7 +170,6 @@
 }
 
 .appBtn {
-    /* Styles for image container */
     background: transparent;
     border: none;
     padding: 0;
@@ -177,14 +186,11 @@
 @media (max-width: 1024px) {
     .hero {
         padding-top: 2rem;
-        /* Reduce top spacer */
         height: auto;
-        /* Allow auto height */
     }
 
     .content {
         padding-top: 120px;
-        /* Ensure clearance for nav */
         padding-bottom: 4rem;
     }
 
@@ -202,30 +208,46 @@
 }
 
 @media (max-width: 768px) {
+    .ctaButtons {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        /* Remove constraint */
+        margin: 1.5rem 0 3rem;
+        /* Remove auto margin if width is 100% */
+        align-items: center;
+        /* Center items if they don't take full width, but they do */
+        gap: 1rem;
+    }
+
+    .widgetWrapper {
+        display: none;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
     .hero {
         min-height: 100vh;
         height: auto;
         padding-top: 0;
-        /* Remove spacer if handled by content padding */
         background-attachment: scroll;
-        /* distinct from fixed to avoid mobile paint issues sometimes */
     }
 
     .content {
-        padding: 8rem 1.5rem 4rem;
-        /* Increase top padding to ensure title is below nav */
+        padding: 5rem 1.5rem 3rem;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        /* Allow content to flow naturally from top */
-        height: auto;
+        justify-content: center;
+        height: 100%;
+        min-height: calc(100vh - 90px);
     }
 
     .mainText {
-        margin-top: 0;
-        /* Handled by content padding */
+        max-width: 100%;
         text-align: center;
-        /* Center text on mobile */
     }
 
     .title {
@@ -240,27 +262,12 @@
         margin-right: auto;
     }
 
-    .ctaButtons {
-        flex-direction: column;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .btn {
-        width: 100%;
-        text-align: center;
-        max-width: 300px;
-        /* Prevent overly wide buttons */
-    }
-
     .footer {
         flex-direction: column;
         align-items: center;
         gap: 2rem;
         margin-top: 2rem;
         border-top: none;
-        /* Cleaner look on mobile */
         padding-top: 0;
     }
 

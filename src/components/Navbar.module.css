@@ -1,27 +1,72 @@
-.header {
+.headerContainer {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 90px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.topBar {
+    background-color: #0f172a;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 3rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.topBarContent {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.topBarText {
+    color: #c5a467;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.topBarLink {
+    color: #cbd5e1;
+    font-size: 0.8rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+.topBarLink:hover {
+    color: #c5a467;
+}
+
+.header {
+    height: 80px;
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     /* Dark navy gradient */
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 3rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    /* Stronger shadow for dark header */
-    z-index: 1000;
-    transition: all 0.3s ease;
+    width: 100%;
 }
 
 .brandWrapper {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
+    /* Reduced gap */
     cursor: pointer;
     text-decoration: none;
+    flex-shrink: 0;
+    /* Prevent logo shrinking */
 }
 
 .logoCircle {
@@ -65,10 +110,17 @@
     opacity: 0.8;
 }
 
+.logoImage {
+    height: auto;
+    width: 200px;
+    max-width: 100%;
+}
+
 .nav {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0.8rem;
+    /* Reduced from 1.5rem */
 }
 
 /* Dropdown Container */
@@ -83,7 +135,8 @@
     color: #f1f5f9;
     /* Light grey/white text */
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    /* Reduced font size */
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -91,6 +144,8 @@
     cursor: pointer;
     transition: color 0.2s;
     height: 100%;
+    padding: 0 0.2rem;
+    /* Add minimal padding */
 }
 
 .navItem:hover {
@@ -111,7 +166,7 @@
 /* Dropdown Menu - Generic */
 .dropdown {
     position: absolute;
-    top: 90px;
+    top: 80px;
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
@@ -126,6 +181,20 @@
     z-index: 1001;
 }
 
+
+/* Show dropdown on hover of wrapper */
+.navItemWrapper:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    top: 80px;
+    /* Ensure it stays attached */
+}
+
+/* Spacer to push content down so it's not hidden behind fixed header */
+.spacer {
+    height: 116px;
+}
+
 /* Specific styling for Multi-column dropdowns */
 .multiColumnDropdown {
     min-width: 700px;
@@ -135,14 +204,6 @@
     padding: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
-}
-
-/* Show dropdown on hover of wrapper */
-.navItemWrapper:hover .dropdown {
-    opacity: 1;
-    visibility: visible;
-    top: 90px;
-    /* Ensure it stays attached */
 }
 
 .dropdownLink {
@@ -177,6 +238,25 @@
     background-color: #f3f4f6;
     border-left-color: #c5a467;
     border-radius: 4px;
+}
+
+.emailLink {
+    color: #e2e8f0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    margin-right: 1.5rem;
+    transition: color 0.2s;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.emailLink:hover {
+    color: #fbbf24;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .quoteBtn {
@@ -222,9 +302,29 @@
     background-color: rgba(251, 191, 36, 0.1);
 }
 
-/* Spacer to push content down so it's not hidden behind fixed header */
-.spacer {
-    height: 90px;
+/* Mobile Actions */
+.mobileActions {
+    display: none;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mobileHeaderCta {
+    display: block;
+    background-color: #b08d4a;
+    /* Darker gold for better contrast */
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.mobileHeaderCta:hover {
+    background-color: #9a7a3e;
+    /* Even darker on hover */
 }
 
 /* Mobile Hamburger */
@@ -233,8 +333,12 @@
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.8rem;
+    /* Larger hit area */
+    color: white;
+    /* Ensure visibility if background is dark */
 }
+
 
 /* Mobile Menu Overlay */
 .mobileMenu {
@@ -283,16 +387,24 @@
 }
 
 .mobileGroup {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.mobileGroupHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    cursor: pointer;
 }
 
 .mobileGroupTitle {
     font-weight: 700;
     font-size: 1.1rem;
     color: #1f2937;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0;
     font-family: var(--font-serif);
-    /* Match brand font optionally */
 }
 
 .mobileLinks {
@@ -301,6 +413,25 @@
     gap: 0.6rem;
     padding-left: 0.5rem;
     border-left: 2px solid #f3f4f6;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.3s ease;
+    opacity: 0;
+}
+
+.mobileLinksOpen {
+    max-height: 1200px;
+    /* Arbitrary large height */
+    padding-bottom: 1.5rem;
+    opacity: 1;
+}
+
+.mobileLinkActive {
+    text-decoration: none;
+    color: #1e3a8a;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.2rem 0;
 }
 
 .mobileLink {
@@ -309,21 +440,46 @@
     font-size: 0.95rem;
 }
 
+/* Mobile Book Btn */
 .mobileBookBtn {
     display: block;
     width: 100%;
     text-align: center;
-    background-color: #1f2937;
+    background-color: #c5a467;
+    /* Gold */
     color: white;
     text-decoration: none;
     padding: 1rem;
     border-radius: 4px;
     font-weight: 600;
     margin-top: 1rem;
+    margin-bottom: 1rem;
+    transition: background-color 0.2s;
+}
+
+.mobileBookBtn:hover {
+    background-color: #b09156;
+}
+
+.mobileQuoteBtn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+    color: #1f2937;
+    border: 1px solid #1f2937;
+    text-decoration: none;
+    padding: 0.9rem;
+    border-radius: 4px;
+    font-weight: 600;
     margin-bottom: 2rem;
 }
 
-@media (max-width: 1200px) {
+/* RESPONSIVE MEDIA QUERIES */
+
+@media (max-width: 1350px) {
+
+    /* Increased breakpoint to catch overflow on laptops */
     .nav {
         display: none;
     }
@@ -332,12 +488,94 @@
         display: block;
     }
 
+    .mobileActions {
+        display: flex;
+    }
+
     .header {
-        padding: 0 1.5rem;
+        padding: 0 1rem;
         height: 70px;
     }
 
+    .brandWrapper {
+        gap: 0.3rem;
+    }
+
+    .logoImage {
+        width: 160px;
+    }
+
+    .topBar {
+        padding: 0.5rem 1rem;
+        justify-content: center;
+    }
+
+    .topBarContent {
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .topBarText {
+        display: none;
+        /* Hide 'Available 24/7' on very small screens if needed, or keep */
+    }
+
     .spacer {
-        height: 70px;
+        height: 110px;
+        /* 70px header + ~40px topbar */
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        padding: 0 0.75rem;
+    }
+
+    .logoImage {
+        width: 140px;
+    }
+
+    .mobileHeaderCta {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .hamburger {
+        padding: 0.5rem;
+    }
+
+    .topBarContent {
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.25rem 0;
+    }
+
+    .topBarLink {
+        font-size: 0.7rem;
+    }
+
+    .spacer {
+        height: 140px;
+        /* Account for stacked top bar items */
+    }
+}
+
+@media (max-width: 400px) {
+    .header {
+        padding: 0 0.5rem;
+    }
+
+    .logoImage {
+        width: 120px;
+    }
+
+    .mobileHeaderCta {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.6rem;
+    }
+
+    .mobileActions {
+        gap: 0.5rem;
     }
 }

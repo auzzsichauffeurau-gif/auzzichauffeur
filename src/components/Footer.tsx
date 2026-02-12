@@ -86,12 +86,7 @@ export default function Footer() {
 
                     {/* Column 4: Awards & Socials */}
                     <div className={styles.column}>
-                        <div className={styles.awardsGrid}>
-                            <Image src="/logo-accreditation-classic.webp" alt="Accredited Chauffeur Commercial Operator Australia" className={styles.awardImage} width={80} height={80} />
-                            <Image src="/logo-accreditation-black-gold.webp" alt="5 Star Luxury Chauffeur Service Award" className={styles.awardImage} width={80} height={80} />
-                            <Image src="/logo-accreditation-clean.webp" alt="Verified Partner Professional Driver Accreditation" className={styles.awardImage} width={80} height={80} />
-                            <Image src="/logo-accreditation-modern.webp" alt="Official Transport Accreditation Australia" className={styles.awardImage} width={80} height={80} />
-                        </div>
+
 
                         <h3 className={styles.columnTitle} style={{ marginTop: '1rem' }}>SECURE PAYMENTS</h3>
                         <div className={styles.payments}>

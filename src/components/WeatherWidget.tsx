@@ -24,6 +24,7 @@ const cityCoords: Record<string, { lat: number; lng: number }> = {
 export default function WeatherWidget({ location, lat, lng }: WeatherWidgetProps) {
     const [weather, setWeather] = useState<{ temp: number; code: number } | null>(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     const cityKey = location.toLowerCase().replace(/\s+/g, "");
     const coords = lat && lng ? { lat, lng } : cityCoords[cityKey];
@@ -36,16 +37,33 @@ export default function WeatherWidget({ location, lat, lng }: WeatherWidgetProps
 
         async function fetchWeather() {
             try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+
                 const res = await fetch(
-                    `https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lng}&current_weather=true`
+                    `https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lng}&current_weather=true`,
+                    { signal: controller.signal }
                 );
+
+                clearTimeout(timeoutId);
+
+                if (!res.ok) {
+                    throw new Error('Weather API request failed');
+                }
+
                 const data = await res.json();
                 setWeather({
                     temp: data.current_weather.temperature,
                     code: data.current_weather.weathercode,
                 });
-            } catch (error) {
-                console.error("Failed to fetch weather:", error);
+                setError(false);
+            } catch (err) {
+                // Only log in development
+                if (process.env.NODE_ENV === 'development') {
+                    console.warn("Weather widget: API unavailable", err);
+                }
+                setError(true);
+                // Silently fail - widget won't render
             } finally {
                 setLoading(false);
             }
@@ -54,7 +72,8 @@ export default function WeatherWidget({ location, lat, lng }: WeatherWidgetProps
         fetchWeather();
     }, [coords]);
 
-    if (!coords || loading) return null;
+    // Don't render anything if loading, error, or no coords
+    if (!coords || loading || error || !weather) return null;
 
     const getWeatherIcon = (code: number) => {
         if (code <= 1) return <Sun className="text-yellow-500" size={24} />;
@@ -67,15 +86,11 @@ export default function WeatherWidget({ location, lat, lng }: WeatherWidgetProps
 
     return (
         <div className="flex items-center gap-3 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-sm border border-gray-100 w-fit">
-            {weather && (
-                <>
-                    {getWeatherIcon(weather.code)}
-                    <div className="flex flex-col">
-                        <span className="text-sm font-semibold text-gray-800">{location}</span>
-                        <span className="text-xs text-gray-600">{Math.round(weather.temp)}°C</span>
-                    </div>
-                </>
-            )}
+            {getWeatherIcon(weather.code)}
+            <div className="flex flex-col">
+                <span className="text-sm font-semibold text-gray-800">{location}</span>
+                <span className="text-xs text-gray-600">{Math.round(weather.temp)}°C</span>
+            </div>
         </div>
     );
 }

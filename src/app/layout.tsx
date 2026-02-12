@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import { Toaster } from 'sonner';
+
+const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://auzziechauffeur.com.au'),
@@ -72,16 +75,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="preload"
-          href="/hero-bg.webp"
-          as="image"
-          fetchPriority="high"
-        />
-      </head>
-      <body>
+    <html lang="en" className={inter.variable}>
+      <body className="antialiased">
         {/* Layout Wrapper */}
         <SchemaMarkup />
         {children}
