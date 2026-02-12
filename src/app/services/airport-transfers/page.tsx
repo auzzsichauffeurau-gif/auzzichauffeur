@@ -14,7 +14,7 @@ import ServiceSchema from "@/components/ServiceSchema";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Airport Transfers Australia | Auzzie Chauffeur | Book Punctual Pickup",
+    title: "Luxury Airport Transfers Australia",
     description: "Seamless airport transfers across Australia. Meet-and-greet service, 60 mins wait time, and tracked flights. Ideal for business travelers. Book online.",
 };
 
@@ -463,7 +463,7 @@ export default function AirportServicesPage() {
 
             {/* Airport transfer frequently asked questions flight delays cancellation policy */}
             <section className={styles.faqSection}>
-                <img src="/au-map.png" className={styles.mapBackground} alt="Australia Map" />
+                <img src="/au-map.png" className={styles.mapBackground} alt="Map of Auzzie Chauffeur national coverage across Sydney, Melbourne, Brisbane, and major Australian airports" />
                 <div className={styles.faqContainer}>
                     <h2 className={styles.sectionTitle} style={{ textAlign: 'center', marginBottom: '3rem' }}>
                         Transfer FAQs

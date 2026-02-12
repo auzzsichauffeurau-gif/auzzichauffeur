@@ -46,7 +46,7 @@ export default function NationalCoverage() {
         <section className={styles.section}>
             {/* Background Map Image */}
             <div className={styles.mapBackground}>
-                <Image src="/au-map.webp" alt="Auzzie Chauffeur National Coverage Map Australia" className={styles.mapImage} width={800} height={800} />
+                <Image src="/au-map.webp" alt="Map showing Auzzie Chauffeur national coverage across Sydney, Melbourne, Brisbane, Perth, Adelaide, Hobart and Cairns Australia" className={styles.mapImage} width={800} height={800} />
                 {/* Decorative dots loosely positioned for visual effect */}
                 <div className={styles.mapDot} style={{ top: '65%', right: '25%' }}></div> {/* Sydneyish */}
                 <div className={styles.mapDot} style={{ top: '70%', right: '30%' }}></div> {/* Melbourneish */}
@@ -87,7 +87,9 @@ export default function NationalCoverage() {
                             {coverageData[activeState]?.map((city, index) => (
                                 <div key={index} className={styles.cityItem}>
                                     <span className={styles.cityName}>{city.name}</span>
-                                    <a href={city.link} className={styles.readMore}>Read More</a>
+                                    <Link href={city.link} className={styles.readMore} aria-label={`Chauffeur service in ${city.name}`}>
+                                        Chauffeur in {city.name}
+                                    </Link>
                                 </div>
                             ))}
                         </div>

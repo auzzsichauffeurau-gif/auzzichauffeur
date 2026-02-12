@@ -4,23 +4,26 @@ import SchemaMarkup from "@/components/SchemaMarkup";
 import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.auzziechauffeur.com.au/'),
-  title: {
-    default: "Airport Transfers | Auzzie Chauffeur | Book in 2 Mins",
-    template: "%s"
+  metadataBase: new URL('https://auzziechauffeur.com.au'),
+  alternates: {
+    canonical: '/',
   },
-  description: "Reliable chauffeur service in Australia. Flight mapping, fixed rates, and 4.9★ rated drivers. Book your luxury airport transfer online today.",
+  title: {
+    default: "Airport Transfers & Chauffeur Service Australia | Auzzie Chauffeur",
+    template: "%s | Auzzie Chauffeur"
+  },
+  description: "Australia's leading national chauffeur service. Book 24/7 for reliable airport transfers, corporate travel, and private drivers with fixed rates and flight mapping.",
   keywords: ["Chauffeur Service Australia", "Airport Transfers Sydney", "Corporate Transfers", "Private Driver Melbourne", "Luxury Car Hire Australia", "Auzzie Chauffeur"],
-  authors: [{ name: "Auzzie Chauffeur Service" }],
+  authors: [{ name: "Auzzie Chauffeur Service", url: "https://auzziechauffeur.com.au" }],
   creator: "Auzzie Chauffeur Service",
   publisher: "Auzzie Chauffeur Service",
   openGraph: {
     type: "website",
     locale: "en_AU",
-    url: "https://www.auzziechauffeur.com.au/",
-    title: "Auzzie Chauffeur Service | Premium Airport Transfers Australia",
-    description: "Experience premium chauffeur services across Australia. Reliable airport transfers, corporate travel, and luxury private tours.",
-    siteName: "Auzzie Chauffeur Service",
+    url: "https://auzziechauffeur.com.au/",
+    title: "Auzzie Chauffeur | National Luxury Transport & Airport Transfers",
+    description: "Experience professional chauffeur-driven cars across Sydney, Melbourne, Brisbane & all major cities. 24/7 availability, child seats available, and meet & greet service.",
+    siteName: "Auzzie Chauffeur",
     images: [
       {
         url: "/og-image.jpg",
@@ -39,6 +42,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: true,
     googleBot: {
       index: true,
       follow: true,

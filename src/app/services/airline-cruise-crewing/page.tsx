@@ -95,7 +95,7 @@ export default function CrewingServicesPage() {
                 <h2 className={styles.sectionTitle}>Precision Logistics</h2>
                 <div className={styles.textBlock}>
                     <p>
-                        Auzzsi Chauffeur understands the critical nature of crew logistics. A delayed crew member means a delayed flight or voyage, costing thousands.
+                        Auzzie Chauffeur understands the critical nature of crew logistics. A delayed crew member means a delayed flight or voyage, costing thousands.
                         <br /><br />
                         We provide reliable, punctual, and comfortable transfers for pilots, cabin crew, and maritime staff across all major Australian ports and airports.
                         Our dispatch systems integrate with flight data to ensure perfect timing, every time.

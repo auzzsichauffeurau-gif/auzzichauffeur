@@ -118,7 +118,7 @@ export default function BookingPageContent() {
                         A
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <span style={{ color: '#bfa15f', fontWeight: '700', fontSize: '1.2rem', letterSpacing: '1px' }}>AUZZSI</span>
+                        <span style={{ color: '#bfa15f', fontWeight: '700', fontSize: '1.2rem', letterSpacing: '1px' }}>AUZZIE</span>
                         <span style={{ color: '#ccc', fontSize: '0.6rem', letterSpacing: '2px', textTransform: 'uppercase' }}>CHAUFFEUR SERVICE</span>
                     </div>
                 </Link>
@@ -137,6 +137,11 @@ export default function BookingPageContent() {
 
                 {/* Right Form Side */}
                 <div className={styles.formSide}>
+                    {/* Honeypot field for bot spam */}
+                    <div style={{ display: 'none' }} aria-hidden="true">
+                        <label htmlFor="booking_auth_token">Auth Token</label>
+                        <input id="booking_auth_token" name="booking_auth_token" type="text" tabIndex={-1} autoComplete="off" />
+                    </div>
                     {isSubmitted ? (
                         <div className={`${styles.bookingForm} slide-up`} style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center', height: '100%' }}>
                             <div style={{
@@ -166,6 +171,18 @@ export default function BookingPageContent() {
                         </div>
                     ) : (
                         <div className={styles.bookingForm}>
+                            {/* Page Title */}
+                            <h1 style={{
+                                fontSize: '2rem',
+                                fontWeight: 'bold',
+                                color: '#1f2937',
+                                padding: '2rem 2rem 1rem 2rem',
+                                margin: 0,
+                                borderBottom: '2px solid #f3f4f6'
+                            }}>
+                                Book Your Chauffeur Service
+                            </h1>
+
                             {/* Top Blue Section: Locations */}
                             <div className={styles.locationsPanel}>
                                 {/* Pick Up */}
@@ -266,7 +283,7 @@ export default function BookingPageContent() {
 
                             {/* Personal Details Section */}
                             <div style={{ padding: '0 2rem 2rem 2rem' }}>
-                                <h3 style={{ fontSize: '1rem', color: '#1f2937', marginBottom: '1rem', borderTop: '1px solid #eee', paddingTop: '1rem' }}>Your Details</h3>
+                                <h2 style={{ fontSize: '1rem', color: '#1f2937', marginBottom: '1rem', borderTop: '1px solid #eee', paddingTop: '1rem' }}>Your Details</h2>
                                 <div style={{ display: 'grid', gap: '1rem' }}>
                                     <div className={styles.inputGroup}>
                                         <div className={styles.labelRow}>
@@ -338,6 +355,9 @@ export default function BookingPageContent() {
                                         )}
                                     </button>
                                 </div>
+                                <p style={{ gridColumn: '1 / -1', fontSize: '0.7rem', color: '#9ca3af', textAlign: 'center', marginTop: '1rem', width: '100%' }}>
+                                    Form protected by anti-spam measures. Unsolicited marketing is strictly prohibited. <Link href="/terms-conditions" style={{ color: 'inherit', textDecoration: 'underline' }}>Privacy & Terms</Link>
+                                </p>
                             </div>
                         </div>
                     )}
@@ -350,7 +370,7 @@ export default function BookingPageContent() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontWeight: 'bold', color: '#bfa15f' }}>
                     <div style={{ border: '1px solid #666', borderRadius: '50%', width: '18px', height: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px' }}>A</div>
                 </div>
-                <div>© 2026, Auzzsi Chauffeur Service Pty Ltd ABN 52 010 237 108</div>
+                <div>© 2026, Auzzie Chauffeur Service Pty Ltd ABN 52 010 237 108</div>
             </div>
         </div>
     );

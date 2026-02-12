@@ -14,7 +14,7 @@ interface ServiceContactFormProps {
 
 export default function ServiceContactForm({
     title = "Get a Quote",
-    subtitle = "Contact us for a premium chauffeur experience.",
+    subtitle = "Contact us for a luxury chauffeur experience.",
     detailsLabel = "Trip Details",
     showDestination = false,
     dateLabel = "Date*",
@@ -29,6 +29,12 @@ export default function ServiceContactForm({
             </p>
 
             <form className={styles.contactGrid} onSubmit={(e) => e.preventDefault()}>
+                {/* Honeypot field to prevent bot spam */}
+                <div style={{ display: 'none' }} aria-hidden="true">
+                    <label htmlFor="service-url">Service URL</label>
+                    <input id="service-url" name="service-url" type="text" tabIndex={-1} autoComplete="off" />
+                </div>
+
                 <div className={styles.inputGroup}>
                     <label className={styles.inputLabel}>Name*</label>
                     <input type="text" className={styles.textInput} placeholder="Your Name" />
@@ -68,7 +74,12 @@ export default function ServiceContactForm({
                     <textarea className={styles.textInput} rows={3} style={{ resize: 'none' }}></textarea>
                 </div>
 
-                <button className={styles.submitBtn}>{btnText}</button>
+                <div style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    <button className={styles.submitBtn}>{btnText}</button>
+                    <p style={{ fontSize: '0.75rem', color: '#9ca3af', textAlign: 'center' }}>
+                        Protected by anti-spam measures. No unsolicited marketing allowed.
+                    </p>
+                </div>
             </form>
         </div>
     );

@@ -7,7 +7,7 @@ export default function AppDownload() {
             <div className={styles.container}>
                 <div className={styles.content}>
                     <h2 className={styles.title}>Download The Auzzie App</h2>
-                    <p className={styles.subtitle}>Premium transfers at your fingertips</p>
+                    <p className={styles.subtitle}>Luxury transfers at your fingertips</p>
 
                     <div className={styles.storeButtons}>
                         <a href="#" className={styles.storeBtn}>

@@ -89,6 +89,28 @@ export default function NotFound() {
                             </button>
                         </Link>
                     </div>
+
+                    <div style={{ marginTop: '3rem', borderTop: '1px solid #eee', paddingTop: '2rem' }}>
+                        <h2 style={{ fontSize: '1.2rem', color: '#374151', marginBottom: '1.5rem' }}>Popular Destinations</h2>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '1rem', textAlign: 'left' }}>
+                            <div>
+                                <h3 style={{ fontSize: '0.9rem', color: '#9ca3af', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Services</h3>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '0.95rem' }}>
+                                    <li style={{ marginBottom: '0.5rem' }}><Link href="/services/airport-transfers" style={{ color: '#1f2937', textDecoration: 'none' }}>Airport Transfers</Link></li>
+                                    <li style={{ marginBottom: '0.5rem' }}><Link href="/services/corporate-transfers" style={{ color: '#1f2937', textDecoration: 'none' }}>Corporate Car Hire</Link></li>
+                                    <li style={{ marginBottom: '0.5rem' }}><Link href="/the-fleet" style={{ color: '#1f2937', textDecoration: 'none' }}>Luxury Fleet</Link></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 style={{ fontSize: '0.9rem', color: '#9ca3af', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Major Cities</h3>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '0.95rem' }}>
+                                    <li style={{ marginBottom: '0.5rem' }}><Link href="/sydney" style={{ color: '#1f2937', textDecoration: 'none' }}>Sydney</Link></li>
+                                    <li style={{ marginBottom: '0.5rem' }}><Link href="/melbourne" style={{ color: '#1f2937', textDecoration: 'none' }}>Melbourne</Link></li>
+                                    <li style={{ marginBottom: '0.5rem' }}><Link href="/brisbane" style={{ color: '#1f2937', textDecoration: 'none' }}>Brisbane</Link></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </main>
 

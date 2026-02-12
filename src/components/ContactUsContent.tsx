@@ -83,7 +83,7 @@ export default function ContactUsContent() {
                     <div className={styles.breadcrumb}>Home &gt; Contact Us</div>
                     <h1 className={styles.heroTitle}>Contact Us</h1>
                     <p className={styles.heroSubtitle}>
-                        Auzzsi Chauffeur operates 24 hours a day, 7 days a week.
+                        Auzzie Chauffeur operates 24 hours a day, 7 days a week.
                     </p>
                     <div className={styles.heroButtons}>
                         <Link href="/book">
@@ -97,7 +97,7 @@ export default function ContactUsContent() {
             {/* Contact Section */}
             <section className={`${styles.section} ${styles.contactInfoSection}`}>
                 <div className={styles.sectionContent}>
-                    <h2 className={styles.sectionTitle}>Contact Auzzsi</h2>
+                    <h2 className={styles.sectionTitle}>Contact Auzzie</h2>
                     <div className={styles.sectionBody} style={{ justifyContent: 'center' }}>
                         <div className={styles.infoItem}>
                             <div className={styles.iconWrapper}>
@@ -209,16 +209,24 @@ export default function ContactUsContent() {
                             </div>
                         ) : (
                             <form className={styles.formGrid} onSubmit={handleSubmit}>
+                                {/* Honeypot field for bot spam */}
+                                <div style={{ display: 'none' }} aria-hidden="true">
+                                    <label htmlFor="contact_token">Token</label>
+                                    <input id="contact_token" name="contact_token" type="text" tabIndex={-1} autoComplete="off" />
+                                </div>
+
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>
                                         First Name<span className={styles.required}>*</span>
                                     </label>
                                     <input
                                         type="text"
+                                        id="contact-first-name-main"
                                         name="firstName"
                                         value={formData.firstName}
                                         onChange={handleChange}
                                         className={styles.input}
+                                        autoComplete="given-name"
                                         required
                                     />
                                 </div>
@@ -292,6 +300,9 @@ export default function ContactUsContent() {
                                 >
                                     {isSubmitting ? 'Sending...' : 'Submit Enquiry'}
                                 </button>
+                                <p style={{ gridColumn: '1 / -1', fontSize: '0.75rem', color: '#9ca3af', textAlign: 'center', marginTop: '1rem' }}>
+                                    By submitting, you agree to our <Link href="/terms-conditions" style={{ color: 'inherit', textDecoration: 'underline' }}>Anti-Spam Policy</Link>. We use automated bot detection.
+                                </p>
                             </form>
                         )}
                     </div>
@@ -302,7 +313,7 @@ export default function ContactUsContent() {
             <section className={`${styles.section} ${styles.officeSection}`}>
                 <div className={styles.sectionContent}>
                     <h2 className={styles.sectionTitle}>
-                        Auzzsi Head
+                        Auzzie Head
                         <br />
                         Office
                     </h2>
@@ -315,9 +326,9 @@ export default function ContactUsContent() {
                                 <strong>Tullamarine, VIC 3043, Melbourne, Australia</strong>
                                 <br />
                                 <br />
-                                Auzzsi Chauffeur is Australia's only truly national chauffeur
+                                Auzzie Chauffeur is Australia&apos;s only truly national chauffeur
                                 company, and operates in all major Australian centres. To book
-                                a Auzzsi vehicle in your area, we recommend using our online
+                                a Auzzie vehicle in your area, we recommend using our online
                                 booking form.
                             </p>
                         </div>

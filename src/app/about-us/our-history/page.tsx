@@ -23,7 +23,7 @@ export default function OurHistoryPage() {
                         <div className={styles.breadcrumb}>Home &gt; About Us &gt; Our History</div>
                         <h1 className={styles.heroTitle}>Driving Australia For Years</h1>
                         <p className={styles.heroDescription}>
-                            Auzzsi Chauffeur has spent years perfecting the art of chauffeured travel.
+                            Auzzie Chauffeur has spent years perfecting the art of chauffeured travel.
                             From humble beginnings to a nationwide fleet, our journey is driven by excellence.
                         </p>
                         <div className={styles.heroButtons}>
@@ -46,7 +46,7 @@ export default function OurHistoryPage() {
                         <div className={styles.textBlock}>
                             <h2 className={styles.sectionHeading}>Our History</h2>
                             <p>
-                                Auzzsi Chauffeur started with a vision to provide a superior level of service
+                                Auzzie Chauffeur started with a vision to provide a superior level of service
                                 that was missing in the Australian transport industry. What began as a small
                                 operation has grown into one of the country's most respected chauffeur services.
                             </p>
@@ -115,7 +115,7 @@ export default function OurHistoryPage() {
                     <div className={styles.timelineIntro}>
                         <h2 className={styles.sectionHeading}>Travel Through Time</h2>
                         <p className={styles.textBlock}>
-                            Explore our interactive timeline to see how Auzzsi Chauffeur has evolved,
+                            Explore our interactive timeline to see how Auzzie Chauffeur has evolved,
                             adopted new technologies, and expanded its reach across Australia and beyond.
                         </p>
                     </div>
@@ -143,15 +143,15 @@ export default function OurHistoryPage() {
                     <h2 className={styles.sectionHeading}>Our Logos Through The Years</h2>
                     <div className={styles.logosGrid}>
                         <div className={styles.logoItem}>
-                            <img src="/logo-history-2004.png" alt="Auzzsi Logo 2004" />
+                            <img src="/logo-history-2004.png" alt="Auzzie Logo 2004" />
                             <span>2004</span>
                         </div>
                         <div className={styles.logoItem}>
-                            <img src="/logo-history-2014.png" alt="Auzzsi Logo 2014" />
+                            <img src="/logo-history-2014.png" alt="Auzzie Logo 2014" />
                             <span>2014</span>
                         </div>
                         <div className={styles.logoItem}>
-                            <img src="/logo-history-2024.png" alt="Auzzsi Logo 2024" />
+                            <img src="/logo-history-2024.png" alt="Auzzie Logo 2024" />
                             <span>2024 (Present)</span>
                         </div>
                     </div>

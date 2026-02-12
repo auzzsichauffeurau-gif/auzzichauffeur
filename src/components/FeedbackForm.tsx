@@ -47,6 +47,11 @@ export default function FeedbackForm() {
                 How was your experience?
             </h3>
 
+            {/* Honeypot field for bot protection */}
+            <div style={{ display: 'none' }} aria-hidden="true">
+                <input type="text" name="feedback_token" tabIndex={-1} autoComplete="off" />
+            </div>
+
             {/* Star Rating */}
             <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginBottom: '2rem' }}>
                 {[1, 2, 3, 4, 5].map((star) => (
@@ -122,6 +127,9 @@ export default function FeedbackForm() {
             >
                 {isSubmitting ? 'Submitting...' : 'Submit Feedback'}
             </button>
+            <p style={{ fontSize: '0.7rem', color: '#9ca3af', textAlign: 'center', marginTop: '1rem' }}>
+                We maintain a strict anti-spam policy. Verified feedback only.
+            </p>
         </form>
     );
 }

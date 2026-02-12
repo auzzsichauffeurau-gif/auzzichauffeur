@@ -24,7 +24,7 @@ export default function CairnsAirportPage() {
             {/* HERO SECTION */}
             <div style={{ position: 'relative' }}>
                 <Hero
-                    title="Cairns Airport (CNS) Private Transfers"
+                    title="Cairns Airport Transfers to Port Douglas & Palm Cove"
                     subtitle="Start your tropical getaway right. Direct, air-conditioned transfers from CNS to Port Douglas, Palm Cove, and Mission Beach."
                     showStats={false}
                 />
@@ -215,9 +215,7 @@ export default function CairnsAirportPage() {
                     <div className={styles.mapContainer}>
                         <iframe
                             src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Cairns+Airport,Australia&t=&z=14&ie=UTF8&iwloc=B&output=embed"
-                            width="100%"
-                            height="100%"
-                            style={{ border: 0 }}
+                            style={{ border: 0, width: '100%', height: '100%' }}
                             allowFullScreen
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"

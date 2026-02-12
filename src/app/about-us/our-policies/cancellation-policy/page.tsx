@@ -54,6 +54,7 @@ export default function CancellationPolicyPage() {
 
             {/* CONTENT */}
             <section className={styles.contentSection}>
+                <h2 className={styles.sectionTitle}>Policy Overview & Details</h2>
                 <div className={styles.introText}>
                     <p>
                         We understand that plans can change. Our Cancellation Policy is designed to be fair to both our clients and our chauffeurs, ensuring reliable service for everyone.

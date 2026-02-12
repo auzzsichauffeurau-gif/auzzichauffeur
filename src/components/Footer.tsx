@@ -5,19 +5,16 @@ import Link from 'next/link';
 
 export default function Footer() {
     const quickLinks = [
+        { name: "About Us", href: "/about-us" },
+        { name: "News & Travel Guides", href: "/news" },
         { name: "Airport Meeting Points", href: "/services/meeting-points" },
-        { name: "Book Now", href: "/contact-us" },
-        { name: "Manage Booking", href: "/contact-us" },
-        { name: "Contact Us", href: "/contact-us" },
-        { name: "City Guides", href: "/locations" },
-        { name: "Popular Routes", href: "/locations" },
-        { name: "Corporate Transfers", href: "/services/corporate-transfers" },
-        { name: "Conferences & Special Events", href: "/services/conferences-special-events" },
-        { name: "Cruise Ship Transfers", href: "/services/cruise-ship-transfers" },
-        { name: "Private Driver", href: "/services/hourly-chauffeur" },
-        { name: "Airline & Cruise Crewing", href: "/services/airline-cruise-crewing" },
-        { name: "Luxury Private Tours", href: "/services/luxury-tours" },
-        { name: "Customer Reviews", href: "/reviews" }
+        { name: "Book Now", href: "/book" },
+        { name: "Company Policies", href: "/about-us/our-policies" },
+        { name: "Terms & Conditions", href: "/terms-conditions" },
+        { name: "Privacy Policy", href: "/privacy-policy" },
+        { name: "FAQ", href: "/about-us/faqs" },
+        { name: "Customer Reviews", href: "/reviews" },
+        { name: "Pricing Guide (PDF)", href: "/Auzzie-Chauffeur-Pricing-Guide.pdf" }
     ];
 
     const services = [
@@ -49,7 +46,7 @@ export default function Footer() {
                         </div>
 
                         <p className={styles.description}>
-                            Auzzie is Australia&apos;s only fully national chauffeur service, providing premium airport transfers, private drivers, and chauffeurs in major cities, including Sydney, Melbourne, Brisbane, Adelaide, Gold Coast, and more. With a network of first-class drivers, Auzzie ensures unparalleled service nationwide.
+                            Auzzie is Australia&apos;s only fully national chauffeur service, providing luxury airport transfers, private drivers, and chauffeurs in major cities, including Sydney, Melbourne, Brisbane, Adelaide, Gold Coast, and more. With a network of first-class drivers, Auzzie ensures unparalleled service nationwide.
                         </p>
 
 
@@ -57,7 +54,7 @@ export default function Footer() {
 
                     {/* Column 2: Quick Links */}
                     <div className={styles.column}>
-                        <h4 className={styles.columnTitle}>QUICK LINKS</h4>
+                        <h3 className={styles.columnTitle}>QUICK LINKS</h3>
                         <ul className={styles.linkList}>
                             {quickLinks.map((link, i) => (
                                 <li key={i} className={styles.linkItem}>
@@ -67,28 +64,36 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Column 3: Chauffeur Services */}
+                    {/* Column 3: Contact Info */}
                     <div className={styles.column}>
-                        <h4 className={styles.columnTitle}>CHAUFFEUR SERVICES</h4>
+                        <h3 className={styles.columnTitle}>CONTACT US</h3>
                         <ul className={styles.linkList}>
-                            {services.map((link, i) => (
-                                <li key={i} className={styles.linkItem}>
-                                    <Link href={link.href} className={styles.link}>{link.name}</Link>
-                                </li>
-                            ))}
+                            <li className={styles.linkItem} style={{ color: '#d1d5db', marginBottom: '1rem' }}>
+                                <strong>General:</strong><br />
+                                <a href="mailto:info@auzziechauffeur.com.au" style={{ color: '#bfa15f', textDecoration: 'none' }}>info@auzziechauffeur.com.au</a>
+                            </li>
+                            <li className={styles.linkItem} style={{ color: '#d1d5db', marginBottom: '1rem' }}>
+                                <strong>Bookings:</strong><br />
+                                <a href="mailto:booking@auzziechauffeur.com.au" style={{ color: '#bfa15f', textDecoration: 'none' }}>booking@auzziechauffeur.com.au</a>
+                            </li>
+                            <li className={styles.linkItem} style={{ color: '#d1d5db' }}>
+                                <strong>Head Office:</strong><br />
+                                Tullamarine, VIC 3043<br />
+                                Melbourne, Australia
+                            </li>
                         </ul>
                     </div>
 
                     {/* Column 4: Awards & Socials */}
                     <div className={styles.column}>
                         <div className={styles.awardsGrid}>
-                            <Image src="/logo-accreditation-classic.webp" alt="Accredited Chauffeur" className={styles.awardImage} width={80} height={80} />
-                            <Image src="/logo-accreditation-black-gold.webp" alt="5 Star Service" className={styles.awardImage} width={80} height={80} />
-                            <Image src="/logo-accreditation-clean.webp" alt="Verified Partner" className={styles.awardImage} width={80} height={80} />
-                            <Image src="/logo-accreditation-modern.webp" alt="Accredited" className={styles.awardImage} width={80} height={80} />
+                            <Image src="/logo-accreditation-classic.webp" alt="Accredited Chauffeur Commercial Operator Australia" className={styles.awardImage} width={80} height={80} />
+                            <Image src="/logo-accreditation-black-gold.webp" alt="5 Star Luxury Chauffeur Service Award" className={styles.awardImage} width={80} height={80} />
+                            <Image src="/logo-accreditation-clean.webp" alt="Verified Partner Professional Driver Accreditation" className={styles.awardImage} width={80} height={80} />
+                            <Image src="/logo-accreditation-modern.webp" alt="Official Transport Accreditation Australia" className={styles.awardImage} width={80} height={80} />
                         </div>
 
-                        <h4 className={styles.columnTitle} style={{ marginTop: '1rem' }}>SECURE PAYMENTS</h4>
+                        <h3 className={styles.columnTitle} style={{ marginTop: '1rem' }}>SECURE PAYMENTS</h3>
                         <div className={styles.payments}>
                             {/* Simulating Payment Icons with CSS/Text */}
                             <div className={styles.visa}>VISA</div>
@@ -99,11 +104,17 @@ export default function Footer() {
                             <div className={styles.amex}>AMEX</div>
                         </div>
 
-                        <h4 className={styles.columnTitle} style={{ marginTop: '1rem' }}>LET&apos;S STAY CONNECTED</h4>
+                        <h3 className={styles.columnTitle} style={{ marginTop: '1rem' }}>LET'S STAY CONNECTED</h3>
                         <div className={styles.socials}>
-                            <Linkedin size={24} className={styles.socialIcon} />
-                            <Facebook size={24} className={styles.socialIcon} />
-                            <Instagram size={24} className={styles.socialIcon} />
+                            <a href="https://linkedin.com/company/auzziechauffeur" target="_blank" rel="noopener noreferrer nofollow" aria-label="LinkedIn">
+                                <Linkedin size={24} className={styles.socialIcon} />
+                            </a>
+                            <a href="https://facebook.com/auzziechauffeur" target="_blank" rel="noopener noreferrer nofollow" aria-label="Facebook">
+                                <Facebook size={24} className={styles.socialIcon} />
+                            </a>
+                            <a href="https://instagram.com/auzziechauffeur" target="_blank" rel="noopener noreferrer nofollow" aria-label="Instagram">
+                                <Instagram size={24} className={styles.socialIcon} />
+                            </a>
                         </div>
                     </div>
                 </div>

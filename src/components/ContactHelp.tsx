@@ -70,6 +70,12 @@ export default function ContactHelp() {
                     </div>
                 ) : (
                     <form className={styles.formGrid} onSubmit={handleSubmit}>
+                        {/* Honeypot field to prevent bot spam */}
+                        <div style={{ display: 'none' }} aria-hidden="true">
+                            <label htmlFor="website-url">Website URL</label>
+                            <input id="website-url" name="website-url" type="text" tabIndex={-1} autoComplete="off" />
+                        </div>
+
                         <div className={styles.formGroup}>
                             <label htmlFor="contact-first-name" className={styles.label}>First Name *</label>
                             <input id="contact-first-name" name="firstName" type="text" className={styles.input} autoComplete="given-name" required />
@@ -98,14 +104,19 @@ export default function ContactHelp() {
                             <textarea id="contact-message" name="message" className={styles.textarea} required></textarea>
                         </div>
 
-                        <button
-                            type="submit"
-                            className={styles.submitBtn}
-                            disabled={isSubmitting}
-                            style={{ opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
-                        >
-                            {isSubmitting ? 'Sending...' : 'Submit'}
-                        </button>
+                        <div className={styles.fullWidth} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                            <button
+                                type="submit"
+                                className={styles.submitBtn}
+                                disabled={isSubmitting}
+                                style={{ opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
+                            >
+                                {isSubmitting ? 'Sending...' : 'Submit'}
+                            </button>
+                            <p style={{ fontSize: '0.75rem', color: '#9ca3af', textAlign: 'center' }}>
+                                By submitting this form, you agree to our <a href="/terms-conditions" style={{ color: 'inherit', textDecoration: 'underline' }}>Anti-Spam Policy</a>. We do not tolerate unsolicited marketing.
+                            </p>
+                        </div>
                     </form>
                 )}
             </div>

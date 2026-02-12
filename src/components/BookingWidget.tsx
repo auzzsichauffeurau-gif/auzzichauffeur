@@ -54,7 +54,7 @@ export default function BookingWidget() {
                             className={styles.input}
                             value={pickup}
                             onChange={(e) => setPickup(e.target.value)}
-                            autoComplete="street-address"
+                            autoComplete="address-line1"
                         />
                     </div>
                 </div>
@@ -71,7 +71,7 @@ export default function BookingWidget() {
                             className={styles.input}
                             value={dropoff}
                             onChange={(e) => setDropoff(e.target.value)}
-                            autoComplete="street-address"
+                            autoComplete="address-line1"
                         />
                     </div>
                 </div>

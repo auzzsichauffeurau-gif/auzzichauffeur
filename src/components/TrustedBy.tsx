@@ -5,7 +5,7 @@ import { Star } from 'lucide-react';
 
 export default function TrustedBy() {
     return (
-        <section className={styles.section}>
+        <div className={styles.section}>
             <div className={styles.container}>
                 <div className={styles.ratingWrapper}>
                     <span className={styles.googleLogo}>
@@ -27,6 +27,6 @@ export default function TrustedBy() {
                 </div>
 
             </div>
-        </section>
+        </div>
     );
 }

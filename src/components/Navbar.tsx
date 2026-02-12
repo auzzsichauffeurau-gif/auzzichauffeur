@@ -58,8 +58,8 @@ export default function Navbar() {
             link: "/the-fleet",
             items: [
                 { name: "Executive Sedans", link: "/the-fleet/executive-sedans" },
-                { name: "Premium Sedans", link: "/the-fleet/premium-sedans" },
-                { name: "Premium SUVs", link: "/the-fleet/premium-suvs" },
+                { name: "Luxury Sedans", link: "/the-fleet/premium-sedans" },
+                { name: "Luxury SUVs", link: "/the-fleet/premium-suvs" },
                 { name: "People Movers", link: "/the-fleet/people-movers" },
                 { name: "Luxury Minibuses", link: "/the-fleet/luxury-minibuses" },
                 { name: "Coaches", link: "/the-fleet/coaches" },

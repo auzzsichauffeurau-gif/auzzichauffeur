@@ -17,7 +17,7 @@ export default function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
             "@type": "ListItem",
             "position": index + 1,
             "name": item.name,
-            "item": item.url.startsWith('http') ? item.url : `https://www.auzziechauffeur.com.au${item.url}`
+            "item": item.url.startsWith('http') ? item.url : `https://auzziechauffeur.com.au${item.url}`
         }))
     };
 
