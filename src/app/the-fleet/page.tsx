@@ -9,6 +9,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "Luxury Car Fleet | Auzzie Chauffeur | Explore Our Vehicles",
     description: "Explore our premium fleet of late-model European sedans, SUVs, and luxury minibuses. Pefect for any occasion across Australia.",
+    alternates: {
+        canonical: '/the-fleet',
+    },
 };
 
 export default function FleetPage() {

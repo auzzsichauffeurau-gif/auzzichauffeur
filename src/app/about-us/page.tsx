@@ -9,6 +9,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "About Auzzie Chauffeur | Australia's National Chauffeur Network",
     description: "Discover Australia's national chauffeur network. Learn about our commitment to luxury transport, professional standards, and our history of serving Australian cities since 2004.",
+    alternates: {
+        canonical: '/about-us',
+    },
 };
 
 export default function AboutPage() {

@@ -10,7 +10,7 @@ export default function ImageTiles() {
             title: "Join Our Team",
             description: "Become part of Australia's premier chauffeur service. We are always looking for professional drivers to join our fleet.",
             buttonText: "Careers",
-            href: "/careers",
+            href: "/about-us/careers",
             alt: "Professional Auzzie chauffeurs discussing logistics for a large-scale corporate event transport",
             icon: <Users size={48} strokeWidth={1} />
         },

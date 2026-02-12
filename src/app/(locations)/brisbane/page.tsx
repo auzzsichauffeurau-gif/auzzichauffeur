@@ -17,6 +17,9 @@ import LocationTestimonials from "@/components/LocationTestimonials";
 export const metadata: Metadata = {
     title: "Trusted Chauffeur Service in Brisbane | Auzzie Chauffeur | Luxury Transfers",
     description: "Premium chauffeur service in Brisbane (BNE) & Gold Coast. Flat-rate, licensed airport transfers & corporate travel. Call or book online 24/7.",
+    alternates: {
+        canonical: '/brisbane',
+    },
 };
 
 export default function BrisbaneHubPage() {

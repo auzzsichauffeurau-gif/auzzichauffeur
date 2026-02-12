@@ -17,6 +17,9 @@ import LocationTestimonials from "@/components/LocationTestimonials";
 export const metadata: Metadata = {
     title: "Chauffeur Service Adelaide | Auzzie Chauffeur | Trusted Private Driver",
     description: "Book premium chauffeur service in Adelaide (ADL). Luxury airport transfers, wine tours to Barossa Valley & corporate cars. 24/7 Fixed Price.",
+    alternates: {
+        canonical: '/adelaide',
+    },
 };
 
 export default function AdelaideHubPage() {

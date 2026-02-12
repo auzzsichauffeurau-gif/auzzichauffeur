@@ -8,6 +8,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "Company Policies | Auzzie Chauffeur | Our Standards",
     description: "Read about Auzzie Chauffeur's company policies, including safety, conduct, and environmental standards. We are committed to excellence and transparency.",
+    alternates: {
+        canonical: '/about-us/our-policies',
+    },
 };
 
 export default function OurPoliciesPage() {
