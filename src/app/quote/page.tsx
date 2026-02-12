@@ -21,6 +21,10 @@ export default function QuotePage() {
                         Enter your details to get an estimated price for your journey.
                     </p>
 
+                    <h2 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#111827', marginTop: '2.5rem', marginBottom: '1.5rem' }}>
+                        Why Choose Our Service?
+                    </h2>
+
                     <div className={styles.features}>
                         <div className={styles.featureItem}>
                             <div className={styles.iconBox}><Shield size={24} /></div>

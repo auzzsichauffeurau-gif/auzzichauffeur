@@ -4,6 +4,7 @@ import ServiceFeatures from "@/components/ServiceFeatures";
 import dynamic from 'next/dynamic';
 import styles from "./page.module.css";
 import Link from "next/link";
+import Image from "next/image";
 import { Calculator, Plane, UserCheck, Shield, Clock, CheckCircle, XCircle, MapPin, Star, Building, Users } from "lucide-react";
 import type { Metadata } from 'next';
 
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   title: "Top-Rated Chauffeur Service Australia | Auzzie Chauffeur",
   description: "Looking for a reliable chauffeur? Book premium airport transfers, corporate cars, & luxury tours in Sydney, Melbourne, Brisbane & Perth. 24/7 Service. Get a Quote Now.",
   alternates: {
-    canonical: 'https://www.auzziechauffeur.com.au/',
+    canonical: 'https://auzziechauffeur.com.au',
   },
 };
 
@@ -31,8 +32,8 @@ export default function Home() {
 
       {/* 1. HERO SECTION */}
       <Hero
-        title="Top-Rated Chauffeur Service in Australia"
-        subtitle="Experience the difference with Australia's most trusted private car service. From Sydney Opera House to the Melbourne Cricket Ground, we get you there in style."
+        title="Top-Rated Chauffeur Service & Airport Transfers Australia"
+        subtitle="Experience the Auzzie difference with reliable private car hire, luxury tours, and executive event transport nationwide."
         showStats={true}
       />
 
@@ -130,7 +131,7 @@ export default function Home() {
       <NationalCoverage />
 
       {/* 7. EEAT STATS */}
-      <section className={styles.eeatSection}>
+      <div className={styles.eeatSection}>
         <div className={styles.eeatGrid}>
           <div className={styles.statBox}>
             <div className={styles.statNumber}>15+</div>
@@ -151,7 +152,7 @@ export default function Home() {
         <div style={{ textAlign: 'center', marginTop: '4rem' }}>
           <TrustedBy />
         </div>
-      </section>
+      </div>
 
       {/* 8. TESTIMONIALS + IMAGES */}
       <Testimonials />
@@ -208,9 +209,7 @@ export default function Home() {
           <div style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', height: '400px' }}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.846506300067!2d151.2092953152109!3d-33.86881968065619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae665e892fdd%3A0x3133f8d75a1ac251!2sSydney%20NSW%2C%20Australia!5e0!3m2!1sen!2sus!4v1645564747248!5m2!1sen!2sus"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
+              style={{ border: 0, width: '100%', height: '100%' }}
               allowFullScreen={true}
               loading="lazy"
               title="Auzzie Chauffeur Service Area Map"
@@ -227,34 +226,43 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Auzzie Chauffeur",
-            "image": "https://www.auzziechauffeur.com.au/logo.png",
-            "telephone": "1300 465 374",
-            "url": "https://www.auzziechauffeur.com.au",
-            "address": {
-              "@type": "PostalAddress",
-              "addressCountry": "AU"
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Auzzie Chauffeur",
+              "alternateName": ["Auzzie", "Auzzie Chauffeur Service", "auzziechauffeur.com.au"],
+              "url": "https://auzziechauffeur.com.au/"
             },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": -33.8688,
-              "longitude": 151.2093
-            },
-            "priceRange": "$$",
-            "openingHoursSpecification": [
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                  "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-                ],
-                "opens": "00:00",
-                "closes": "23:59"
-              }
-            ]
-          })
+            {
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Auzzie Chauffeur",
+              "image": "https://auzziechauffeur.com.au/logo.png",
+              "telephone": "1300 465 374",
+              "url": "https://auzziechauffeur.com.au",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "AU"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -33.8688,
+                "longitude": 151.2093
+              },
+              "priceRange": "$$",
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": [
+                    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+                  ],
+                  "opens": "00:00",
+                  "closes": "23:59"
+                }
+              ]
+            }
+          ])
         }}
       />
 

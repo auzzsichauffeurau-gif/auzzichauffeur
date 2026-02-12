@@ -22,7 +22,7 @@ export default function CairnsHourlyPage() {
             {/* HERO SECTION */}
             <div style={{ position: 'relative' }}>
                 <Hero
-                    title="Cairns & Port Douglas Private Tours"
+                    title="Hourly Private Driver Cairns & Port Douglas"
                     subtitle="Explore the Daintree, Kuranda, and the Tablelands in cool, air-conditioned comfort. Your private tropical itinerary."
                     showStats={false}
                 />

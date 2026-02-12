@@ -54,6 +54,7 @@ export default function StandardsConductPolicyPage() {
 
             {/* CONTENT */}
             <section className={styles.contentSection}>
+                <h2 className={styles.sectionTitle}>Company Standards & Driver Conduct</h2>
                 <div className={styles.introText}>
                     <p>
                         Excellence is not an accident; it is the result of high intention and consistent execution. Our Standards & Conduct Policy sets the benchmark for quality service.

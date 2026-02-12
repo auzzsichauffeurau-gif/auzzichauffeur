@@ -8,7 +8,7 @@ export default function Testimonials() {
         {
             name: "James Anderson",
             role: "Corporate Client",
-            text: "Auzzsi has been our go-to for corporate transfers in Sydney. The drivers are always punctual, vehicles are immaculate, and the booking process is seamless.",
+            text: "Auzzie has been our go-to for corporate transfers in Sydney. The drivers are always punctual, vehicles are immaculate, and the booking process is seamless.",
             rating: 5
         },
         {
@@ -64,7 +64,7 @@ export default function Testimonials() {
                                 <Quote size={40} color="#e5e7eb" style={{ marginBottom: '1rem' }} />
                                 <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#4b5563', marginBottom: '2rem', fontStyle: 'italic' }}>"{review.text}"</p>
                                 <div>
-                                    <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#1f2937' }}>{review.name}</h4>
+                                    <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#1f2937' }}>{review.name}</h3>
                                     <span style={{ fontSize: '0.9rem', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '1px' }}>{review.role}</span>
                                 </div>
                             </div>

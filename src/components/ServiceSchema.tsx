@@ -8,7 +8,7 @@ interface ServiceSchemaProps {
 }
 
 export default function ServiceSchema({ name, description, url, imageUrl }: ServiceSchemaProps) {
-    const fullUrl = url.startsWith('http') ? url : `https://www.auzziechauffeur.com.au${url}`;
+    const fullUrl = url.startsWith('http') ? url : `https://auzziechauffeur.com.au${url}`;
 
     const schema = {
         "@context": "https://schema.org",
@@ -17,9 +17,9 @@ export default function ServiceSchema({ name, description, url, imageUrl }: Serv
         "description": description,
         "provider": {
             "@type": "Organization",
-            "name": "Auzzie Chauffeur Service",
-            "url": "https://www.auzziechauffeur.com.au",
-            "logo": "https://www.auzziechauffeur.com.au/logo.png"
+            "name": "Auzzie Chauffeur",
+            "url": "https://auzziechauffeur.com.au",
+            "logo": "https://auzziechauffeur.com.au/logo.png"
         },
         "areaServed": {
             "@type": "Country",
@@ -41,7 +41,7 @@ export default function ServiceSchema({ name, description, url, imageUrl }: Serv
                 }
             ]
         },
-        "image": imageUrl || "https://www.auzziechauffeur.com.au/og-image.jpg"
+        "image": imageUrl || "https://auzziechauffeur.com.au/og-image.jpg"
     };
 
     return (

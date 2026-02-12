@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Chauffeur News & Travel Blog | Auzzie Chauffeur | Stay Updated",
-    description: "The latest news, travel guides, and luxury transport insights from the Auzzie Chauffeur team. Stay informed about our services nationwide.",
+    title: "Expert Travel Guides & News",
+    description: "Read the latest Australian travel guides, airport navigation tips, and luxury chauffeur news. Expert insights from Auzzie's national team of professional drivers.",
 };
 
 export default function NewsLayout({ children }: { children: React.ReactNode }) {

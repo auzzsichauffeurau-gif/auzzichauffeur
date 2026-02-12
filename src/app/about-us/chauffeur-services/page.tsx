@@ -24,7 +24,7 @@ export default function ChauffeurServicesPage() {
                     </div>
                     <h1 className={styles.heroTitle}>Chauffeur Services</h1>
                     <p className={styles.heroSubtitle}>
-                        Travel in premium comfort and style with Auzzsi Chauffeur
+                        Travel in luxury comfort and style with Auzzie Chauffeur
                     </p>
                     <div className={styles.heroButtons}>
                         <button className={styles.btnGold}>Book Now</button>
@@ -39,7 +39,7 @@ export default function ChauffeurServicesPage() {
 
                     {/* Left Column */}
                     <div className={styles.leftColumn}>
-                        <h2 className={styles.pageTitle}>Sit Back And Relax<br />With Auzzsi Chauffeur</h2>
+                        <h2 className={styles.pageTitle}>Sit Back And Relax<br />With Auzzie Chauffeur</h2>
                     </div>
 
                     {/* Right Column */}
@@ -47,18 +47,18 @@ export default function ChauffeurServicesPage() {
                         <p>Behind every great service there are great people.</p>
 
                         <p>
-                            Auzzsi Chauffeur prides itself on offering the highest quality chauffeurs available in Australia.
+                            Auzzie Chauffeur prides itself on offering the highest quality chauffeurs available in Australia.
                         </p>
 
                         <p>
-                            All chauffeurs on the Auzzsi Fleet have been handpicked to ensure our clients are driven
+                            All chauffeurs on the Auzzie Fleet have been handpicked to ensure our clients are driven
                             to their destination in a discrete, professional and reliable fashion.
                         </p>
 
                         <p>
                             Each chauffeur must undergo a stringent recruitment process, training and practical
                             assessment program whilst demonstrating compliance with the company&apos;s policies before
-                            commencing work on the Auzzsi Fleet.
+                            commencing work on the Auzzie Fleet.
                         </p>
 
                         <p>
@@ -69,12 +69,12 @@ export default function ChauffeurServicesPage() {
                         <h3 className={styles.sectionHeading}>Uniforms</h3>
 
                         <p>
-                            All Auzzsi chauffeurs are professionally attired with traditional blue suit and Auzzsi tie.
-                            The Auzzsi uniform is consistent throughout our Australian network.
+                            All Auzzie chauffeurs are professionally attired with traditional blue suit and Auzzie tie.
+                            The Auzzie uniform is consistent throughout our Australian network.
                         </p>
 
                         <p>
-                            Your Auzzsi Chauffeur is fully trained and able to provide you with the personal attention
+                            Your Auzzie Chauffeur is fully trained and able to provide you with the personal attention
                             and professional service you expect.
                         </p>
                     </div>

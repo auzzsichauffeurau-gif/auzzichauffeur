@@ -82,6 +82,7 @@ export default function PrivacyPolicyPage() {
 
             {/* CONTENT */}
             <section className={styles.contentSection}>
+                <h2 className={styles.sectionTitle}>Privacy Information & Data Management</h2>
                 <div className={styles.introText}>
                     <p>
                         At Equity Transport Group (ETG) we comply with the Privacy Act 1988 (Cth) (Privacy Act). This Policy explains how we manage the personal information that we collect, hold, use and disclose and how to contact us if you have any further queries.

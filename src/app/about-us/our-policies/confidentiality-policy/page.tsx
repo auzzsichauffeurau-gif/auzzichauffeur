@@ -54,6 +54,7 @@ export default function ConfidentialityPolicyPage() {
 
             {/* CONTENT */}
             <section className={styles.contentSection}>
+                <h2 className={styles.sectionTitle}>Policy Guidelines & Discretion</h2>
                 <div className={styles.introText}>
                     <p>
                         Trust is the foundation of our service. Our Confidentiality Policy guarantees that your business remains your business.

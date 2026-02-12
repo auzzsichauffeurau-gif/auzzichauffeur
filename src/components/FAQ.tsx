@@ -14,7 +14,7 @@ export default function FAQ() {
     const faqs = [
         {
             question: "What Is The Seating Capacity Of Your Chauffeured Cars?",
-            answer: "Our fleet ranges from luxury sedans seating up to 3 passengers, to SUVs for 4, People Movers for 7, and minibuses/coaches for larger groups. Please check our Fleet page for specific vehicle details."
+            answer: "Our fleet ranges from luxury sedans seating up to 3 passengers, to SUVs for 4, People Movers for 7, and minibuses/coaches for larger groups. Please check our <a href='/the-fleet' style='color: #c5a467; text-decoration: underline;'>Fleet page</a> for specific vehicle details."
         },
         {
             question: "How Can I Pay For A Chauffeured Car From Auzzie?",
@@ -22,11 +22,15 @@ export default function FAQ() {
         },
         {
             question: "Does Auzzie Charge Cancellation Fees?",
-            answer: "Cancellation fees may apply depending on how close to the booking time the cancellation occurs. Generally, cancellations made more than 24 hours in advance incur no fee. Please refer to our Terms & Conditions for full details."
+            answer: "Cancellation fees may apply depending on how close to the booking time the cancellation occurs. Generally, cancellations made more than 24 hours in advance incur no fee. Please refer to our <a href='/terms-conditions' style='color: #c5a467; text-decoration: underline;'>Terms & Conditions</a> for full details."
         },
         {
             question: "How Far In Advance Can I Book With Auzzie?",
-            answer: "You can book as far in advance as you like. We recommend booking at least 24 hours in advance to ensure vehicle availability, especially during peak travel times or for special events."
+            answer: "You can book as far in advance as you like. We recommend booking at least 24 hours in advance to ensure vehicle availability, especially during peak travel times or for special events. You can <a href='/book' style='color: #c5a467; text-decoration: underline;'>book online now</a>."
+        },
+        {
+            question: "Is Auzzie Chauffeur Service Reliable And Safe?",
+            answer: "Absolutely. Safety is our top priority. All our chauffeurs undergo rigorous background checks, hold commercial driver accreditations, and are trained in defensive driving. Our vehicles are late-model European brands, meticulously maintained, and fully insured for passenger transport, giving you total peace of mind."
         }
     ];
 
@@ -52,14 +56,14 @@ export default function FAQ() {
                                 />
                             </button>
                             <div className={`${styles.answer} ${openIndex === index ? styles.answerOpen : ''}`}>
-                                <p>{faq.answer}</p>
+                                <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
                             </div>
                         </div>
                     ))}
                 </div>
 
                 <div className={styles.viewAllWrapper}>
-                    <a href="#" className={styles.viewAllBtn}>View All FAQ&apos;s</a>
+                    <a href="/about-us/faqs" className={styles.viewAllBtn}>View All FAQ&apos;s</a>
                 </div>
             </div>
         </section>

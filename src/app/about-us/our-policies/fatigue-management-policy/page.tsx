@@ -54,9 +54,10 @@ export default function FatigueManagementPolicyPage() {
 
             {/* CONTENT */}
             <section className={styles.contentSection}>
+                <h2 className={styles.sectionTitle}>Safety Protocols & Fatigue Management</h2>
                 <div className={styles.introText}>
                     <p>
-                        Safety is non-negotiable. Our Fatigue Management Policy ensures that every Auzzsi Chauffeur behind the wheel is fresh, alert, and ready to drive you safely.
+                        Safety is non-negotiable. Our Fatigue Management Policy ensures that every Auzzie Chauffeur behind the wheel is fresh, alert, and ready to drive you safely.
                     </p>
                 </div>
 

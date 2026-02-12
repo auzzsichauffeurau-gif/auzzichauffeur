@@ -22,7 +22,7 @@ export default function CairnsToursPage() {
             {/* HERO SECTION */}
             <div style={{ position: 'relative' }}>
                 <Hero
-                    title="Cairns & Port Douglas Private Tours"
+                    title="Luxury Private Tours Cairns & Port Douglas"
                     subtitle="Experience the Rainforest and Reef region. Private day trips to the Daintree, Mossman Gorge, and the waterfall circuit."
                     showStats={false}
                 />

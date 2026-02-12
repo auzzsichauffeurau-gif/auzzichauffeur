@@ -199,6 +199,11 @@ export default function QuoteForm() {
             </div>
 
             <form onSubmit={step === 2 ? handleSubmit : (e) => { e.preventDefault(); calculatePrice(); }}>
+                {/* Honeypot field to detect automated bots */}
+                <div style={{ display: 'none' }} aria-hidden="true">
+                    <label htmlFor="quote-reference">Reference</label>
+                    <input id="quote-reference" name="quote-reference" type="text" tabIndex={-1} autoComplete="off" />
+                </div>
 
                 {step === 1 && (
                     <div className={styles.stepContent}>
@@ -325,6 +330,9 @@ export default function QuoteForm() {
                                 {isSubmitting ? 'Get Formal Quote' : 'Get Formal Quote'}
                             </button>
                         </div>
+                        <p style={{ fontSize: '0.7rem', color: '#9ca3af', textAlign: 'center', marginTop: '1.5rem' }}>
+                            We use automated tools to block spam. By getting a quote, you agree our <Link href="/terms-conditions" style={{ color: 'inherit', textDecoration: 'underline' }}>Anti-Spam Policy</Link>.
+                        </p>
                     </div>
                 )}
 

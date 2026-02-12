@@ -17,7 +17,7 @@ export default function ChildSafetyPolicyPage() {
     const sections = [
         {
             title: "Commitment to Safety",
-            content: "Auzzsi Chauffeur is committed to the safety and well-being of all passengers, especially children. We strictly adhere to Australian road safety laws regarding child restraints."
+            content: "Auzzie Chauffeur is committed to the safety and well-being of all passengers, especially children. We strictly adhere to Australian road safety laws regarding child restraints."
         },
         {
             title: "Child Seats & Restraints",
@@ -54,6 +54,7 @@ export default function ChildSafetyPolicyPage() {
 
             {/* CONTENT */}
             <section className={styles.contentSection}>
+                <h2 className={styles.sectionTitle}>Our Commitment to Child Safety</h2>
                 <div className={styles.introText}>
                     <p>
                         Ensuring the safety of our youngest passengers is a top priority. Our Child Safety Policy outlines our procedures for transporting children and the provision of appropriate safety restraints.

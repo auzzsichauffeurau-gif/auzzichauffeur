@@ -90,8 +90,8 @@ export default function ServicesPage() {
             <Navbar />
             <BreadcrumbSchema items={breadcrumbs} />
             <Hero
-                title="Our Premium Services"
-                subtitle="More than just a ride. Experience the Auzzsi difference across a complete range of luxury transport solutions."
+                title="Our Luxury Services"
+                subtitle="More than just a ride. Experience the Auzzie difference across a complete range of luxury transport solutions."
                 showStats={false}
             />
 
@@ -99,7 +99,7 @@ export default function ServicesPage() {
                 <h2 className={styles.sectionTitle}>Comprehensive Transport Solutions</h2>
                 <div className={styles.textBlock}>
                     <p>
-                        Auzzsi Chauffeur offers a complete suite of ground transport services designed to meet the diverse needs of modern travelers.
+                        Auzzie Chauffeur offers a complete suite of ground transport services designed to meet the diverse needs of modern travelers.
                         From the precision required for business logistics to the elegance needed for weddings, our fleet and team are adaptable to every occasion.
                         <br /><br />
                         We operate nationwide, maintaining the same high standards of service, safety, and luxury whether you are in Sydney, Melbourne, Perth, or anywhere in between.

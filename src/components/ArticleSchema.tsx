@@ -29,17 +29,21 @@ export default function ArticleSchema({
         "author": [{
             "@type": "Person",
             "name": authorName,
-            "url": authorUrl || "https://www.auzziechauffeur.com.au/about-us"
+            "url": authorUrl || "https://auzziechauffeur.com.au/about-us"
         }],
         "publisher": {
             "@type": "Organization",
             "name": "Auzzie Chauffeur",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.auzziechauffeur.com.au/logo.png"
+                "url": "https://auzziechauffeur.com.au/logo.png"
             }
         },
-        "description": description
+        "description": description,
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": typeof window !== 'undefined' ? window.location.href : "https://auzziechauffeur.com.au"
+        }
     };
 
     return (

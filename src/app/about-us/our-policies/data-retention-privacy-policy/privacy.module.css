@@ -68,9 +68,15 @@
 .contentSection {
     padding: 4rem 2rem;
     max-width: 1000px;
-    /* Wider for text */
     margin: 0 auto;
     width: 100%;
+}
+
+.sectionTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 2rem;
 }
 
 .introText {

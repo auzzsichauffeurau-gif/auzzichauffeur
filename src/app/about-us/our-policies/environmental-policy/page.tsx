@@ -54,6 +54,7 @@ export default function EnvironmentalPolicyPage() {
 
             {/* CONTENT */}
             <section className={styles.contentSection}>
+                <h2 className={styles.sectionTitle}>Our Sustainability Commitment</h2>
                 <div className={styles.introText}>
                     <p>
                         Luxury doesn't have to cost the earth. We are dedicated to implementing sustainable practices across our operations to protect the environment for future generations.

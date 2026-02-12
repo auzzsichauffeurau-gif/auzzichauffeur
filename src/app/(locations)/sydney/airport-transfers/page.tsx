@@ -216,9 +216,7 @@ export default function SydneyAirportPage() {
                     <div className={styles.mapContainer}>
                         <iframe
                             src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Sydney+Airport,Australia&t=&z=14&ie=UTF8&iwloc=B&output=embed"
-                            width="100%"
-                            height="100%"
-                            style={{ border: 0 }}
+                            style={{ border: 0, width: '100%', height: '100%' }}
                             allowFullScreen
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"

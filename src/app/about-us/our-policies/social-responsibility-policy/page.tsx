@@ -54,6 +54,7 @@ export default function SocialResponsibilityPolicyPage() {
 
             {/* CONTENT */}
             <section className={styles.contentSection}>
+                <h2 className={styles.sectionTitle}>Our Social & Ethical Responsibility</h2>
                 <div className={styles.introText}>
                     <p>
                         Our responsibility extends beyond our clients. We are committed to making a positive impact on society, our employees, and the wider community.

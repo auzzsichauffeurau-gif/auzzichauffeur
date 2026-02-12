@@ -71,6 +71,13 @@
     width: 100%;
 }
 
+.sectionTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+}
+
 .introText {
     color: #555;
     line-height: 1.7;

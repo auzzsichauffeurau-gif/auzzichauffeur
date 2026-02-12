@@ -3,17 +3,18 @@ import Footer from "@/components/Footer";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Australia City Guides | Auzzie Chauffeur | Local Travel Tips",
+    title: "Australia City Guides & Travel Tips",
     description: "Download our exclusive city guides for Melbourne, Brisbane, and the Gold Coast. Expert travel tips from your local chauffeur team.",
 };
 import styles from "./city-guides.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function CityGuidesPage() {
     const guides = [
-        { id: 'melbourne', title: "Auzzsi Melbourne City Guide", pdfLink: "#" },
-        { id: 'gold-coast', title: "Auzzsi Gold Coast City Guide", pdfLink: "#" },
-        { id: 'brisbane', title: "Auzzsi Brisbane City Guide", pdfLink: "#" },
+        { id: 'melbourne', title: "Auzzie Melbourne City Guide", pdfLink: "#" },
+        { id: 'gold-coast', title: "Auzzie Gold Coast City Guide", pdfLink: "#" },
+        { id: 'brisbane', title: "Auzzie Brisbane City Guide", pdfLink: "#" },
     ];
 
     return (
@@ -27,15 +28,15 @@ export default function CityGuidesPage() {
                     <div className={styles.breadcrumb}>
                         <Link href="/">Home</Link> &gt; City Guides
                     </div>
-                    <h1 className={styles.heroTitle}>City Guides</h1>
-                    <p className={styles.heroSubtitle}>The latest travel guides, news and blogs from Auzzsi Chauffeur</p>
+                    <h1 className={styles.heroTitle}>Local City Guides</h1>
+                    <p className={styles.heroSubtitle}>Expert travel insights, curated by the team at Auzzie Chauffeur</p>
                 </div>
             </section>
 
             {/* Resources Section */}
             <section className={styles.resourcesSection}>
                 <div className={styles.container}>
-                    <h2 className={styles.sectionTitle}>Auzzsi Chauffeur Resources</h2>
+                    <h2 className={styles.sectionTitle}>Auzzie Chauffeur Resources</h2>
 
                     <div className={styles.layout}>
                         {/* List Side */}
@@ -49,12 +50,7 @@ export default function CityGuidesPage() {
 
                         {/* Map Side */}
                         <div className={styles.mapContainer}>
-                            <img src="/au-map.png" alt="Australia Map" />
-
-                            {/* Positioning buttons approximately based on the map image. 
-                                Assuming a standard AU map projection. 
-                                Adjust percentages if visual verification fails.
-                            */}
+                            <Image src="/au-map.png" alt="Auzzie Chauffeur Coverage Map Australia" width={600} height={450} />
 
                             {/* Brisbane/Gold Coast Area */}
                             <div className={styles.mapMarker} style={{ top: '45%', left: '88%' }}>
@@ -73,10 +69,17 @@ export default function CityGuidesPage() {
                                 <div className={styles.mapDot} style={{ top: '50%', left: '-15px' }}></div>
                                 <a href="#" className={styles.downloadBtn}>Download PDF</a>
                             </div>
-
-
-                            <div className={styles.mapDot} style={{ top: '60%', left: '60%' }}></div> {/* Adelaideish */}
                         </div>
+                    </div>
+
+                    <div style={{ marginTop: '4rem', padding: '2rem', backgroundColor: '#fdfbf7', borderRadius: '8px', borderLeft: '4px solid #c5a467' }}>
+                        <h3 style={{ color: '#1e3a8a', marginBottom: '1rem' }}>Expert Chauffeur Insights</h3>
+                        <p style={{ color: '#4b5563', lineHeight: '1.7' }}>
+                            Our guides are more than just maps. They are a collection of over 20 years of experience on the Australian roads.
+                            From the best time to avoid the M1 in Brisbane to the secret drop-off points at Melbourne Airport that save you 15 minutes of walking,
+                            our local chauffeurs share their insightful analysis to make your journey seamless.
+                            We recommend planning your Sydney CBD transfers at least 45 minutes ahead of peak hours (8 AM - 9:30 AM) to ensure on-time arrival.
+                        </p>
                     </div>
                 </div>
             </section>
