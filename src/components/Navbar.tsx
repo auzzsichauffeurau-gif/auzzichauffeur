@@ -80,6 +80,15 @@ export default function Navbar() {
     ];
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
+
+    const toggleGroup = (title: string) => {
+        setExpandedGroups(prev =>
+            prev.includes(title)
+                ? prev.filter(t => t !== title)
+                : [...prev, title]
+        );
+    };
 
     // Toggle scroll lock when menu opens
     useEffect(() => {
@@ -93,55 +102,74 @@ export default function Navbar() {
 
     return (
         <>
-            <header className={styles.header}>
-                {/* Logo Section */}
-                <Link href="/" className={styles.brandWrapper} onClick={() => setMobileMenuOpen(false)}>
-                    <Image
-                        src="/logo/header-logo.webp"
-                        alt="Auzzie Chauffeur"
-                        className={styles.logoImage}
-                        width={300}
-                        height={178}
-                        priority
-                        style={{ height: 'auto', width: '200px' }}
-                    />
-                </Link>
+            <header className={styles.headerContainer}>
+                {/* Top Bar */}
+                <div className={styles.topBar}>
+                    <div className={styles.topBarContent}>
+                        <span className={styles.topBarText}>Available 24/7</span>
+                        <a href="tel:1300465374" className={styles.topBarLink}>
+                            Start Booking: 1300 465 374
+                        </a>
+                        <a href="mailto:booking@auzziechauffeur.com.au" className={styles.topBarLink}>
+                            booking@auzziechauffeur.com.au
+                        </a>
+                    </div>
+                </div>
 
-                {/* Desktop Navigation */}
-                <nav className={styles.nav}>
-                    {navStructure.map((nav, index) => (
-                        <div key={index} className={styles.navItemWrapper}>
-                            <Link href={nav.link} className={styles.navItem}>
-                                {nav.title} <ChevronDown className={styles.chevron} />
-                            </Link>
-
-                            {/* Check if items length is large to apply multi-column style */}
-                            <div className={`${styles.dropdown} ${nav.items.length > 8 ? styles.multiColumnDropdown : ''}`}>
-                                {nav.items.map((item, itemIndex) => (
-                                    <Link key={itemIndex} href={item.link} className={styles.dropdownLink}>
-                                        {item.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-
-                    <Link href="/contact-us" className={styles.navItemWrapper}>
-                        <span className={styles.navItem} style={{ gap: 0 }}>Contact Us</span>
+                {/* Main Navbar */}
+                <div className={styles.header}>
+                    {/* Logo Section */}
+                    <Link href="/" className={styles.brandWrapper} onClick={() => setMobileMenuOpen(false)}>
+                        <Image
+                            src="/logo/header-logo.webp"
+                            alt="Auzzie Chauffeur"
+                            className={styles.logoImage}
+                            width={300}
+                            height={178}
+                            priority
+                        />
                     </Link>
 
-                    <Link href="/quote" className={styles.quoteBtn}>Get Quote</Link>
-                    <Link href="/book" className={styles.bookBtn}>Book Now</Link>
-                </nav>
+                    {/* Desktop Navigation */}
+                    <nav className={styles.nav}>
+                        {navStructure.map((nav, index) => (
+                            <div key={index} className={styles.navItemWrapper}>
+                                <Link href={nav.link} className={styles.navItem}>
+                                    {nav.title} <ChevronDown className={styles.chevron} />
+                                </Link>
 
-                {/* Mobile Hamburger Button */}
-                <button
-                    className={styles.hamburger}
-                    onClick={() => setMobileMenuOpen(true)}
-                    aria-label="Open Menu"
-                >
-                    <Menu size={28} color="#1f2937" />
-                </button>
+                                {/* Check if items length is large to apply multi-column style */}
+                                <div className={`${styles.dropdown} ${nav.items.length > 8 ? styles.multiColumnDropdown : ''}`}>
+                                    {nav.items.map((item, itemIndex) => (
+                                        <Link key={itemIndex} href={item.link} className={styles.dropdownLink}>
+                                            {item.name}
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+
+                        <Link href="/contact-us" className={styles.navItemWrapper}>
+                            <span className={styles.navItem} style={{ gap: 0 }}>Contact Us</span>
+                        </Link>
+
+                        <Link href="/quote" className={styles.quoteBtn}>Get Quote</Link>
+                    </nav>
+
+                    {/* Mobile Actions */}
+                    <div className={styles.mobileActions}>
+                        <Link href="/book" className={styles.mobileHeaderCta}>
+                            Book Now
+                        </Link>
+                        <button
+                            className={styles.hamburger}
+                            onClick={() => setMobileMenuOpen(true)}
+                            aria-label="Open Menu"
+                        >
+                            <Menu size={28} color="white" />
+                        </button>
+                    </div>
+                </div>
 
                 {/* Mobile Menu Overlay */}
                 <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
@@ -162,23 +190,40 @@ export default function Navbar() {
                     </div>
 
                     <div className={styles.mobileMenuContent}>
-                        {navStructure.map((nav, index) => (
-                            <div key={index} className={styles.mobileGroup}>
-                                <div className={styles.mobileGroupTitle}>{nav.title}</div>
-                                <div className={styles.mobileLinks}>
-                                    {nav.items.map((item, itemIndex) => (
+                        {navStructure.map((nav, index) => {
+                            const isExpanded = expandedGroups.includes(nav.title);
+                            return (
+                                <div key={index} className={styles.mobileGroup}>
+                                    <div
+                                        className={styles.mobileGroupHeader}
+                                        onClick={() => toggleGroup(nav.title)}
+                                    >
+                                        <span className={styles.mobileGroupTitle}>{nav.title}</span>
+                                        <ChevronDown size={20} style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.3s' }} />
+                                    </div>
+
+                                    <div className={`${styles.mobileLinks} ${isExpanded ? styles.mobileLinksOpen : ''}`}>
                                         <Link
-                                            key={itemIndex}
-                                            href={item.link}
-                                            className={styles.mobileLink}
+                                            href={nav.link}
+                                            className={styles.mobileLinkActive} // Main category link
                                             onClick={() => setMobileMenuOpen(false)}
                                         >
-                                            {item.name}
+                                            All {nav.title}
                                         </Link>
-                                    ))}
+                                        {nav.items.map((item, itemIndex) => (
+                                            <Link
+                                                key={itemIndex}
+                                                href={item.link}
+                                                className={styles.mobileLink}
+                                                onClick={() => setMobileMenuOpen(false)}
+                                            >
+                                                {item.name}
+                                            </Link>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
 
                         <div className={styles.mobileGroup}>
                             <Link
@@ -191,13 +236,22 @@ export default function Navbar() {
                             </Link>
                         </div>
 
-                        <Link
-                            href="/book"
-                            className={styles.mobileBookBtn}
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            Book Now
-                        </Link>
+                        <div style={{ paddingBottom: '2rem' }}>
+                            <Link
+                                href="/book"
+                                className={styles.mobileBookBtn}
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                Book Now
+                            </Link>
+                            <Link
+                                href="/quote"
+                                className={styles.mobileQuoteBtn}
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                Get Quote
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </header>

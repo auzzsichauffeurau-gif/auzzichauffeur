@@ -185,7 +185,7 @@ export default function Home() {
                 </div>
                 <div>
                   <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Headquarters</h3>
-                  <p style={{ color: '#4b5563' }}>Sydney, NSW, Australia<br />(Serving All Major Airports)</p>
+                  <p style={{ color: '#4b5563' }}>Tullamarine, VIC 3043<br />Melbourne, Australia</p>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: '1rem' }}>
@@ -208,11 +208,11 @@ export default function Home() {
           {/* Google Map Embed */}
           <div style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', height: '400px' }}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.846506300067!2d151.2092953152109!3d-33.86881968065619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae665e892fdd%3A0x3133f8d75a1ac251!2sSydney%20NSW%2C%20Australia!5e0!3m2!1sen!2sus!4v1645564747248!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3155.3871753788887!2d144.81660000000002!3d-37.696400000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65a115c7d0d89%3A0x5045675218cdc90!2sTullamarine%20VIC%203043%2C%20Australia!5e0!3m2!1sen!2sau!4v1707734400000!5m2!1sen!2sau"
               style={{ border: 0, width: '100%', height: '100%' }}
               allowFullScreen={true}
               loading="lazy"
-              title="Auzzie Chauffeur Service Area Map"
+              title="Auzzie Chauffeur Head Office - Tullamarine, Melbourne"
             ></iframe>
           </div>
 

@@ -143,6 +143,10 @@
 }
 
 @media (max-width: 900px) {
+    .section {
+        padding: 3rem 1rem;
+    }
+
     .contentWrapper {
         flex-direction: column;
     }

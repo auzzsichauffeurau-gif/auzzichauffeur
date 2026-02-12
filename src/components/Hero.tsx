@@ -1,5 +1,5 @@
+import Link from 'next/link';
 import styles from './Hero.module.css';
-import BookingWidget from './BookingWidget';
 
 interface HeroProps {
   title?: string;
@@ -30,16 +30,14 @@ export default function Hero({
             {subtitle}
           </p>
 
-
-
-
-
-        </div>
-
-
-        {/* Booking Widget Section */}
-        <div style={{ marginBottom: '3rem' }}>
-          <BookingWidget />
+          <div className={styles.ctaButtons}>
+            <Link href="/book" className={`${styles.btn} ${styles.btnPrimary}`}>
+              Book Now
+            </Link>
+            <Link href="/quote" className={`${styles.btn} ${styles.btnSecondary}`}>
+              Get Quote
+            </Link>
+          </div>
         </div>
 
         {showStats && (
@@ -63,11 +61,9 @@ export default function Hero({
                 <span className={styles.statLabel}>European Fleet</span>
               </div>
             </div>
-
-
           </div>
         )}
       </div>
-    </section >
+    </section>
   );
 }

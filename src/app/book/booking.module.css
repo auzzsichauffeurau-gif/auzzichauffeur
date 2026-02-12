@@ -233,8 +233,8 @@
 
 /* BOTTOM ACTION BAR */
 .actionBar {
-    background-color: #e5b567;
-    /* Goldish brown bar */
+    background-color: #d4a256;
+    /* Darker gold for better contrast */
     padding: 1.5rem 2.5rem;
     display: flex;
     align-items: center;
@@ -244,11 +244,11 @@
 }
 
 .clearBtn {
-    background: transparent;
-    border: 1px solid #1a2b4b;
+    background: white;
+    border: 2px solid #1a2b4b;
     color: #1a2b4b;
     padding: 0.8rem 2rem;
-    font-weight: 600;
+    font-weight: 700;
     border-radius: 6px;
     cursor: pointer;
     text-transform: uppercase;
@@ -257,7 +257,8 @@
 }
 
 .clearBtn:hover {
-    background: rgba(26, 43, 75, 0.1);
+    background: #f5f5f5;
+    transform: translateY(-1px);
 }
 
 .rightActions {
@@ -267,8 +268,8 @@
 }
 
 .continueBtn {
-    background-color: #e6e6e6;
-    color: #1a2b4b;
+    background-color: #1a2b4b;
+    color: white;
     border: none;
     padding: 0.8rem 2rem;
     font-weight: 700;
@@ -279,11 +280,12 @@
     align-items: center;
     gap: 0.5rem;
     text-transform: uppercase;
-    transition: background 0.2s;
+    transition: all 0.2s;
 }
 
 .continueBtn:hover {
-    background-color: white;
+    background-color: #2c4470;
+    transform: translateY(-1px);
 }
 
 .priceTag {
