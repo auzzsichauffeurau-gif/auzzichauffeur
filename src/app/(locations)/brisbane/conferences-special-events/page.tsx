@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Conference Transfers Brisbane | BCEC & Queen's Wharf Events | Auzzie Chauffeur",
+    title: { absolute: "Conference Transfers Brisbane | BCEC & Queen's Wharf Events | Auzzie Chauffeur" },
     description: "Group transport for Brisbane Convention Centre (BCEC) and Queen's Wharf. Reliable event chauffeurs for corporate roadshows and exhibitions.",
 };
 

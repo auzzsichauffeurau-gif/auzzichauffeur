@@ -11,7 +11,7 @@ import LocationFAQ from "@/components/LocationFAQ";
 import LocationTestimonials from "@/components/LocationTestimonials";
 
 export const metadata: Metadata = {
-    title: "Perth Airport Transfers | Chauffeur Service PER | Auzzie Chauffeur",
+    title: { absolute: "Perth Airport Transfers | Chauffeur Service PER | Auzzie Chauffeur" },
     description: "Reliable airport transfers from Perth Airport (PER) to CBD, Scarborough, Fremantle & Mandurah. Luxury cars, FIFO transfers, fixed rates.",
 };
 

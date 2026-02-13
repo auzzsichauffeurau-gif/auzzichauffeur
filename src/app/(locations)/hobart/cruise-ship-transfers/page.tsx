@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Cruise Ship Transfers Hobart | Macquarie Wharf & Airport | Auzzie Chauffeur",
+    title: { absolute: "Cruise Ship Transfers Hobart | Macquarie Wharf & Airport | Auzzie Chauffeur" },
     description: "Personalized cruise transfers in Hobart. Chauffeur service from Hobart Airport to Macquarie Wharf Cruise Terminal. Reliable, friendly, and fixed price.",
 };
 

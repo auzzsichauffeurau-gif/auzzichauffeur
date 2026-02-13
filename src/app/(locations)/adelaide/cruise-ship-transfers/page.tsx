@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Cruise Ship Transfers Adelaide | Outer Harbor Passenger Terminal | Auzzie Chauffeur",
+    title: { absolute: "Cruise Ship Transfers Adelaide | Outer Harbor Passenger Terminal | Auzzie Chauffeur" },
     description: "Private cruise transfers to Outer Harbor, Adelaide. Convenient chauffeur service from Adelaide Airport or CBD to the Passenger Terminal. Fixed price.",
 };
 

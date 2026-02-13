@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Luxury Private Tours Brisbane | Tamborine & Sunshine Coast | Auzzie Chauffeur",
+    title: { absolute: "Luxury Private Tours Brisbane | Tamborine & Sunshine Coast | Auzzie Chauffeur" },
     description: "Private chauffeur tours from Brisbane. Explore Mount Tamborine, Australia Zoo, or the Sunshine Coast Hinterland in air-conditioned luxury. Custom day trips.",
 };
 

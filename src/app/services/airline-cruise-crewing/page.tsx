@@ -12,7 +12,7 @@ import ServiceSchema from "@/components/ServiceSchema";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Airline & Cruise Crew transfers | Auzzie Chauffeur | Crew Logistics Services",
+    title: { absolute: "Airline & Cruise Crew transfers | Auzzie Chauffeur | Crew Logistics Services" },
     description: "Specialized transport for airline flight crew and cruise ship staff. Reliable, on-time airport & port transfers. Contract rates available.",
 };
 

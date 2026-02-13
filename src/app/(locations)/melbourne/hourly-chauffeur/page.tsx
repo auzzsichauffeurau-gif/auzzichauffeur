@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Hourly Chauffeur Melbourne | Private Driver Hire | Yarra Valley & Great Ocean Road",
+    title: { absolute: "Hourly Chauffeur Melbourne | Private Driver Hire | Yarra Valley & Great Ocean Road" },
     description: "Hire a private driver in Melbourne. Hourly chauffeur service for Yarra Valley wine tours, Great Ocean Road trips, and city sightseeing.",
 };
 

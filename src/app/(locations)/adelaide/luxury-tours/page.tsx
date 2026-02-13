@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Luxury Private Tours Adelaide | Barossa Valley & McLaren Vale | Auzzie Chauffeur",
+    title: { absolute: "Luxury Private Tours Adelaide | Barossa Valley & McLaren Vale | Auzzie Chauffeur" },
     description: "Private winery tours from Adelaide CBD. Discover the Barossa, McLaren Vale, and Adelaide Hills in a luxury chauffeured vehicle. Custom wine tours.",
 };
 

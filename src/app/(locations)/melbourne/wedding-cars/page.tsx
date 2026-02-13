@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Wedding Cars Melbourne | Luxury Bridal Transfers | Auzzie Chauffeur",
+    title: { absolute: "Wedding Cars Melbourne | Luxury Bridal Transfers | Auzzie Chauffeur" },
     description: "Premium wedding car hire in Melbourne. Mercedes & Audi chauffeur service for weddings in the CBD, Yarra Valley, and Mornington Peninsula. Book your dream ride.",
 };
 

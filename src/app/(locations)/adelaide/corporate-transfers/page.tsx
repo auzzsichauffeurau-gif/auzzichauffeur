@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Corporate Chauffeur Adelaide | Executive Business Transport | Auzzie Chauffeur",
+    title: { absolute: "Corporate Chauffeur Adelaide | Executive Business Transport | Auzzie Chauffeur" },
     description: "Professional corporate chauffeurs in Adelaide. Discrete transfers for Defence, Government, and Wine Industry executives. Reliable and punctual.",
 };
 

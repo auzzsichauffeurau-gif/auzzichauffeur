@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Conference Transfers Sydney | ICC & Olympic Park Events | Auzzie Chauffeur",
+    title: { absolute: "Conference Transfers Sydney | ICC & Olympic Park Events | Auzzie Chauffeur" },
     description: "Reliable group transport for Sydney conferences and events. Chauffeur services for ICC Sydney, Qudos Bank Arena, and corporate functions. Book vans & sedans.",
 };
 

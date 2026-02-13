@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "International Student Transfers Brisbane | UQ, QUT, Griffith | Airport Pickup",
+    title: { absolute: "International Student Transfers Brisbane | UQ, QUT, Griffith | Airport Pickup" },
     description: "Safe student transfers in Brisbane. Airport pickup service for UQ (St Lucia), QUT (Gardens Point/Kelvin Grove) and Griffith University students.",
 };
 

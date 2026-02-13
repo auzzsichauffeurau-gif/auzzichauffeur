@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "International Student Transfers Melbourne | Uni Melb, Monash, RMIT",
+    title: { absolute: "International Student Transfers Melbourne | Uni Melb, Monash, RMIT" },
     description: "Reliable student airport transfers in Melbourne. Safe transport from Melbourne Airport (MEL) to University of Melbourne, Monash, RMIT and student colleges.",
 };
 

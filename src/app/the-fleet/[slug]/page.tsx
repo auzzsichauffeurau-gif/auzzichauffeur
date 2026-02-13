@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         .join(' ');
 
     return {
-        title: `${title} | Auzzie Chauffeur | Explore Our Fleet`,
+        title: { absolute: `${title} | Auzzie Chauffeur | Explore Our Fleet` },
         description: `Premium ${title} chauffeur service in Australia. Luxury vehicles for airport transfers, corporate travel, and special events.`,
         alternates: {
             canonical: `/the-fleet/${slug}`,

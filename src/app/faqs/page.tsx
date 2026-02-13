@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Chauffeur Service FAQs | Auzzie Chauffeur | Your Questions Answered",
+    title: { absolute: "Chauffeur Service FAQs | Auzzie Chauffeur | Your Questions Answered" },
     description: "Find answers to frequently asked questions about Auzzie Chauffeur services. Pricing, booking, fleet details, and airport meeting points explained.",
 };
 

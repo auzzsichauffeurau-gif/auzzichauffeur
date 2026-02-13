@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Conference Transport Gold Coast | GCCEC & Star Casino | Auzzie Chauffeur",
+    title: { absolute: "Conference Transport Gold Coast | GCCEC & Star Casino | Auzzie Chauffeur" },
     description: "Event transfers for Gold Coast Convention Centre (GCCEC) and The Star. Chauffeur services for conferences, Logies, and Magic Millions.",
 };
 

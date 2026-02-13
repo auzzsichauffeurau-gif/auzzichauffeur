@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Conference Transport Perth | PCEC & Crown Events | Auzzie Chauffeur",
+    title: { absolute: "Conference Transport Perth | PCEC & Crown Events | Auzzie Chauffeur" },
     description: "Executive group transfers in Perth for conferences, mining expos, and corporate events at PCEC and Crown Perth. Reliable van and sedan hire.",
 };
 

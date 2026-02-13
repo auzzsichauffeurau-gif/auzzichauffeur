@@ -30,6 +30,7 @@ export default function ContactUsContent() {
         e.preventDefault();
         setIsSubmitting(true);
 
+
         const { error } = await supabase.from('contact_messages').insert({
             first_name: formData.firstName,
             last_name: formData.lastName,
@@ -37,7 +38,7 @@ export default function ContactUsContent() {
             phone: formData.phone,
             subject: formData.subject,
             message: formData.message,
-            status: 'New'
+
         });
 
         if (error) {
@@ -46,30 +47,87 @@ export default function ContactUsContent() {
             return;
         }
 
-        // Send Email Notification
+        // Send Email Notifications
         try {
-            await fetch('/api/send-email', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    to: 'info@auzziechauffeur.com.au', // Send to business
-                    subject: `New Contact Enquiry: ${formData.subject}`,
-                    html: `
-                        <h3>New Contact Enquiry</h3>
-                        <p><strong>Name:</strong> ${formData.firstName} ${formData.lastName}</p>
-                        <p><strong>Email:</strong> ${formData.email}</p>
-                        <p><strong>Phone:</strong> ${formData.phone}</p>
-                        <p><strong>Subject:</strong> ${formData.subject}</p>
-                        <p><strong>Message:</strong><br/>${formData.message}</p>
-                    `
+            const responses = await Promise.all([
+                // 1. Send to Business (Admin)
+                fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        to: 'info@auzziechauffeur.com.au',
+                        subject: `New Contact Enquiry: ${formData.subject}`,
+                        html: `
+                            <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto;">
+                                <h3 style="color: #1e3a8a; border-bottom: 2px solid #c5a467; padding-bottom: 10px;">New Contact Enquiry</h3>
+                                <p>You have received a new message via the website contact form.</p>
+                                <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                                    <tr><td style="padding: 10px; border-bottom: 1px solid #eee; width: 120px; font-weight: bold;">Name:</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${formData.firstName} ${formData.lastName}</td></tr>
+                                    <tr><td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Email:</td><td style="padding: 10px; border-bottom: 1px solid #eee;"><a href="mailto:${formData.email}">${formData.email}</a></td></tr>
+                                    <tr><td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Phone:</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${formData.phone}</td></tr>
+                                    <tr><td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Subject:</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${formData.subject}</td></tr>
+                                </table>
+                                <div style="background-color: #f9fafb; padding: 20px; border-radius: 6px; border-left: 4px solid #1e3a8a;">
+                                    <strong>Message:</strong><br/>
+                                    <p style="white-space: pre-wrap; margin-top: 10px;">${formData.message}</p>
+                                </div>
+                            </div>
+                        `
+                    })
+                }),
+
+                // 2. Send Auto-Reply to Customer
+                fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        to: formData.email,
+                        subject: `We received your message - Auzzie Chauffeur`,
+                        html: `
+                            <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; color: #333;">
+                                <div style="text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                                    <h2 style="color: #1e3a8a; margin: 0;">Thank You for Contacting Us</h2>
+                                    <p style="color: #666; font-size: 0.9em;">We have received your enquiry</p>
+                                </div>
+                                <p>Dear ${formData.firstName},</p>
+                                <p>Thank you for reaching out to <strong>Auzzie Chauffeur</strong>. We have successfully received your message regarding "<strong>${formData.subject}</strong>".</p>
+                                <p>One of our team members is reviewing your enquiry and will get back to you as soon as possible, typically within 24 hours.</p>
+                                <p>If your matter is urgent, please feel free to reply to this email directly.</p>
+                                
+                                <div style="margin-top: 30px; padding: 20px; background-color: #f9f9f9; border-radius: 6px;">
+                                    <p style="margin: 0 0 10px 0; font-size: 0.85em; color: #666; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Your Message Copy:</p>
+                                    <p style="margin: 0; font-style: italic; color: #555;">"${formData.message}"</p>
+                                </div>
+
+                                <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.9em; color: #888; text-align: center;">
+                                    <p style="margin-bottom: 5px;"><strong>Auzzie Chauffeur</strong></p>
+                                    <p style="margin: 0;"><a href="https://auzziechauffeur.com.au" style="color: #c5a467; text-decoration: none;">www.auzziechauffeur.com.au</a></p>
+                                    <p style="margin: 5px 0 0 0;">Australia's Premium Chauffeur Service</p>
+                                </div>
+                            </div>
+                        `
+                    })
                 })
-            });
-        } catch (emailError) {
+            ]);
+
+            // Check for errors in responses
+            for (const response of responses) {
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    const errorMessage = typeof errorData.details === 'object'
+                        ? JSON.stringify(errorData.details)
+                        : (errorData.details || errorData.error || "Email sending failed");
+                    throw new Error(errorMessage);
+                }
+            }
+
+            setIsSubmitted(true);
+        } catch (emailError: any) {
             console.error("Failed to send email notification", emailError);
+            alert("Message saved, but failed to send email: " + emailError.message);
         }
 
         setIsSubmitting(false);
-        setIsSubmitted(true);
     };
 
     return (

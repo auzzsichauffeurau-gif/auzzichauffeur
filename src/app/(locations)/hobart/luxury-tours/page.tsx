@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Luxury Private Tours Hobart | MONA, Port Arthur & Huon Valley | Auzzie Chauffeur",
+    title: { absolute: "Luxury Private Tours Hobart | MONA, Port Arthur & Huon Valley | Auzzie Chauffeur" },
     description: "Private chauffeur tours of Tasmania. Visit MONA, Port Arthur, Richmond, and the Huon Valley in luxury comfort. Custom day trips from Hobart.",
 };
 

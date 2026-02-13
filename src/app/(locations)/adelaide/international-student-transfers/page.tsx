@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "International Student Transfers Adelaide | Uni of Adelaide, Flinders, UniSA",
+    title: { absolute: "International Student Transfers Adelaide | Uni of Adelaide, Flinders, UniSA" },
     description: "Reliable airport transfers for Adelaide students. Fixed price transport from Adelaide Airport (ADL) to University of Adelaide, Flinders, UniSA and student housing.",
 };
 

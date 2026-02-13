@@ -15,7 +15,7 @@ import LocationFAQ from "@/components/LocationFAQ";
 import LocationTestimonials from "@/components/LocationTestimonials";
 
 export const metadata: Metadata = {
-    title: "Chauffeur Service Hobart | Auzzie Chauffeur | Tasmania Luxury",
+    title: { absolute: "Chauffeur Service Hobart | Auzzie Chauffeur | Tasmania Luxury" },
     description: "Book premium chauffeur service in Hobart. Luxury airport transfers (HBA), MONA tours, and private driver hire for weddings and corporate events.",
 };
 

@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Wedding Cars Perth | Luxury Chauffeur & Limo Hire | Auzzie Chauffeur",
+    title: { absolute: "Wedding Cars Perth | Luxury Chauffeur & Limo Hire | Auzzie Chauffeur" },
     description: "Elegant wedding cars in Perth. Premium Mercedes & Audi chauffeur service for weddings in Kings Park, Swan Valley, and Fremantle.",
 };
 

@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Hourly Chauffeur Gold Coast | Private Tours & Theme Park Transfers",
+    title: { absolute: "Hourly Chauffeur Gold Coast | Private Tours & Theme Park Transfers" },
     description: "Hire a private driver on the Gold Coast. Hourly rates for theme park transfers, Byron Bay day trips, and Mount Tamborine tours.",
 };
 

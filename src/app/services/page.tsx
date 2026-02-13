@@ -12,7 +12,7 @@ import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Chauffeur Services Australia | Auzzie Chauffeur | Book Luxury Transport",
+    title: { absolute: "Chauffeur Services Australia | Auzzie Chauffeur | Book Luxury Transport" },
     description: "Premium chauffeur services for airport transfers, corporate travel & weddings. 4.9★ rated drivers nationwide. Book your luxury ride today.",
 };
 

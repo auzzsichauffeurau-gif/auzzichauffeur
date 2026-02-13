@@ -15,7 +15,7 @@ import LocationFAQ from "@/components/LocationFAQ";
 import LocationTestimonials from "@/components/LocationTestimonials";
 
 export const metadata: Metadata = {
-    title: "Trusted Limo Service in Sydney | Auzzie Chauffeur | Ride in Style",
+    title: { absolute: "Trusted Limo Service in Sydney | Auzzie Chauffeur | Ride in Style" },
     description: "Luxury limo service in Sydney near CBD, 2000 & North Shore. Flat-rate, licensed rides with no hidden fees. Call or book online today for a smooth journey.",
     alternates: {
         canonical: '/sydney',

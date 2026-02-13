@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Wedding Cars Gold Coast | Beach & Hinterland Bridal Hire | Auzzie Chauffeur",
+    title: { absolute: "Wedding Cars Gold Coast | Beach & Hinterland Bridal Hire | Auzzie Chauffeur" },
     description: "Stunning wedding cars for your Gold Coast wedding. Luxury transport to Surfers Paradise beaches, Mt Tamborine, and The Star. Red carpet included.",
 };
 

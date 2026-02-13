@@ -12,7 +12,7 @@ import FAQSchema from "@/components/FAQSchema";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Conference & Event Transport | Auzzie Chauffeur | Group Logistics Quote",
+    title: { absolute: "Conference & Event Transport | Auzzie Chauffeur | Group Logistics Quote" },
     description: "Professional transport for major conferences & events in Sydney, Melbourne, Brisbane & Perth. Reliable logistics for delegate transfers.",
 };
 

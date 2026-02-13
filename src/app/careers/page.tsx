@@ -7,7 +7,7 @@ import type { Metadata } from 'next';
 import { ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Chauffeur Careers Australia | Auzzie Chauffeur | Join Our Team",
+    title: { absolute: "Chauffeur Careers Australia | Auzzie Chauffeur | Join Our Team" },
     description: "Looking for chauffeur jobs in Australia? Join Auzzie Chauffeur as a staff driver or contractor. Drive luxury vehicles and provide premium service.",
     alternates: {
         canonical: '/careers',

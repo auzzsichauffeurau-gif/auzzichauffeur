@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Wedding Cars Cairns & Port Douglas | Tropical Destination Weddings | Auzzie Chauffeur",
+    title: { absolute: "Wedding Cars Cairns & Port Douglas | Tropical Destination Weddings | Auzzie Chauffeur" },
     description: "Dream wedding transport in Cairns and Port Douglas. Luxury cars for tropical weddings at Palm Cove, The Daintree, and the Great Barrier Reef.",
 };
 

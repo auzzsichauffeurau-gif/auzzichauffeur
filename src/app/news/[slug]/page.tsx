@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         .trim();
 
     return {
-        title: post.title,
+        title: { absolute: `${post.title} | Auzzie Chauffeur` },
         description: cleanDescription,
         alternates: {
             canonical: `${baseUrl}/news/${slug}`,

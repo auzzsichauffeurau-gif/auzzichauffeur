@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Hourly Chauffeur Hobart | Private Tours Port Arthur & MONA",
+    title: { absolute: "Hourly Chauffeur Hobart | Private Tours Port Arthur & MONA" },
     description: "Hire a private driver in Tasmania. Hourly chauffeur service for day trips to Port Arthur, MONA, Richmond, and Mount Wellington.",
 };
 

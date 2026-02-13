@@ -13,7 +13,7 @@ import ServiceSchema from "@/components/ServiceSchema";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Luxury Wedding Cars | Auzzie Chauffeur | Book Your Dream Ride",
+    title: { absolute: "Luxury Wedding Cars | Auzzie Chauffeur | Book Your Dream Ride" },
     description: "Premium wedding car hire in Sydney, Melbourne & Nationwide. European luxury sedans, white ribbons & red carpet service. Request a quote.",
 };
 

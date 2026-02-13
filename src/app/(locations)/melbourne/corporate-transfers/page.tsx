@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Corporate Chauffeur Melbourne | Executive Transfers | Auzzie Chauffeur",
+    title: { absolute: "Corporate Chauffeur Melbourne | Executive Transfers | Auzzie Chauffeur" },
     description: "Premium executive chauffeur service in Melbourne. Reliable corporate transfers to CBD, Docklands, and MCEC. Open a business account today.",
 };
 

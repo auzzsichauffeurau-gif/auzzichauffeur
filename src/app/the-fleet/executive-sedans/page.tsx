@@ -6,7 +6,7 @@ import Link from "next/link";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Executive Sedan Rental | Auzzie Chauffeur | Book Luxury Sedan",
+    title: { absolute: "Executive Sedan Rental | Auzzie Chauffeur | Book Luxury Sedan" },
     description: "Hire a premium executive sedan for your next transfer. Late-model Mercedes, BMW, and Audi vehicles with professional chauffeurs nationwide.",
     alternates: {
         canonical: '/the-fleet/executive-sedans',

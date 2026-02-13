@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "International Student Transfers Gold Coast | Griffith & Bond University",
+    title: { absolute: "International Student Transfers Gold Coast | Griffith & Bond University" },
     description: "Cheap and reliable student transfers on the Gold Coast. Airport pickup for Griffith University (Southport) and Bond University (Robina).",
 };
 

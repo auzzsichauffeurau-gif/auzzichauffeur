@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Wedding Cars Adelaide | Barossa & Hills Bridal Hire | Auzzie Chauffeur",
+    title: { absolute: "Wedding Cars Adelaide | Barossa & Hills Bridal Hire | Auzzie Chauffeur" },
     description: "Elegant wedding cars in Adelaide. Luxury Mercedes chauffeurs for weddings in the CBD, Adelaide Hills, and Barossa Valley. Red carpet service included.",
 };
 

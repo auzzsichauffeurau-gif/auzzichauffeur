@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "International Student Transfers Perth | UWA, Curtin, Murdoch",
+    title: { absolute: "International Student Transfers Perth | UWA, Curtin, Murdoch" },
     description: "Reliable student transfers from Perth Airport (PER). Direct transport to UWA, Curtin, Murdoch University and student accommodation.",
 };
 

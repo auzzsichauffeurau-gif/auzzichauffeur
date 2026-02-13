@@ -11,7 +11,7 @@ import LocationFAQ from "@/components/LocationFAQ";
 import LocationTestimonials from "@/components/LocationTestimonials";
 
 export const metadata: Metadata = {
-    title: "Brisbane Airport Transfers | Chauffeur BNE to City & Gold Coast",
+    title: { absolute: "Brisbane Airport Transfers | Chauffeur BNE to City & Gold Coast" },
     description: "Premium chauffeurs from Brisbane Airport (BNE) to CBD, Gold Coast, and Sunshine Coast. Fixed price luxury transfers.",
 };
 

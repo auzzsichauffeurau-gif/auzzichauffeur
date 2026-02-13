@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Terms & Conditions | Auzzie Chauffeur | Booking Agreement",
+    title: { absolute: "Terms & Conditions | Auzzie Chauffeur | Booking Agreement" },
     description: "Read the terms and conditions for Auzzie Chauffeur services. Our policies on booking, cancellations, passenger conduct, and liability.",
 };
 

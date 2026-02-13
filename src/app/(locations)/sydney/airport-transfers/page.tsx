@@ -11,7 +11,7 @@ import LocationFAQ from "@/components/LocationFAQ";
 import LocationTestimonials from "@/components/LocationTestimonials";
 
 export const metadata: Metadata = {
-    title: "Sydney Airport Transfers | SYD to City Chauffeur | Auzzie Chauffeur",
+    title: { absolute: "Sydney Airport Transfers | SYD to City Chauffeur | Auzzie Chauffeur" },
     description: "Reliable airport transfers from Sydney Kingsford Smith (SYD) to CBD, Bondi, and North Shore. Flight monitoring, fixed price luxury cars.",
 };
 

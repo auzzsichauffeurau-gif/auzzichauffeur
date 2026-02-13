@@ -15,7 +15,7 @@ import LocationFAQ from "@/components/LocationFAQ";
 import LocationTestimonials from "@/components/LocationTestimonials";
 
 export const metadata: Metadata = {
-    title: "Chauffeur Service Perth | Auzzie Chauffeur | Trusted Private Driver",
+    title: { absolute: "Chauffeur Service Perth | Auzzie Chauffeur | Trusted Private Driver" },
     description: "Book premium chauffeur service in Perth (PER) & Fremantle. Luxury airport transfers, corporate cars & Swan Valley tours. 24/7 Fixed Price.",
     alternates: {
         canonical: '/perth',

@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Cruise Ship Transfers Brisbane | International Cruise Terminal | Auzzie Chauffeur",
+    title: { absolute: "Cruise Ship Transfers Brisbane | International Cruise Terminal | Auzzie Chauffeur" },
     description: "Reliable cruise transfers to Brisbane International Cruise Terminal (Luggage Point) and Hamilton Wharf. Private chauffeur service with ample luggage space.",
 };
 

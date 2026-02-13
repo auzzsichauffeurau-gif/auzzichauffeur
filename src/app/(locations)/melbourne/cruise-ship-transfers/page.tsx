@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Cruise Ship Transfers Melbourne | Station Pier Port Melbourne | Auzzie Chauffeur",
+    title: { absolute: "Cruise Ship Transfers Melbourne | Station Pier Port Melbourne | Auzzie Chauffeur" },
     description: "Private cruise transfers to Station Pier, Port Melbourne. Fixed price chauffeur service from Melbourne Airport to Spirit of Tasmania and Cruise Terminals.",
 };
 

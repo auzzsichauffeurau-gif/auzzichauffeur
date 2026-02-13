@@ -11,7 +11,7 @@ import LocationFAQ from "@/components/LocationFAQ";
 import LocationTestimonials from "@/components/LocationTestimonials";
 
 export const metadata: Metadata = {
-    title: "Melbourne Airport Transfers | Private Chauffeur MEL to City | Auzzie Chauffeur",
+    title: { absolute: "Melbourne Airport Transfers | Private Chauffeur MEL to City | Auzzie Chauffeur" },
     description: "Premium chauffeur transfers from Melbourne Airport (MEL) to CBD, Southbank, and suburbs. flight tracking, meet & greet, fixed pricing. Book online 24/7.",
 };
 

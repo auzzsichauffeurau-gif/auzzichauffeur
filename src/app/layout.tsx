@@ -1,12 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import { Toaster } from 'sonner';
 import Script from "next/script";
-
-
-const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"], variable: "--font-inter", display: "swap" });
+import ClarityAnalytics from "@/components/ClarityAnalytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://auzziechauffeur.com.au'),
@@ -81,8 +78,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ZR134D7476"
           strategy="afterInteractive"
@@ -101,20 +101,13 @@ export default function RootLayout({
             gtag('config', 'G-ZR134D7476');
           `}
         </Script>
-        <Script id="microsoft-clarity" strategy="afterInteractive">
-          {`
-            (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "vg8m2aowfi");
-          `}
-        </Script>
+
       </head>
       <body className="antialiased">
         {/* Layout Wrapper */}
         <SchemaMarkup />
         {children}
+        <ClarityAnalytics />
         <Toaster richColors position="top-center" />
       </body>
     </html>

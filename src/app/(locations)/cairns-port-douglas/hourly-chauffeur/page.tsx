@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Hourly Chauffeur Cairns | Daintree Rainforest & Port Douglas Private Tours",
+    title: { absolute: "Hourly Chauffeur Cairns | Daintree Rainforest & Port Douglas Private Tours" },
     description: "Private driver hire in Cairns & Port Douglas. Hourly chauffeur service for Daintree Rainforest tours, Kuranda, and Palm Cove day trips.",
 };
 

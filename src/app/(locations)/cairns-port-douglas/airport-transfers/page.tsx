@@ -11,7 +11,7 @@ import LocationFAQ from "@/components/LocationFAQ";
 import LocationTestimonials from "@/components/LocationTestimonials";
 
 export const metadata: Metadata = {
-    title: "Cairns Airport Transfers | Private Car CNS to Port Douglas",
+    title: { absolute: "Cairns Airport Transfers | Private Car CNS to Port Douglas" },
     description: "Luxury private transfers from Cairns Airport (CNS) to Port Douglas, Palm Cove, and the Daintree. Scenic coastal drive in comfort. Book now.",
 };
 

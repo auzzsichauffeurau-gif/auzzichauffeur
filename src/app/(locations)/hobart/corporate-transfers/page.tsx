@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Corporate Chauffeur Hobart | Government & Executive Cars | Auzzie Chauffeur",
+    title: { absolute: "Corporate Chauffeur Hobart | Government & Executive Cars | Auzzie Chauffeur" },
     description: "Premium corporate transport in Hobart. Secure transfers for Government officials, Antarctic Division, and business executives. Discreet and professional.",
 };
 
