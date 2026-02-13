@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Hourly Chauffeur Adelaide | Barossa Valley & McLaren Vale Wine Tours",
+    title: { absolute: "Hourly Chauffeur Adelaide | Barossa Valley & McLaren Vale Wine Tours" },
     description: "Private wine tours in Adelaide. Hire a chauffeur for Barossa Valley, McLaren Vale, or Adelaide Hills winery day trips. Hourly rates.",
 };
 

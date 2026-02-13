@@ -11,7 +11,7 @@ import LocationFAQ from "@/components/LocationFAQ";
 import LocationTestimonials from "@/components/LocationTestimonials";
 
 export const metadata: Metadata = {
-    title: "Adelaide Airport Transfers | Chauffeur ADL to City & Barossa",
+    title: { absolute: "Adelaide Airport Transfers | Chauffeur ADL to City & Barossa" },
     description: "Private chauffeur transfers from Adelaide Airport (ADL). Luxury cars to CBD, Barossa Valley, and McLaren Vale. Fixed price & flight tracking.",
     alternates: {
         canonical: '/adelaide/airport-transfers',

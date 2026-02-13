@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Cruise Ship Transfers Perth | Fremantle Passenger Terminal | Auzzie Chauffeur",
+    title: { absolute: "Cruise Ship Transfers Perth | Fremantle Passenger Terminal | Auzzie Chauffeur" },
     description: "Reliable cruise transfers to Fremantle Passenger Terminal. Private chauffeur service from Perth Airport to your ship. Spacious vans for luggage.",
 };
 

@@ -16,7 +16,7 @@ import LocationFAQ from "@/components/LocationFAQ";
 import LocationTestimonials from "@/components/LocationTestimonials";
 
 export const metadata: Metadata = {
-    title: "Chauffeur Service Melbourne | Auzzie Chauffeur | Book Luxury Airport Limo",
+    title: { absolute: "Chauffeur Service Melbourne | Auzzie Chauffeur | Book Luxury Airport Limo" },
     description: "Melbourne's premier chauffeur service. Luxury airport limo transfers (MEL), corporate transport, and tours of Victoria's cultural capital.",
     alternates: {
         canonical: '/melbourne',

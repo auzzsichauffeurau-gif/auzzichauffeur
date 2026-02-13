@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Wedding Cars Sydney | Luxury Bridal & Groom Hire | Auzzie Chauffeur",
+    title: { absolute: "Wedding Cars Sydney | Luxury Bridal & Groom Hire | Auzzie Chauffeur" },
     description: "Premium wedding car hire in Sydney. Arrive at the Opera House or The Rocks in a Mercedes S-Class. Red carpet service for your special day.",
 };
 

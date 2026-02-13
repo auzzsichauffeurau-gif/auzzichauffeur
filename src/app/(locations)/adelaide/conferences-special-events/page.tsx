@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Conference Transfers Adelaide | ACC & Adelaide Oval Events | Auzzie Chauffeur",
+    title: { absolute: "Conference Transfers Adelaide | ACC & Adelaide Oval Events | Auzzie Chauffeur" },
     description: "Experienced event transport for Adelaide Convention Centre (ACC) and Adelaide Oval. Chauffeur services for corporate delegates and festivals.",
 };
 

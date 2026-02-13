@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Corporate Chauffeur Gold Coast | Executive Car Service | Auzzie Chauffeur",
+    title: { absolute: "Corporate Chauffeur Gold Coast | Executive Car Service | Auzzie Chauffeur" },
     description: "Premium corporate transfers on the Gold Coast. Servicing Southport, Broadbeach, and Coolangatta Airport. Reliable transport for conferences and events.",
 };
 

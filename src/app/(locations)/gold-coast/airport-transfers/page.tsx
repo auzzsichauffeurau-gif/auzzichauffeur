@@ -11,7 +11,7 @@ import LocationFAQ from "@/components/LocationFAQ";
 import LocationTestimonials from "@/components/LocationTestimonials";
 
 export const metadata: Metadata = {
-    title: "Gold Coast Airport Transfers | OOL to Surfers & Byron | Auzzie Chauffeur",
+    title: { absolute: "Gold Coast Airport Transfers | OOL to Surfers & Byron | Auzzie Chauffeur" },
     description: "Your premium ride from Gold Coast Airport (OOL). Chauffeur transfers to Surfers Paradise, Broadbeach, and Byron Bay. Family friendly, surfboard ready.",
 };
 

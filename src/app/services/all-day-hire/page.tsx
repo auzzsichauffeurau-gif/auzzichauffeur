@@ -12,7 +12,7 @@ import ServiceSchema from "@/components/ServiceSchema";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "All Day Chauffeur Hire | Auzzie Chauffeur | Professional Daily Driver",
+    title: { absolute: "All Day Chauffeur Hire | Auzzie Chauffeur | Professional Daily Driver" },
     description: "Hire a private chauffeur for the full day. Flexible daily rates for business, sightseeing, or events Australia-wide. Dedicated car & driver.",
 };
 

@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Melbourne Conference Chauffeur | MCEC & Marvel Stadium Events | Auzzie Chauffeur",
+    title: { absolute: "Melbourne Conference Chauffeur | MCEC & Marvel Stadium Events | Auzzie Chauffeur" },
     description: "Group transfers for Melbourne Convention Centre (MCEC). Chauffeur services for Spring Racing Carnival, F1 Grand Prix, and corporate events.",
 };
 

@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Wedding Cars Brisbane | Luxury Bridal Transport | Auzzie Chauffeur",
+    title: { absolute: "Wedding Cars Brisbane | Luxury Bridal Transport | Auzzie Chauffeur" },
     description: "Elegant wedding car hire in Brisbane. Chauffeur driven Mercedes & Audi for weddings at Victoria Park, Howard Smith Wharves, and Hinterland venues.",
 };
 

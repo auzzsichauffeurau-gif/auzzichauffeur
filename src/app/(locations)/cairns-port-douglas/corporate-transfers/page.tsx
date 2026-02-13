@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Corporate Chauffeur Cairns | Executive Business Transport | Auzzie Chauffeur",
+    title: { absolute: "Corporate Chauffeur Cairns | Executive Business Transport | Auzzie Chauffeur" },
     description: "Professional corporate transfers in Cairns. Hosting conference delegates, government officials, and business leaders. Reliable airport and hotel transfers.",
 };
 

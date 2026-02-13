@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Luxury Private Tours Perth | Margaret River & Swan Valley | Auzzie Chauffeur",
+    title: { absolute: "Luxury Private Tours Perth | Margaret River & Swan Valley | Auzzie Chauffeur" },
     description: "Discover WA's wine regions in style. Private chauffeur tours to Swan Valley, Margaret River, and The Pinnacles. Flexible day trips from Perth.",
 };
 

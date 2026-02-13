@@ -13,7 +13,7 @@ import ServiceSchema from "@/components/ServiceSchema";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Luxury Private Tours | Auzzie Chauffeur | Custom Itineraries Now",
+    title: { absolute: "Luxury Private Tours | Auzzie Chauffeur | Custom Itineraries Now" },
     description: "Custom private tours of Australia's best regions. Winery tours (Hunter, Yarra, Barossa) & sightseeing in luxury comfort. Create your itinerary.",
     alternates: {
         canonical: '/services/luxury-tours',

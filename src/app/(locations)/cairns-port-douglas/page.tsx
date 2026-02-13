@@ -15,7 +15,7 @@ import LocationFAQ from "@/components/LocationFAQ";
 import LocationTestimonials from "@/components/LocationTestimonials";
 
 export const metadata: Metadata = {
-    title: "Chauffeur Service Cairns & Port Douglas | Auzzie Chauffeur",
+    title: { absolute: "Chauffeur Service Cairns & Port Douglas | Auzzie Chauffeur" },
     description: "Private transfers for Cairns (CNS) & Port Douglas. Luxury cars for Great Barrier Reef tours, Daintree rainforest trips & weddings. Book Now.",
 };
 

@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Luxury Private Tours Cairns & Port Douglas | Daintree & Tablelands | Auzzie Chauffeur",
+    title: { absolute: "Luxury Private Tours Cairns & Port Douglas | Daintree & Tablelands | Auzzie Chauffeur" },
     description: "Private chauffeur tours of Tropical North Queensland. Visit the Daintree Rainforest, Atherton Tablelands, and Mossman Gorge in air-conditioned luxury.",
 };
 

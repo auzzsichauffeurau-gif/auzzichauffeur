@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Conference Transport Cairns | Convention Centre & Reef Fleet | Auzzie Chauffeur",
+    title: { absolute: "Conference Transport Cairns | Convention Centre & Reef Fleet | Auzzie Chauffeur" },
     description: "Tropical event transfers for Cairns Convention Centre and Reef Fleet Terminal. Reliable group transport for incentives in Far North Queensland.",
 };
 

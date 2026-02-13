@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const resolvedParams = await params;
     const serviceName = formatTitle(resolvedParams.slug);
     return {
-        title: `${serviceName} | Auzzie Chauffeur | Book Expert Service`,
+        title: { absolute: `${serviceName} | Auzzie Chauffeur | Book Expert Service` },
         description: `Premium ${serviceName} services across Australia. Professional drivers, luxury vehicles, and reliable timing. Book your ${serviceName} online.`
     };
 }

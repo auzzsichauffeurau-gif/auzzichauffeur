@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "International Student Transfers Cairns | JCU & CQU | Airport Pickup",
+    title: { absolute: "International Student Transfers Cairns | JCU & CQU | Airport Pickup" },
     description: "Cheap student transfers in Cairns. Reliable airport pickup for James Cook University (JCU Smithfield) and CQU Cairns students.",
 };
 

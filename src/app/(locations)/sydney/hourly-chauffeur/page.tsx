@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Hourly Chauffeur Sydney | Private Tours Blue Mountains & Hunter Valley",
+    title: { absolute: "Hourly Chauffeur Sydney | Private Tours Blue Mountains & Hunter Valley" },
     description: "Hire a private driver in Sydney by the hour. Luxury cars for sightseeing tours to Blue Mountains, Hunter Valley, and Bondi Beach. Flexible itinerary.",
 };
 

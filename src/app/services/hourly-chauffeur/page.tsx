@@ -13,7 +13,7 @@ import ServiceSchema from "@/components/ServiceSchema";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Hourly Chauffeur Service | Auzzie Chauffeur | Flexible Private Driver",
+    title: { absolute: "Hourly Chauffeur Service | Auzzie Chauffeur | Flexible Private Driver" },
     description: "Flexible 'As Directed' hourly chauffeur hire. Book a private driver for tours, shopping trips, or business meetings nationwide. Unmetered waiting time.",
 };
 

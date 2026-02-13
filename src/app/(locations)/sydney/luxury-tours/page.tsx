@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Luxury Private Tours Sydney | Hunter Valley & Blue Mountains | Auzzie Chauffeur",
+    title: { absolute: "Luxury Private Tours Sydney | Hunter Valley & Blue Mountains | Auzzie Chauffeur" },
     description: "Private chauffeur tours from Sydney. Explore the Hunter Valley wine region or Blue Mountains in luxury sedans and people movers. Tailored day trips.",
 };
 

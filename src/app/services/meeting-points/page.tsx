@@ -9,7 +9,7 @@ import ServiceContactForm from "@/components/ServicePage/ServiceContactForm";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Airport Meeting Points | Where to Meet Your Driver | Auzzie Chauffeur",
+    title: { absolute: "Airport Meeting Points | Where to Meet Your Driver | Auzzie Chauffeur" },
     description: "Find designated chauffeur meeting points for Sydney, Melbourne, Brisbane, and all major Australian airports. Clear instructions for your arrival.",
 };
 

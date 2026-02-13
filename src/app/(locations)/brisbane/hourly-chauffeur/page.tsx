@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Hourly Chauffeur Brisbane | Private Driver Hire | Sunshine Coast & Gold Coast Tours",
+    title: { absolute: "Hourly Chauffeur Brisbane | Private Driver Hire | Sunshine Coast & Gold Coast Tours" },
     description: "Book an hourly chauffeur in Brisbane. Flexible private driver service for Sunshine Coast, Gold Coast, Mt Tamborine tours and city sightseeing.",
 };
 

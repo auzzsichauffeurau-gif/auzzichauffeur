@@ -12,7 +12,7 @@ import FAQSchema from "@/components/FAQSchema";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "International Student Transfers | Auzzie Chauffeur | Safe Airport Pickup",
+    title: { absolute: "International Student Transfers | Auzzie Chauffeur | Safe Airport Pickup" },
     description: "Safe and reliable airport transfers for international students Australia-wide. Meet & greet inside terminal. Transport to university accommodation.",
 };
 

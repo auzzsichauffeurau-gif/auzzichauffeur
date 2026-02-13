@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Cruise Ship Transfers Gold Coast | To Brisbane Cruise Terminal | Auzzie Chauffeur",
+    title: { absolute: "Cruise Ship Transfers Gold Coast | To Brisbane Cruise Terminal | Auzzie Chauffeur" },
     description: "Reliable transfers from Gold Coast to Brisbane International Cruise Terminal. Private chauffeur service from Surfers Paradise, Broadbeach, or Coolangatta.",
 };
 

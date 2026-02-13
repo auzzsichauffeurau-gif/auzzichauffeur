@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "International Student Transfers Sydney | Airport to Uni | USYD, UNSW, UTS",
+    title: { absolute: "International Student Transfers Sydney | Airport to Uni | USYD, UNSW, UTS" },
     description: "Safe airport pickups for international students in Sydney. Reliable transfers from SYD Airport to USYD, UNSW, UTS, Macquarie Uni and student accommodation.",
 };
 

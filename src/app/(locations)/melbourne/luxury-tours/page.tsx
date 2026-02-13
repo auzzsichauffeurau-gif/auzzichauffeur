@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Luxury Private Tours Melbourne | Yarra Valley & Mornington Peninsula | Auzzie Chauffeur",
+    title: { absolute: "Luxury Private Tours Melbourne | Yarra Valley & Mornington Peninsula | Auzzie Chauffeur" },
     description: "Private winery tours from Melbourne. Chauffeur driven tours to Yarra Valley, Mornington Peninsula, and Great Ocean Road. Custom itineraries.",
 };
 

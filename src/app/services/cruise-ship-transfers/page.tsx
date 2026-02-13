@@ -12,7 +12,7 @@ import FAQSchema from "@/components/FAQSchema";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Cruise Ship Transfers | Auzzie Chauffeur | Reliable Port Pickup",
+    title: { absolute: "Cruise Ship Transfers | Auzzie Chauffeur | Reliable Port Pickup" },
     description: "Reliable cruise ship transfers to all major Australian ports (Sydney, Melbourne, Brisbane). Terminal meet & greet service. Book your transfer.",
 };
 

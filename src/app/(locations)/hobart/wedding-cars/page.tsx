@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Wedding Cars Hobart | Luxury Tasmanian Bridal Hire | Auzzie Chauffeur",
+    title: { absolute: "Wedding Cars Hobart | Luxury Tasmanian Bridal Hire | Auzzie Chauffeur" },
     description: "Premium wedding car hire in Hobart. Arrive at MONA, Frogmore Creek, or Glen Albyn Estate in style with our luxury chauffeur service.",
 };
 

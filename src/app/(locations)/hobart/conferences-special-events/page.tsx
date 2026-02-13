@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Conference Transfers Hobart | Grand Chancellor & Waterfront Events | Auzzie Chauffeur",
+    title: { absolute: "Conference Transfers Hobart | Grand Chancellor & Waterfront Events | Auzzie Chauffeur" },
     description: "Reliable event transfers for Hobart hotels and function centres. Executive chauffeur service for Dark Mofo, Taste of Tasmania, and corporate retreats.",
 };
 

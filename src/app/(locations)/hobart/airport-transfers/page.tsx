@@ -11,7 +11,7 @@ import LocationFAQ from "@/components/LocationFAQ";
 import LocationTestimonials from "@/components/LocationTestimonials";
 
 export const metadata: Metadata = {
-    title: "Hobart Airport Transfers | Luxury Car HBA to City | Tas Chauffeur",
+    title: { absolute: "Hobart Airport Transfers | Luxury Car HBA to City | Tas Chauffeur" },
     description: "Premium airport transfers from Hobart Airport (HBA) to CBD, MONA, and Port Arthur. Reliable, warm, and safe Tasmanian chauffeur service.",
 };
 

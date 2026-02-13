@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Corporate Chauffeur Perth | Mining & Executive Transport | Auzzie Chauffeur",
+    title: { absolute: "Corporate Chauffeur Perth | Mining & Executive Transport | Auzzie Chauffeur" },
     description: "Specialist corporate transport for Perth's mining and resources sector. executive transfers to St Georges Tce, West Perth, and Henderson. Reliable FIFO connections.",
 };
 

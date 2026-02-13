@@ -18,7 +18,7 @@ const ContactHelp = dynamic(() => import("@/components/ContactHelp"), { ssr: tru
 const Footer = dynamic(() => import("@/components/Footer"), { ssr: true });
 
 export const metadata: Metadata = {
-  title: "Top-Rated Chauffeur Service Australia | Auzzie Chauffeur",
+  title: { absolute: "Top-Rated Chauffeur Service Australia | Auzzie Chauffeur" },
   description: "Looking for a reliable chauffeur? Book premium airport transfers, corporate cars, & luxury tours in Sydney, Melbourne, Brisbane & Perth. 24/7 Service. Get a Quote Now.",
   alternates: {
     canonical: '/',

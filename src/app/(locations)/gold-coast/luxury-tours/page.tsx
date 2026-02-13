@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Luxury Private Tours Gold Coast | Hinterland & Byron Bay | Auzzie Chauffeur",
+    title: { absolute: "Luxury Private Tours Gold Coast | Hinterland & Byron Bay | Auzzie Chauffeur" },
     description: "Private chauffeur tours from the Gold Coast. Explore the Green Hinterland, Mt Tamborine, or take a day trip to Byron Bay in luxury comfort.",
 };
 

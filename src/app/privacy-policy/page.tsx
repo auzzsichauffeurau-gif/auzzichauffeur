@@ -1,4 +1,12 @@
-"use client";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: { absolute: "Privacy Policy | Auzzie Chauffeur | Data Protection & Security" },
+    description: "Read Auzzie Chauffeur's Privacy Policy. Understand how we collect, use, and protect your personal information when you book our luxury transport services.",
+    alternates: {
+        canonical: '/privacy-policy',
+    },
+};
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";

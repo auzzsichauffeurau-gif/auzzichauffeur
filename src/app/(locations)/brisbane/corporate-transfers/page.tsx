@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Corporate Chauffeur Brisbane | Executive Car Service | Auzzie Chauffeur",
+    title: { absolute: "Corporate Chauffeur Brisbane | Executive Car Service | Auzzie Chauffeur" },
     description: "Reliable corporate transfers in Brisbane. Executive chauffeurs for Eagle Street Pier, Fortitude Valley, and Airport (BNE) travel. Mining and resource sector specialists.",
 };
 

@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Cruise Ship Transfers Cairns | Trinity Wharf Terminal | Auzzie Chauffeur",
+    title: { absolute: "Cruise Ship Transfers Cairns | Trinity Wharf Terminal | Auzzie Chauffeur" },
     description: "Tropical cruise transfers in Cairns. Reliable chauffeur service from Cairns Airport to the Cruise Liner Terminal. Cool, air-conditioned vans.",
 };
 

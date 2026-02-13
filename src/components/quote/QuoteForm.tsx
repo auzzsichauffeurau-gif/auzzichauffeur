@@ -139,31 +139,83 @@ export default function QuoteForm() {
         }
 
         // Send Email Notification
+        // Send Email Notifications
         try {
-            await fetch('/api/send-email', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    to: 'booking@auzziechauffeur.com.au',
-                    subject: `New Quote Request: ${formData.name}`,
-                    html: `
-                        <h3>New Quote Request</h3>
-                        <p><strong>Name:</strong> ${formData.name}</p>
-                        <p><strong>Email:</strong> ${formData.email}</p>
-                        <p><strong>Phone:</strong> ${formData.phone}</p>
-                        <hr/>
-                        <p><strong>Pick Up:</strong> ${formData.pickup}</p>
-                        <p><strong>Drop Off:</strong> ${formData.dropoff}</p>
-                        <p><strong>Date:</strong> ${formData.date}</p>
-                        <p><strong>Time:</strong> ${formData.time}</p>
-                        <p><strong>Vehicle:</strong> ${formData.vehicle}</p>
-                        <p><strong>Est. Price:</strong> ${estimatedPrice ? `$${estimatedPrice}` : 'TBD'}</p>
-                        <p><strong>Notes:</strong> ${formData.notes}</p>
-                    `
+            const responses = await Promise.all([
+                // 1. Send to Business (Admin)
+                fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        to: 'booking@auzziechauffeur.com.au',
+                        subject: `New Quote Request: ${formData.name}`,
+                        html: `
+                            <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto;">
+                                <h3 style="color: #1e3a8a; border-bottom: 2px solid #c5a467; padding-bottom: 10px;">New Quote Request</h3>
+                                <p><strong>Name:</strong> ${formData.name}</p>
+                                <p><strong>Email:</strong> <a href="mailto:${formData.email}">${formData.email}</a></p>
+                                <p><strong>Phone:</strong> ${formData.phone}</p>
+                                <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
+                                <h4 style="color: #4b5563;">Trip Details</h4>
+                                <p><strong>Pick Up:</strong> ${formData.pickup}</p>
+                                <p><strong>Drop Off:</strong> ${formData.dropoff}</p>
+                                <p><strong>Date:</strong> ${formData.date}</p>
+                                <p><strong>Time:</strong> ${formData.time}</p>
+                                <p><strong>Vehicle:</strong> ${formData.vehicle}</p>
+                                <p><strong>Est. Price:</strong> ${estimatedPrice ? `$${estimatedPrice}` : 'TBD'}</p>
+                                <p><strong>Notes:</strong> ${formData.notes}</p>
+                            </div>
+                        `
+                    })
+                }),
+
+                // 2. Send Auto-Reply to Customer
+                fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        to: formData.email,
+                        subject: `Quote Request Received - Auzzie Chauffeur`,
+                        html: `
+                            <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; color: #333;">
+                                <div style="text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                                    <h2 style="color: #1e3a8a; margin: 0;">Quote Request Received</h2>
+                                </div>
+                                <p>Dear ${formData.name},</p>
+                                <p>Thank you for requesting a quote from <strong>Auzzie Chauffeur</strong>.</p>
+                                <p>We have received your trip details for <strong>${formData.date} at ${formData.time}</strong>.</p>
+                                
+                                <div style="margin-top: 20px; padding: 15px; background-color: #f0fdf4; border: 1px solid #dcfce7; border-radius: 6px; text-align: center;">
+                                    <p style="margin: 0; font-size: 0.9em; color: #166534;">Estimated Price based on your selection:</p>
+                                    <h3 style="margin: 5px 0 0 0; color: #15803d; font-size: 1.5em;">${estimatedPrice ? `$${estimatedPrice} AUD` : 'Custom Quote Required'}</h3>
+                                    ${estimatedPrice ? '<small style="color: #166534;">*Final price confirmed upon booking.</small>' : ''}
+                                </div>
+
+                                <p>One of our team members will review your request and email you a formal quote shortly.</p>
+
+                                <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.9em; color: #888; text-align: center;">
+                                    <p style="margin-bottom: 5px;"><strong>Auzzie Chauffeur</strong></p>
+                                    <p style="margin: 0;"><a href="https://auzziechauffeur.com.au" style="color: #c5a467; text-decoration: none;">www.auzziechauffeur.com.au</a></p>
+                                </div>
+                            </div>
+                        `
+                    })
                 })
-            });
-        } catch (emailError) {
+            ]);
+
+            // Check for errors in responses
+            for (const response of responses) {
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    const errorMessage = typeof errorData.details === 'object'
+                        ? JSON.stringify(errorData.details)
+                        : (errorData.details || errorData.error || "Email sending failed");
+                    throw new Error(errorMessage);
+                }
+            }
+        } catch (emailError: any) {
             console.error("Failed to send email notification", emailError);
+            alert("Quote saved, but failed to send email: " + emailError.message);
         }
 
         setIsSubmitting(false);

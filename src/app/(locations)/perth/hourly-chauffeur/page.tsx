@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Hourly Chauffeur Perth | Swan Valley Wine Tours | Margaret River Day Trips",
+    title: { absolute: "Hourly Chauffeur Perth | Swan Valley Wine Tours | Margaret River Day Trips" },
     description: "Hire a private driver in Perth. Hourly chauffeur for Swan Valley wine tours, Margaret River day trips, and Fremantle sightseeing.",
 };
 

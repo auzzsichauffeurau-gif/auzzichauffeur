@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Corporate Chauffeur Sydney | Executive Car Hire | Auzzie Chauffeur",
+    title: { absolute: "Corporate Chauffeur Sydney | Executive Car Hire | Auzzie Chauffeur" },
     description: "Premium corporate car service in Sydney. Executive chauffeurs for Barangaroo, North Sydney, and CBD meetings. Reliable, private, and punctual.",
 };
 

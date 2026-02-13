@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "International Student Transfers Hobart | UTAS Sandy Bay & City | Airport Pickup",
+    title: { absolute: "International Student Transfers Hobart | UTAS Sandy Bay & City | Airport Pickup" },
     description: "Safe student transfers in Hobart. Reliable airport pickup for University of Tasmania (UTAS) students at Sandy Bay and City campuses.",
 };
 

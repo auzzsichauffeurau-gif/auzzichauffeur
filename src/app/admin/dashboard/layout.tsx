@@ -69,7 +69,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
             supabase
                 .from('contact_messages')
-                .select('id, name, created_at') // Assuming 'read' column doesn't exist yet, we check all recent
+                .select('id, first_name, last_name, created_at')
                 .order('created_at', { ascending: false })
                 .limit(5)
         ]);
@@ -95,7 +95,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 id: msg.id,
                 type: 'message',
                 title: 'New Contact Message',
-                message: `${msg.name} sent a message.`,
+                message: `${msg.first_name} ${msg.last_name} sent a message.`,
                 time: msg.created_at,
                 href: '/admin/dashboard/messages'
             });

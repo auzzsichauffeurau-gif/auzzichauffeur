@@ -55,42 +55,82 @@ export default function BookingPageContent() {
             return;
         }
 
-        // Send Email Notification
+        // Send Email Notifications
         try {
-            await fetch('/api/send-email', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    to: 'booking@auzziechauffeur.com.au',
-                    subject: `New Booking Request: ${formData.name}`,
-                    html: `
-                        <h3>New Booking Request</h3>
-                        <p><strong>Name:</strong> ${formData.name}</p>
-                        <p><strong>Email:</strong> ${formData.email}</p>
-                        <p><strong>Phone:</strong> ${formData.phone}</p>
-                        <hr/>
-                        <p><strong>Pick Up:</strong> ${formData.pickup}</p>
-                        <p><strong>Drop Off:</strong> ${formData.dropoff}</p>
-                        <p><strong>Date:</strong> ${formData.date}</p>
-                        <p><strong>Time:</strong> ${formData.time}</p>
-                        <p><strong>Vehicle:</strong> ${formData.vehicle}</p>
-                    `
+            const responses = await Promise.all([
+                // 1. Send to Business (Admin)
+                fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        to: 'booking@auzziechauffeur.com.au',
+                        subject: `New Booking Request: ${formData.name}`,
+                        html: `
+                            <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto;">
+                                <h3 style="color: #1e3a8a; border-bottom: 2px solid #c5a467; padding-bottom: 10px;">New Booking Request</h3>
+                                <p><strong>Name:</strong> ${formData.name}</p>
+                                <p><strong>Email:</strong> <a href="mailto:${formData.email}">${formData.email}</a></p>
+                                <p><strong>Phone:</strong> ${formData.phone}</p>
+                                <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
+                                <h4 style="color: #4b5563;">Trip Details</h4>
+                                <p><strong>Pick Up:</strong> ${formData.pickup}</p>
+                                <p><strong>Drop Off:</strong> ${formData.dropoff}</p>
+                                <p><strong>Date:</strong> ${formData.date}</p>
+                                <p><strong>Time:</strong> ${formData.time}</p>
+                                <p><strong>Vehicle:</strong> ${formData.vehicle}</p>
+                            </div>
+                        `
+                    })
+                }),
+
+                // 2. Send Auto-Reply to Customer
+                fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        to: formData.email,
+                        subject: `Booking Request Received - Auzzie Chauffeur`,
+                        html: `
+                            <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; color: #333;">
+                                <div style="text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                                    <h2 style="color: #1e3a8a; margin: 0;">Booking Request Received</h2>
+                                </div>
+                                <p>Dear ${formData.name},</p>
+                                <p>Thank you for choosing <strong>Auzzie Chauffeur</strong>. We have received your booking request for <strong>${formData.date} at ${formData.time}</strong>.</p>
+                                <p>This email confirms that we have received your details. One of our reservations team members will review your request and contact you shortly to confirm the booking and provide a final price.</p>
+                                
+                                <div style="margin-top: 30px; padding: 20px; background-color: #f9f9f9; border-radius: 6px;">
+                                    <h4 style="margin-top: 0; color: #555;">Your Request Details:</h4>
+                                    <ul style="list-style: none; padding: 0; margin: 0;">
+                                        <li style="margin-bottom: 8px;"><strong>Pick Up:</strong> ${formData.pickup}</li>
+                                        <li style="margin-bottom: 8px;"><strong>Drop Off:</strong> ${formData.dropoff}</li>
+                                        <li style="margin-bottom: 8px;"><strong>Vehicle:</strong> ${formData.vehicle}</li>
+                                    </ul>
+                                </div>
+
+                                <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.9em; color: #888; text-align: center;">
+                                    <p style="margin-bottom: 5px;"><strong>Auzzie Chauffeur</strong></p>
+                                    <p style="margin: 0;"><a href="https://auzziechauffeur.com.au" style="color: #c5a467; text-decoration: none;">www.auzziechauffeur.com.au</a></p>
+                                </div>
+                            </div>
+                        `
+                    })
                 })
-            });
-            // Optional: Confirmation to user
-            /*
-            await fetch('/api/send-email', {
-               method: 'POST',
-               headers: { 'Content-Type': 'application/json' },
-               body: JSON.stringify({
-                   to: formData.email,
-                   subject: `Booking Request Received - Auzzsi Chauffeur`,
-                   html: `<p>Dear ${formData.name},</p><p>We have received your booking request...</p>`
-               })
-           });
-           */
-        } catch (emailError) {
+            ]);
+
+            // Check for errors in responses
+            for (const response of responses) {
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    const errorMessage = typeof errorData.details === 'object'
+                        ? JSON.stringify(errorData.details)
+                        : (errorData.details || errorData.error || "Email sending failed");
+                    throw new Error(errorMessage);
+                }
+            }
+        } catch (emailError: any) {
             console.error("Failed to send email notification", emailError);
+            alert("Booking saved, but failed to send email: " + emailError.message);
         }
 
         setIsSubmitting(false);

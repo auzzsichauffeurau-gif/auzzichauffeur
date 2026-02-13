@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import LocationFAQ from "@/components/LocationFAQ";
 
 export const metadata: Metadata = {
-    title: "Cruise Ship Transfers Sydney | Overseas Passenger Terminal & White Bay | Auzzie Chauffeur",
+    title: { absolute: "Cruise Ship Transfers Sydney | Overseas Passenger Terminal & White Bay | Auzzie Chauffeur" },
     description: "Reliable cruise transfers in Sydney. Fixed price chauffeur service to Overseas Passenger Terminal and White Bay. Spacious vans for luggage.",
 };
 
