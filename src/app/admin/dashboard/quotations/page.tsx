@@ -15,7 +15,8 @@ import {
     Search,
     RefreshCw,
     Mail,
-    Send
+    Send,
+    Trash2
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -136,13 +137,42 @@ export default function QuotationsPage() {
         }
     };
 
+    const handleUpdateAmount = async (id: string, newAmount: string) => {
+        try {
+            const { error } = await supabase
+                .from('bookings')
+                .update({ amount: newAmount })
+                .eq('id', id);
+
+            if (error) throw error;
+
+            setQuotations(quotations.map(q => q.id === id ? { ...q, amount: newAmount } : q));
+            toast.success('Amount updated');
+        } catch (error: any) {
+            toast.error('Failed to update amount: ' + error.message);
+        }
+    };
+
     const handleSendQuote = async () => {
         if (!selectedQuote) return;
         setSending(true);
 
         try {
-            // 1. Simulate Sending Email (In real app, call API)
-            // await sendEmail({ to: selectedQuote.customer_email, subject: emailSubject, html: emailBody });
+            // 1. Send Real Email
+            const response = await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    to: selectedQuote.customer_email,
+                    subject: emailSubject,
+                    html: emailBody
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.details || 'Email failed to send');
+            }
 
             // 2. Update Booking Status
             const { error: updateError } = await supabase
@@ -170,13 +200,7 @@ export default function QuotationsPage() {
                     booking_id: selectedQuote.id
                 }]);
 
-            if (followUpError) {
-                console.error('Error creating follow-up:', followUpError);
-                toast.warning('Quote sent but failed to schedule follow-up');
-            } else {
-                toast.success('Quote sent & Follow-up scheduled successfully!');
-            }
-
+            toast.success('Quote sent and recorded successfully!');
             fetchQuotations();
             setShowEmailModal(false);
 
@@ -184,6 +208,23 @@ export default function QuotationsPage() {
             toast.error('Failed to send quote: ' + error.message);
         } finally {
             setSending(false);
+        }
+    };
+
+    const handleDeleteQuote = async (id: string) => {
+        if (!confirm('Are you sure you want to delete this quote request?')) return;
+        try {
+            const { error } = await supabase
+                .from('bookings')
+                .delete()
+                .eq('id', id);
+
+            if (error) throw error;
+
+            setQuotations(quotations.filter(q => q.id !== id));
+            toast.success('Quote deleted');
+        } catch (error: any) {
+            toast.error('Failed to delete: ' + error.message);
         }
     };
 
@@ -347,8 +388,17 @@ export default function QuotationsPage() {
                                         <p style={{ fontSize: '0.85rem', color: '#6b7280' }}>{quote.customer_email} • {quote.customer_phone}</p>
                                     </div>
                                     <div style={{ textAlign: 'right' }}>
-                                        <p style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e3a8a' }}>${quote.amount || '0'}</p>
-                                        <p style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'flex-end' }}>
+                                            <span style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e3a8a' }}>$</span>
+                                            <input
+                                                type="number"
+                                                defaultValue={quote.amount || ''}
+                                                onBlur={(e) => handleUpdateAmount(quote.id, e.target.value)}
+                                                style={{ width: '80px', padding: '0.25rem', borderRadius: '4px', border: '1px solid #e5e7eb', fontSize: '1rem', fontWeight: 'bold', textAlign: 'right' }}
+                                                placeholder="Amount"
+                                            />
+                                        </div>
+                                        <p style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '0.25rem' }}>
                                             {new Date(quote.created_at).toLocaleDateString()}
                                         </p>
                                     </div>
@@ -408,10 +458,11 @@ export default function QuotationsPage() {
                                         <Eye size={16} /> View
                                     </Link>
                                     <button
-                                        onClick={() => handleReject(quote.id)}
-                                        style={{ ...buttonStyle, backgroundColor: 'white', color: '#dc2626', border: '1px solid #fecaca' }}
+                                        onClick={() => handleDeleteQuote(quote.id)}
+                                        style={{ ...buttonStyle, backgroundColor: '#fee2e2', color: '#dc2626' }}
+                                        title="Delete Permanently"
                                     >
-                                        <X size={16} /> Reject
+                                        <Trash2 size={16} />
                                     </button>
                                 </div>
                             </div>
