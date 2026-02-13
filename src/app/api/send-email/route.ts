@@ -12,8 +12,8 @@ export async function POST(req: Request) {
         // Configure Nodemailer with Gmail SMTP settings
         const transporter = nodemailer.createTransport({
             host: process.env.SMTP_HOST || 'smtp.gmail.com',
-            port: 465, // Use port 465 for secure connection
-            secure: true,
+            port: Number(process.env.SMTP_PORT) || 465,
+            secure: process.env.SMTP_SECURE === 'false' ? false : true,
             auth: {
                 user: process.env.SMTP_USER,
                 // Remove any spaces from the password string just in case
