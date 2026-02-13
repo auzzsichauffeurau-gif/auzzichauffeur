@@ -6,6 +6,15 @@ import nodemailer from 'nodemailer';
 export async function POST(req: Request) {
     // Wrap everything in a try-catch to allow proper error returns
     try {
+        // Debug check (won't show values, just if they exist)
+        if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+            console.error("Missing SMTP Credentials on Server");
+            return NextResponse.json({
+                error: 'Configuration Error',
+                details: `Missing: ${!process.env.SMTP_USER ? 'SMTP_USER ' : ''}${!process.env.SMTP_PASS ? 'SMTP_PASS' : ''}. Please check Vercel Environment Variables.`
+            }, { status: 500 });
+        }
+
         const body = await req.json();
         const { to, from, subject, text, html } = body;
 
