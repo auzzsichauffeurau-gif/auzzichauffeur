@@ -138,16 +138,67 @@ export default function InvoicesPage() {
 
     const handleEmailInvoice = async () => {
         if (!selectedInvoice) return;
-        const email = selectedInvoice.customer_email || 'the customer';
 
-        toast.promise(
-            new Promise((resolve) => setTimeout(resolve, 1500)),
-            {
-                loading: `Sending invoice to ${email}...`,
-                success: 'Invoice sent successfully!',
-                error: 'Failed to send invoice',
+        const loadingToast = toast.loading(`Sending invoice to ${selectedInvoice.customer_email}...`);
+
+        try {
+            // 1. Fetch template
+            const { data: template, error: tError } = await supabase
+                .from('email_templates')
+                .select('*')
+                .eq('template_name', 'invoice_sent')
+                .eq('is_active', true)
+                .single();
+
+            if (tError || !template) throw new Error('Invoice email template not found or inactive');
+
+            // 2. Populate Template
+            let subject = template.subject;
+            let body = template.body_html;
+
+            const lineItems = typeof selectedInvoice.line_items === 'string'
+                ? JSON.parse(selectedInvoice.line_items)
+                : selectedInvoice.line_items || [];
+
+            const service_description = lineItems[0]?.description || 'Chauffeur Service';
+
+            const variables: Record<string, string> = {
+                customer_name: selectedInvoice.customer_name || '',
+                invoice_number: selectedInvoice.invoice_number || '',
+                issue_date: selectedInvoice.issue_date ? new Date(selectedInvoice.issue_date).toLocaleDateString() : '',
+                due_date: selectedInvoice.due_date ? new Date(selectedInvoice.due_date).toLocaleDateString() : '',
+                service_description: service_description,
+                total_amount: `$${parseFloat(selectedInvoice.total_amount || 0).toFixed(2)}`,
+                invoice_id: selectedInvoice.id
+            };
+
+            Object.entries(variables).forEach(([key, value]) => {
+                const regex = new RegExp(`{${key}}`, 'g');
+                subject = subject.replace(regex, value);
+                body = body.replace(regex, value);
+            });
+
+            // 3. Send Email via API
+            const response = await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    to: selectedInvoice.customer_email,
+                    subject: subject,
+                    html: body
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.details || 'Email API responded with an error');
             }
-        );
+
+            toast.success('Invoice emailed successfully!', { id: loadingToast });
+        } catch (error: any) {
+            console.error('Email error:', error);
+            toast.error('Failed to send invoice: ' + error.message, { id: loadingToast });
+        }
     };
 
     const exportToCSV = () => {
