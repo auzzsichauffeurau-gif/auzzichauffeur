@@ -99,6 +99,66 @@ export default function StudentServicesPage() {
                     </p>
                 </div>
 
+                {/* Key Travel Tips for Students - Addressing specific search intents */}
+                <div style={{ margin: '3rem 0', padding: '2rem', backgroundColor: '#f8fafc', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+                    <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#1e3a8a', marginBottom: '1.5rem' }}>Essential Travel Tips for New Students</h3>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                        <div>
+                            <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <CheckCircle size={20} color="#c5a467" /> Accommodation Office vs. Residence Drop-off
+                            </h4>
+                            <p style={{ color: '#4b5563', lineHeight: '1.6' }}>
+                                Most university accommodations (like <strong>UNSW Village</strong>, <strong>UniLodge</strong>, or <strong>Student Living</strong>) require you to pick up keys from a reception office first.
+                                PLEASE check your arrival instructions! If you need to grab keys from the <strong>Welcome Centre</strong> before heading to your room (e.g., Cowper Street), let us know.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <CheckCircle size={20} color="#c5a467" /> Missed the University Shuttle Deadline?
+                            </h4>
+                            <p style={{ color: '#4b5563', lineHeight: '1.6' }}>
+                                Many university free shuttles (like UNSW) require booking <strong>at least 7 days in advance</strong>. If you've missed this window, don't worry!
+                                We accept bookings up to <strong>24 hours before arrival</strong>. We are the perfect backup plan for last-minute student travel arrangements.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <CheckCircle size={20} color="#c5a467" /> Domestic vs. International Arrivals
+                            </h4>
+                            <p style={{ color: '#4b5563', lineHeight: '1.6' }}>
+                                <strong>Flying from Melbourne to Sydney?</strong> Ensure you book pickup for the <strong>Domestic Terminal</strong>. You clear customs in your first port of arrival (e.g., Melbourne), not Sydney.
+                                Domestic arrivals are quicker—drivers typically meet you 30 mins after landing.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <CheckCircle size={20} color="#c5a467" /> Campus Gate vs. Door-to-Door
+                            </h4>
+                            <p style={{ color: '#4b5563', lineHeight: '1.6' }}>
+                                University shuttles often drop students at a central point like <strong>Gate 8 High St</strong> or a Welcome Centre.
+                                Traveling with heavy luggage? Our chauffeurs drive you <strong>directly to your specific building address</strong> or reception door, saving you a long walk across campus.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <CheckCircle size={20} color="#c5a467" /> How much time for pickup?
+                            </h4>
+                            <p style={{ color: '#4b5563', lineHeight: '1.6' }}>
+                                <strong>International Arrivals:</strong> Book pickup <strong>45-60 mins</strong> after landing for customs.
+                                <br />
+                                <strong>Domestic Arrivals:</strong> Book <strong>30 mins</strong> after landing.
+                                <br />
+                                We track your flight number! If you're delayed, we adjust our arrival time automatically.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 {/* Student Pricing Table */}
                 <section style={{ maxWidth: '1000px', margin: '4rem auto', padding: '0 1rem' }}>
                     <h2 className={styles.sectionTitle} style={{ textAlign: 'center', marginBottom: '1rem' }}>Student Transfer Rates</h2>
