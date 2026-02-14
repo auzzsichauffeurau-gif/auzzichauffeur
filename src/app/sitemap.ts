@@ -24,47 +24,73 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         console.error('Sitemap news fetch error:', error);
     }
 
+    const locations = [
+        'sydney', 'melbourne', 'brisbane', 'perth',
+        'gold-coast', 'adelaide', 'hobart', 'cairns-port-douglas'
+    ];
+
+    const locationServices = [
+        'airport-transfers',
+        'conferences-special-events',
+        'corporate-transfers',
+        'cruise-ship-transfers',
+        'hourly-chauffeur',
+        'international-student-transfers',
+        'luxury-tours',
+        'wedding-cars'
+    ];
+
+    // Generate location routes using map/flatMap
+    const locationUrls = locations.flatMap(city => [
+        { url: `${baseUrl}/${city}`, lastModified: lastMajorUpdate },
+        ...locationServices.map(service => ({
+            url: `${baseUrl}/${city}/${service}`,
+            lastModified: service === 'international-student-transfers' ? new Date() : lastMajorUpdate
+        }))
+    ]);
+
     const staticPages: MetadataRoute.Sitemap = [
-        { url: baseUrl, lastModified: new Date() }, // Homepage changes often (today is fine)
+        { url: baseUrl, lastModified: new Date() },
+
+        // Main Sections
+        { url: `${baseUrl}/book`, lastModified: lastMajorUpdate },
+        { url: `${baseUrl}/quote`, lastModified: lastMajorUpdate },
+        { url: `${baseUrl}/locations`, lastModified: lastMajorUpdate },
+        { url: `${baseUrl}/contact-us`, lastModified: lastMajorUpdate },
+        { url: `${baseUrl}/news`, lastModified: new Date() },
+
+        // About Us
         { url: `${baseUrl}/about-us`, lastModified: lastMajorUpdate },
         { url: `${baseUrl}/about-us/our-history`, lastModified: lastMajorUpdate },
         { url: `${baseUrl}/about-us/our-policies`, lastModified: lastMajorUpdate },
         { url: `${baseUrl}/about-us/our-policies/fatigue-management-policy`, lastModified: lastMajorUpdate },
         { url: `${baseUrl}/about-us/our-policies/child-safety-policy`, lastModified: lastMajorUpdate },
         { url: `${baseUrl}/about-us/faqs`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/contact-us`, lastModified: lastMajorUpdate },
+
+        // Fleet
         { url: `${baseUrl}/the-fleet`, lastModified: lastMajorUpdate },
         { url: `${baseUrl}/the-fleet/executive-sedans`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/news`, lastModified: new Date() }, // Feed changes often
 
         // Main Services
+        { url: `${baseUrl}/services`, lastModified: lastMajorUpdate },
         { url: `${baseUrl}/services/airport-transfers`, lastModified: lastMajorUpdate },
         { url: `${baseUrl}/services/corporate-transfers`, lastModified: lastMajorUpdate },
         { url: `${baseUrl}/services/hourly-chauffeur`, lastModified: lastMajorUpdate },
         { url: `${baseUrl}/services/luxury-tours`, lastModified: lastMajorUpdate },
-
-        // Locations
-        { url: `${baseUrl}/sydney`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/melbourne`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/brisbane`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/perth`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/gold-coast`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/adelaide`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/canberra`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/hobart`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/cairns-port-douglas`, lastModified: lastMajorUpdate },
-
-        // Location Services (Deep Discovery)
-        { url: `${baseUrl}/sydney/airport-transfers`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/melbourne/airport-transfers`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/brisbane/airport-transfers`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/perth/airport-transfers`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/gold-coast/airport-transfers`, lastModified: lastMajorUpdate },
-        { url: `${baseUrl}/adelaide/airport-transfers`, lastModified: lastMajorUpdate },
+        { url: `${baseUrl}/services/international-student-transfers`, lastModified: new Date() },
+        { url: `${baseUrl}/services/wedding-cars`, lastModified: lastMajorUpdate },
+        { url: `${baseUrl}/services/cruise-ship-transfers`, lastModified: lastMajorUpdate },
+        { url: `${baseUrl}/services/conferences-special-events`, lastModified: lastMajorUpdate },
+        { url: `${baseUrl}/services/airline-cruise-crewing`, lastModified: lastMajorUpdate },
+        { url: `${baseUrl}/services/all-day-hire`, lastModified: lastMajorUpdate },
+        { url: `${baseUrl}/services/meeting-points`, lastModified: lastMajorUpdate },
 
         // Policies
         { url: `${baseUrl}/privacy-policy`, lastModified: lastMajorUpdate },
         { url: `${baseUrl}/terms-conditions`, lastModified: lastMajorUpdate },
+
+        // Spread all dynamically generated location URLS
+        ...locationUrls
     ]
 
     return [...staticPages, ...newsPages];

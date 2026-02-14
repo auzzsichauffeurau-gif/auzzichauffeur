@@ -236,6 +236,13 @@ export default function Home() {
             },
             {
               "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Auzzie Chauffeur",
+              "url": "https://auzziechauffeur.com.au/",
+              "logo": "https://auzziechauffeur.com.au/logo.png"
+            },
+            {
+              "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "Auzzie Chauffeur",
               "image": "https://auzziechauffeur.com.au/logo.png",
