@@ -16,7 +16,7 @@ export async function POST(req: Request) {
         }
 
         const body = await req.json();
-        const { to, from, subject, text, html } = body;
+        const { from, to, replyTo, subject, text, html } = body;
 
         // Configure Nodemailer with Gmail SMTP settings
         const transporter = nodemailer.createTransport({
@@ -47,6 +47,7 @@ export async function POST(req: Request) {
         // Define email options
         const mailOptions = {
             from: from || process.env.FROM_EMAIL || process.env.SMTP_USER || 'noreply@auzziechauffeur.com.au',
+            replyTo: replyTo || undefined,
             to: to,
             subject: subject,
             text: text,

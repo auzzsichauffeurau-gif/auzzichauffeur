@@ -1,17 +1,19 @@
 "use client";
 
-import { useState, useRef } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect, useRef } from 'react';
+import { useRouter, useParams } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { ArrowLeft, Save, Upload, X, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
-import RichTextEditor from '../_components/RichTextEditor';
-import SchemaBuilder, { FAQItem } from '../_components/SchemaBuilder';
-import styles from '../admin.module.css';
+import RichTextEditor from '../../_components/RichTextEditor';
+import SchemaBuilder, { FAQItem } from '../../_components/SchemaBuilder';
+import styles from '../../admin.module.css';
 
-export default function NewPostPage() {
+export default function EditPostPage() {
     const router = useRouter();
+    const { id } = useParams();
     const [loading, setLoading] = useState(false);
+    const [fetching, setFetching] = useState(true);
     const [uploading, setUploading] = useState(false);
 
     // Form State
@@ -20,9 +22,48 @@ export default function NewPostPage() {
     const [excerpt, setExcerpt] = useState('');
     const [slug, setSlug] = useState('');
     const [coverImage, setCoverImage] = useState('');
+    const [isPublished, setIsPublished] = useState(false);
     const [faqs, setFaqs] = useState<FAQItem[]>([]);
 
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (id) {
+            fetchPost();
+        }
+    }, [id]);
+
+    const fetchPost = async () => {
+        try {
+            const { data, error } = await supabase
+                .from('posts')
+                .select('*')
+                .eq('id', id)
+                .single();
+
+            if (error) throw error;
+
+            if (data) {
+                setTitle(data.title || '');
+                setContent(data.content || '');
+                setExcerpt(data.excerpt || '');
+                setSlug(data.slug || '');
+                setCoverImage(data.image_url || '');
+                setIsPublished(data.is_published || false);
+
+                // Load metadata if available
+                if (data.meta && data.meta.faqs) {
+                    setFaqs(data.meta.faqs);
+                }
+            }
+        } catch (error: any) {
+            console.error('Error fetching post:', error);
+            toast.error('Failed to load post');
+            router.push('/admin/dashboard/blog');
+        } finally {
+            setFetching(false);
+        }
+    };
 
     const generateSlug = (text: string) => {
         return text.toLowerCase()
@@ -32,9 +73,6 @@ export default function NewPostPage() {
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(e.target.value);
-        if (!slug) {
-            setSlug(generateSlug(e.target.value));
-        }
     };
 
     const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +106,7 @@ export default function NewPostPage() {
         }
     };
 
-    const handleSubmit = async (publish: boolean) => {
+    const handleSubmit = async (publishStatus: boolean) => {
         if (!title.trim()) return toast.error('Title is required');
         if (!slug.trim()) return toast.error('Slug is required');
 
@@ -79,7 +117,7 @@ export default function NewPostPage() {
                 faqs,
                 schemaType: 'Article',
                 author: {
-                    name: 'James Sterling', // Default or fetch from profile
+                    name: 'James Sterling',
                     url: 'https://auzziechauffeur.com.au/about-us'
                 }
             };
@@ -90,42 +128,58 @@ export default function NewPostPage() {
                 content,
                 excerpt,
                 image_url: coverImage,
-                is_published: publish,
+                is_published: publishStatus,
+                updated_at: new Date().toISOString(),
                 meta: meta
             };
 
-            const { error } = await supabase.from('posts').insert(postData);
+            const { error } = await supabase
+                .from('posts')
+                .update(postData)
+                .eq('id', id);
 
             if (error) {
-                // If meta column is missing, try inserting without it but warn user
                 if (error.message?.includes('column "meta" of relation "posts" does not exist') || error.message?.includes('meta')) {
-                    const { error: retryError } = await supabase.from('posts').insert({
-                        title,
-                        slug,
-                        content,
-                        excerpt,
-                        image_url: coverImage,
-                        is_published: publish
-                    });
+                    // Retry without meta
+                    const { error: retryError } = await supabase
+                        .from('posts')
+                        .update({
+                            title,
+                            slug,
+                            content,
+                            excerpt,
+                            image_url: coverImage,
+                            is_published: publishStatus,
+                            updated_at: new Date().toISOString()
+                        })
+                        .eq('id', id);
 
                     if (retryError) throw retryError;
 
-                    toast.warning("Post saved, but 'meta' column is missing in DB. Schema data was not saved.");
+                    toast.warning("Post updated, but 'meta' column missng. Schema data not saved.");
                 } else {
                     throw error;
                 }
             } else {
-                toast.success(publish ? 'Post published successfully!' : 'Draft saved successfully!');
+                toast.success('Post updated successfully!');
             }
 
             router.push('/admin/dashboard/blog');
         } catch (error: any) {
-            console.error('Save error:', error);
-            toast.error('Error saving post: ' + error.message);
+            console.error('Update error:', error);
+            toast.error('Error updating post: ' + error.message);
         } finally {
             setLoading(false);
         }
     };
+
+    if (fetching) {
+        return (
+            <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Loader2 className="animate-spin" size={48} color="#1e3a8a" />
+            </div>
+        );
+    }
 
     return (
         <div className={styles.container}>
@@ -139,8 +193,8 @@ export default function NewPostPage() {
                         <ArrowLeft size={20} />
                     </button>
                     <div>
-                        <h1 className={styles.headerTitle}>Create New Post</h1>
-                        <p className={styles.headerSubtitle}>Share news and updates with your audience</p>
+                        <h1 className={styles.headerTitle}>Edit Post</h1>
+                        <p className={styles.headerSubtitle}>Update your content</p>
                     </div>
                 </div>
                 <div className={styles.actions}>
@@ -149,15 +203,16 @@ export default function NewPostPage() {
                         disabled={loading}
                         className={styles.btnSecondary}
                     >
-                        Save Draft
+                        Save as Draft
                     </button>
                     <button
                         onClick={() => handleSubmit(true)}
                         disabled={loading}
                         className={styles.btnPrimary}
+                        style={{ backgroundColor: isPublished ? '#16a34a' : '#1e3a8a' }}
                     >
                         {loading ? <Loader2 className="animate-spin" size={16} /> : <Save size={16} />}
-                        Publish
+                        {isPublished ? 'Update' : 'Publish'}
                     </button>
                 </div>
             </div>
@@ -258,7 +313,7 @@ export default function NewPostPage() {
                                     <input
                                         type="text"
                                         value={slug}
-                                        onChange={(e) => setSlug(generateSlug(e.target.value))}
+                                        onChange={(e) => setSlug(e.target.value)}
                                         className={styles.inputField}
                                     />
                                 </div>
@@ -287,11 +342,9 @@ export default function NewPostPage() {
                             💡 SEO Tips
                         </h3>
                         <ul className={styles.tipsList}>
-                            <li>Use specific, descriptive titles.</li>
-                            <li>Add subheadings (H2, H3) to break up text.</li>
-                            <li>Include alt text for images.</li>
-                            <li>Add FAQs to target featured snippets.</li>
-                            <li>Keep the excerpt under 160 chars.</li>
+                            <li>Check your slug is clean.</li>
+                            <li>Ensure content has H2 headings.</li>
+                            <li>Fill out the FAQs for better visibility.</li>
                         </ul>
                     </div>
 
