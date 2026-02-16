@@ -183,6 +183,8 @@ export default function InvoicesPage() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
+                    from: 'Auzzie Chauffeur Invoices <booking@auzziechauffeur.com.au>',
+                    replyTo: 'booking@auzziechauffeur.com.au',
                     to: selectedInvoice.customer_email,
                     subject: subject,
                     html: body

@@ -147,6 +147,8 @@ export default function QuoteForm() {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
+                        from: 'Auzzie Chauffeur Quotes <info@auzziechauffeur.com.au>',
+                        replyTo: formData.email,
                         to: 'booking@auzziechauffeur.com.au',
                         subject: `New Quote Request: ${formData.name}`,
                         html: `
@@ -174,6 +176,8 @@ export default function QuoteForm() {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
+                        from: 'Auzzie Chauffeur Quotes <info@auzziechauffeur.com.au>',
+                        replyTo: 'info@auzziechauffeur.com.au',
                         to: formData.email,
                         subject: `Quote Request Received - Auzzie Chauffeur`,
                         html: `

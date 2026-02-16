@@ -118,13 +118,20 @@ export default function BookingsPage() {
     const handleDeleteBooking = async (bookingId: string) => {
         if (!confirm('Are you sure you want to delete this booking? This action cannot be undone.')) return;
 
-        const { error } = await supabase
+        // Use select() to confirm deletion (RLS might silently fail otherwise)
+        const { error, data } = await supabase
             .from('bookings')
             .delete()
-            .eq('id', bookingId);
+            .eq('id', bookingId)
+            .select();
 
         if (error) {
             toast.error('Failed to delete booking: ' + error.message);
+        } else if (!data || data.length === 0) {
+            // If data is empty, deletion was blocked by RLS
+            toast.error('Deletion failed: Permission denied or record not found.');
+            // Refresh logic to restore UI state if it was optimistic
+            fetchBookings();
         } else {
             toast.success('Booking deleted successfully');
             setBookings(bookings.filter(b => b.id !== bookingId));
@@ -200,10 +207,10 @@ export default function BookingsPage() {
             return;
         }
 
-        // 3. Auto-Generate Invoice
+        // 3. Auto-Generate Invoice & SEND NOTIFICATIONS
         if (bookingData) {
-            // Invoice generation logic (same as before)
             const invoiceNumber = `INV-${Date.now().toString().slice(-6)}`;
+
             const { error: invoiceError } = await supabase
                 .from('invoices')
                 .insert([{
@@ -232,7 +239,56 @@ export default function BookingsPage() {
                 console.warn('Invoice auto-creation failed:', invoiceError);
                 toast.warning('Booking created, but invoice generation failed.');
             } else {
-                toast.success('Booking & Invoice Created Successfully!');
+                // SUCCESS: Send Notifications (A to Z)
+                try {
+                    // 1. Customer Email
+                    await fetch('/api/send-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            to: newBooking.customer_email,
+                            subject: `Booking Confirmation - ${invoiceNumber}`,
+                            html: `
+                                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+                                    <h2 style="color: #1e3a8a;">Booking Approved</h2>
+                                    <p>Dear ${newBooking.customer_name},</p>
+                                    <p>Thank you for choosing Auzzie Chauffeur. Your booking has been successfully created and confirmed.</p>
+                                    
+                                    <div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                                        <p><strong>Pickup:</strong> ${newBooking.pickup_date} at ${newBooking.pickup_time}</p>
+                                        <p><strong>From:</strong> ${newBooking.pickup_location}</p>
+                                        <p><strong>To:</strong> ${newBooking.dropoff_location}</p>
+                                        <p><strong>Vehicle:</strong> ${newBooking.vehicle_type}</p>
+                                        <p><strong>Total Amount:</strong> $${amount.toFixed(2)}</p>
+                                    </div>
+
+                                    <p>Your invoice ${invoiceNumber} has been generated.</p>
+                                    <p>We will assign a driver shortly and you will receive another update with their details.</p>
+                                    
+                                    <p>Best regards,<br>Auzzie Chauffeur Team</p>
+                                </div>
+                            `
+                        })
+                    });
+
+                    // 2. Admin Alert
+                    await fetch('/api/send-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            from: 'Auzzie Chauffeur Bookings <booking@auzziechauffeur.com.au>',
+                            replyTo: 'booking@auzziechauffeur.com.au',
+                            to: 'booking@auzziechauffeur.com.au', // Fallback
+                            subject: `New Admin Booking: ${newBooking.customer_name}`,
+                            text: `New booking created manually in admin dashboard.\n\nCustomer: ${newBooking.customer_name}\nPhone: ${newBooking.customer_phone}\nDate: ${newBooking.pickup_date} ${newBooking.pickup_time}\nRoute: ${newBooking.pickup_location} -> ${newBooking.dropoff_location}\nAmount: $${amount.toFixed(2)}`
+                        })
+                    });
+
+                    toast.success('Booking & Invoice Created! Emails Sent.');
+                } catch (notifyError) {
+                    console.error('Notification failed:', notifyError);
+                    toast.warning('Booking created, invoice generated, but email notifications failed.');
+                }
             }
         } else {
             toast.success('Booking Created Successfully!');

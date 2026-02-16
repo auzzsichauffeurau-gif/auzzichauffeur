@@ -8,31 +8,43 @@ import { Calendar, User, Clock } from "lucide-react";
 import AuthorBio from "@/components/AuthorBio";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import ArticleSchema from "@/components/ArticleSchema";
+import FAQSchema from "@/components/FAQSchema";
 import type { Metadata } from 'next';
+
+// Utility to strip HTML tags for plain text (for meta description)
+const stripHtml = (html: string) => {
+    if (!html) return '';
+    return html.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ').trim();
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const baseUrl = 'https://auzziechauffeur.com.au';
     const { slug } = await params;
+
     const { data: post } = await supabase
         .from('posts')
-        .select('title, content')
+        .select('*')
         .eq('slug', slug)
         .single();
 
     if (!post) return { title: "Post Not Found | Auzzie Chauffeur" };
 
-    // Strip HTML tags and entities for a clean meta description
-    const cleanDescription = post.content
-        .replace(/<[^>]*>/g, '') // Remove HTML tags
-        .replace(/&nbsp;/g, ' ')
-        .substring(0, 160)
-        .trim();
+    const description = post.excerpt || stripHtml(post.content).substring(0, 160);
 
     return {
         title: { absolute: `${post.title} | Auzzie Chauffeur` },
-        description: cleanDescription,
+        description: description,
         alternates: {
             canonical: `${baseUrl}/news/${slug}`,
+        },
+        openGraph: {
+            title: post.title,
+            description: description,
+            url: `${baseUrl}/news/${slug}`,
+            images: post.image_url ? [{ url: post.image_url }] : [],
+            type: 'article',
+            publishedTime: post.created_at,
+            authors: ['James Sterling']
         }
     };
 }
@@ -65,18 +77,37 @@ export default async function SinglePostPage({ params }: { params: Promise<{ slu
         { name: post.title, url: `/news/${post.slug}` }
     ];
 
+    // Extract Metadata/Schema info
+    // post.meta might be null if not using the new column yet
+    const meta = post.meta || {};
+    const faqs = meta.faqs || [];
+    const authorName = meta.author?.name || "James Sterling";
+    const authorUrl = meta.author?.url || "https://auzziechauffeur.com.au/about-us";
+
+    // Estimate read time
+    const wordCount = stripHtml(post.content || '').split(/\s+/).length;
+    const readTime = Math.ceil(wordCount / 200) || 1;
+
+    // Use dangerouslySetInnerHTML for content since it's now HTML
+    // We assume admin content is safe (sanitization could be added if needed)
+
     return (
         <main className={styles.pageWrapper}>
             <Navbar />
             <BreadcrumbSchema items={breadcrumbs} />
+
             <ArticleSchema
                 headline={post.title}
                 image={post.image_url ? [post.image_url] : []}
                 datePublished={post.created_at}
                 dateModified={post.updated_at || post.created_at}
-                authorName="James Sterling"
-                description={post.content.substring(0, 160)}
+                authorName={authorName}
+                authorUrl={authorUrl}
+                description={post.excerpt || stripHtml(post.content).substring(0, 160)}
             />
+
+            {/* Inject FAQ Schema if FAQs exist */}
+            {faqs.length > 0 && <FAQSchema pairs={faqs} />}
 
             {/* Hero Section */}
             <section className={styles.hero} style={{ minHeight: '300px' }}>
@@ -92,7 +123,7 @@ export default async function SinglePostPage({ params }: { params: Promise<{ slu
             {/* Content Section */}
             <section className={styles.contentSection}>
                 <div className={styles.container} style={{ maxWidth: '900px' }}>
-                    <div style={{ backgroundColor: 'white', padding: '2rem', borderRadius: '8px', border: '1px solid #eee' }}>
+                    <div className="blog-content-wrapper" style={{ backgroundColor: 'white', padding: '2rem', borderRadius: '8px', border: '1px solid #eee' }}>
 
                         {/* Meta */}
                         <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '1.5rem', color: '#666', fontSize: '0.9rem', borderBottom: '1px solid #eee', paddingBottom: '1rem' }}>
@@ -100,10 +131,10 @@ export default async function SinglePostPage({ params }: { params: Promise<{ slu
                                 <Calendar size={16} /> <span style={{ fontWeight: 'bold' }}>Published:</span> {new Date(post.created_at).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' })}
                             </span>
                             <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <User size={16} /> Admin
+                                <User size={16} /> {authorName}
                             </span>
                             <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <Clock size={16} /> 5 min read
+                                <Clock size={16} /> {readTime} min read
                             </span>
                         </div>
 
@@ -116,24 +147,47 @@ export default async function SinglePostPage({ params }: { params: Promise<{ slu
                                     fill
                                     style={{ objectFit: 'cover' }}
                                     sizes="(max-width: 900px) 100vw, 900px"
+                                    priority
                                 />
                             </div>
                         )}
 
-                        {/* Content */}
-                        <div style={{ lineHeight: '1.8', color: '#333', fontSize: '1.1rem', marginBottom: '3rem' }}>
-                            {post.content.split('\n').map((paragraph: string, idx: number) => (
-                                <p key={idx} style={{ marginBottom: '1.5rem' }}>{paragraph}</p>
-                            ))}
-                        </div>
+                        {/* Content utilizing Tiptap HTML output */}
+                        {/* We add a custom class 'prose' for Tailwind typography or handle styles inline if Tailwind typography is not available */}
+                        {/* Since user said 'style is not good', we should ensure headings are styled */}
+                        <div
+                            className={styles.blogContent}
+                            dangerouslySetInnerHTML={{ __html: post.content }}
+                        />
+
+                        {/* FAQ Section Display */}
+                        {faqs.length > 0 && (
+                            <div style={{ marginTop: '3rem', padding: '2rem', backgroundColor: '#f9fafb', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
+                                <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1.5rem', color: '#1f2937' }}>
+                                    Frequently Asked Questions
+                                </h3>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                                    {faqs.map((faq: any, idx: number) => (
+                                        <div key={idx} itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                                            <h4 itemProp="name" style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#111', marginBottom: '0.5rem' }}>{faq.question}</h4>
+                                            <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                                                <div itemProp="text" style={{ color: '#4b5563', lineHeight: '1.6' }}>{faq.answer}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
 
                         {/* Author Bio for EEAT */}
-                        <AuthorBio author={{
-                            name: "James Sterling",
-                            role: "Senior Chauffeur & Travel Coordinator",
-                            description: "James has been driving for Auzzie Chauffeur for over 12 years. He specializes in high-profile corporate logistics and knows every back lane in Sydney and Melbourne.",
-                            imageUrl: "/tile-driver.png"
-                        }} />
+                        <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #eee' }}>
+                            <AuthorBio author={{
+                                name: authorName,
+                                role: "Senior Chauffeur & Travel Coordinator",
+                                description: "James has been driving for Auzzie Chauffeur for over 12 years. He specializes in high-profile corporate logistics and knows every back lane in Sydney and Melbourne.",
+                                imageUrl: "/tile-driver.png"
+                            }} />
+                        </div>
 
                     </div>
 

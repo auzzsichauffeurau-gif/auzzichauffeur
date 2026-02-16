@@ -63,6 +63,8 @@ export default function BookingPageContent() {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
+                        from: 'Auzzie Chauffeur Bookings <booking@auzziechauffeur.com.au>',
+                        replyTo: formData.email,
                         to: 'booking@auzziechauffeur.com.au',
                         subject: `New Booking Request: ${formData.name}`,
                         html: `
@@ -88,6 +90,8 @@ export default function BookingPageContent() {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
+                        from: 'Auzzie Chauffeur Bookings <booking@auzziechauffeur.com.au>',
+                        replyTo: 'booking@auzziechauffeur.com.au',
                         to: formData.email,
                         subject: `Booking Request Received - Auzzie Chauffeur`,
                         html: `

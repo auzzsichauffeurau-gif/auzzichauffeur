@@ -65,10 +65,11 @@ export default function UpcomingBookingsPage() {
         try {
             const today = new Date().toISOString().split('T')[0];
 
-            // Join with drivers table to get driver name if assigned
+            // Removed 'drivers(name)' join to prevent error.
+            // We will map the driver name from the 'drivers' state in the render method.
             const { data, error } = await supabase
                 .from('bookings')
-                .select('*, drivers(name)')
+                .select('*')
                 .in('status', ['Confirmed', 'In Progress'])
                 .gte('pickup_date', today)
                 .order('pickup_date', { ascending: true });
@@ -106,14 +107,10 @@ export default function UpcomingBookingsPage() {
 
             if (error) throw error;
 
-            // Optional: Update driver status (e.g. to 'On Job' if needed)
-            // await supabase.from('drivers').update({ status: 'On Job' }).eq('id', selectedDriverId);
-
             toast.success(`Driver assigned successfully to ${selectedBooking.customer_name}`);
             setShowAssignModal(false);
             fetchUpcomingBookings(); // Refresh list
 
-            // Simulate sending notification
             console.log(`Notification sent to driver ID: ${selectedDriverId}`);
 
         } catch (error: any) {
@@ -241,7 +238,10 @@ export default function UpcomingBookingsPage() {
                 <div style={{ display: 'grid', gap: '1rem' }}>
                     {filteredBookings.map((booking: any) => {
                         const daysInfo = getDaysUntil(booking.pickup_date);
-                        const assignedDriverName = booking.drivers ? booking.drivers.name : null;
+                        // Manual lookup of driver name from state using FK
+                        const assignedDriverName = booking.driver_id
+                            ? drivers.find(d => d.id === booking.driver_id)?.name
+                            : null;
 
                         return (
                             <div key={booking.id} style={cardStyle}>

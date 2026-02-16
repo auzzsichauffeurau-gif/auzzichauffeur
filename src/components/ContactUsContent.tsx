@@ -55,6 +55,8 @@ export default function ContactUsContent() {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
+                        from: 'Auzzie Chauffeur Info <info@auzziechauffeur.com.au>',
+                        replyTo: formData.email,
                         to: 'info@auzziechauffeur.com.au',
                         subject: `New Contact Enquiry: ${formData.subject}`,
                         html: `
@@ -81,6 +83,8 @@ export default function ContactUsContent() {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
+                        from: 'Auzzie Chauffeur Info <info@auzziechauffeur.com.au>',
+                        replyTo: 'info@auzziechauffeur.com.au',
                         to: formData.email,
                         subject: `We received your message - Auzzie Chauffeur`,
                         html: `
