@@ -536,7 +536,7 @@ export default function EmailTemplatesPage() {
         .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; font-weight: 700; margin-bottom: 5px; display: block; }
         .value { font-size: 15px; color: #1e293b; font-weight: 600; line-height: 1.4; display: block; }
         .cta-section { padding: 30px 40px 40px; text-align: center; }
-        .btn { display: inline-block; background-color: #c5a467; color: #ffffff; padding: 14px 32px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-radius: 4px; transition: background 0.3s; }
+        .btn { display: inline-block; background-color: #c5a467; color: #ffffff !important; padding: 14px 32px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-radius: 4px; transition: background 0.3s; }
         .footer { background-color: #1e293b; padding: 40px; text-align: center; color: #94a3b8; font-size: 13px; line-height: 1.6; }
         .social-links { margin-bottom: 20px; }
         .copyright { margin-top: 20px; border-top: 1px solid #334155; padding-top: 20px; font-size: 12px; }
@@ -555,7 +555,10 @@ export default function EmailTemplatesPage() {
         <table class="main-table">
             <tr>
                 <td class="header">
-                    <a href="#" class="logo-text">Auzzie Chauffeur</a>
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <img src="https://auzziechauffeur.com.au/logo.png" alt="Auzzie Chauffeur" style="width: 150px; height: auto;" />
+                    </div>
+                    <a href="https://auzziechauffeur.com.au" class="logo-text">Auzzie Chauffeur</a>
                 </td>
             </tr>
 
@@ -605,7 +608,7 @@ export default function EmailTemplatesPage() {
             <tr>
                 <td class="cta-section">
                     <p style="margin-bottom: 25px; color: #64748b;">Our professional chauffeur will arrive 15 minutes prior to departure. You can manage your booking or view live status below.</p>
-                    <a href="#" class="btn">Manage My Booking</a>
+                    <a href="https://auzziechauffeur.com.au/book" class="btn">Manage My Booking</a>
                 </td>
             </tr>
 
@@ -618,14 +621,14 @@ export default function EmailTemplatesPage() {
                     </div>
                     
                     <p>
-                        123 Luxury Lane, Sydney NSW 2000<br>
-                        Contact: info@auzziechauffeur.com.au | +61 400 000 000
+                        Contact: <a href="mailto:info@auzziechauffeur.com.au" style="color: #c5a467; text-decoration: none;">info@auzziechauffeur.com.au</a> | 0415 673 786
                     </p>
 
                     <div class="copyright">
                         &copy; 2026 Auzzie Chauffeur. All rights reserved.<br>
-                        <a href="#" class="footer-link">Privacy Policy</a> | <a href="#" class="footer-link">Terms of Service</a>
+                        <a href="https://auzziechauffeur.com.au/privacy-policy" class="footer-link">Privacy Policy</a> | <a href="https://auzziechauffeur.com.au/terms-conditions" class="footer-link">Terms of Service</a>
                     </div>
+                    <p style="margin-top: 15px;"><a href="https://auzziechauffeur.com.au" style="color: #64748b; text-decoration: none;">www.auzziechauffeur.com.au</a></p>
                 </td>
             </tr>
         </table>

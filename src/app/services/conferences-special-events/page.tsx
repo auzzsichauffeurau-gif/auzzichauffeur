@@ -91,7 +91,7 @@ export default function ConferenceServicesPage() {
                 <h2 className={styles.sectionTitle}>Event Logistics Made Simple</h2>
                 <div className={styles.textBlock}>
                     <p>
-                        Managing transport for a conference or special event requires precision and reliability. Auzzsi Chauffeur
+                        Managing transport for a conference or special event requires precision and reliability. Auzzie Chauffeur
                         partners with event planners and corporate teams to provide flawless execution.
                         <br /><br />
                         Whether moving hundreds of delegates to the ICC Sydney or transporting VIP speakers to a gala at Crown Perth,

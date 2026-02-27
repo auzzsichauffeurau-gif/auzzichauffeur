@@ -107,8 +107,8 @@ export default function Navbar() {
                 <div className={styles.topBar}>
                     <div className={styles.topBarContent}>
                         <span className={styles.topBarText}>Available 24/7</span>
-                        <a href="tel:1300465374" className={styles.topBarLink}>
-                            Start Booking: 1300 465 374
+                        <a href="tel:0415673786" className={styles.topBarLink}>
+                            Start Booking: 0415 673 786
                         </a>
                         <a href="mailto:booking@auzziechauffeur.com.au" className={styles.topBarLink}>
                             booking@auzziechauffeur.com.au

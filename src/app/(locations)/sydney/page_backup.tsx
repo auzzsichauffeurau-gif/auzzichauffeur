@@ -93,7 +93,7 @@ export default function AdelaideHubPage() {
 
                 <p className={styles.textBlock} style={{ maxWidth: '800px', margin: '0 auto 3rem' }}>
                     Adelaide is the gateway to some of the world's best wine regions.
-                    Auzzsi Chauffeur specializes in airport transfers and bespoke tours to the Barossa, Clare Valley, and McLaren Vale.
+                    Auzzie Chauffeur specializes in airport transfers and bespoke tours to the Barossa, Clare Valley, and McLaren Vale.
                     Enjoy professional service that understands the nuances of South Australian hospitality.
                 </p>
 

@@ -332,12 +332,12 @@ export default function BlogListPage() {
                             >
                                 <div style={{ flex: 1, display: 'flex', gap: '1rem', alignItems: 'center' }}>
                                     {/* Featured Image Thumbnail */}
-                                    {post.featured_image ? (
+                                    {post.image_url ? (
                                         <div style={{
                                             width: '80px',
                                             height: '80px',
                                             borderRadius: '8px',
-                                            backgroundImage: `url(${post.featured_image})`,
+                                            backgroundImage: `url(${post.image_url})`,
                                             backgroundSize: 'cover',
                                             backgroundPosition: 'center',
                                             border: '1px solid #e5e7eb',

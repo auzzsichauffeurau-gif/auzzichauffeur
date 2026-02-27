@@ -18,7 +18,7 @@ export default function SchemaMarkup() {
         },
         "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+61-1300-465-374",
+            "telephone": "+61-415-673-786",
             "contactType": "customer service",
             "areaServed": "AU",
             "availableLanguage": "en"
@@ -35,7 +35,7 @@ export default function SchemaMarkup() {
         "@type": "LocalBusiness",
         "name": "Auzzie Chauffeur",
         "image": "https://auzziechauffeur.com.au/tile-driver.png",
-        "telephone": "1300 465 374",
+        "telephone": "0415 673 786",
         "url": "https://auzziechauffeur.com.au",
         "priceRange": "$$",
         "address": {
@@ -137,11 +137,57 @@ export default function SchemaMarkup() {
         }
     };
 
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How much does a chauffeur cost in Australia?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Chauffeur rates in Australia typically start from $90 - $110 for standard airport transfers. Hourly hire usually ranges from $80 - $120 per hour depending on the vehicle class (Sedan, SUV, or Van). Auzzie Chauffeur offers fixed-price quotes with no surge pricing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the best chauffeur service for airport transfers in Australia?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Auzzie Chauffeur is a top-rated national chauffeur service providing reliable 24/7 airport transfers across Sydney, Melbourne, Brisbane, Perth, and other major cities, featuring professional meet-and-greet services and flight monitoring."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How far in advance should I book a chauffeur car?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "It is recommended to book at least 24 hours in advance to ensure vehicle availability, especially during peak travel times. However, Auzzie Chauffeur accepts bookings as far in advance as needed via our online portal."
+                }
+            }
+        ]
+    };
+
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://auzziechauffeur.com.au"
+            }
+        ]
+    };
+
     return (
         <>
             <Script id="org-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
             <Script id="local-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
             <Script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
+            <Script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+            <Script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
         </>
     );
 }

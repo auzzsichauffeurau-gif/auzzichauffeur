@@ -27,7 +27,7 @@ export function generateLocalBusinessSchema({
         "alternateName": `Auzzie ${city}`,
         "description": description,
         "url": `https://auzziechauffeur.com.au/${city.toLowerCase().replace(/\s+/g, '-')}`,
-        "telephone": "+61-XXX-XXX-XXX", // Replace with actual phone
+        "telephone": "+61-415-673-786", // Replace with actual phone
         "email": "info@auzziechauffeur.com.au",
         "priceRange": "$$$$",
         "image": "https://auzziechauffeur.com.au/logo.png",

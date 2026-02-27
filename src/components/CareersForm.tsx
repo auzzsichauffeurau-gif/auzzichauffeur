@@ -55,9 +55,9 @@ export default function CareersForm({ role }: CareersFormProps) {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    from: 'Auzzie Chauffeur Info <info@auzziechauffeur.com.au>',
+                    from: `"${formData.firstName} (New ${role} App)" <booking@auzziechauffeur.com.au>`,
                     replyTo: formData.email,
-                    to: 'info@auzziechauffeur.com.au',
+                    to: 'auzzsichauffeur.au@gmail.com',
                     subject: `New ${role} Application: ${formData.firstName} ${formData.lastName}`,
                     html: `
                         <h3>New ${role} Application</h3>

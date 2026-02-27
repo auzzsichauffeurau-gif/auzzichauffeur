@@ -14,6 +14,7 @@ const ImageTiles = dynamic(() => import("@/components/ImageTiles"), { ssr: true 
 const TrustedBy = dynamic(() => import("@/components/TrustedBy"), { ssr: true });
 const Testimonials = dynamic(() => import("@/components/Testimonials"), { ssr: true });
 const FAQ = dynamic(() => import("@/components/FAQ"), { ssr: true });
+const AEOAnswerHub = dynamic(() => import("@/components/AEOAnswerHub"), { ssr: true });
 const ContactHelp = dynamic(() => import("@/components/ContactHelp"), { ssr: true });
 const Footer = dynamic(() => import("@/components/Footer"), { ssr: true });
 
@@ -161,6 +162,9 @@ export default function Home() {
       {/* 9. FAQs */}
       <FAQ />
 
+      {/* 9.5 AEO ANSWER HUB */}
+      <AEOAnswerHub />
+
       {/* 10. MAP & NAP */}
       <section className={styles.sectionAlt}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', maxWidth: '1200px', margin: '0 auto' }}>
@@ -213,6 +217,7 @@ export default function Home() {
               allowFullScreen={true}
               loading="lazy"
               title="Auzzie Chauffeur Head Office - Tullamarine, Melbourne"
+              sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
             ></iframe>
           </div>
 
@@ -246,7 +251,7 @@ export default function Home() {
               "@type": "LocalBusiness",
               "name": "Auzzie Chauffeur",
               "image": "https://auzziechauffeur.com.au/logo.png",
-              "telephone": "1300 465 374",
+              "telephone": "0415 673 786",
               "url": "https://auzziechauffeur.com.au",
               "address": {
                 "@type": "PostalAddress",

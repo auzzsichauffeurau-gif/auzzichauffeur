@@ -277,8 +277,8 @@ export default function BookingsPage() {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             from: 'Auzzie Chauffeur Bookings <booking@auzziechauffeur.com.au>',
-                            replyTo: 'booking@auzziechauffeur.com.au',
-                            to: 'booking@auzziechauffeur.com.au', // Fallback
+                            replyTo: 'info@auzziechauffeur.com.au',
+                            to: 'info@auzziechauffeur.com.au', // Fallback
                             subject: `New Admin Booking: ${newBooking.customer_name}`,
                             text: `New booking created manually in admin dashboard.\n\nCustomer: ${newBooking.customer_name}\nPhone: ${newBooking.customer_phone}\nDate: ${newBooking.pickup_date} ${newBooking.pickup_time}\nRoute: ${newBooking.pickup_location} -> ${newBooking.dropoff_location}\nAmount: $${amount.toFixed(2)}`
                         })

@@ -23,7 +23,13 @@ export default function NewsPage() {
                 .order('created_at', { ascending: false });
 
             if (!error && data) {
-                setNewsItems(data);
+                // Filter out scheduled posts client-side if server-side filtering is tricky with JSON
+                const now = new Date();
+                const filtered = data.filter((post: any) => {
+                    if (!post.meta || !post.meta.scheduledAt) return true;
+                    return new Date(post.meta.scheduledAt) <= now;
+                });
+                setNewsItems(filtered);
             }
             setLoading(false);
         }

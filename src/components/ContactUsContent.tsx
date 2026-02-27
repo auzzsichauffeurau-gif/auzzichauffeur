@@ -55,9 +55,9 @@ export default function ContactUsContent() {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        from: 'Auzzie Chauffeur Info <info@auzziechauffeur.com.au>',
+                        from: `"${formData.firstName} ${formData.lastName} (Contact Form)" <booking@auzziechauffeur.com.au>`,
                         replyTo: formData.email,
-                        to: 'info@auzziechauffeur.com.au',
+                        to: 'auzzsichauffeur.au@gmail.com',
                         subject: `New Contact Enquiry: ${formData.subject}`,
                         html: `
                             <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto;">
@@ -83,13 +83,16 @@ export default function ContactUsContent() {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        from: 'Auzzie Chauffeur Info <info@auzziechauffeur.com.au>',
-                        replyTo: 'info@auzziechauffeur.com.au',
+                        from: 'Auzzie Chauffeur Info <booking@auzziechauffeur.com.au>',
+                        replyTo: 'booking@auzziechauffeur.com.au',
                         to: formData.email,
                         subject: `We received your message - Auzzie Chauffeur`,
                         html: `
                             <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; color: #333;">
                                 <div style="text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                                    <div style="margin-bottom: 20px;">
+                                        <img src="https://auzziechauffeur.com.au/logo.png" alt="Auzzie Chauffeur" style="width: 150px; height: auto;" />
+                                    </div>
                                     <h2 style="color: #1e3a8a; margin: 0;">Thank You for Contacting Us</h2>
                                     <p style="color: #666; font-size: 0.9em;">We have received your enquiry</p>
                                 </div>
@@ -105,7 +108,7 @@ export default function ContactUsContent() {
 
                                 <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.9em; color: #888; text-align: center;">
                                     <p style="margin-bottom: 5px;"><strong>Auzzie Chauffeur</strong></p>
-                                    <p style="margin: 0;"><a href="https://auzziechauffeur.com.au" style="color: #c5a467; text-decoration: none;">www.auzziechauffeur.com.au</a></p>
+                                    <p style="margin: 0;"><a href="https://auzziechauffeur.com.au" style="color: #c5a467; text-decoration: none;">www.auzziechauffeur.com.au</a> | 0415 673 786</p>
                                     <p style="margin: 5px 0 0 0;">Australia's Premium Chauffeur Service</p>
                                 </div>
                             </div>

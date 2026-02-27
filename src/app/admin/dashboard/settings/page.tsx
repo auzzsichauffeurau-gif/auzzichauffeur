@@ -10,8 +10,8 @@ export default function SettingsPage() {
     const [profileData, setProfileData] = useState({
         name: 'Admin User',
         email: 'info@auzziechauffeur.com.au',
-        phone: '+61 400 000 000',
-        company: 'Auzzsi Chauffeur Service'
+        phone: '0415 673 786',
+        company: 'Auzzie Chauffeur Service'
     });
 
     const [notificationSettings, setNotificationSettings] = useState({

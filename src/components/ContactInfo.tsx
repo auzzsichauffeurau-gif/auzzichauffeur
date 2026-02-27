@@ -12,12 +12,12 @@ export default function ContactInfo({ city }: ContactInfoProps) {
 
             <div className={styles.contactGrid}>
                 {/* Phone */}
-                <a href="tel:1300465374" className={styles.contactCard}>
+                <a href="tel:0415673786" className={styles.contactCard}>
                     <div className={`${styles.iconCircle} ${styles.iconGold}`}>
                         <Phone color="white" size={24} />
                     </div>
                     <h4 style={{ fontWeight: 'bold', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Phone</h4>
-                    <p style={{ color: '#4b5563', fontSize: '0.9rem' }}>1300 465 374</p>
+                    <p style={{ color: '#4b5563', fontSize: '0.9rem' }}>0415 673 786</p>
                     <p style={{ fontSize: '0.8rem', color: '#6b7280', marginTop: '0.5rem' }}>24/7 Support</p>
                 </a>
 

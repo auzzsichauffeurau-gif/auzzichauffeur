@@ -46,7 +46,7 @@ export default function Footer() {
                         </div>
 
                         <p className={styles.description}>
-                            Auzzie is Australia&apos;s only fully national chauffeur service, providing luxury airport transfers, private drivers, and chauffeurs in major cities, including Sydney, Melbourne, Brisbane, Adelaide, Gold Coast, and more. With a network of first-class drivers, Auzzie ensures unparalleled service nationwide.
+                            Auzzie Chauffeur is Australia&apos;s only fully national chauffeur service, providing luxury airport transfers, private drivers, and chauffeurs in major cities, including Sydney, Melbourne, Brisbane, Adelaide, Gold Coast, and more. With a network of first-class drivers, Auzzie Chauffeur ensures unparalleled service nationwide.
                         </p>
 
 
@@ -75,6 +75,10 @@ export default function Footer() {
                             <li className={styles.linkItem} style={{ color: '#d1d5db', marginBottom: '1rem' }}>
                                 <strong>Bookings:</strong><br />
                                 <a href="mailto:booking@auzziechauffeur.com.au" style={{ color: '#bfa15f', textDecoration: 'none' }}>booking@auzziechauffeur.com.au</a>
+                            </li>
+                            <li className={styles.linkItem} style={{ color: '#d1d5db', marginBottom: '1rem' }}>
+                                <strong>Phone:</strong><br />
+                                <a href="tel:0415673786" style={{ color: '#bfa15f', textDecoration: 'none' }}>0415 673 786</a>
                             </li>
                             <li className={styles.linkItem} style={{ color: '#d1d5db' }}>
                                 <strong>Head Office:</strong><br />

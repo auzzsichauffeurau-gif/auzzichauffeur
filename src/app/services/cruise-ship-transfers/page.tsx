@@ -91,7 +91,7 @@ export default function CruiseServicesPage() {
                 <h2 className={styles.sectionTitle}>Nationwide Port Connections</h2>
                 <div className={styles.textBlock}>
                     <p>
-                        Auzzsi Chauffeur connects you to every major cruise terminal in Australia. Whether you are departing from the
+                        Auzzie Chauffeur connects you to every major cruise terminal in Australia. Whether you are departing from the
                         iconic Sydney Harbour, the historic port of Fremantle, or the tropical waters of Cairns, our fleet is ready to get you there.
                         <br /><br />
                         We specialize in door-to-port transfers, ensuring you and your luggage arrive safely, comfortably, and on time for boarding.

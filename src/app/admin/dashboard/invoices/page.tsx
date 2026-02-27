@@ -184,7 +184,7 @@ export default function InvoicesPage() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     from: 'Auzzie Chauffeur Invoices <booking@auzziechauffeur.com.au>',
-                    replyTo: 'booking@auzziechauffeur.com.au',
+                    replyTo: 'info@auzziechauffeur.com.au',
                     to: selectedInvoice.customer_email,
                     subject: subject,
                     html: body
@@ -647,8 +647,9 @@ export default function InvoicesPage() {
                                                 <table style={{ width: '100%' }}>
                                                     <tbody>
                                                         <tr>
-                                                            <td className="title" style={{ fontSize: '32px', fontWeight: 'bold', color: '#1e3a8a' }}>
-                                                                AUZZSI CHAUFFEUR
+                                                            <td className="title" style={{ fontSize: '32px', fontWeight: 'bold', color: '#1e3a8a', lineHeight: '1.2' }}>
+                                                                <img src="https://auzziechauffeur.com.au/logo.png" alt="Auzzie Chauffeur" style={{ width: '120px', height: 'auto', marginBottom: '10px' }} /><br />
+                                                                AUZZIE CHAUFFEUR
                                                             </td>
                                                             <td style={{ textAlign: 'right' }}>
                                                                 Invoice #: {selectedInvoice.invoice_number}<br />
@@ -677,9 +678,9 @@ export default function InvoicesPage() {
                                                         <tr>
                                                             <td style={{ verticalAlign: 'top' }}>
                                                                 <strong>Pay To:</strong><br />
-                                                                Auzzsi Chauffeur Services<br />
-                                                                123 Luxury Lane<br />
-                                                                Sydney, NSW 2000
+                                                                Auzzie Chauffeur<br />
+                                                                Sydney, Australia<br />
+                                                                Ph: 0415 673 786
                                                             </td>
                                                             <td style={{ textAlign: 'right', verticalAlign: 'top' }}>
                                                                 <strong>Bill To:</strong><br />
@@ -780,7 +781,7 @@ export default function InvoicesPage() {
 
                                 <div style={{ marginTop: '40px', paddingTop: '20px', borderTop: '1px solid #eee', fontSize: '14px', color: '#777', textAlign: 'center' }}>
                                     <p>Payment due by {new Date(selectedInvoice.due_date).toLocaleDateString()}.<br />
-                                        Thank you for choosing Auzzsi Chauffeur.</p>
+                                        Thank you for choosing Auzzie Chauffeur.</p>
                                 </div>
                             </div>
                         </div>

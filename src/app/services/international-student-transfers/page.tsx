@@ -91,7 +91,7 @@ export default function StudentServicesPage() {
                 <h2 className={styles.sectionTitle}>Welcome to Australia</h2>
                 <div className={styles.textBlock}>
                     <p>
-                        Arriving in a new country for studies is exciting but can be daunting. Auzzsi Chauffeur provides peace of mind
+                        Arriving in a new country for studies is exciting but can be daunting. Auzzie Chauffeur provides peace of mind
                         for students and parents alike with our dedicated student transfer service.
                         <br /><br />
                         Our vetted drivers meet students inside the terminal, assist with luggage, and drive them directly to their
