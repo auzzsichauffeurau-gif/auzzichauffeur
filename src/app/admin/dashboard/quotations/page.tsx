@@ -216,12 +216,17 @@ export default function QuotationsPage() {
     const handleDeleteQuote = async (id: string) => {
         if (!confirm('Are you sure you want to delete this quote request?')) return;
         try {
-            const { error } = await supabase
+            // Delete related followups first to avoid foreign key constraint errors
+            await supabase.from('followups').delete().eq('booking_id', id);
+
+            const { error, data } = await supabase
                 .from('bookings')
                 .delete()
-                .eq('id', id);
+                .eq('id', id)
+                .select();
 
             if (error) throw error;
+            if (!data || data.length === 0) throw new Error('Permission denied or record missing');
 
             setQuotations(quotations.filter(q => q.id !== id));
             toast.success('Quote deleted');
@@ -232,12 +237,14 @@ export default function QuotationsPage() {
 
     const handleConvertToBooking = async (id: string) => {
         try {
-            const { error } = await supabase
+            const { error, data } = await supabase
                 .from('bookings')
                 .update({ status: 'Confirmed' })
-                .eq('id', id);
+                .eq('id', id)
+                .select();
 
             if (error) throw error;
+            if (!data || data.length === 0) throw new Error('Permission denied or record missing');
 
             setQuotations(quotations.filter(q => q.id !== id));
             toast.success('Quotation converted to confirmed booking!');

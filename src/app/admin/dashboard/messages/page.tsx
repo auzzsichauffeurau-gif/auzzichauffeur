@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Mail, Phone, Clock, X, Check, Trash2 } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
+import { toast } from 'sonner';
 
 export default function MessagesPage() {
     const [messages, setMessages] = useState<any[]>([]);
@@ -36,12 +37,15 @@ export default function MessagesPage() {
     };
 
     const markAsRead = async (id: number) => {
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('contact_messages')
             .update({ is_read: true })
-            .eq('id', id);
+            .eq('id', id)
+            .select();
 
-        if (!error) {
+        if (error || !data || data.length === 0) {
+            toast.error('Failed to mark message as read');
+        } else {
             fetchMessages();
             if (selectedMessage?.id === id) {
                 setSelectedMessage({ ...selectedMessage, is_read: true });
@@ -52,12 +56,16 @@ export default function MessagesPage() {
     const handleDelete = async (id: number) => {
         if (!confirm('Are you sure you want to delete this message?')) return;
 
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('contact_messages')
             .delete()
-            .eq('id', id);
+            .eq('id', id)
+            .select();
 
-        if (!error) {
+        if (error || !data || data.length === 0) {
+            toast.error('Failed to delete message');
+        } else {
+            toast.success('Message deleted successfully');
             fetchMessages();
             if (selectedMessage?.id === id) {
                 setSelectedMessage(null);

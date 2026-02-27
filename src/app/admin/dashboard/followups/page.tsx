@@ -169,16 +169,19 @@ export default function FollowUpsPage() {
 
         if (editingFollowUp) {
             // Update
-            const { error } = await supabase
+            const { error, data } = await supabase
                 .from('followups')
                 .update({
                     ...formData,
                     completed_at: formData.status === 'completed' ? new Date().toISOString() : null
                 })
-                .eq('id', editingFollowUp.id);
+                .eq('id', editingFollowUp.id)
+                .select();
 
             if (error) {
-                toast.error('Failed to update follow-up');
+                toast.error('Failed to update follow-up: ' + error.message);
+            } else if (!data || data.length === 0) {
+                toast.error('Failed to update follow-up: Permission denied or record missing');
             } else {
                 toast.success('Follow-up updated successfully');
                 closeModal();
@@ -203,13 +206,16 @@ export default function FollowUpsPage() {
     const handleDelete = async (id: string) => {
         if (!confirm('Are you sure you want to delete this follow-up?')) return;
 
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('followups')
             .delete()
-            .eq('id', id);
+            .eq('id', id)
+            .select();
 
         if (error) {
-            toast.error('Failed to delete follow-up');
+            toast.error('Failed to delete follow-up: ' + error.message);
+        } else if (!data || data.length === 0) {
+            toast.error('Failed to delete follow-up: Permission denied or record missing');
         } else {
             toast.success('Follow-up deleted successfully');
             fetchFollowUps();
@@ -217,16 +223,19 @@ export default function FollowUpsPage() {
     };
 
     const markAsCompleted = async (followUp: FollowUp) => {
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('followups')
             .update({
                 status: 'completed',
                 completed_at: new Date().toISOString()
             })
-            .eq('id', followUp.id);
+            .eq('id', followUp.id)
+            .select();
 
         if (error) {
-            toast.error('Failed to update status');
+            toast.error('Failed to update status: ' + error.message);
+        } else if (!data || data.length === 0) {
+            toast.error('Failed to update status: Permission denied or record missing');
         } else {
             toast.success('Follow-up marked as completed');
             fetchFollowUps();

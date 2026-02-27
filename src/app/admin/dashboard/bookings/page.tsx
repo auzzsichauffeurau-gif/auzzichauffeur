@@ -118,6 +118,10 @@ export default function BookingsPage() {
     const handleDeleteBooking = async (bookingId: string) => {
         if (!confirm('Are you sure you want to delete this booking? This action cannot be undone.')) return;
 
+        // Delete related invoices and followups first to avoid foreign key constraints
+        await supabase.from('invoices').delete().eq('booking_id', bookingId);
+        await supabase.from('followups').delete().eq('booking_id', bookingId);
+
         // Use select() to confirm deletion (RLS might silently fail otherwise)
         const { error, data } = await supabase
             .from('bookings')

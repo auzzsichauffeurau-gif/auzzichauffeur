@@ -59,13 +59,16 @@ export default function CustomersPage() {
 
         if (selectedCustomer) {
             // Update
-            const { error } = await supabase
+            const { error, data } = await supabase
                 .from('customers')
                 .update(formData)
-                .eq('id', selectedCustomer.id);
+                .eq('id', selectedCustomer.id)
+                .select();
 
             if (error) {
                 toast.error('Failed to update: ' + error.message);
+            } else if (!data || data.length === 0) {
+                toast.error('Update failed: Permission denied or record missing.');
             } else {
                 toast.success('Customer updated!');
                 fetchCustomers();
@@ -90,13 +93,16 @@ export default function CustomersPage() {
     const handleDelete = async (id: string) => {
         if (!confirm('Are you sure you want to delete this customer?')) return;
 
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('customers')
             .delete()
-            .eq('id', id);
+            .eq('id', id)
+            .select();
 
         if (error) {
             toast.error('Failed to delete: ' + error.message);
+        } else if (!data || data.length === 0) {
+            toast.error('Deletion failed: Permission denied or record in use.');
         } else {
             toast.success('Customer deleted');
             fetchCustomers();

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabaseClient';
+import Link from 'next/link';
 import {
     format,
     startOfMonth,
@@ -196,7 +197,7 @@ export default function CalendarPage() {
                                         </span>
                                         {dayBookings.length > 0 && (
                                             <span style={{ fontSize: '0.7rem', color: '#6b7280', fontWeight: '600' }}>
-                                                {dayBookings.length} Trips
+                                                {dayBookings.length} {dayBookings.length === 1 ? 'Trip' : 'Trips'}
                                             </span>
                                         )}
                                     </div>
@@ -246,7 +247,7 @@ export default function CalendarPage() {
                                     {format(selectedDate, 'EEEE, MMM d')}
                                 </h2>
                                 <p style={{ fontSize: '0.85rem', color: '#6b7280' }}>
-                                    {selectedDayBookings.length} Scheduled Trips
+                                    {selectedDayBookings.length} {selectedDayBookings.length === 1 ? 'Scheduled Trip' : 'Scheduled Trips'}
                                 </p>
                             </div>
                             <button onClick={() => setIsSidebarOpen(false)} style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#9ca3af' }}>
@@ -262,16 +263,18 @@ export default function CalendarPage() {
                                 </div>
                             ) : (
                                 selectedDayBookings.map(booking => (
-                                    <div key={booking.id} style={{
+                                    <Link key={booking.id} href={`/admin/dashboard/bookings/${booking.id}`} style={{
                                         border: '1px solid #e5e7eb',
                                         borderRadius: '8px',
                                         padding: '1rem',
                                         backgroundColor: '#f9fafb',
-                                        transition: 'transform 0.1s',
-                                        cursor: 'pointer'
+                                        transition: 'all 0.2s',
+                                        textDecoration: 'none',
+                                        display: 'block',
+                                        color: 'inherit'
                                     }}
-                                        onMouseEnter={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
-                                        onMouseLeave={(e) => e.currentTarget.style.borderColor = '#e5e7eb'}
+                                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.05)'; }}
+                                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e5e7eb'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
                                     >
                                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                                             <span style={{
@@ -314,7 +317,7 @@ export default function CalendarPage() {
                                                 </span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 ))
                             )}
                         </div>

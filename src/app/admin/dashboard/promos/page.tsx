@@ -60,15 +60,18 @@ export default function PromosPage() {
         };
 
         if (editingPromo) {
-            const { error } = await supabase
+            const { error, data } = await supabase
                 .from('promo_codes')
                 .update(promoData)
-                .eq('id', editingPromo.id);
+                .eq('id', editingPromo.id)
+                .select();
 
-            if (!error) {
+            if (!error && data && data.length > 0) {
                 toast.success('Promo code updated successfully');
                 fetchPromoCodes();
                 closeModal();
+            } else if (!data || data.length === 0) {
+                toast.error('Error updating promo code: Permission denied or record missing');
             } else {
                 toast.error('Error updating promo code: ' + error.message);
             }
@@ -90,30 +93,36 @@ export default function PromosPage() {
     const deletePromo = async (id: string) => {
         if (!confirm('Are you sure you want to delete this promo code?')) return;
 
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('promo_codes')
             .delete()
-            .eq('id', id);
+            .eq('id', id)
+            .select();
 
-        if (!error) {
+        if (!error && data && data.length > 0) {
             toast.success('Promo code deleted');
             fetchPromoCodes();
+        } else if (!data || data.length === 0) {
+            toast.error('Failed to delete promo code: Permission denied or record in use');
         } else {
             toast.error('Failed to delete promo code: ' + error.message);
         }
     };
 
     const toggleActive = async (id: string, currentStatus: boolean) => {
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('promo_codes')
             .update({ is_active: !currentStatus })
-            .eq('id', id);
+            .eq('id', id)
+            .select();
 
-        if (!error) {
+        if (!error && data && data.length > 0) {
             toast.success(`Promo code ${!currentStatus ? 'activated' : 'deactivated'}`);
             fetchPromoCodes();
+        } else if (!data || data.length === 0) {
+            toast.error('Failed to update status: Permission denied or record missing');
         } else {
-            toast.error('Failed to update status');
+            toast.error('Failed to update status: ' + error.message);
         }
     };
 
