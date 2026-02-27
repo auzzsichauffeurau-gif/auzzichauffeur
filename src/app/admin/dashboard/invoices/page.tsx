@@ -46,6 +46,12 @@ export default function InvoicesPage() {
     const [editForm, setEditForm] = useState<any>(null);
 
     useEffect(() => {
+        // Read URL search query string parameter
+        const params = new URLSearchParams(window.location.search);
+        const initialSearch = params.get('search');
+        if (initialSearch) {
+            setSearchTerm(initialSearch);
+        }
         fetchInvoices();
     }, []);
 
@@ -100,33 +106,39 @@ export default function InvoicesPage() {
         const paymentMethod = prompt('Payment method (e.g., Cash, Card, Bank Transfer):');
         if (!paymentMethod) return;
 
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('invoices')
             .update({
                 payment_status: 'paid',
                 payment_method: paymentMethod,
                 paid_at: new Date().toISOString()
             })
-            .eq('id', invoiceId);
+            .eq('id', invoiceId)
+            .select();
 
-        if (!error) {
+        if (error) {
+            toast.error('Failed to mark as paid: ' + error.message);
+        } else if (!data || data.length === 0) {
+            toast.error('Failed to update invoice: Permission denied or record not found.');
+        } else {
             fetchInvoices();
             toast.success('Invoice marked as paid!');
-        } else {
-            toast.error('Failed to mark as paid: ' + error.message);
         }
     };
 
     const deleteInvoice = async (id: string) => {
         if (!confirm('Are you sure you want to delete this invoice? This action cannot be undone.')) return;
 
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('invoices')
             .delete()
-            .eq('id', id);
+            .eq('id', id)
+            .select();
 
         if (error) {
-            toast.error('Failed to delete invoice');
+            toast.error('Failed to delete invoice: ' + error.message);
+        } else if (!data || data.length === 0) {
+            toast.error('Deletion failed: Permission denied or record not found.');
         } else {
             toast.success('Invoice deleted successfully');
             fetchInvoices();
@@ -286,13 +298,16 @@ export default function InvoicesPage() {
             tax_rate: taxRate
         };
 
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('invoices')
             .update(updates)
-            .eq('id', selectedInvoice.id);
+            .eq('id', selectedInvoice.id)
+            .select();
 
         if (error) {
             toast.error('Failed to update invoice: ' + error.message);
+        } else if (!data || data.length === 0) {
+            toast.error('Failed to update invoice: Permission denied or record missing');
         } else {
             toast.success('Invoice updated successfully!');
             setIsEditing(false);

@@ -113,13 +113,16 @@ export default function LeadsPage() {
         if (!selectedLead) return;
         setIsUpdating(true);
 
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('bookings')
             .update({ status: 'Pending' })
-            .eq('id', selectedLead.id);
+            .eq('id', selectedLead.id)
+            .select();
 
         if (error) {
             toast.error('Error converting lead: ' + error.message);
+        } else if (!data || data.length === 0) {
+            toast.error('Error converting lead: Permission denied or record missing');
         } else {
             toast.success('Lead converted to booking successfully!');
             setLeads(leads.filter(l => l.id !== selectedLead.id));
@@ -134,13 +137,16 @@ export default function LeadsPage() {
 
         setIsUpdating(true);
 
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('bookings')
             .delete()
-            .eq('id', idToDelete);
+            .eq('id', idToDelete)
+            .select();
 
         if (error) {
             toast.error('Error deleting lead: ' + error.message);
+        } else if (!data || data.length === 0) {
+            toast.error('Error deleting lead: Permission denied or record in use');
         } else {
             toast.success('Lead deleted successfully');
             setLeads(leads.filter(l => l.id !== idToDelete));

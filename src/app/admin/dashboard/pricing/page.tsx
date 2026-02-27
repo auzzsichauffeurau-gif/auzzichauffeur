@@ -46,13 +46,16 @@ export default function PricingPage() {
         e.preventDefault();
 
         if (editingRule) {
-            const { error } = await supabase
+            const { error, data } = await supabase
                 .from('pricing_rules')
                 .update(formData)
-                .eq('id', editingRule.id);
+                .eq('id', editingRule.id)
+                .select();
 
             if (error) {
                 toast.error('Failed to update rule: ' + error.message);
+            } else if (!data || data.length === 0) {
+                toast.error('Failed to update rule: Permission denied or record missing');
             } else {
                 toast.success('Pricing rule updated successfully!');
                 fetchPricingRules();
@@ -76,12 +79,14 @@ export default function PricingPage() {
     const handleDelete = async (id: string) => {
         if (!confirm('Are you sure you want to delete this pricing rule?')) return;
 
-        const { error } = await supabase.from('pricing_rules').delete().eq('id', id);
+        const { error, data } = await supabase.from('pricing_rules').delete().eq('id', id).select();
 
         if (error) {
             toast.error('Failed to delete rule: ' + error.message);
+        } else if (!data || data.length === 0) {
+            toast.error('Deletion failed: Permission denied or record missing');
         } else {
-            toast.success('Naming rule deleted');
+            toast.success('Pricing rule deleted');
             fetchPricingRules();
         }
     };

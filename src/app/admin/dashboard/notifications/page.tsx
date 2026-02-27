@@ -120,12 +120,13 @@ export default function NotificationsPage() {
     };
 
     const markAsRead = async (id: string) => {
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('notifications')
             .update({ is_read: true, read_at: new Date().toISOString() })
-            .eq('id', id);
+            .eq('id', id)
+            .select();
 
-        if (error) {
+        if (error || !data || data.length === 0) {
             toast.error('Failed to mark as read');
         } else {
             setNotifications(notifications.map(n =>
@@ -143,12 +144,13 @@ export default function NotificationsPage() {
             return;
         }
 
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('notifications')
             .update({ is_read: true, read_at: new Date().toISOString() })
-            .in('id', unreadIds);
+            .in('id', unreadIds)
+            .select();
 
-        if (error) {
+        if (error || !data || data.length === 0) {
             toast.error('Failed to mark all as read');
         } else {
             setNotifications(notifications.map(n => ({ ...n, is_read: true })));
@@ -157,12 +159,13 @@ export default function NotificationsPage() {
     };
 
     const deleteNotification = async (id: string) => {
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('notifications')
             .delete()
-            .eq('id', id);
+            .eq('id', id)
+            .select();
 
-        if (error) {
+        if (error || !data || data.length === 0) {
             toast.error('Failed to delete notification');
         } else {
             setNotifications(notifications.filter(n => n.id !== id));
@@ -183,12 +186,13 @@ export default function NotificationsPage() {
             return;
         }
 
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('notifications')
             .delete()
-            .in('id', readIds);
+            .in('id', readIds)
+            .select();
 
-        if (error) {
+        if (error || !data || data.length === 0) {
             toast.error('Failed to delete read notifications');
         } else {
             setNotifications(notifications.filter(n => !n.is_read));

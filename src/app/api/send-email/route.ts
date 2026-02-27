@@ -25,8 +25,7 @@ export async function POST(req: Request) {
             secure: process.env.SMTP_SECURE === 'false' ? false : true,
             auth: {
                 user: process.env.SMTP_USER,
-                // Remove any spaces from the password string just in case
-                pass: process.env.SMTP_PASS ? process.env.SMTP_PASS.replace(/\s+/g, '') : '',
+                pass: process.env.SMTP_PASS,
             },
             tls: {
                 rejectUnauthorized: false

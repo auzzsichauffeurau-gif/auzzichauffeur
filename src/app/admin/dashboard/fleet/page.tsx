@@ -155,13 +155,16 @@ export default function FleetPage() {
         }
 
         if (editingId) {
-            const { error } = await supabase
+            const { error, data } = await supabase
                 .from('fleet_vehicles')
                 .update(formData)
-                .eq('id', editingId);
+                .eq('id', editingId)
+                .select();
 
             if (error) {
                 toast.error('Failed to update vehicle: ' + error.message);
+            } else if (!data || data.length === 0) {
+                toast.error('Failed to update vehicle: Permission denied or record missing');
             } else {
                 toast.success('Vehicle updated successfully!');
                 closeModal();
@@ -185,9 +188,11 @@ export default function FleetPage() {
     const deleteVehicle = async (id: string) => {
         if (!confirm('Are you sure you want to delete this vehicle? This action cannot be undone.')) return;
 
-        const { error } = await supabase.from('fleet_vehicles').delete().eq('id', id);
+        const { error, data } = await supabase.from('fleet_vehicles').delete().eq('id', id).select();
         if (error) {
             toast.error('Error deleting: ' + error.message);
+        } else if (!data || data.length === 0) {
+            toast.error('Deletion failed: Permission denied or record in use');
         } else {
             toast.success('Vehicle deleted successfully');
             fetchVehicles();
@@ -198,13 +203,16 @@ export default function FleetPage() {
     };
 
     const updateVehicleStatus = async (id: string, newStatus: string) => {
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('fleet_vehicles')
             .update({ status: newStatus })
-            .eq('id', id);
+            .eq('id', id)
+            .select();
 
         if (error) {
-            toast.error('Failed to update status');
+            toast.error('Failed to update status: ' + error.message);
+        } else if (!data || data.length === 0) {
+            toast.error('Update failed: Permission denied or record missing');
         } else {
             toast.success(`Status updated to ${newStatus}`);
             fetchVehicles();

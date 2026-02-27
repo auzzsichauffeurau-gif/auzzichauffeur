@@ -11,7 +11,6 @@ export default function BookingPageContent() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    // Form State
     const [formData, setFormData] = useState({
         pickup: '',
         dropoff: '',
@@ -20,7 +19,8 @@ export default function BookingPageContent() {
         vehicle: 'Executive Sedan',
         name: '',
         email: '',
-        phone: ''
+        phone: '',
+        promoCode: ''
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -95,6 +95,7 @@ export default function BookingPageContent() {
                                 <p><strong>Date:</strong> ${formattedDate}</p>
                                 <p><strong>Time:</strong> ${formattedTime}</p>
                                 <p><strong>Vehicle:</strong> ${formData.vehicle}</p>
+                                ${formData.promoCode ? `<p><strong>Promo Code used:</strong> ${formData.promoCode}</p>` : ''}
                             </div>
                         `
                     })
@@ -127,6 +128,7 @@ export default function BookingPageContent() {
                                         <li style="margin-bottom: 8px;"><strong>Pick Up:</strong> ${formData.pickup}</li>
                                         <li style="margin-bottom: 8px;"><strong>Drop Off:</strong> ${formData.dropoff}</li>
                                         <li style="margin-bottom: 8px;"><strong>Vehicle:</strong> ${formData.vehicle}</li>
+                                        ${formData.promoCode ? `<li style="margin-bottom: 8px;"><strong>Promo Code:</strong> ${formData.promoCode}</li>` : ''}
                                     </ul>
                                 </div>
 
@@ -398,12 +400,28 @@ export default function BookingPageContent() {
                                             />
                                         </div>
                                     </div>
+                                    <div className={styles.inputGroup}>
+                                        <div className={styles.labelRow}>
+                                            <label className={styles.labelText} style={{ color: '#4b5563' }}>Promo Code (Optional)</label>
+                                        </div>
+                                        <div className={styles.inputWrapper} style={{ borderBottom: '1px solid #ccc' }}>
+                                            <input
+                                                type="text"
+                                                name="promoCode"
+                                                value={formData.promoCode}
+                                                onChange={handleChange}
+                                                className={styles.textInput}
+                                                style={{ color: 'black', textTransform: 'uppercase' }}
+                                                placeholder="e.g. SUMMER10"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             {/* Action Bar */}
                             <div className={styles.actionBar}>
-                                <button className={styles.clearBtn} disabled={isSubmitting} onClick={() => setFormData({ pickup: '', dropoff: '', date: '', time: '', vehicle: 'Executive Sedan', name: '', email: '', phone: '' })}>Clear</button>
+                                <button className={styles.clearBtn} disabled={isSubmitting} onClick={() => setFormData({ pickup: '', dropoff: '', date: '', time: '', vehicle: 'Executive Sedan', name: '', email: '', phone: '', promoCode: '' })}>Clear</button>
                                 <div className={styles.rightActions}>
                                     <button
                                         className={styles.continueBtn}

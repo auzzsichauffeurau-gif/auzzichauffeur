@@ -154,13 +154,16 @@ export default function DriversPage() {
         }
 
         if (editingId) {
-            const { error } = await supabase
+            const { error, data } = await supabase
                 .from('drivers')
                 .update(formData)
-                .eq('id', editingId);
+                .eq('id', editingId)
+                .select();
 
             if (error) {
                 toast.error('Failed to update driver: ' + error.message);
+            } else if (!data || data.length === 0) {
+                toast.error('Failed to update driver: Permission denied or record missing');
             } else {
                 toast.success('Driver updated successfully!');
                 closeModal();
@@ -184,9 +187,11 @@ export default function DriversPage() {
     const deleteDriver = async (id: string) => {
         if (!confirm('Are you sure you want to delete this driver? This action cannot be undone.')) return;
 
-        const { error } = await supabase.from('drivers').delete().eq('id', id);
+        const { error, data } = await supabase.from('drivers').delete().eq('id', id).select();
         if (error) {
             toast.error('Error deleting: ' + error.message);
+        } else if (!data || data.length === 0) {
+            toast.error('Deletion failed: Permission denied or record in use');
         } else {
             toast.success('Driver deleted successfully');
             fetchDrivers();
@@ -197,13 +202,16 @@ export default function DriversPage() {
     };
 
     const updateDriverStatus = async (id: string, newStatus: string) => {
-        const { error } = await supabase
+        const { error, data } = await supabase
             .from('drivers')
             .update({ status: newStatus })
-            .eq('id', id);
+            .eq('id', id)
+            .select();
 
         if (error) {
-            toast.error('Failed to update status');
+            toast.error('Failed to update status: ' + error.message);
+        } else if (!data || data.length === 0) {
+            toast.error('Update failed: Permission denied or record missing');
         } else {
             toast.success(`Status updated to ${newStatus}`);
             fetchDrivers();

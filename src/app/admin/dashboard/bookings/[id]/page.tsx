@@ -115,7 +115,7 @@ export default function BookingDetailsPage() {
         setIsUpdating(true);
 
         try {
-            const { error } = await supabase
+            const { error, data } = await supabase
                 .from('bookings')
                 .update({
                     customer_name: tempBooking.customer_name,
@@ -130,11 +130,14 @@ export default function BookingDetailsPage() {
                     amount: tempBooking.amount,
                     notes: tempBooking.notes
                 })
-                .eq('id', booking.id);
+                .eq('id', booking.id)
+                .select()
+                .single();
 
             if (error) throw error;
+            if (!data) throw new Error("Update failed or permission denied by database rules.");
 
-            setBooking(tempBooking);
+            setBooking(data);
             setIsEditingMode(false);
             toast.success('Booking updated successfully!');
         } catch (error: any) {
@@ -149,14 +152,17 @@ export default function BookingDetailsPage() {
         setIsUpdating(true);
 
         try {
-            const { error } = await supabase
+            const { error, data } = await supabase
                 .from('bookings')
                 .update({ status: newStatus })
-                .eq('id', booking.id);
+                .eq('id', booking.id)
+                .select()
+                .single();
 
             if (error) throw error;
+            if (!data) throw new Error("Update failed or permission denied by database rules.");
 
-            setBooking({ ...booking, status: newStatus });
+            setBooking(data);
             toast.success(`Booking status updated to ${newStatus}`);
         } catch (error: any) {
             toast.error('Failed to update status: ' + error.message);
@@ -171,12 +177,23 @@ export default function BookingDetailsPage() {
 
         setIsDeleting(true);
         try {
-            const { error } = await supabase
+            // Delete related invoices first to avoid foreign key constraints
+            await supabase.from('invoices').delete().eq('booking_id', booking.id);
+            // Delete related followups first to avoid foreign key constraints
+            await supabase.from('followups').delete().eq('booking_id', booking.id);
+
+            const { error, data } = await supabase
                 .from('bookings')
                 .delete()
-                .eq('id', booking.id);
+                .eq('id', booking.id)
+                .select();
 
             if (error) throw error;
+            if (!data || data.length === 0) {
+                toast.error('Deletion failed: Permission denied or record not found.');
+                setIsDeleting(false);
+                return;
+            }
 
             toast.success('Booking deleted successfully');
             router.push('/admin/dashboard/bookings');
@@ -498,7 +515,15 @@ export default function BookingDetailsPage() {
                                                     style={{ ...inputStyle, marginBottom: '0.5rem' }}
                                                 />
                                             ) : (
-                                                <p style={{ ...valueStyle, fontSize: '1.1rem', marginBottom: '0.5rem' }}>{displayData.pickup_location}</p>
+                                                <a
+                                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(displayData.pickup_location)}`}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    style={{ ...valueStyle, fontSize: '1.1rem', marginBottom: '0.5rem', color: '#1e3a8a', textDecoration: 'none', display: 'block' }}
+                                                    title="Open in Google Maps"
+                                                >
+                                                    {displayData.pickup_location}
+                                                </a>
                                             )}
                                             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                                                 {isEditingMode ? (
@@ -556,7 +581,15 @@ export default function BookingDetailsPage() {
                                                     style={inputStyle}
                                                 />
                                             ) : (
-                                                <p style={{ ...valueStyle, fontSize: '1.1rem' }}>{displayData.dropoff_location}</p>
+                                                <a
+                                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(displayData.dropoff_location)}`}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    style={{ ...valueStyle, fontSize: '1.1rem', color: '#1e3a8a', textDecoration: 'none', display: 'block' }}
+                                                    title="Open in Google Maps"
+                                                >
+                                                    {displayData.dropoff_location}
+                                                </a>
                                             )}
                                             {displayData.distance_km && !isEditingMode && (
                                                 <p style={{ fontSize: '0.85rem', color: '#6b7280', marginTop: '0.5rem' }}>
@@ -667,7 +700,9 @@ export default function BookingDetailsPage() {
                                                 <option value="Standard Transfer">Standard Transfer</option>
                                             </select>
                                         ) : (
-                                            <p style={valueStyle}>{displayData.service_type || 'Standard Transfer'}</p>
+                                            <p style={{ ...valueStyle, textTransform: 'capitalize' }}>
+                                                {String(displayData.service_type || 'Standard Transfer').replace(/_/g, ' ')}
+                                            </p>
                                         )}
                                     </div>
                                 </div>
@@ -722,13 +757,15 @@ export default function BookingDetailsPage() {
                                 )}
                             </div>
                             <div className="no-print" style={{ padding: '1.25rem' }}>
-                                <button style={{
-                                    width: '100%',
-                                    ...actionButtonBase,
-                                    backgroundColor: '#eff6ff',
-                                    color: '#1e40af',
-                                    border: '1px solid #bfdbfe'
-                                }}>
+                                <button
+                                    onClick={() => router.push(`/admin/dashboard/invoices?search=${encodeURIComponent(booking.customer_name)}`)}
+                                    style={{
+                                        width: '100%',
+                                        ...actionButtonBase,
+                                        backgroundColor: '#eff6ff',
+                                        color: '#1e40af',
+                                        border: '1px solid #bfdbfe'
+                                    }}>
                                     <ArrowRight size={14} /> View Invoice
                                 </button>
                             </div>
@@ -741,34 +778,34 @@ export default function BookingDetailsPage() {
                                     <h2 style={{ ...cardTitleStyle, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Update Status</h2>
                                 </div>
                                 <div style={{ padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-                                        <button
-                                            onClick={() => handleStatusUpdate('Confirmed')}
-                                            disabled={isUpdating || booking.status === 'Confirmed'}
-                                            style={{
-                                                ...actionButtonBase,
-                                                backgroundColor: booking.status === 'Confirmed' ? '#f3f4f6' : '#e0e7ff',
-                                                color: booking.status === 'Confirmed' ? '#9ca3af' : '#3730a3',
-                                                cursor: booking.status === 'Confirmed' ? 'not-allowed' : 'pointer',
-                                                border: booking.status === 'Confirmed' ? '1px solid #e5e7eb' : '1px solid #c7d2fe'
-                                            }}
-                                        >
-                                            <Check size={16} /> Confirm
-                                        </button>
-                                        <button
-                                            onClick={() => handleStatusUpdate('In Progress')}
-                                            disabled={isUpdating || booking.status === 'In Progress'}
-                                            style={{
-                                                ...actionButtonBase,
-                                                backgroundColor: booking.status === 'In Progress' ? '#f3f4f6' : '#dbeafe',
-                                                color: booking.status === 'In Progress' ? '#9ca3af' : '#1e40af',
-                                                cursor: booking.status === 'In Progress' ? 'not-allowed' : 'pointer',
-                                                border: booking.status === 'In Progress' ? '1px solid #e5e7eb' : '1px solid #bfdbfe'
-                                            }}
-                                        >
-                                            <Play size={16} /> Start
-                                        </button>
-                                    </div>
+                                    <button
+                                        onClick={() => handleStatusUpdate('Confirmed')}
+                                        disabled={isUpdating || booking.status === 'Confirmed'}
+                                        style={{
+                                            ...actionButtonBase,
+                                            width: '100%',
+                                            backgroundColor: booking.status === 'Confirmed' ? '#f3f4f6' : '#e0e7ff',
+                                            color: booking.status === 'Confirmed' ? '#9ca3af' : '#3730a3',
+                                            cursor: booking.status === 'Confirmed' ? 'not-allowed' : 'pointer',
+                                            border: booking.status === 'Confirmed' ? '1px solid #e5e7eb' : '1px solid #c7d2fe'
+                                        }}
+                                    >
+                                        <Check size={16} /> Confirm
+                                    </button>
+                                    <button
+                                        onClick={() => handleStatusUpdate('In Progress')}
+                                        disabled={isUpdating || booking.status === 'In Progress'}
+                                        style={{
+                                            ...actionButtonBase,
+                                            width: '100%',
+                                            backgroundColor: booking.status === 'In Progress' ? '#f3f4f6' : '#dbeafe',
+                                            color: booking.status === 'In Progress' ? '#9ca3af' : '#1e40af',
+                                            cursor: booking.status === 'In Progress' ? 'not-allowed' : 'pointer',
+                                            border: booking.status === 'In Progress' ? '1px solid #e5e7eb' : '1px solid #bfdbfe'
+                                        }}
+                                    >
+                                        <Play size={16} /> Start
+                                    </button>
                                     <button
                                         onClick={() => handleStatusUpdate('Completed')}
                                         disabled={isUpdating || booking.status === 'Completed'}

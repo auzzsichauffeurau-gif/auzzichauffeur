@@ -25,7 +25,8 @@ export default function QuoteForm() {
         name: '',
         email: '',
         phone: '',
-        notes: ''
+        notes: '',
+        promoCode: ''
     });
 
     // Populate from URL params if available
@@ -165,6 +166,7 @@ export default function QuoteForm() {
                                 <p><strong>Time:</strong> ${formData.time}</p>
                                 <p><strong>Vehicle:</strong> ${formData.vehicle}</p>
                                 <p><strong>Est. Price:</strong> ${estimatedPrice ? `$${estimatedPrice}` : 'TBD'}</p>
+                                ${formData.promoCode ? `<p><strong>Promo Code used:</strong> ${formData.promoCode}</p>` : ''}
                                 <p><strong>Notes:</strong> ${formData.notes}</p>
                             </div>
                         `
@@ -196,6 +198,7 @@ export default function QuoteForm() {
                                     <p style="margin: 0; font-size: 0.9em; color: #166534;">Estimated Price based on your selection:</p>
                                     <h3 style="margin: 5px 0 0 0; color: #15803d; font-size: 1.5em;">${estimatedPrice ? `$${estimatedPrice} AUD` : 'Custom Quote Required'}</h3>
                                     ${estimatedPrice ? '<small style="color: #166534;">*Final price confirmed upon booking.</small>' : ''}
+                                    ${formData.promoCode ? `<p style="margin-top: 10px; font-size: 0.9em; color: #166534;"><strong>Promo code attached:</strong> ${formData.promoCode}</p>` : ''}
                                 </div>
 
                                 <p>One of our team members will review your request and email you a formal quote shortly.</p>
@@ -381,6 +384,18 @@ export default function QuoteForm() {
                                 onChange={handleChange}
                                 rows={3}
                             ></textarea>
+                        </div>
+
+                        <div className={styles.inputGroup}>
+                            <label>Promo Code (Optional)</label>
+                            <input
+                                type="text"
+                                name="promoCode"
+                                value={formData.promoCode}
+                                onChange={handleChange}
+                                style={{ textTransform: 'uppercase' }}
+                                placeholder="e.g. SUMMER10"
+                            />
                         </div>
 
                         <div className={styles.actionRow}>
