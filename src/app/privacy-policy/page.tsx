@@ -63,7 +63,7 @@ export default function PrivacyPolicy() {
                     <br />
                     <strong>Email:</strong> info@auzziechauffeur.com.au
                     <br />
-                    <strong>Phone:</strong> 1300 465 374
+                    <strong>Phone:</strong> 0415 673 786
                 </p>
             </div>
             <Footer />

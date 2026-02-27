@@ -36,6 +36,21 @@ export default function BookingPageContent() {
 
         setIsSubmitting(true);
 
+        // --- TIME FORMATTING (AM/PM & Australian Time) ---
+        let formattedTime = formData.time;
+        let formattedDate = formData.date;
+        try {
+            const [hourStr, minuteStr] = formData.time.split(':');
+            let h = parseInt(hourStr, 10);
+            const ampm = h >= 12 ? 'PM' : 'AM';
+            h = h % 12;
+            if (h === 0) h = 12;
+            formattedTime = `${h}:${minuteStr} ${ampm} (Australian Time)`;
+
+            const [y, mm, d] = formData.date.split('-');
+            formattedDate = `${d}/${mm}/${y}`;
+        } catch (e) { }
+
         const { error } = await supabase.from('bookings').insert({
             pickup_location: formData.pickup,
             dropoff_location: formData.dropoff,
@@ -58,14 +73,14 @@ export default function BookingPageContent() {
         // Send Email Notifications
         try {
             const responses = await Promise.all([
-                // 1. Send to Business (Admin)
+                // 1. Send to Business (Admin Inbox)
                 fetch('/api/send-email', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        from: 'Auzzie Chauffeur Bookings <booking@auzziechauffeur.com.au>',
+                        from: `"${formData.name} (New Booking)" <booking@auzziechauffeur.com.au>`,
                         replyTo: formData.email,
-                        to: 'booking@auzziechauffeur.com.au',
+                        to: 'auzzsichauffeur.au@gmail.com',
                         subject: `New Booking Request: ${formData.name}`,
                         html: `
                             <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto;">
@@ -77,8 +92,8 @@ export default function BookingPageContent() {
                                 <h4 style="color: #4b5563;">Trip Details</h4>
                                 <p><strong>Pick Up:</strong> ${formData.pickup}</p>
                                 <p><strong>Drop Off:</strong> ${formData.dropoff}</p>
-                                <p><strong>Date:</strong> ${formData.date}</p>
-                                <p><strong>Time:</strong> ${formData.time}</p>
+                                <p><strong>Date:</strong> ${formattedDate}</p>
+                                <p><strong>Time:</strong> ${formattedTime}</p>
                                 <p><strong>Vehicle:</strong> ${formData.vehicle}</p>
                             </div>
                         `
@@ -97,10 +112,13 @@ export default function BookingPageContent() {
                         html: `
                             <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; color: #333;">
                                 <div style="text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                                    <div style="margin-bottom: 20px;">
+                                        <img src="https://auzziechauffeur.com.au/logo.png" alt="Auzzie Chauffeur" style="width: 150px; height: auto;" />
+                                    </div>
                                     <h2 style="color: #1e3a8a; margin: 0;">Booking Request Received</h2>
                                 </div>
                                 <p>Dear ${formData.name},</p>
-                                <p>Thank you for choosing <strong>Auzzie Chauffeur</strong>. We have received your booking request for <strong>${formData.date} at ${formData.time}</strong>.</p>
+                                <p>Thank you for choosing <strong>Auzzie Chauffeur</strong>. We have received your booking request for <strong>${formattedDate} at ${formattedTime}</strong>.</p>
                                 <p>This email confirms that we have received your details. One of our reservations team members will review your request and contact you shortly to confirm the booking and provide a final price.</p>
                                 
                                 <div style="margin-top: 30px; padding: 20px; background-color: #f9f9f9; border-radius: 6px;">
@@ -114,7 +132,7 @@ export default function BookingPageContent() {
 
                                 <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.9em; color: #888; text-align: center;">
                                     <p style="margin-bottom: 5px;"><strong>Auzzie Chauffeur</strong></p>
-                                    <p style="margin: 0;"><a href="https://auzziechauffeur.com.au" style="color: #c5a467; text-decoration: none;">www.auzziechauffeur.com.au</a></p>
+                                    <p style="margin: 0;"><a href="https://auzziechauffeur.com.au" style="color: #c5a467; text-decoration: none;">www.auzziechauffeur.com.au</a> | 0415 673 786</p>
                                 </div>
                             </div>
                         `
@@ -386,7 +404,6 @@ export default function BookingPageContent() {
                             {/* Action Bar */}
                             <div className={styles.actionBar}>
                                 <button className={styles.clearBtn} disabled={isSubmitting} onClick={() => setFormData({ pickup: '', dropoff: '', date: '', time: '', vehicle: 'Executive Sedan', name: '', email: '', phone: '' })}>Clear</button>
-
                                 <div className={styles.rightActions}>
                                     <button
                                         className={styles.continueBtn}
@@ -399,7 +416,7 @@ export default function BookingPageContent() {
                                         )}
                                     </button>
                                 </div>
-                                <p style={{ gridColumn: '1 / -1', fontSize: '0.7rem', color: '#9ca3af', textAlign: 'center', marginTop: '1rem', width: '100%' }}>
+                                <p style={{ gridColumn: '1 / -1', fontSize: '0.7rem', color: 'white', textAlign: 'center', marginTop: '1rem', width: '100%' }}>
                                     Form protected by anti-spam measures. Unsolicited marketing is strictly prohibited. <Link href="/terms-conditions" style={{ color: 'inherit', textDecoration: 'underline' }}>Privacy & Terms</Link>
                                 </p>
                             </div>

@@ -84,7 +84,7 @@ export default function ServiceGallery() {
             <h2 className={styles.title}>Wherever You Need To Go</h2>
 
             <p className={styles.description}>
-                Whether you are looking to get to and from the airport, rushing between business meetings, travelling with the family, or simply looking for reliable, comfortable transport for your everyday needs, Auzzsi has you covered. Our fleet of luxury sedans, SUVs, people movers, minibuses and coaches and professional, discreet and experienced drivers are available nationwide.
+                Whether you are looking to get to and from the airport, rushing between business meetings, travelling with the family, or simply looking for reliable, comfortable transport for your everyday needs, Auzzie has you covered. Our fleet of luxury sedans, SUVs, people movers, minibuses and coaches and professional, discreet and experienced drivers are available nationwide.
             </p>
 
             <div className={styles.embla} ref={emblaRef}>

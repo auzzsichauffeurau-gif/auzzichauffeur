@@ -4,6 +4,7 @@ import SchemaMarkup from "@/components/SchemaMarkup";
 import { Toaster } from 'sonner';
 import Script from "next/script";
 import ClarityAnalytics from "@/components/ClarityAnalytics";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://auzziechauffeur.com.au'),
@@ -78,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -107,6 +108,7 @@ export default function RootLayout({
         {/* Layout Wrapper */}
         <SchemaMarkup />
         {children}
+        <WhatsAppButton />
         <ClarityAnalytics />
         <Toaster richColors position="top-center" />
       </body>

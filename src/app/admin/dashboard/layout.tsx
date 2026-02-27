@@ -199,7 +199,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                             fontWeight: 'bold',
                             color: '#c5a467'
                         }}>A</div>
-                        <span style={{ fontSize: '1.25rem', fontWeight: 'bold', letterSpacing: '1px' }}>AUZZSI ADMIN</span>
+                        <span style={{ fontSize: '1.25rem', fontWeight: 'bold', letterSpacing: '1px' }}>AUZZIE ADMIN</span>
                     </div>
                 </div>
 

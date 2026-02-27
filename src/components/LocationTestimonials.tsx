@@ -16,7 +16,7 @@ export default function LocationTestimonials({ city }: TestimonialsProps) {
         {
             name: "Sarah Jenkins",
             role: "Airport Transfer",
-            text: `Seamless airport transfer experience. The driver met me at baggage claim and helped with luggage. Dealing with Auzzsi in ${city} was a pleasure.`,
+            text: `Seamless airport transfer experience. The driver met me at baggage claim and helped with luggage. Dealing with Auzzie in ${city} was a pleasure.`,
             rating: 5
         },
         {

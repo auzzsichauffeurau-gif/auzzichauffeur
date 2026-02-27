@@ -319,7 +319,7 @@ export default function MelbourneHubPage() {
                 <div style={{ background: '#f8fafc', padding: '3rem', borderRadius: '20px', display: 'inline-block', boxShadow: '0 10px 40px rgba(0,0,0,0.08)' }}>
                     <h2 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '1.5rem', color: '#1e293b' }}>Ready to Book Your Melbourne Ride?</h2>
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <a href="tel:1300465374" style={{ backgroundColor: '#1e3a8a', color: 'white', padding: '1rem 2rem', textDecoration: 'none', borderRadius: '5px', fontWeight: 'bold', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <a href="tel:0415673786" style={{ backgroundColor: '#1e3a8a', color: 'white', padding: '1rem 2rem', textDecoration: 'none', borderRadius: '5px', fontWeight: 'bold', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <Phone size={20} /> Call Now
                         </a>
                         <Link href="/book" style={{ backgroundColor: '#c5a467', color: 'white', padding: '1rem 2rem', textDecoration: 'none', borderRadius: '5px', fontWeight: 'bold', fontSize: '1.1rem' }}>

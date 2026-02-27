@@ -21,6 +21,7 @@ export default function NewPostPage() {
     const [slug, setSlug] = useState('');
     const [coverImage, setCoverImage] = useState('');
     const [faqs, setFaqs] = useState<FAQItem[]>([]);
+    const [scheduledAt, setScheduledAt] = useState('');
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -81,7 +82,8 @@ export default function NewPostPage() {
                 author: {
                     name: 'James Sterling', // Default or fetch from profile
                     url: 'https://auzziechauffeur.com.au/about-us'
-                }
+                },
+                scheduledAt: scheduledAt || null
             };
 
             const postData = {
@@ -151,14 +153,21 @@ export default function NewPostPage() {
                     >
                         Save Draft
                     </button>
-                    <button
-                        onClick={() => handleSubmit(true)}
-                        disabled={loading}
-                        className={styles.btnPrimary}
-                    >
-                        {loading ? <Loader2 className="animate-spin" size={16} /> : <Save size={16} />}
-                        Publish
-                    </button>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.5rem' }}>
+                        {scheduledAt && (
+                            <span style={{ fontSize: '0.75rem', color: '#bfa15f' }}>
+                                Scheduled for: {new Date(scheduledAt).toLocaleString()}
+                            </span>
+                        )}
+                        <button
+                            onClick={() => handleSubmit(true)}
+                            disabled={loading}
+                            className={styles.btnPrimary}
+                        >
+                            {loading ? <Loader2 className="animate-spin" size={16} /> : <Save size={16} />}
+                            {scheduledAt ? 'Schedule Publish' : 'Publish Now'}
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -187,6 +196,25 @@ export default function NewPostPage() {
 
                 {/* Sidebar Column */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+
+                    {/* Scheduling Options */}
+                    <div className={styles.card}>
+                        <h3 className={styles.label}>Publishing Options</h3>
+
+                        <div>
+                            <label className={styles.label} style={{ marginBottom: '0.25rem' }}>Schedule Publication</label>
+                            <input
+                                type="datetime-local"
+                                value={scheduledAt}
+                                onChange={(e) => setScheduledAt(e.target.value)}
+                                className={styles.inputField}
+                                style={{ color: '#374151' }}
+                            />
+                            <p style={{ fontSize: '0.75rem', color: '#6b7280', marginTop: '0.5rem' }}>
+                                Leave blank to publish immediately.
+                            </p>
+                        </div>
+                    </div>
 
                     {/* Cover Image */}
                     <div className={styles.card}>

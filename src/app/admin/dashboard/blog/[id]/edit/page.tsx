@@ -24,6 +24,7 @@ export default function EditPostPage() {
     const [coverImage, setCoverImage] = useState('');
     const [isPublished, setIsPublished] = useState(false);
     const [faqs, setFaqs] = useState<FAQItem[]>([]);
+    const [scheduledAt, setScheduledAt] = useState('');
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -52,8 +53,9 @@ export default function EditPostPage() {
                 setIsPublished(data.is_published || false);
 
                 // Load metadata if available
-                if (data.meta && data.meta.faqs) {
-                    setFaqs(data.meta.faqs);
+                if (data.meta) {
+                    if (data.meta.faqs) setFaqs(data.meta.faqs);
+                    if (data.meta.scheduledAt) setScheduledAt(data.meta.scheduledAt);
                 }
             }
         } catch (error: any) {
@@ -119,7 +121,8 @@ export default function EditPostPage() {
                 author: {
                     name: 'James Sterling',
                     url: 'https://auzziechauffeur.com.au/about-us'
-                }
+                },
+                scheduledAt: scheduledAt || null
             };
 
             const postData = {
@@ -205,15 +208,22 @@ export default function EditPostPage() {
                     >
                         Save as Draft
                     </button>
-                    <button
-                        onClick={() => handleSubmit(true)}
-                        disabled={loading}
-                        className={styles.btnPrimary}
-                        style={{ backgroundColor: isPublished ? '#16a34a' : '#1e3a8a' }}
-                    >
-                        {loading ? <Loader2 className="animate-spin" size={16} /> : <Save size={16} />}
-                        {isPublished ? 'Update' : 'Publish'}
-                    </button>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.5rem' }}>
+                        {scheduledAt && (
+                            <span style={{ fontSize: '0.75rem', color: '#bfa15f' }}>
+                                Scheduled: {new Date(scheduledAt).toLocaleString()}
+                            </span>
+                        )}
+                        <button
+                            onClick={() => handleSubmit(true)}
+                            disabled={loading}
+                            className={styles.btnPrimary}
+                            style={{ backgroundColor: isPublished ? '#16a34a' : '#1e3a8a' }}
+                        >
+                            {loading ? <Loader2 className="animate-spin" size={16} /> : <Save size={16} />}
+                            {isPublished ? 'Update' : (scheduledAt ? 'Schedule' : 'Publish')}
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -242,6 +252,25 @@ export default function EditPostPage() {
 
                 {/* Sidebar Column */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+
+                    {/* Scheduling Options */}
+                    <div className={styles.card}>
+                        <h3 className={styles.label}>Publishing Options</h3>
+
+                        <div>
+                            <label className={styles.label} style={{ marginBottom: '0.25rem' }}>Schedule Publication</label>
+                            <input
+                                type="datetime-local"
+                                value={scheduledAt}
+                                onChange={(e) => setScheduledAt(e.target.value)}
+                                className={styles.inputField}
+                                style={{ color: '#374151' }}
+                            />
+                            <p style={{ fontSize: '0.75rem', color: '#6b7280', marginTop: '0.5rem' }}>
+                                Leave blank to publish immediately.
+                            </p>
+                        </div>
+                    </div>
 
                     {/* Cover Image */}
                     <div className={styles.card}>
@@ -313,7 +342,7 @@ export default function EditPostPage() {
                                     <input
                                         type="text"
                                         value={slug}
-                                        onChange={(e) => setSlug(e.target.value)}
+                                        onChange={(e) => setSlug(generateSlug(e.target.value))}
                                         className={styles.inputField}
                                     />
                                 </div>

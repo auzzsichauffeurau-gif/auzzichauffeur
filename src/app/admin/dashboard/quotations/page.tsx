@@ -163,8 +163,8 @@ export default function QuotationsPage() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    from: 'Auzzie Chauffeur Quotes <info@auzziechauffeur.com.au>',
-                    replyTo: 'info@auzziechauffeur.com.au',
+                    from: 'Auzzie Chauffeur Quotes <booking@auzziechauffeur.com.au>',
+                    replyTo: 'booking@auzziechauffeur.com.au',
                     to: selectedQuote.customer_email,
                     subject: emailSubject,
                     html: emailBody
