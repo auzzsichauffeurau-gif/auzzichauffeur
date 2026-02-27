@@ -66,26 +66,26 @@ export default function PromosPage() {
                 .eq('id', editingPromo.id)
                 .select();
 
-            if (!error && data && data.length > 0) {
+            if (error) {
+                toast.error('Error updating promo code: ' + error.message);
+            } else if (data && data.length > 0) {
                 toast.success('Promo code updated successfully');
                 fetchPromoCodes();
                 closeModal();
-            } else if (!data || data.length === 0) {
-                toast.error('Error updating promo code: Permission denied or record missing');
             } else {
-                toast.error('Error updating promo code: ' + error.message);
+                toast.error('Error updating promo code: Permission denied or record missing');
             }
         } else {
             const { error } = await supabase
                 .from('promo_codes')
                 .insert([promoData]);
 
-            if (!error) {
+            if (error) {
+                toast.error('Error creating promo code: ' + error.message);
+            } else {
                 toast.success('Promo code created successfully');
                 fetchPromoCodes();
                 closeModal();
-            } else {
-                toast.error('Error creating promo code: ' + error.message);
             }
         }
     };
@@ -99,13 +99,13 @@ export default function PromosPage() {
             .eq('id', id)
             .select();
 
-        if (!error && data && data.length > 0) {
+        if (error) {
+            toast.error('Failed to delete promo code: ' + error.message);
+        } else if (data && data.length > 0) {
             toast.success('Promo code deleted');
             fetchPromoCodes();
-        } else if (!data || data.length === 0) {
-            toast.error('Failed to delete promo code: Permission denied or record in use');
         } else {
-            toast.error('Failed to delete promo code: ' + error.message);
+            toast.error('Failed to delete promo code: Permission denied or record in use');
         }
     };
 
@@ -116,13 +116,13 @@ export default function PromosPage() {
             .eq('id', id)
             .select();
 
-        if (!error && data && data.length > 0) {
+        if (error) {
+            toast.error('Failed to update status: ' + error.message);
+        } else if (data && data.length > 0) {
             toast.success(`Promo code ${!currentStatus ? 'activated' : 'deactivated'}`);
             fetchPromoCodes();
-        } else if (!data || data.length === 0) {
-            toast.error('Failed to update status: Permission denied or record missing');
         } else {
-            toast.error('Failed to update status: ' + error.message);
+            toast.error('Failed to update status: Permission denied or record missing');
         }
     };
 
