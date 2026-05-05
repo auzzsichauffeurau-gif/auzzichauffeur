@@ -9,6 +9,7 @@ export default function AcceptQuotePage() {
 
     const [status, setStatus] = useState<'loading' | 'success' | 'already' | 'error'>('loading');
     const [booking, setBooking] = useState<any>(null);
+    const [errorMsg, setErrorMsg] = useState<string>('');
 
     useEffect(() => {
         if (!id) return;
@@ -23,10 +24,11 @@ export default function AcceptQuotePage() {
                     setStatus('success');
                     setBooking(data.booking);
                 } else {
+                    setErrorMsg(data.error || 'Unknown error');
                     setStatus('error');
                 }
             })
-            .catch(() => setStatus('error'));
+            .catch((e) => { setErrorMsg(e.message); setStatus('error'); });
     }, [id]);
 
     const containerStyle: React.CSSProperties = {
@@ -126,6 +128,11 @@ export default function AcceptQuotePage() {
                 <p style={{ color: '#6b7280' }}>
                     This quote link is no longer valid. Please contact us directly.
                 </p>
+                {errorMsg && (
+                    <p style={{ color: '#9ca3af', fontSize: '0.75rem', marginTop: '0.5rem', wordBreak: 'break-all' }}>
+                        {errorMsg}
+                    </p>
+                )}
                 <a
                     href="mailto:info@auzziechauffeur.com.au"
                     style={{ display: 'inline-block', marginTop: '1.5rem', padding: '0.75rem 1.5rem', backgroundColor: '#1e3a8a', color: 'white', borderRadius: '6px', textDecoration: 'none', fontWeight: '600' }}

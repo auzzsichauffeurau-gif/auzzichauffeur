@@ -16,7 +16,8 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
         .single();
 
     if (fetchError || !booking) {
-        return NextResponse.json({ error: 'Quote not found' }, { status: 404 });
+        console.error('accept-quote fetch error:', fetchError?.message, 'id:', id);
+        return NextResponse.json({ error: fetchError?.message || 'Quote not found' }, { status: 404 });
     }
 
     if (booking.status === 'Confirmed') {
