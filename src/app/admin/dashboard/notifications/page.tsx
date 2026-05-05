@@ -92,7 +92,7 @@ export default function NotificationsPage() {
             })
             .subscribe();
 
-        return () => { supabase.removeChannel(channel); };
+        return () => { channel.unsubscribe(); };
     }, []);
 
     useEffect(() => {

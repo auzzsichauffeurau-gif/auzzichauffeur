@@ -25,8 +25,9 @@ export async function GET(req: NextRequest) {
         if (error) throw error
 
         for (const booking of bookings || []) {
-            // Build full pickup datetime
-            const pickupDatetime = new Date(`${booking.pickup_date}T${booking.pickup_time}:00`)
+            // Build pickup datetime in Australia/Sydney time (AEST = UTC+10, AEDT = UTC+11)
+            // pickup_date and pickup_time are stored in local Australian time
+            const pickupDatetime = new Date(`${booking.pickup_date}T${booking.pickup_time}:00+10:00`)
 
             if (pickupDatetime < in23h || pickupDatetime > in25h) continue
 

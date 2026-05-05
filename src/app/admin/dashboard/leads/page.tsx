@@ -210,10 +210,12 @@ export default function LeadsPage() {
             }
 
             // Update status to Quote Sent
-            await supabase
+            const { error: updateErr } = await supabase
                 .from('bookings')
                 .update({ status: 'Quote Sent' })
                 .eq('id', selectedLead.id);
+
+            if (updateErr) throw new Error('Failed to update status: ' + updateErr.message);
 
             toast.success('Quote sent successfully!', { id: loadingToast });
             setLeads(leads.filter(l => l.id !== selectedLead.id));

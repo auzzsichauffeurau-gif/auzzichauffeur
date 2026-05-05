@@ -10,16 +10,18 @@ export async function GET(req: NextRequest) {
 
     const now = new Date()
     const threeDaysAgo = new Date(now.getTime() - 3 * 24 * 60 * 60 * 1000)
+    const ninetyDaysAgo = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000)
 
     const results: any[] = []
 
     try {
-        // Fetch unpaid invoices older than 3 days
+        // Fetch unpaid invoices older than 3 days but within 90 days (avoid spamming very old invoices)
         const { data: invoices, error } = await supabaseAdmin
             .from('invoices')
             .select('id, invoice_number, customer_name, customer_email, customer_phone, total_amount, issue_date, due_date, booking_id')
             .eq('payment_status', 'unpaid')
             .lt('issue_date', threeDaysAgo.toISOString())
+            .gte('issue_date', ninetyDaysAgo.toISOString())
 
         if (error) throw error
 

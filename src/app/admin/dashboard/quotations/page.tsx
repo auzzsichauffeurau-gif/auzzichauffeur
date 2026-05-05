@@ -210,8 +210,8 @@ export default function QuotationsPage() {
                 throw new Error(errorData.details || 'Email failed to send');
             }
 
-            // 2. Admin Alert Email
-            await fetch('/api/send-email', {
+            // 2. Admin Alert Email (non-blocking — don't fail quote send if this fails)
+            fetch('/api/send-email', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

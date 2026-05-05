@@ -187,7 +187,7 @@ export default function BookingDetailsPage() {
 
                 const msg = statusMessages[newStatus];
                 try {
-                    await fetch('/api/send-email', {
+                    const emailRes = await fetch('/api/send-email', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -210,6 +210,7 @@ export default function BookingDetailsPage() {
                             `
                         })
                     });
+                    if (!emailRes.ok) throw new Error('Email API returned error');
                     toast.success(`Status email sent to ${booking.customer_email}`);
                 } catch {
                     toast.warning('Status updated, but email notification failed.');

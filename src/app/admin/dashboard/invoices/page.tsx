@@ -226,8 +226,8 @@ export default function InvoicesPage() {
             inv.invoice_number,
             inv.customer_name,
             inv.customer_email,
-            new Date(inv.issue_date).toLocaleDateString(),
-            new Date(inv.due_date).toLocaleDateString(),
+            inv.issue_date ? new Date(inv.issue_date).toLocaleDateString() : 'N/A',
+            inv.due_date ? new Date(inv.due_date).toLocaleDateString() : 'N/A',
             inv.total_amount,
             inv.payment_status
         ]);
