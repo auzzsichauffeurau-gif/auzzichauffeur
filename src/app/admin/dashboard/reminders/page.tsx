@@ -55,8 +55,10 @@ export default function RemindersPage() {
     const triggerCron = async (cronPath: string, label: string) => {
         setTriggering(cronPath);
         try {
-            const res = await fetch(`/api/cron/${cronPath}`, {
-                headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_CRON_SECRET || 'auzzie-cron-secret-2026'}` }
+            const res = await fetch('/api/admin/trigger-cron', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ cronPath })
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data.error || 'Failed');
