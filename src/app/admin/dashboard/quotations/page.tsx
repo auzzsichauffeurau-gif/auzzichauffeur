@@ -161,10 +161,27 @@ export default function QuotationsPage() {
             // 1. Send Real Email (with Accept Quote button appended)
             const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://auzziechauffeur.com.au';
             const acceptUrl = `${siteUrl}/accept-quote/${selectedQuote.id}`;
-            const acceptButton = `
-                <div style="margin: 30px 0; text-align: center;">
+
+            // Always inject price summary + trip details so customer always sees the amount
+            const quoteSummary = `
+                <div style="margin: 24px 0; padding: 20px; background-color: #f0f9ff; border-radius: 8px; border: 1px solid #bae6fd; font-family: Arial, sans-serif;">
+                    <h3 style="margin: 0 0 14px 0; color: #1e3a8a; font-size: 1rem;">Quote Summary</h3>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem; color: #374151;">
+                        <tr><td style="padding: 5px 0; color: #6b7280;">📅 Date</td><td style="padding: 5px 0; font-weight: 600;">${selectedQuote.pickup_date} at ${selectedQuote.pickup_time}</td></tr>
+                        <tr><td style="padding: 5px 0; color: #6b7280;">📍 Pickup</td><td style="padding: 5px 0; font-weight: 600;">${selectedQuote.pickup_location}</td></tr>
+                        <tr><td style="padding: 5px 0; color: #6b7280;">📍 Dropoff</td><td style="padding: 5px 0; font-weight: 600;">${selectedQuote.dropoff_location}</td></tr>
+                        <tr><td style="padding: 5px 0; color: #6b7280;">🚗 Vehicle</td><td style="padding: 5px 0; font-weight: 600;">${selectedQuote.vehicle_type}</td></tr>
+                        ${selectedQuote.service_type ? `<tr><td style="padding: 5px 0; color: #6b7280;">🛎 Service</td><td style="padding: 5px 0; font-weight: 600;">${selectedQuote.service_type}</td></tr>` : ''}
+                    </table>
+                    ${selectedQuote.amount ? `
+                    <div style="margin-top: 16px; padding: 14px; background-color: #1e3a8a; border-radius: 6px; text-align: center;">
+                        <p style="margin: 0; color: #93c5fd; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Total Quote Price</p>
+                        <p style="margin: 6px 0 0; color: white; font-size: 2rem; font-weight: bold;">$${selectedQuote.amount} <span style="font-size: 1rem; font-weight: normal; color: #93c5fd;">AUD</span></p>
+                    </div>` : ''}
+                </div>
+                <div style="margin: 24px 0; text-align: center;">
                     <a href="${acceptUrl}"
-                       style="display: inline-block; background-color: #1e3a8a; color: white; padding: 14px 32px;
+                       style="display: inline-block; background-color: #059669; color: white; padding: 14px 36px;
                               border-radius: 8px; text-decoration: none; font-size: 1rem; font-weight: bold;
                               letter-spacing: 0.5px;">
                         ✓ Accept This Quote
@@ -174,7 +191,7 @@ export default function QuotationsPage() {
                     </p>
                 </div>
             `;
-            const emailBodyWithAccept = emailBody + acceptButton;
+            const emailBodyWithAccept = emailBody + quoteSummary;
 
             const response = await fetch('/api/send-email', {
                 method: 'POST',
