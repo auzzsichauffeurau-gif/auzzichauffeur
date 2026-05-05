@@ -1,0 +1,361 @@
+.pageWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HERO SECTION */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 70vh;
+    background-color: #1a1a1a;
+    background-image: url('/hero-bg.png');
+    /* Placeholder */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding-top: 80px;
+    /* Space for navbar */
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heroLeft {
+    max-width: 600px;
+}
+
+.breadcrumb {
+    font-size: 0.8rem;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.heroDescription {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.heroButtons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btnGold {
+    padding: 1rem 2rem;
+    background-color: #bfa15f;
+    border: 1px solid #bfa15f;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btnGold:hover {
+    background-color: #a3884d;
+}
+
+.btnOutline {
+    padding: 1rem 2rem;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btnOutline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.anniversaryBadge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #bfa15f;
+    padding: 1rem;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    /* Optional circular or square */
+    text-align: center;
+    color: #bfa15f;
+    display: none;
+    /* Hidden on small screens */
+}
+
+@media (min-width: 900px) {
+    .anniversaryBadge {
+        display: flex;
+    }
+}
+
+.yearNumber {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.yearText {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 0.5rem;
+}
+
+/* SECTION COMMON */
+.section {
+    padding: 5rem 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* HISTORY SPLIT SECTION */
+.historySplit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .historySplit {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+.sectionHeading {
+    font-size: 2.5rem;
+    color: #1a2b4b;
+    /* Navy */
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.textBlock p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: #555;
+    font-size: 1.05rem;
+}
+
+.imageBlock {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-color: #eee;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.imageBlock img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* STORIES SECTION */
+.storiesSection {
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.storiesGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+    .storiesGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.storyCard {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.videoPlaceholder {
+    width: 100%;
+    height: 250px;
+    background-color: #1a2b4b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.playButton {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a2b4b;
+    transition: transform 0.2s;
+}
+
+.videoPlaceholder:hover .playButton {
+    transform: scale(1.1);
+}
+
+.cardContent {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cardTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.quoteIcon {
+    color: #bfa15f;
+    margin-bottom: 0.5rem;
+}
+
+.quoteText {
+    font-size: 0.95rem;
+    color: #666;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* TIMELINE SECTION */
+.timelineSection {
+    background-color: white;
+}
+
+.timelineIntro {
+    max-width: 800px;
+    margin-bottom: 3rem;
+}
+
+.timelinePlaceholder {
+    width: 100%;
+    height: 200px;
+    border-left: 2px solid #ddd;
+    margin-left: 20px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.timelineItem {
+    position: relative;
+}
+
+.timelineItem::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background: #bfa15f;
+    border-radius: 50%;
+}
+
+/* LOGOS SECTION */
+.logosSection {
+    background-color: white;
+    text-align: center;
+}
+
+.logosGrid {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    align-items: flex-end;
+}
+
+.logoItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 200px;
+    transition: transform 0.3s ease;
+}
+
+.logoItem:hover {
+    transform: translateY(-5px);
+}
+
+.logoItem img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 120px;
+}
+
+.logoItem span {
+    font-weight: 700;
+    color: #1a2b4b;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}

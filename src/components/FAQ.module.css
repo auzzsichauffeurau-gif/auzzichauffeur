@@ -1,0 +1,114 @@
+.section {
+    padding: 6rem 2rem;
+    background-color: #f8f9fa;
+    /* Very light grey */
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 4rem;
+}
+
+.faqList {
+    display: flex;
+    flex-direction: column;
+}
+
+.faqItem {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.faqItem:first-child {
+    border-top: 1px solid #e5e7eb;
+}
+
+.questionButton {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+.questionButton:hover {
+    color: #1e3a8a;
+}
+
+.questionText {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e3a8a;
+    /* Dark blue from screenshot */
+    padding-right: 1rem;
+}
+
+.icon {
+    color: #9ca3af;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.iconOpen {
+    transform: rotate(45deg);
+}
+
+.answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.answerOpen {
+    max-height: 1000px;
+    /* Large max-height to accommodate mobile text wrapping */
+    padding-bottom: 1.5rem;
+}
+
+.viewAllWrapper {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.viewAllBtn {
+    display: inline-block;
+    background-color: #c5a467;
+    color: white;
+    padding: 0.9rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 4px;
+    /* Slightly rounded/square based on image */
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 3rem 1.5rem;
+    }
+
+    .title {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .questionText {
+        font-size: 1rem;
+    }
+}

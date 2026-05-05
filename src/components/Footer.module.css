@@ -1,0 +1,291 @@
+.footer {
+    background-color: #1a223f;
+    /* Darker navy blue matching the screenshot */
+    color: white;
+    padding: 5rem 4rem 3rem;
+    font-family: var(--font-main);
+    position: relative;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.column {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logoColumn {
+    flex: 1.2;
+    padding-right: 2rem;
+}
+
+.brandWrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.logoCircle {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #c5a467;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #c5a467;
+    font-family: serif;
+}
+
+.brandText {
+    display: flex;
+    flex-direction: column;
+}
+
+.brandName {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    line-height: 1;
+    color: #c5a467;
+}
+
+.brandSub {
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    color: #a0aec0;
+    margin-top: 4px;
+    text-transform: uppercase;
+}
+
+.description {
+    color: #e2e8f0;
+    line-height: 1.7;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.downloadTitle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+.storeButtons {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.storeBtn {
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    min-width: 130px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.storeBtn:hover {
+    background-color: #f0f0f0;
+}
+
+.btnText {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    align-items: flex-start;
+}
+
+.btnSmall {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.btnLarge {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.columnTitle {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+.linkList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.linkItem {
+    margin-bottom: 0.8rem;
+}
+
+.link {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 0.9rem;
+}
+
+.link:hover {
+    color: #c5a467;
+}
+
+.awardsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.awardImage {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Simulate the graphical logos with icons */
+.awardIconGreen {
+    color: #059669;
+    margin-bottom: 2px;
+}
+
+.awardIconBlue {
+    color: #2563eb;
+    margin-bottom: 2px;
+}
+
+.awardIconOrange {
+    color: #ea580c;
+    margin-bottom: 2px;
+}
+
+.payments {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.paymentIcon {
+    height: 24px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    opacity: 0.8;
+}
+
+/* We can use SVGs or text for payments if images fail */
+.visa {
+    color: #3b82f6;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+.master {
+    display: flex;
+}
+
+.masterCircle {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+.mcRed {
+    background: #ef4444;
+    opacity: 0.9;
+}
+
+.mcYellow {
+    background: #fbbf24;
+    margin-left: -6px;
+    opacity: 0.9;
+}
+
+.amex {
+    background: #0284c7;
+    color: white;
+    font-size: 0.5rem;
+    font-weight: 800;
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
+.socials {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.socialIcon {
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.socialIcon:hover {
+    color: #c5a467;
+}
+
+
+
+@media (max-width: 1024px) {
+    .logoColumn {
+        flex: 100%;
+        padding-right: 0;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 3rem 1.5rem 2rem;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .column {
+        min-width: 100%;
+    }
+
+    .storeButtons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+}

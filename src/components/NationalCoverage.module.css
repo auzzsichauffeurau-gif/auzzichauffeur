@@ -1,0 +1,184 @@
+.section {
+    padding: 5rem 2rem;
+    background-color: #f8f9fa;
+    /* Very light grey */
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 1.2;
+}
+
+.description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.contentWrapper {
+    display: flex;
+    gap: 4rem;
+    min-height: 500px;
+}
+
+.sidebar {
+    flex: 0 0 250px;
+    border-right: 1px solid #e5e7eb;
+}
+
+.stateList {
+    list-style: none;
+    padding: 0;
+}
+
+.stateItem {
+    padding: 0.8rem 0;
+    cursor: pointer;
+    color: #6b7280;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.stateItem:hover {
+    color: #1e3a8a;
+}
+
+.stateItemActive {
+    color: #1e3a8a;
+    font-weight: 700;
+}
+
+/* Gold dot for active state item */
+.stateItemActive::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    width: 6px;
+    height: 6px;
+    background-color: #1e3a8a;
+    border-radius: 50%;
+}
+
+.mainContent {
+    flex: 1;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.cityList {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.cityItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.cityName {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #1f2937;
+}
+
+.readMore {
+    color: #1e3a8a;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Background Map */
+.mapBackground {
+    position: absolute;
+    top: 10%;
+    right: -5%;
+    width: 50%;
+    height: 80%;
+    opacity: 0.15;
+    /* Subtle background */
+    pointer-events: none;
+    z-index: 1;
+}
+
+.mapImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Map Dots (Simulated) */
+/* In a real app we'd map these to coordinates, just creating a few for effect */
+.mapDot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #c5a467;
+    /* Gold */
+    border-radius: 50%;
+    z-index: 2;
+    border: 2px solid white;
+}
+
+@media (max-width: 900px) {
+    .section {
+        padding: 3rem 1rem;
+    }
+
+    .contentWrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid #e5e7eb;
+        margin-bottom: 2rem;
+    }
+
+    .stateList {
+        display: flex;
+        overflow-x: auto;
+        gap: 1.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .stateItem {
+        white-space: nowrap;
+    }
+
+    .stateItemActive::before {
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: auto;
+    }
+
+    .mapBackground {
+        top: 20%;
+        right: 0;
+        width: 100%;
+        opacity: 0.05;
+    }
+}

@@ -1,0 +1,85 @@
+.section {
+    position: relative;
+    padding: 5rem 2rem;
+    background-image: url('/cta-bg.png');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 58, 138, 0.85);
+    /* Dark blue overlay similar to image */
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.button {
+    display: inline-block;
+    background-color: #c5a467;
+    /* Gold color */
+    color: white;
+    padding: 1rem 3rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #b09156;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 3rem 1.5rem;
+        min-height: auto;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,272 @@
+.pageWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HERO SECTION */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 60vh;
+    background-image: url('/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.breadcrumb {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.heroSubtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.heroButtons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btnGold {
+    padding: 1rem 2rem;
+    background-color: #bfa15f;
+    border: 1px solid #bfa15f;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btnGold:hover {
+    background-color: #a3884d;
+}
+
+.btnOutline {
+    padding: 1rem 2rem;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btnOutline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* COMMON SECTION STYLES */
+.section {
+    padding: 4rem 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.sectionContent {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+    .sectionContent {
+        grid-template-columns: 1fr;
+    }
+
+    .heroTitle {
+        font-size: 2.5rem;
+    }
+
+    .heroButtons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btnGold,
+    .btnOutline {
+        width: 100%;
+        text-align: center;
+    }
+
+    .section {
+        padding: 2rem 1rem;
+    }
+}
+
+.sectionTitle {
+    color: #1a2b4b;
+    /* Navy Blue */
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.sectionBody {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* CONTACT INFO SECTION */
+.contactInfoSection {
+    background-color: #ffffff;
+}
+
+.infoItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.iconWrapper {
+    color: #bfa15f;
+    flex-shrink: 0;
+    padding-top: 0.2rem;
+}
+
+.infoText {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+.link {
+    color: #bfa15f;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.phone {
+    color: #bfa15f;
+    font-weight: 500;
+}
+
+/* FEEDBACK SECTION */
+.feedbackSection {
+    background-color: #f4f4f4;
+}
+
+/* ACCOUNT ENQUIRIES & FORM SECTION */
+.formSection {
+    background-color: #ffffff;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.fullWidth {
+    grid-column: 1 / -1;
+}
+
+.label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.required {
+    color: #bfa15f;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input:focus,
+.textarea:focus {
+    border-color: #bfa15f;
+    background-color: #fff;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submitBtn {
+    background-color: #1a2b4b;
+    /* Navy */
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    justify-self: start;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s;
+    width: max-content;
+}
+
+.submitBtn:hover {
+    background-color: #132038;
+}
+
+/* HEAD OFFICE SECTION */
+.officeSection {
+    background-color: #f4f4f4;
+}

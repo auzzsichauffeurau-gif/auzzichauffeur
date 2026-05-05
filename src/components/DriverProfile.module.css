@@ -1,0 +1,113 @@
+.section {
+    padding: 6rem 2rem;
+    background-color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 4rem;
+}
+
+.leftContent {
+    flex: 1;
+    max-width: 600px;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    /* Dark blue */
+    line-height: 1.2;
+    margin-bottom: 2.5rem;
+}
+
+.btnBook {
+    display: inline-block;
+    background-color: #25407a;
+    /* Muted dark blue from image */
+    color: white;
+    padding: 1rem 2.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    /* Slight rounding or none based on image, looks slightly rounded */
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btnBook:hover {
+    background-color: #1e3a8a;
+}
+
+.rightContent {
+    flex: 1;
+    padding-top: 1rem;
+    /* Visual alignment with title */
+}
+
+.description {
+    color: #374151;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    max-width: 600px;
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .title {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .rightContent {
+        padding-top: 0;
+    }
+}
+
+.imageGrid {
+    max-width: 1400px;
+    margin: 4rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    padding: 0 20px;
+}
+
+.gridItem {
+    height: 300px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.gridItem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gridItem:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .imageGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gridItem {
+        height: 200px;
+    }
+}

@@ -1,0 +1,72 @@
+.section {
+    padding: 3rem 2rem;
+    background-color: white;
+    text-align: center;
+    border-top: 1px solid #f3f4f6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ratingWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.googleLogo {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.googleG {
+    color: #4285F4;
+}
+
+.googleO1 {
+    color: #EA4335;
+}
+
+.googleO2 {
+    color: #FBBC05;
+}
+
+.googleG2 {
+    color: #4285F4;
+}
+
+.googleL {
+    color: #34A853;
+}
+
+.googleE {
+    color: #EA4335;
+}
+
+.stars {
+    color: #FBBC05;
+    display: flex;
+    gap: 2px;
+}
+
+.reviewText {
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.bold {
+    font-weight: 700;
+    color: #1f2937;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 2rem 1.5rem;
+    }
+}

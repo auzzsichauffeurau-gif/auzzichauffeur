@@ -1,0 +1,146 @@
+.section {
+    padding: 0;
+    display: flex;
+    height: 600px;
+    /* Reduced height to keep it compact but visible */
+    overflow: hidden;
+    background-color: black;
+}
+
+.column {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    transition: flex 0.5s ease;
+    min-width: 0;
+    /* Important for flex shrinking */
+    cursor: pointer;
+}
+
+.column:last-child {
+    border-right: none;
+}
+
+/* Hover effect: Expand the hovered column slightly */
+.column:hover {
+    flex: 1.5;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.4s ease;
+    filter: brightness(0.85);
+}
+
+.column:hover .image {
+    transform: scale(1.1);
+    filter: brightness(0.4);
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    text-align: center;
+}
+
+.column:hover .content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.iconWrapper {
+    margin-bottom: 1.5rem;
+    color: #c5a467;
+    transform: scale(0.8);
+    transition: transform 0.4s ease;
+}
+
+.column:hover .iconWrapper {
+    transform: scale(1);
+}
+
+.title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.description {
+    color: #e5e5e5;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 300px;
+}
+
+.button {
+    padding: 0.8rem 2rem;
+    background-color: transparent;
+    border: 1px solid #c5a467;
+    color: #c5a467;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #c5a467;
+    color: black;
+}
+
+@media (max-width: 900px) {
+    .section {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .column {
+        height: 220px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .iconWrapper {
+        margin-bottom: 0.5rem;
+        transform: scale(0.7);
+    }
+
+    .title {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .description {
+        display: none;
+        /* Hide description on mobile to save space, show only title/button */
+    }
+
+    .content {
+        justify-content: center;
+        padding: 1rem;
+        opacity: 1;
+        /* Always show content on mobile */
+        transform: translateY(0);
+    }
+}

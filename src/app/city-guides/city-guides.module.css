@@ -1,0 +1,201 @@
+.pageWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f7f7;
+}
+
+/* HERO SECTION */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    background-image: url('/tile-driver.png');
+    /* Using a driver/suit image if available, or fallback */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+/* Fallback if tile-driver.png isn't quite right, we can use hero-bg or overlay to tint it */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
+    z-index: 1;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: #e0e0e0;
+    margin-bottom: 0.8rem;
+    font-family: sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.breadcrumb a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: white;
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-family: sans-serif;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+}
+
+.heroSubtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    max-width: 600px;
+    opacity: 0.9;
+    font-family: sans-serif;
+}
+
+/* RESOURCES SECTION */
+.resourcesSection {
+    padding: 4rem 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.sectionTitle {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #1a2b4b;
+    /* Hughes Navy */
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-bottom: 5rem;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* GUIDE LIST */
+.guideList {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.guideItem {
+    font-size: 1.1rem;
+    color: #333;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.guideItem:hover {
+    color: #bfa15f;
+    /* Gold hover */
+}
+
+/* MAP SIDE */
+.mapContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.mapContainer img {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    opacity: 0.8;
+}
+
+.mapMarker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+/* The "Download PDF" button style */
+.downloadBtn {
+    background: white;
+    border: 1px solid #ccc;
+    /* Grey border as per image */
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1a2b4b;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    font-family: sans-serif;
+    border-radius: 2px;
+}
+
+.downloadBtn:hover {
+    background: #f0f0f0;
+    border-color: #bbb;
+}
+
+/* Dot connection (optional detail from image seems to show dots on map) */
+.mapDot {
+    width: 10px;
+    height: 10px;
+    background-color: #bfa15f;
+    /* Gold dot */
+    border-radius: 50%;
+    position: absolute;
+    /* positioned relative to marker container or absolute on map */
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 3px rgba(191, 161, 95, 0.2);
+}
+
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .mapContainer {
+        margin-top: 2rem;
+    }
+
+    .heroTitle {
+        font-size: 2.5rem;
+    }
+}

@@ -1,0 +1,381 @@
+.pageWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    color: #333;
+}
+
+/* HERO SECTION */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 550px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.3) 100%);
+    z-index: 1;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.breadcrumbs {
+    font-size: 0.8rem;
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.breadcrumbs a {
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    max-width: 800px;
+}
+
+.heroSubtitle {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    color: #f0f0f0;
+}
+
+.heroButtons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btnGold {
+    background-color: #bfa15f;
+    color: #1a2b4b;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btnGold:hover {
+    background-color: #a3884d;
+}
+
+.btnTransparent {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btnTransparent:hover {
+    background-color: white;
+    color: #1a2b4b;
+}
+
+/* SERVICE ICONS BAR */
+.serviceIconsBar {
+    background-color: #f4f4f4;
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.iconsGrid {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.iconItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    max-width: 140px;
+}
+
+.iconCircle {
+    width: 60px;
+    height: 60px;
+    background-color: #1a2b4b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.iconLabel {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.3;
+}
+
+/* CONTENT SECTION */
+.contentSection {
+    padding: 5rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    color: #1a2b4b;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.contentBody {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.goldList {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.goldList li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #d4811d;
+    /* Gold text */
+}
+
+.goldList li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #d4811d;
+    font-weight: bold;
+}
+
+/* VEHICLE TABS SECTION */
+.vehicleSection {
+    background-color: #f9f9f9;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.tabContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tabsHeader {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
+}
+
+.tabBtn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    position: relative;
+}
+
+.tabBtn.active {
+    color: #1a2b4b;
+}
+
+.tabBtn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1.1rem;
+    /* Adjust to overlap border */
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #1a2b4b;
+}
+
+.vehicleCard {
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    margin-bottom: 1.5rem;
+    gap: 2rem;
+}
+
+.vehicleImage {
+    width: 250px;
+    height: 140px;
+    object-fit: contain;
+}
+
+.vehicleInfo {
+    flex: 1;
+}
+
+.vehicleTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a2b4b;
+    margin-bottom: 0.5rem;
+}
+
+.vehiclePrice {
+    font-size: 0.9rem;
+    color: #d4811d;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.vehicleDesc {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.vehicleMeta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    color: #555;
+    font-weight: 600;
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.bookBtnSmall {
+    background-color: #1a2b4b;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* FAQ SECTION */
+.faqSection {
+    padding: 5rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faqTitle {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #1a2b4b;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .vehicleCard {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .vehicleMeta {
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .iconsGrid {
+        gap: 2rem;
+    }
+
+    .heroTitle {
+        font-size: 2.2rem;
+    }
+
+    .heroButtons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btnGold,
+    .btnTransparent {
+        width: 100%;
+        text-align: center;
+    }
+
+    .tabsHeader {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .contentSection,
+    .vehicleSection {
+        padding: 3rem 1rem;
+    }
+
+    .vehicleImage {
+        width: 100%;
+        height: auto;
+    }
+}
