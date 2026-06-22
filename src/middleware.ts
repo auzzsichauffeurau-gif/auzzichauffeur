@@ -24,16 +24,24 @@ export async function middleware(request: NextRequest) {
 
     const { data: { user } } = await supabase.auth.getUser()
 
-    // Protect admin dashboard — redirect to login if not authenticated
+    const adminEmails = [
+        'auzzsichauffeur.au@gmail.com',
+        'info@auzziechauffeur.com.au',
+        'booking@auzziechauffeur.com.au'
+    ];
+    const email = user?.email?.toLowerCase().trim();
+    const isAdmin = !!(email && (adminEmails.includes(email) || email.endsWith('@auzziechauffeur.com.au')));
+
+    // Protect admin dashboard — redirect to login if not authenticated or not an admin
     if (request.nextUrl.pathname.startsWith('/admin/dashboard')) {
-        if (!user) {
+        if (!user || !isAdmin) {
             return NextResponse.redirect(new URL('/admin/login', request.url))
         }
     }
 
-    // Redirect logged-in users away from login page
+    // Redirect logged-in admins away from login page
     if (request.nextUrl.pathname === '/admin/login') {
-        if (user) {
+        if (user && isAdmin) {
             return NextResponse.redirect(new URL('/admin/dashboard', request.url))
         }
     }
@@ -44,3 +52,4 @@ export async function middleware(request: NextRequest) {
 export const config = {
     matcher: ['/admin/dashboard/:path*', '/admin/login'],
 }
+
